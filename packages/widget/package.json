@@ -1,0 +1,22 @@
+{
+  "name": "@launchpad/widget",
+  "version": "0.0.0",
+  "private": true,
+  "description": "<arag-chat>: a dependency-free, themeable chat web component for Progress Agentic RAG.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "node build.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@launchpad/par-client": "*",
+    "@launchpad/theme": "*"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.9"
+  }
+}

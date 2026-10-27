@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>M0 widget flow test</title>
+    <style>
+      body { font: 16px/1.5 Arial, sans-serif; margin: 2rem auto; max-width: 720px; padding: 0 16px; background: #f4faff; color: #111; }
+      form { display: flex; gap: 8px; }
+      input { flex: 1; padding: 8px 10px; font: inherit; }
+      button { padding: 8px 14px; font: inherit; background: #2b2bb2; color: #fff; border: 0; border-radius: 4px; }
+      #answer { white-space: pre-wrap; background: #fff; padding: 12px; border-radius: 6px; min-height: 3em; margin-top: 1rem; }
+      #log { font: 13px/1.4 "Roboto Mono", monospace; background: #00216b; color: #dcecff; padding: 12px; border-radius: 6px; margin-top: 1rem; }
+    </style>
+  </head>
+  <body>
+    <h1>Widget flow test (origin :__PORT__)</h1>
+    <form id="f">
+      <input id="q" value="When are you open on Friday?" aria-label="Question" />
+      <button>Ask</button>
+    </form>
+    <div id="answer" aria-live="polite"></div>
+    <pre id="log"></pre>
+    <script>
+      const log = (m) => { document.getElementById("log").textContent += m + "\n"; };
+      document.getElementById("f").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const out = document.getElementById("answer");
+        out.textContent = "";
+        const t0 = performance.now();
+        const ms = () => Math.round(performance.now() - t0) + " ms";
+        try {
+          const tok = await fetch("/token", { method: "POST" }).then((r) => r.json());
+          if (!tok.token) throw new Error(tok.error || "no token");
+          log(`token minted (server mint ${tok.mintMs} ms) at ${ms()}`);
+          const r = await fetch(tok.askUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "X-NUCLIA-SERVICEACCOUNT": "Bearer " + tok.token },
+            body: JSON.stringify({ query: document.getElementById("q").value, search_configuration: tok.searchConfig || undefined }),
+          });
+          log(`/ask responded ${r.status} at ${ms()}`);
+          const reader = r.body.pipeThrough(new TextDecoderStream()).getReader();
+          let buf = "", first = true, types = {};
+          for (;;) {
+            const { value, done } = await reader.read();
+            if (done) break;
+            buf += value;
+            let i;
+            while ((i = buf.indexOf("\n")) >= 0) {
+              const line = buf.slice(0, i).trim();
+              buf = buf.slice(i + 1);
+              if (!line) continue;
+              const item = (JSON.parse(line).item) || {};
+              types[item.type] = (types[item.type] || 0) + 1;
+              if (item.type === "answer") {
+                if (first) { log(`first answer text at ${ms()}`); first = false; }
+                out.textContent += item.text;
+              }
+            }
+          }
+          log(`stream done at ${ms()}; chunk types ${JSON.stringify(types)}`);
+          document.title = "M0 OK";
+        } catch (err) {
+          log(`FAILED at ${ms()}: ${err.message} (a CORS block shows here as a network error)`);
+          document.title = "M0 FAILED";
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "@launchpad/console",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Partner console: tenants, provisioning, fleet dashboard, and the public widget endpoints.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run widget && next dev",
+    "build": "npm run widget && next build",
+    "start": "next start",
+    "widget": "npm run build --workspace @launchpad/widget && node scripts/copy-widget.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@launchpad/db": "*",
+    "@launchpad/par-client": "*",
+    "@launchpad/theme": "*",
+    "drizzle-orm": "^0.44.5",
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@launchpad/widget": "*",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@launchpad/db",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Postgres schema, client and secret sealing for the Launchpad console and worker.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./secrets": "./src/secrets.ts"
+  },
+  "scripts": {
+    "generate": "drizzle-kit generate",
+    "migrate": "node src/migrate.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "node --test \"test/**/*.test.ts\""
+  },
+  "dependencies": {
+    "@launchpad/theme": "*",
+    "drizzle-orm": "^0.44.5",
+    "postgres": "^3.4.7"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.4"
+  }
+}

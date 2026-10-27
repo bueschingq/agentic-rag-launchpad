@@ -1,0 +1,16 @@
+{
+  "name": "@launchpad/par-client",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Typed, dependency-free client for the Progress Agentic RAG account, zone and Knowledge Box APIs.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./ask-stream": "./src/ask-stream.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "node --test \"test/**/*.test.ts\""
+  }
+}

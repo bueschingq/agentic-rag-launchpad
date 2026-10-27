@@ -1,0 +1,127 @@
+/* Progress Agentic RAG brand tokens (subset of arag-tokens.css). Progress Sans is used when
+   installed locally; Arial is the only approved fallback, and font files are not bundled. */
+:root {
+  --arag-blue-p1: #00216b;
+  --arag-blue-p2: #2b2bb2;
+  --arag-blue-p5: #dcecff;
+  --arag-green-p2: #00b563;
+  --arag-grey-s4: #f4faff;
+
+  --arag-font-display: "Progress Sans Display", Arial, sans-serif;
+  --arag-font-text: "Progress Sans Text", Arial, sans-serif;
+  --arag-font-mono: "Roboto Mono", monospace;
+
+  --arag-surface: var(--arag-grey-s4);
+  --arag-surface-raised: #ffffff;
+  --arag-text: #000000;
+  --arag-text-muted: #3d3d42;
+  --arag-link: var(--arag-blue-p2);
+  --arag-border: #c9d9ee;
+  --arag-radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--arag-surface);
+  color: var(--arag-text);
+  font: 400 1rem/1.6 var(--arag-font-text);
+  letter-spacing: 0.01em;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--arag-font-display);
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+
+a {
+  color: var(--arag-link);
+}
+
+code {
+  font-family: var(--arag-font-mono);
+  font-size: 0.875em;
+}
+
+.shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.masthead {
+  background: var(--arag-blue-p1);
+  color: #ffffff;
+}
+
+.masthead .shell {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-block: 16px;
+}
+
+.masthead strong {
+  font-family: var(--arag-font-display);
+  font-size: 1.25rem;
+}
+
+.masthead span {
+  color: var(--arag-blue-p5);
+  font-size: 0.875rem;
+}
+
+main.shell {
+  padding-block: 32px;
+}
+
+.panel {
+  background: var(--arag-surface-raised);
+  border: 1px solid var(--arag-border);
+  border-radius: var(--arag-radius);
+  padding: 24px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--arag-border);
+  white-space: nowrap;
+}
+
+th {
+  font-size: 0.875rem;
+  color: var(--arag-text-muted);
+  font-weight: 500;
+}
+
+.status {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  background: var(--arag-blue-p5);
+  color: var(--arag-blue-p1);
+}
+
+.status[data-status="live"]::before {
+  content: "● ";
+  color: var(--arag-green-p2);
+}
+
+.muted {
+  color: var(--arag-text-muted);
+}

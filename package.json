@@ -1,0 +1,30 @@
+{
+  "name": "agentic-rag-launchpad",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Self-hosted console for agencies that run Progress Agentic RAG chat agents for many customers.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @launchpad/console",
+    "build": "npm run build --workspaces --if-present",
+    "test": "node --test \"packages/*/test/**/*.test.ts\" \"apps/*/test/**/*.test.ts\"",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "db:generate": "npm run generate --workspace @launchpad/db",
+    "db:migrate": "npm run migrate --workspace @launchpad/db"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.0",
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2"
+  }
+}

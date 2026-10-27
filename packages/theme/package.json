@@ -1,0 +1,15 @@
+{
+  "name": "@launchpad/theme",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Design tokens and settings for the <arag-chat> widget: defaults, sanitising, WCAG contrast, CSS variables and the public config shape.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "node --test \"test/**/*.test.ts\""
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "@launchpad/worker",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Scheduled jobs: per-deployment usage, cost and quality rollups.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "start": "node src/main.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@launchpad/db": "*",
+    "@launchpad/par-client": "*",
+    "drizzle-orm": "^0.44.5",
+    "pg-boss": "^10.1.6"
+  }
+}

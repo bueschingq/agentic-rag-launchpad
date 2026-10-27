@@ -1,0 +1,68 @@
+# docker compose up --build
+#
+# Networks keep the sniffer, which loads arbitrary customer sites, away from the database:
+#   data    internal only: postgres, migrate, console, worker
+#   public  internet access: console, worker (Agentic RAG API), sniffer (customer sites)
+
+name: launchpad
+
+x-database-url: &database-url postgres://launchpad:launchpad@postgres:5432/launchpad
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: launchpad
+      POSTGRES_PASSWORD: launchpad
+      POSTGRES_DB: launchpad
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U launchpad"]
+      interval: 5s
+      retries: 12
+    networks: [data]
+
+  migrate:
+    build: { context: ., dockerfile: apps/worker/Dockerfile }
+    command: ["node", "packages/db/src/migrate.ts"]
+    environment:
+      DATABASE_URL: *database-url
+    depends_on:
+      postgres: { condition: service_healthy }
+    networks: [data]
+
+  console:
+    build: { context: ., dockerfile: apps/console/Dockerfile }
+    env_file: .env
+    environment:
+      DATABASE_URL: *database-url
+      SNIFFER_URL: http://sniffer:4100
+    ports: ["3000:3000"]
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+      sniffer: { condition: service_started }
+    networks: [data, public]
+
+  worker:
+    build: { context: ., dockerfile: apps/worker/Dockerfile }
+    env_file: .env
+    environment:
+      DATABASE_URL: *database-url
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+    networks: [data, public]
+
+  sniffer:
+    build: { context: ., dockerfile: apps/sniffer/Dockerfile }
+    environment:
+      SNIFFER_TOKEN: ${SNIFFER_TOKEN:?set SNIFFER_TOKEN in .env}
+    networks: [public]
+
+networks:
+  data:
+    internal: true
+  public: {}
+
+volumes:
+  pgdata: {}

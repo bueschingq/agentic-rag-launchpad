@@ -1,0 +1,16 @@
+{
+  "name": "@launchpad/sniffer",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Internal service: scans a customer site for its platform, sitemap and styles, and proposes a widget theme.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "start": "node src/main.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@launchpad/theme": "*",
+    "playwright": "^1.55.0"
+  }
+}

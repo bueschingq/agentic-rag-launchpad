@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "spike-browser",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["spike/browser/server.ts"],
+      "port": 4173
+    },
+    {
+      "name": "widget-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["spike/widget/server.ts"],
+      "port": 4173
+    }
+  ]
+}

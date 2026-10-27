@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      # Until package-lock.json is committed (see README), fall back to a fresh install.
+      - name: Install
+        id: install
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install --no-audit --no-fund
+            echo "lockfile=generated" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Each check runs even when an earlier one fails, so a single run reports everything.
+      - name: Lint
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: npm run lint
+      - name: Typecheck
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: npm run typecheck
+      - name: Test
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: npm test
+      - name: Build
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: npm run build
+
+      # The lockfile and the first migrations have to come from somewhere with npm access.
+      # Until both are committed, CI generates them and attaches them to the run for review.
+      - name: Generate migrations
+        id: migrations
+        if: ${{ !cancelled() && steps.install.outcome == 'success' && hashFiles('packages/db/migrations/*.sql') == '' }}
+        run: npm run db:generate
+      - name: Upload generated files
+        if: ${{ !cancelled() && (steps.install.outputs.lockfile == 'generated' || steps.migrations.outcome == 'success') }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: generated-files
+          path: |
+            package-lock.json
+            packages/db/migrations/
+          if-no-files-found: ignore
