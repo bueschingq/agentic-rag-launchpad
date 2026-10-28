@@ -19,7 +19,7 @@ jobs:
           node-version-file: .nvmrc
           package-manager-cache: false
 
-      # Until package-lock.json is committed (see README), fall back to a fresh install.
+      # npm ci against the committed lockfile; a fresh install if a branch has none.
       - name: Install
         id: install
         run: |
@@ -32,6 +32,7 @@ jobs:
 
       # Each check runs even when an earlier one fails, so a single run reports everything.
       - name: Lint
+        id: lint
         if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         run: npm run lint
       - name: Typecheck
@@ -59,3 +60,21 @@ jobs:
             package-lock.json
             packages/db/migrations/
           if-no-files-found: ignore
+
+      # For contributors who can't run Biome locally: when lint fails, attach its safe fixes
+      # (formatting, import order) as a patch to `git apply`, then list whatever is left.
+      # This rewrites the checkout, so it stays last.
+      - name: Prepare lint fixes
+        id: lintfix
+        if: ${{ !cancelled() && steps.lint.outcome == 'failure' }}
+        run: |
+          npx biome check --write . || true
+          git diff > biome-fixes.patch
+          echo "Patch touches $(git diff --name-only | wc -l) files. Still failing after it:"
+          npx biome check --max-diagnostics=200 . || true
+      - name: Upload lint fixes
+        if: ${{ !cancelled() && steps.lintfix.outcome == 'success' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: biome-fixes
+          path: biome-fixes.patch

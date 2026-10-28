@@ -22,14 +22,17 @@ export type AskStreamItem =
   | { type: "other"; itemType: string; raw: unknown };
 
 export async function* readNdjson(body: ReadableStream<Uint8Array>): AsyncGenerator<unknown> {
-  const reader = body.pipeThrough(new TextDecoderStream()).getReader();
+  // TextDecoder in stream mode rather than TextDecoderStream, whose DOM typings don't fit
+  // ReadableStream<Uint8Array>.pipeThrough under TypeScript 5.9.
+  const reader = body.getReader();
+  const decoder = new TextDecoder();
   let buffer = "";
   let finished = false;
   try {
     for (;;) {
       const { value, done } = await reader.read();
       if (done) break;
-      buffer += value;
+      buffer += decoder.decode(value, { stream: true });
       let newline = buffer.indexOf("\n");
       while (newline >= 0) {
         const line = buffer.slice(0, newline).trim();
@@ -39,7 +42,7 @@ export async function* readNdjson(body: ReadableStream<Uint8Array>): AsyncGenera
       }
     }
     finished = true;
-    const rest = buffer.trim();
+    const rest = (buffer + decoder.decode()).trim();
     if (rest) yield parseLine(rest);
   } finally {
     // The consumer stopped early (closed panel, new question): stop downloading.

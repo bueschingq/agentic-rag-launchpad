@@ -29,6 +29,13 @@ describe("ask stream", () => {
     assert.equal(lines.length, 8);
   });
 
+  it("keeps multi-byte characters split across chunks intact", async () => {
+    // "é" is 2 bytes and "😀" is 4: one-byte chunks split both mid-character.
+    const lines: unknown[] = [];
+    for await (const line of readNdjson(chunkedStream('{"text":"Café 😀"}\n{"text":"Ñ"}', [1]))) lines.push(line);
+    assert.deepEqual(lines, [{ text: "Café 😀" }, { text: "Ñ" }]);
+  });
+
   it("handles a final line with no trailing newline", async () => {
     const lines: unknown[] = [];
     for await (const line of readNdjson(chunkedStream('{"a":1}\n{"b":2}', [4]))) lines.push(line);
