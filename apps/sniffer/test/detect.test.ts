@@ -42,7 +42,8 @@ describe("sitemaps", () => {
 
   it("counts pages through one level of index", async () => {
     const files: Record<string, string> = {
-      "https://a.example/index.xml": "<sitemapindex><sitemap><loc>https://a.example/1.xml</loc></sitemap><sitemap><loc>https://a.example/2.xml</loc></sitemap></sitemapindex>",
+      "https://a.example/index.xml":
+        "<sitemapindex><sitemap><loc>https://a.example/1.xml</loc></sitemap><sitemap><loc>https://a.example/2.xml</loc></sitemap></sitemapindex>",
       "https://a.example/1.xml": "<urlset><url><loc>https://a.example/a</loc></url><url><loc>https://a.example/b</loc></url></urlset>",
       "https://a.example/2.xml": "<urlset><url><loc>https://a.example/c</loc></url></urlset>",
     };

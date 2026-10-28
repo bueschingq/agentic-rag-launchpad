@@ -104,15 +104,25 @@ export function extractStyles(): RawStyles {
   }
 
   const inputEl = first('input[type="text"], input[type="search"], input[type="email"], input:not([type]), textarea');
-  const input = inputEl ? { borderColor: getComputedStyle(inputEl).borderTopColor, borderRadius: getComputedStyle(inputEl).borderRadius } : undefined;
+  const input = inputEl
+    ? { borderColor: getComputedStyle(inputEl).borderTopColor, borderRadius: getComputedStyle(inputEl).borderRadius }
+    : undefined;
 
   const headerEl = first('header, [role="banner"]');
   const header = headerEl ? { background: getComputedStyle(headerEl).backgroundColor, color: getComputedStyle(headerEl).color } : undefined;
 
-  const loadedFonts = [...new Set(Array.from(document.fonts).filter((f) => f.status === "loaded").map((f) => f.family.replace(/["']/g, "")))];
+  const loadedFonts = [
+    ...new Set(
+      Array.from(document.fonts)
+        .filter((f) => f.status === "loaded")
+        .map((f) => f.family.replace(/["']/g, "")),
+    ),
+  ];
 
   const logoEl = first('header img[src*="logo" i], img[alt*="logo" i], [class*="logo" i] img') as HTMLImageElement | undefined;
-  const icons = Array.from(document.querySelectorAll('link[rel~="icon"], link[rel="apple-touch-icon"]')).map((l) => (l as HTMLLinkElement).href);
+  const icons = Array.from(document.querySelectorAll('link[rel~="icon"], link[rel="apple-touch-icon"]')).map(
+    (l) => (l as HTMLLinkElement).href,
+  );
 
   return {
     rootVars,

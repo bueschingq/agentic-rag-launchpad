@@ -58,7 +58,10 @@ describe("ZoneClient", () => {
   });
 
   it("only accepts account-level credentials", () => {
-    assert.throws(() => new ZoneClient({ zone: ZONE, accountId: ACCOUNT, credential: { kind: "key", token: "k" } }), /NUA key or a user-level/);
+    assert.throws(
+      () => new ZoneClient({ zone: ZONE, accountId: ACCOUNT, credential: { kind: "key", token: "k" } }),
+      /NUA key or a user-level/,
+    );
   });
 });
 

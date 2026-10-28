@@ -17,7 +17,7 @@
     <h1>Widget flow test (origin :__PORT__)</h1>
     <form id="f">
       <input id="q" value="When are you open on Friday?" aria-label="Question" />
-      <button>Ask</button>
+      <button type="submit">Ask</button>
     </form>
     <div id="answer" aria-live="polite"></div>
     <pre id="log"></pre>
@@ -45,8 +45,7 @@
             const { value, done } = await reader.read();
             if (done) break;
             buf += value;
-            let i;
-            while ((i = buf.indexOf("\n")) >= 0) {
+            for (let i = buf.indexOf("\n"); i >= 0; i = buf.indexOf("\n")) {
               const line = buf.slice(0, i).trim();
               buf = buf.slice(i + 1);
               if (!line) continue;

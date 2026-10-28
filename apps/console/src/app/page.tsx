@@ -26,9 +26,7 @@ export default async function FleetPage() {
       <h1>Deployments</h1>
       <div className="panel">
         {rows.length === 0 ? (
-          <p className="muted">
-            No deployments yet. The provisioning wizard (M1) creates the first one from a site URL.
-          </p>
+          <p className="muted">No deployments yet. The provisioning wizard (M1) creates the first one from a site URL.</p>
         ) : (
           <table>
             <thead>

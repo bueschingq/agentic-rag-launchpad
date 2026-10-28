@@ -8,8 +8,8 @@
 // POST /token mints a 10-second temporal key from the reader key, server-side, exactly as the
 // console's public token endpoint will. The page then streams /ask straight from Agentic RAG.
 
-import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { readFileSync } from "node:fs";
+import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { join } from "node:path";
 import { ROOT, readSecrets, readState, zoneApi } from "../lib.ts";
 

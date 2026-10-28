@@ -30,7 +30,9 @@ function primaryButton(buttons: RawButton[]): RawButton | undefined {
 
 // --brand-primary, --color-primary, --bs-primary, --primary… (values must be colors).
 function brandVar(vars: Record<string, string>): [string, Rgba] | undefined {
-  const names = Object.keys(vars).filter((n) => /(^|-)(brand|primary)(-|$)/i.test(n) && !/(text|on|contrast|rgb|hover|light|dark)/i.test(n));
+  const names = Object.keys(vars).filter(
+    (n) => /(^|-)(brand|primary)(-|$)/i.test(n) && !/(text|on|contrast|rgb|hover|light|dark)/i.test(n),
+  );
   for (const name of names.sort((a, b) => a.length - b.length)) {
     const c = parseColor(vars[name]!);
     if (c && isBrandColor(c)) return [name, c];
@@ -49,7 +51,13 @@ export function deriveTheme(raw: RawStyles): DerivedTheme {
   const input: ThemeInput = { color: {}, font: {}, shape: {} };
   const confidence: Record<string, number> = {};
   const sources: Record<string, string> = {};
-  const set = <K extends "color" | "font" | "shape">(group: K, key: keyof NonNullable<ThemeInput[K]>, value: string, conf: number, source: string) => {
+  const set = <K extends "color" | "font" | "shape">(
+    group: K,
+    key: keyof NonNullable<ThemeInput[K]>,
+    value: string,
+    conf: number,
+    source: string,
+  ) => {
     (input[group] as Record<string, string>)[key as string] = value;
     confidence[`${group}.${String(key)}`] = conf;
     sources[`${group}.${String(key)}`] = source;
@@ -69,7 +77,13 @@ export function deriveTheme(raw: RawStyles): DerivedTheme {
   const fromVar = brandVar(raw.rootVars);
   const link = raw.linkColor ? parseColor(raw.linkColor) : undefined;
   if (button && isBrandColor(parseColor(button.background)!)) {
-    set("color", "primary", toHex(parseColor(button.background)!), button.count >= 3 ? 0.9 : 0.7, `button "${button.text}" ×${button.count}`);
+    set(
+      "color",
+      "primary",
+      toHex(parseColor(button.background)!),
+      button.count >= 3 ? 0.9 : 0.7,
+      `button "${button.text}" ×${button.count}`,
+    );
     const on = parseColor(button.color);
     if (on) set("color", "onPrimary", toHex(on), 0.8, `button "${button.text}" text`);
   } else if (fromVar) {
@@ -89,7 +103,8 @@ export function deriveTheme(raw: RawStyles): DerivedTheme {
   if (bodyFamily && (generic || loaded.includes(bodyFamily.toLowerCase()))) {
     set("font", "family", raw.body.fontFamily, generic ? 0.6 : 0.9, "body font");
   }
-  if (raw.heading && firstFamily(raw.heading.fontFamily) !== bodyFamily) set("font", "headingFamily", raw.heading.fontFamily, 0.7, "first heading");
+  if (raw.heading && firstFamily(raw.heading.fontFamily) !== bodyFamily)
+    set("font", "headingFamily", raw.heading.fontFamily, 0.7, "first heading");
   const size = px(raw.body.fontSize);
   if (size && size >= 13 && size <= 19) set("font", "size", `${size}px`, 0.8, "body font size");
   const lh = px(raw.body.lineHeight);

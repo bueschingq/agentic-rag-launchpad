@@ -15,7 +15,10 @@ describe("TokenSession", () => {
   it("reuses a token until shortly before it expires", async () => {
     let now = 0;
     let fetched = 0;
-    const session = new TokenSession(async () => token(++fetched), () => now);
+    const session = new TokenSession(
+      async () => token(++fetched),
+      () => now,
+    );
     assert.equal((await session.get()).token, "t1");
     now = 869_000; // 900 s TTL minus the 30 s margin, minus 1 s
     assert.equal((await session.get()).token, "t1");

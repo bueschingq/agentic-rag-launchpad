@@ -8,22 +8,22 @@
 
 import {
   ACCOUNTS_API,
+  type Auth,
   call,
   clip,
+  type Env,
   isoDaysAgo,
   loadEnv,
   note,
+  type Role,
   readSecrets,
   readState,
+  type State,
   saveSecret,
   saveState,
   sleep,
   stream,
   zoneApi,
-  type Auth,
-  type Env,
-  type Role,
-  type State,
 } from "./lib.ts";
 
 export const BROWSER_ORIGIN = "http://localhost:4173";
@@ -43,14 +43,12 @@ async function whoami() {
   const accounts = await call("GET", `${ACCOUNTS_API}/accounts`, { auth: pat });
   if (!accounts.ok) throw new Error("The Account API rejected the PAT.");
   const list: any[] = Array.isArray(accounts.json) ? accounts.json : (accounts.json?.accounts ?? []);
-  const acct = env.account
-    ? list.find((a) => a.id === env.account || a.slug === env.account)
-    : list.length === 1
-      ? list[0]
-      : undefined;
+  const acct = env.account ? list.find((a) => a.id === env.account || a.slug === env.account) : list.length === 1 ? list[0] : undefined;
   if (!acct) {
     console.log(list.map((a) => `  ${a.slug}  ${a.id}  ${a.type ?? ""}`).join("\n"));
-    throw new Error(env.account ? `Account ${env.account} is not visible to this PAT.` : "Several accounts are visible; set PAR_ACCOUNT in .env.");
+    throw new Error(
+      env.account ? `Account ${env.account} is not visible to this PAT.` : "Several accounts are visible; set PAR_ACCOUNT in .env.",
+    );
   }
 
   const detail = await call("GET", `${ACCOUNTS_API}/account/${acct.slug ?? acct.id}`, { auth: pat });
@@ -300,18 +298,34 @@ async function tokens() {
   note(`Temporal key used 11.5 s after minting → ${expired.status}.`);
 
   // 4. Ephemeral tokens: the account-scoped endpoint (PAT) and the service-account one.
-  const e1 = await call("POST", `${z}/account/${s.accountId}/kb/${s.kbId}/ephemeral_tokens`, { auth: admin, body: {}, label: `ephemeral token via ${adminName}` });
+  const e1 = await call("POST", `${z}/account/${s.accountId}/kb/${s.kbId}/ephemeral_tokens`, {
+    auth: admin,
+    body: {},
+    label: `ephemeral token via ${adminName}`,
+  });
   if (e1.ok && e1.json?.token) {
     const viaHeader = await call("POST", askUrl, { auth: { sa: e1.json.token }, body, headers: { "X-Synchronous": "true" }, quiet: true });
-    const viaQuery = await call("POST", `${askUrl}?eph-token=${encodeURIComponent(e1.json.token)}`, { body, headers: { "X-Synchronous": "true" }, quiet: true });
+    const viaQuery = await call("POST", `${askUrl}?eph-token=${encodeURIComponent(e1.json.token)}`, {
+      body,
+      headers: { "X-Synchronous": "true" },
+      quiet: true,
+    });
     note(`Account ephemeral token on /ask: as X-NUCLIA-SERVICEACCOUNT → ${viaHeader.status}; as ?eph-token= → ${viaQuery.status}.`);
   } else {
     note(`Account ephemeral_tokens endpoint with the PAT → ${e1.status}.`);
   }
-  const e2 = await call("POST", `${z}/ephemeral_token`, { auth: reader, body: { ttl: 300 }, label: "ephemeral token from reader key, ttl 300" });
+  const e2 = await call("POST", `${z}/ephemeral_token`, {
+    auth: reader,
+    body: { ttl: 300 },
+    label: "ephemeral token from reader key, ttl 300",
+  });
   if (e2.ok && e2.json?.token) {
     const use = await call("POST", askUrl, { auth: { sa: e2.json.token }, body, headers: { "X-Synchronous": "true" }, quiet: true });
-    const viaQuery = await call("POST", `${askUrl}?eph-token=${encodeURIComponent(e2.json.token)}`, { body, headers: { "X-Synchronous": "true" }, quiet: true });
+    const viaQuery = await call("POST", `${askUrl}?eph-token=${encodeURIComponent(e2.json.token)}`, {
+      body,
+      headers: { "X-Synchronous": "true" },
+      quiet: true,
+    });
     note(`SA ephemeral token (ttl 300) on /ask: header → ${use.status}; ?eph-token= → ${viaQuery.status}.`);
   } else {
     note(`/ephemeral_token from the reader key → ${e2.status} ${clip(e2.text, 200)}`);
@@ -356,7 +370,10 @@ async function ephemeral() {
 
   // Scope: a token minted from the reader key must not write; one from the writer key?
   const eRead = await mintEph(300);
-  const writeTry = await call("POST", withEph(`${z}/kb/${s.kbId}/resources`, eRead.json.token), { body: { title: "should be rejected" }, quiet: true });
+  const writeTry = await call("POST", withEph(`${z}/kb/${s.kbId}/resources`, eRead.json.token), {
+    body: { title: "should be rejected" },
+    quiet: true,
+  });
   const findTry = await call("POST", withEph(`${z}/kb/${s.kbId}/find`, eRead.json.token), { body: { query: "insurance" }, quiet: true });
   const cfgTry = await call("GET", withEph(`${z}/kb/${s.kbId}/search_configurations`, eRead.json.token), { quiet: true });
   note(`Reader-minted ephemeral token: write → ${writeTry.status}, /find → ${findTry.status}, list search configs → ${cfgTry.status}.`);
@@ -409,13 +426,17 @@ async function sitemap(args: string[]) {
   const site = new URL(env.siteUrl);
   const z = zoneApi(s.zone!);
 
-  const html = await fetch(site, { redirect: "follow" }).then((r) => r.text()).catch(() => "");
+  const html = await fetch(site, { redirect: "follow" })
+    .then((r) => r.text())
+    .catch(() => "");
   const generator =
     html.match(/<meta[^>]+name=["']generator["'][^>]*content=["']([^"']+)/i)?.[1] ??
     html.match(/<meta[^>]+content=["']([^"']+)["'][^>]*name=["']generator["']/i)?.[1];
   note(`${site.origin}: generator meta = ${generator ?? "none"}.`);
 
-  const robots = await fetch(new URL("/robots.txt", site)).then((r) => (r.ok ? r.text() : "")).catch(() => "");
+  const robots = await fetch(new URL("/robots.txt", site))
+    .then((r) => (r.ok ? r.text() : ""))
+    .catch(() => "");
   const listed = [...robots.matchAll(/^sitemap:\s*(\S+)/gim)].map((m) => m[1]);
   const sitemapUrl = s.sitemap?.sitemapUrl ?? listed[0] ?? new URL("/sitemap.xml", site).href;
   const pages = await countSitemap(sitemapUrl);
@@ -484,7 +505,10 @@ async function usage() {
       for (const m of bucket.metrics ?? []) names.set(m.name, (names.get(m.name) ?? 0) + (Number(m.value) || 0));
     }
     note(`Usage metrics for the spike KB (7 days, summed): ${[...names].map(([k, v]) => `${k}=${v}`).join(", ") || "none returned"}`);
-    await call("GET", `${ACCOUNTS_API}/account/${s.accountId}/usage?aggregation=millennium&from=${from}`, { auth: pat, label: "account total" });
+    await call("GET", `${ACCOUNTS_API}/account/${s.accountId}/usage?aggregation=millennium&from=${from}`, {
+      auth: pat,
+      label: "account total",
+    });
   } else {
     const r = await call("GET", `${ACCOUNTS_API}/account/${s.accountId}/usage?knowledgebox=${s.kbId}&aggregation=day&from=${from}`, {
       auth: admin,
@@ -501,7 +525,12 @@ async function usage() {
   await tryAuths("GET", `${z}/kb/${s.kbId}/remi/scores?aggregation=day&from=${from}`, undefined, auths);
   const month = new Date().toISOString().slice(0, 7);
   await tryAuths("POST", `${z}/kb/${s.kbId}/remi/query`, { month, pagination: { limit: 5 } }, auths);
-  await tryAuths("POST", `${z}/kb/${s.kbId}/activity/ask/query`, { year_month: month, show: "all", filters: {}, pagination: { limit: 5 } }, auths);
+  await tryAuths(
+    "POST",
+    `${z}/kb/${s.kbId}/activity/ask/query`,
+    { year_month: month, show: "all", filters: {}, pagination: { limit: 5 } },
+    auths,
+  );
 }
 
 async function cleanup(args: string[]) {
@@ -511,7 +540,15 @@ async function cleanup(args: string[]) {
     return;
   }
   const r = await call("DELETE", `${zoneApi(s.zone!)}/account/${s.accountId}/kb/${s.kbId}`, { auth: admin });
-  if (r.ok) saveState({ kbId: undefined, kbSlug: undefined, serviceAccounts: undefined, resources: undefined, searchConfig: undefined, sitemap: undefined });
+  if (r.ok)
+    saveState({
+      kbId: undefined,
+      kbSlug: undefined,
+      serviceAccounts: undefined,
+      resources: undefined,
+      searchConfig: undefined,
+      sitemap: undefined,
+    });
 }
 
 // ---------- helpers ----------
@@ -566,7 +603,9 @@ function summarizeStream(st: Awaited<ReturnType<typeof stream>>, label: string) 
 }
 
 async function countSitemap(url: string, depth = 0): Promise<number> {
-  const xml = await fetch(url).then((r) => (r.ok ? r.text() : "")).catch(() => "");
+  const xml = await fetch(url)
+    .then((r) => (r.ok ? r.text() : ""))
+    .catch(() => "");
   const locs = [...xml.matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/gi)].map((m) => m[1]);
   if (/<sitemapindex/i.test(xml) && depth === 0) {
     let total = 0;

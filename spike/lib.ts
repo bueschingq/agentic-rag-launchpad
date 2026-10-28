@@ -43,7 +43,10 @@ export function loadEnv(): Env {
     for (const line of lines) {
       const i = line.indexOf("=");
       if (i < 0) continue;
-      vars[line.slice(0, i).trim()] = line.slice(i + 1).trim().replace(/^["']|["']$/g, "");
+      vars[line.slice(0, i).trim()] = line
+        .slice(i + 1)
+        .trim()
+        .replace(/^["']|["']$/g, "");
     }
   }
   const placeholder = (v?: string) => !v || v.startsWith("paste-");
@@ -149,7 +152,7 @@ export async function call(method: string, url: string, opts: CallOpts = {}): Pr
   });
   const text = await r.text();
   const ms = Math.round(performance.now() - started);
-  let json: any = undefined;
+  let json: any;
   try {
     json = text ? JSON.parse(text) : undefined;
   } catch {}
@@ -184,8 +187,7 @@ export async function stream(url: string, opts: CallOpts = {}) {
     const { value, done } = await reader.read();
     if (done) break;
     buf += value;
-    let nl: number;
-    while ((nl = buf.indexOf("\n")) >= 0) {
+    for (let nl = buf.indexOf("\n"); nl >= 0; nl = buf.indexOf("\n")) {
       const line = buf.slice(0, nl).trim();
       buf = buf.slice(nl + 1);
       if (!line) continue;
@@ -197,7 +199,14 @@ export async function stream(url: string, opts: CallOpts = {}) {
     }
   }
   if (buf.trim()) lines.push({ at: Math.round(performance.now() - started), item: safeParse(buf.trim()) });
-  record("POST", url, opts, { status: r.status, ok: true, ms: lines.at(-1)?.at ?? 0, json: { lines: lines.length }, text: "", headers: r.headers });
+  record("POST", url, opts, {
+    status: r.status,
+    ok: true,
+    ms: lines.at(-1)?.at ?? 0,
+    json: { lines: lines.length },
+    text: "",
+    headers: r.headers,
+  });
   return { status: r.status, ok: true, lines, error: undefined, headers: r.headers };
 }
 

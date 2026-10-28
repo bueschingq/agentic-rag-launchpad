@@ -14,18 +14,18 @@ Throwaway scripts that check the API assumptions in [docs/DESIGN.md](../docs/DES
 node spike/m0.ts all
 ```
 
-| Step | Checks |
-|---|---|
-| `whoami` | PAT works on the Account API; account type, KB limits, zones |
-| `kb` | PAT can create a KB on the zone API with `allowed_origins` |
-| `keys` | Reader / writer / manager service accounts and keys via API |
-| `content` | Writer key ingests three small text pages; time to PROCESSED |
-| `searchconfig` | A saved `ask` configuration with a custom system prompt |
-| `ask` | Reader key `/ask`, sync and streaming; reader can't write; `.dp.` vs `.rag.` host |
-| `tokens` | Temporal keys (10 s max): fresh, started late, expired; ephemeral tokens; CORS per origin |
-| `ephemeral` | Ephemeral token TTLs, scope and expiry; whether expiry cuts a stream; `allowed_origins` propagation time |
-| `sitemap` | Sitefinity detection, server-side sitemap sync, job status and logs (capped by `SPIKE_MAX_PAGES`) |
-| `usage` | Per-KB usage metric names, activity metrics, REMi scores, ask logs |
+| Step           | Checks                                                                                                   |
+| -------------- | -------------------------------------------------------------------------------------------------------- |
+| `whoami`       | PAT works on the Account API; account type, KB limits, zones                                             |
+| `kb`           | PAT can create a KB on the zone API with `allowed_origins`                                               |
+| `keys`         | Reader / writer / manager service accounts and keys via API                                              |
+| `content`      | Writer key ingests three small text pages; time to PROCESSED                                             |
+| `searchconfig` | A saved `ask` configuration with a custom system prompt                                                  |
+| `ask`          | Reader key `/ask`, sync and streaming; reader can't write; `.dp.` vs `.rag.` host                        |
+| `tokens`       | Temporal keys (10 s max): fresh, started late, expired; ephemeral tokens; CORS per origin                |
+| `ephemeral`    | Ephemeral token TTLs, scope and expiry; whether expiry cuts a stream; `allowed_origins` propagation time |
+| `sitemap`      | Sitefinity detection, server-side sitemap sync, job status and logs (capped by `SPIKE_MAX_PAGES`)        |
+| `usage`        | Per-KB usage metric names, activity metrics, REMi scores, ask logs                                       |
 
 Then the browser half, which runs the widget flow in a real browser on an allowed origin (`:4173`) and on a blocked one (`:4174`):
 

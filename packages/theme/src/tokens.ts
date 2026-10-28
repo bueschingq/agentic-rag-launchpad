@@ -127,7 +127,12 @@ export function resolveTheme(input: ThemeInput = {}, base: ThemeTokens = default
       shadow: pick("shape.shadow", input.shape?.shadow, base.shape.shadow, (v) => SHADOW.test(v)),
     },
     launcher: {
-      position: pick("launcher.position", input.launcher?.position, base.launcher.position, (v) => v === "bottom-right" || v === "bottom-left"),
+      position: pick(
+        "launcher.position",
+        input.launcher?.position,
+        base.launcher.position,
+        (v) => v === "bottom-right" || v === "bottom-left",
+      ),
       offset: pick("launcher.offset", input.launcher?.offset, base.launcher.offset, (v) => LENGTH.test(v)),
       size: pick("launcher.size", input.launcher?.size, base.launcher.size, (v) => LENGTH.test(v)),
     },

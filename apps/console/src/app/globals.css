@@ -28,7 +28,7 @@ body {
   margin: 0;
   background: var(--arag-surface);
   color: var(--arag-text);
-  font: 400 1rem/1.6 var(--arag-font-text);
+  font: 400 1rem / 1.6 var(--arag-font-text);
   letter-spacing: 0.01em;
 }
 

@@ -1,6 +1,6 @@
 # Agentic RAG Launchpad — v1 design
 
-*Working name. An open-source, self-hosted console that lets a Sitefinity partner agency run Progress® Agentic RAG chat agents for many customers, the way a managed service provider would.*
+_Working name. An open-source, self-hosted console that lets a Sitefinity partner agency run Progress® Agentic RAG chat agents for many customers, the way a managed service provider would._
 
 Status: draft for review · 2026-10-26 · M0 spike results folded in 2026-10-27 (§4a)
 
@@ -12,7 +12,7 @@ ai12z sells into the same Sitefinity accounts that Progress Agentic RAG now serv
 
 1. Create a KB in the dashboard, pick models, and mint a Writer key.
 2. Write a prompt and search configuration by hand.
-3. Copy the endpoint, UID and key into Sitefinity's *Administration » Agentic RAG connection*.
+3. Copy the endpoint, UID and key into Sitefinity's _Administration » Agentic RAG connection_.
 4. Accept a widget that comes in four styles and doesn't blend into the customer's site.
 5. Repeat all of this per client, with no cross-client view of usage, cost or quality.
 
@@ -20,14 +20,14 @@ ai12z sells into the same Sitefinity accounts that Progress Agentic RAG now serv
 
 ## 2. Decisions taken
 
-| Topic | Decision |
-|---|---|
-| Stack | Next.js (App Router) + TypeScript in an npm-workspaces monorepo, one Docker image per service. Dependencies are kept minimal (see §3) |
-| Hosting | Self-hosted per partner. Each instance holds that partner's enterprise-account credentials; tenants are the partner's customers |
-| Commercial model | Assumes a partner enterprise contract: one Agentic RAG account per partner, one KB per customer site/deployment |
-| v1 scope | Provisioning wizard · fleet & cost dashboard · customer access · embeddable widget for any site |
-| Widget auth | Private KBs. The console mints a reader-scoped ephemeral token per chat session (`POST /ephemeral_token`, ~15 min TTL). KB `allowed_origins` is locked to the customer's domains. Both verified in M0 |
-| Widget styling | Our own themeable chat web component, auto-themed by sniffing the customer site's CSS (replaces the stock four-style widget) |
+| Topic            | Decision                                                                                                                                                                                              |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Stack            | Next.js (App Router) + TypeScript in an npm-workspaces monorepo, one Docker image per service. Dependencies are kept minimal (see §3)                                                                 |
+| Hosting          | Self-hosted per partner. Each instance holds that partner's enterprise-account credentials; tenants are the partner's customers                                                                       |
+| Commercial model | Assumes a partner enterprise contract: one Agentic RAG account per partner, one KB per customer site/deployment                                                                                       |
+| v1 scope         | Provisioning wizard · fleet & cost dashboard · customer access · embeddable widget for any site                                                                                                       |
+| Widget auth      | Private KBs. The console mints a reader-scoped ephemeral token per chat session (`POST /ephemeral_token`, ~15 min TTL). KB `allowed_origins` is locked to the customer's domains. Both verified in M0 |
+| Widget styling   | Our own themeable chat web component, auto-themed by sniffing the customer site's CSS (replaces the stock four-style widget)                                                                          |
 
 ## 3. Architecture
 
@@ -82,7 +82,7 @@ Every dependency becomes supply-chain surface for each partner who self-hosts th
 ## 3a. Scaffold status (2026-10-27)
 
 **Verified on a machine without npm access.** Public npm registries are blocked there, so this check covers the dependency-free code paths only:
-- 73 unit tests pass: par-client, theme, key sealing, console origin rules, worker dates, sniffer URL safety, detection and theme derivation, and widget session and sources.
+- 74 unit tests pass: par-client, theme, key sealing, console origin rules, worker dates, sniffer URL safety, detection and theme derivation, and widget session and sources.
 - All 63 `.ts` files parse.
 - The widget ran end to end in Chromium from source, with Node stripping the types (`spike/widget/server.ts`), against the M0 spike KB:
   - config load, then one session token for several questions
@@ -91,12 +91,17 @@ Every dependency becomes supply-chain surface for each partner who self-hosts th
   - a themed and a default look, and a full-screen layout at 375 px
   - Escape closing the panel with focus returning to the launcher
 
-**Not yet verified** (needs `npm install`):
-- `tsc` typecheck and the Next.js build
-- Drizzle migration generation and database queries
+**Verified in CI** (GitHub Actions, Node 24, `npm ci` from the committed lockfile):
+- Biome lint and format
+- `tsc` typecheck across all seven workspaces
+- the Next.js 16 build
+- the widget bundle: 4.8 KB gzipped, against a 40 KB budget
+- Drizzle migration generation (`packages/db/migrations/0000_giant_sasquatch.sql`)
+
+**Not yet verified:**
+- applying the migration and running queries against Postgres
 - pg-boss scheduling
 - the Playwright scan
-- esbuild bundle size
 - Docker images and Compose
 
 ## 4. Agentic RAG API surface we rely on
@@ -105,22 +110,22 @@ These are from the reference pages (`/docs/account-api`, `/docs/knowledgebox-zon
 
 Hosts: Account API `https://accounts.progress.cloud/api/v1`. Zone and KB APIs `https://{zone}.dp.progress.cloud/api/v1`; `/ask` also answers on `{zone}.rag.progress.cloud`.
 
-| Need | Endpoint | Credential | M0 |
-|---|---|---|---|
-| Resolve account from key | `GET {zone}/api/authorizer/info` → `account_id`, `account_type` | NUA key | ✅ |
-| Account limits (max KBs, quotas) | `GET /account/{id}` → `max_kbs`, `limits.usage.*` | PAT only (NUA key → 403) | ⏳ needs PAT |
-| Create / modify / delete KB | `POST /account/{id}/kbs` (slug, title, `allowed_origins`, `search_configs`, …), `PATCH`/`DELETE /account/{id}/kb/{kb}` | NUA key or PAT | ✅ 1.7 s |
-| Per-KB API keys | `POST /account/{id}/kb/{kb}/service_accounts` (role) + `/service_account/{sa}/keys` (`expires`) | NUA key or PAT | ✅ |
-| Browser token | `POST /ephemeral_token` `{ttl}`, sent as `?eph-token=` | reader key | ✅ |
-| Saved prompt/RAG config | `POST /kb/{kb}/search_configurations/{name}` `{kind:"ask", config}`; `/ask` takes `search_configuration` | manager key | ✅ |
-| Ingest | `POST /kb/{kb}/resources` (text, link, file; `origin.url` for citations) | writer key | ✅ ~6 s to PROCESSED |
-| Server-side crawl | `POST /kb/{kb}/external_connections` (`provider: "sitemap"`) + `/sync_configs` + `/sync_config/{id}/sync`, `/jobs` | manager key or PAT | ⏳ not run (§4a) |
-| Usage per tenant | `GET /account/{id}/usage?knowledgebox={kb}&aggregation=day&from=…` | PAT only (NUA key → 403) | ⏳ needs PAT |
-| Volume | `GET /kb/{kb}/activity/metrics` (search / ask / chat per hour) | manager key (NUA key → 403) | ✅ near real time |
-| Question log | `POST /kb/{kb}/activity/ask/query` (NDJSON: question, answer, `nuclia_tokens`, model, timings, feedback) | manager key | ✅ |
-| Quality | `GET /kb/{kb}/remi/scores`, `POST /kb/{kb}/remi/query` | manager key | ✅ scores within minutes |
-| Customer KB access | `PATCH /account/{id}/kb/{kb}/users`, `POST …/invite` (`SOWNER`, `SMEMBER`, `SCONTRIBUTOR`) | NUA key or PAT | not run |
-| Backups | `/account/{id}/backups`, `/restore` | — | not run |
+| Need                             | Endpoint                                                                                                               | Credential                  | M0                       |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------------- | ------------------------ |
+| Resolve account from key         | `GET {zone}/api/authorizer/info` → `account_id`, `account_type`                                                        | NUA key                     | ✅                       |
+| Account limits (max KBs, quotas) | `GET /account/{id}` → `max_kbs`, `limits.usage.*`                                                                      | PAT only (NUA key → 403)    | ⏳ needs PAT             |
+| Create / modify / delete KB      | `POST /account/{id}/kbs` (slug, title, `allowed_origins`, `search_configs`, …), `PATCH`/`DELETE /account/{id}/kb/{kb}` | NUA key or PAT              | ✅ 1.7 s                 |
+| Per-KB API keys                  | `POST /account/{id}/kb/{kb}/service_accounts` (role) + `/service_account/{sa}/keys` (`expires`)                        | NUA key or PAT              | ✅                       |
+| Browser token                    | `POST /ephemeral_token` `{ttl}`, sent as `?eph-token=`                                                                 | reader key                  | ✅                       |
+| Saved prompt/RAG config          | `POST /kb/{kb}/search_configurations/{name}` `{kind:"ask", config}`; `/ask` takes `search_configuration`               | manager key                 | ✅                       |
+| Ingest                           | `POST /kb/{kb}/resources` (text, link, file; `origin.url` for citations)                                               | writer key                  | ✅~6 s to PROCESSED      |
+| Server-side crawl                | `POST /kb/{kb}/external_connections` (`provider: "sitemap"`) + `/sync_configs` + `/sync_config/{id}/sync`, `/jobs`     | manager key or PAT          | ⏳ not run (§4a)         |
+| Usage per tenant                 | `GET /account/{id}/usage?knowledgebox={kb}&aggregation=day&from=…`                                                     | PAT only (NUA key → 403)    | ⏳ needs PAT             |
+| Volume                           | `GET /kb/{kb}/activity/metrics` (search / ask / chat per hour)                                                         | manager key (NUA key → 403) | ✅ near real time        |
+| Question log                     | `POST /kb/{kb}/activity/ask/query` (NDJSON: question, answer, `nuclia_tokens`, model, timings, feedback)               | manager key                 | ✅                       |
+| Quality                          | `GET /kb/{kb}/remi/scores`, `POST /kb/{kb}/remi/query`                                                                 | manager key                 | ✅ scores within minutes |
+| Customer KB access               | `PATCH /account/{id}/kb/{kb}/users`, `POST …/invite` (`SOWNER`, `SMEMBER`, `SCONTRIBUTOR`)                             | NUA key or PAT              | not run                  |
+| Backups                          | `/account/{id}/backups`, `/restore`                                                                                    | —                           | not run                  |
 
 **What the console stores:**
 - The partner's **NUA key** (`allow_kb_management`) for all provisioning.
@@ -142,14 +147,13 @@ Run from `spike/` against an enterprise account (`v3enterprise`, zone `aws-us-ea
 
 **Browser tokens.** This changed the design.
 
-| | Temporal key `POST /service_account_temporal_key` | Ephemeral token `POST /ephemeral_token` |
-|---|---|---|
-| Max TTL | 10 s | 900, 3,600 and 86,400 s all accepted |
-| How sent | `X-NUCLIA-SERVICEACCOUNT` header | `?eph-token=` query only (header → 400) |
-| Scope when minted from the reader key | reader | reader (write → 403, `/find` → 200) |
-| Expired | 401 | 403 |
-| Mint latency | 0.5–0.85 s | ~0.07 s |
-
+|                                       | Temporal key `POST /service_account_temporal_key` | Ephemeral token `POST /ephemeral_token` |
+| ------------------------------------- | ------------------------------------------------- | --------------------------------------- |
+| Max TTL                               | 10 s                                              | 900, 3,600 and 86,400 s all accepted    |
+| How sent                              | `X-NUCLIA-SERVICEACCOUNT` header                  | `?eph-token=` query only (header → 400) |
+| Scope when minted from the reader key | reader                                            | reader (write → 403, `/find` → 200)     |
+| Expired                               | 401                                               | 403                                     |
+| Mint latency                          | 0.5–0.85 s                                        | ~0.07 s                                 |
 - An in-flight stream is **not** cut off when its token expires. A request started at +9.3 s on a 10 s key finished at +12.7 s.
 - **Decision:** the widget gets one ephemeral token per chat session (~15 min TTL) and refreshes it on 403. That avoids a mint round trip on every question.
 - Because the token rides in the URL, keep TTLs short and never log full request URLs.
@@ -204,7 +208,7 @@ One page, three inputs: **customer**, **site URL**, **deployment name**. Everyth
    - Generate 4 starter questions from the indexed content, run them as smoke tests, and show answers with citations.
    - Poll a CORS preflight from each customer domain until it passes. Domain-lock changes take 15–60 s to apply.
 5. **Hand-off:**
-   - Sitefinity 15.4+: the three values for *Agentic RAG connection* (endpoint **without** `/api`, KB UID, writer key), with a copy button each and illustrated steps.
+   - Sitefinity 15.4+: the three values for _Agentic RAG connection_ (endpoint **without** `/api`, KB UID, writer key), with a copy button each and illustrated steps.
    - Embed: a one-line `<script src="…/arag-chat.js" data-deployment="…" async></script>` plus where to put it in Sitefinity (layout template or Script widget). Theme and settings load at runtime, so restyling never needs a re-embed.
    - A downloadable hand-off sheet for the customer.
 
@@ -260,12 +264,12 @@ Goal: in about 10 seconds, produce a theme good enough that most partners only n
 
 ## 9. Tenancy & access
 
-| Role | Can |
-|---|---|
-| Partner admin | Everything, including account credentials, contract rates, partner templates |
-| Partner member | Manage tenants and deployments; no credentials or rates |
-| Customer viewer | Sign in by magic link; sees only their tenant's usage, top questions, quality and content gaps; no keys, no cost unless the partner shares price |
-| Customer contributor (optional) | Invited to their own KB in the Agentic RAG dashboard via the KB invite API, for direct content management |
+| Role                            | Can                                                                                                                                              |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Partner admin                   | Everything, including account credentials, contract rates, partner templates                                                                     |
+| Partner member                  | Manage tenants and deployments; no credentials or rates                                                                                          |
+| Customer viewer                 | Sign in by magic link; sees only their tenant's usage, top questions, quality and content gaps; no keys, no cost unless the partner shares price |
+| Customer contributor (optional) | Invited to their own KB in the Agentic RAG dashboard via the KB invite API, for direct content management                                        |
 
 Partner staff sign in with OIDC (Entra ID / Google, configurable). Customers use email magic links (needs SMTP).
 
@@ -281,21 +285,21 @@ Partner staff sign in with OIDC (Entra ID / Google, configurable). Customers use
 
 ## 11. Milestones
 
-| | Scope | Exit criteria |
-|---|---|---|
-| **M0** spike | Script against a real enterprise account: credential model, KB + service account creation, ephemeral token → `/ask` from a browser origin, sitemap sync on a Sitefinity site, usage metric names | **Mostly done 2026-10-27** (§4a). Left: sitemap sync on a small site, PAT usage metrics, KB invites |
-| **M1** | Monorepo, `par-client`, DB, auth, tenants/deployments, provisioning wizard through hand-off values | New KB fully provisioned for a real Sitefinity 15.4 site from the UI. **Scaffold landed 2026-10-27** (§3a). Left: first install and typecheck, migrations, OIDC sign-in, wizard |
-| **M2** | `<arag-chat>` + public config/token endpoints + embed snippet | Widget answering on a 14.x site and a non-Sitefinity site. **Widget already answers end to end** against the spike KB in a browser (§3a) |
-| **M3** | Sniffer + theme editor | On 10 sample partner sites, ≥ 8 need no more than 3 token tweaks |
-| **M4** | Worker, usage rollups, cost model, budgets, fleet dashboard | Cost per tenant reconciles with the account usage total |
-| **M5** | Customer viewer, client report, content-gap insights | A customer can sign in and see only their data |
-| **M6** | Hardening, docs, partner guide, Docker release, OSS launch | `docker compose up` to first deployment in under 30 minutes on a clean machine |
+|              | Scope                                                                                                                                                                                            | Exit criteria                                                                                                                            |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| **M0** spike | Script against a real enterprise account: credential model, KB + service account creation, ephemeral token → `/ask` from a browser origin, sitemap sync on a Sitefinity site, usage metric names | **Mostly done 2026-10-27** (§4a). Left: sitemap sync on a small site, PAT usage metrics, KB invites                                      |
+| **M1**       | Monorepo, `par-client`, DB, auth, tenants/deployments, provisioning wizard through hand-off values                                                                                               | New KB fully provisioned for a real Sitefinity 15.4 site from the UI. **Scaffold landed 2026-10-27** (§3a). Left: OIDC sign-in, wizard   |
+| **M2**       | `<arag-chat>` + public config/token endpoints + embed snippet                                                                                                                                    | Widget answering on a 14.x site and a non-Sitefinity site. **Widget already answers end to end** against the spike KB in a browser (§3a) |
+| **M3**       | Sniffer + theme editor                                                                                                                                                                           | On 10 sample partner sites, ≥ 8 need no more than 3 token tweaks                                                                         |
+| **M4**       | Worker, usage rollups, cost model, budgets, fleet dashboard                                                                                                                                      | Cost per tenant reconciles with the account usage total                                                                                  |
+| **M5**       | Customer viewer, client report, content-gap insights                                                                                                                                             | A customer can sign in and see only their data                                                                                           |
+| **M6**       | Hardening, docs, partner guide, Docker release, OSS launch                                                                                                                                       | `docker compose up` to first deployment in under 30 minutes on a clean machine                                                           |
 
 ## 12. Open questions
 
-1. **Credentials:** *resolved in M0.* A NUA key provisions everything, KB keys read analytics, and a PAT is only needed for account limits and processing/storage usage. Still open: whether partners will get a PAT under the contract.
+1. **Credentials:** _resolved in M0._ A NUA key provisions everything, KB keys read analytics, and a PAT is only needed for account limits and processing/storage usage. Still open: whether partners will get a PAT under the contract.
 2. **Contract terms:** which usage metrics the partner contract prices, how a Nuclia token maps to price, and whether `max_kbs` is raised for partner accounts. The M0 account already holds 25 KBs.
 3. **Sitemap scope:** does `file_filter.glob_patterns` on a sitemap sync config limit which URLs get crawled? If not, the console has to pre-filter sitemaps itself and host a trimmed copy.
-4. **Sitefinity automation:** can the *Agentic RAG connection* be set via Sitefinity's API or MCP server? That would remove the last manual copy step for 15.4+.
+4. **Sitefinity automation:** can the _Agentic RAG connection_ be set via Sitefinity's API or MCP server? That would remove the last manual copy step for 15.4+.
 5. **License and name:** Apache-2.0 is the suggested default; check the Progress OSS approval process. The name "Agentic RAG Launchpad" is a placeholder.
 6. **Brand:** the console UI follows Progress Agentic RAG brand tokens (Arial fallback; Progress Sans files must not be bundled in the public repo). The widget is white-label by default, with an optional "Powered by Progress Agentic RAG" line.

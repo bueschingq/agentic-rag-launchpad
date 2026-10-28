@@ -4,7 +4,7 @@
 // session token. All visitor and model text is set with textContent: nothing from the
 // network is parsed as HTML.
 
-import { type AskStreamItem, readAskStream, type RetrievedResource } from "@launchpad/par-client/ask-stream";
+import { type AskStreamItem, type RetrievedResource, readAskStream } from "@launchpad/par-client/ask-stream";
 import { type PublicWidgetConfig, toCssVariables } from "@launchpad/theme";
 import { fetchToken, TokenSession } from "./session.ts";
 import { sourcesFor } from "./sources.ts";
@@ -77,7 +77,12 @@ export class AragChat extends HTMLElement {
     const close = el("button", { class: "close", part: "close", type: "button", "aria-label": "Close chat" }, "×");
     const header = el("div", { class: "header", part: "header" }, el("span", { part: "title" }, title), ...(overlay ? [close] : []));
     this.#log = el("div", { class: "log", part: "log", role: "log", "aria-live": "polite" });
-    const panel = el("section", { class: `panel ${overlay ? "overlay" : "inline"}`, part: "panel", role: "dialog", "aria-label": title }, header, this.#log);
+    const panel = el(
+      "section",
+      { class: `panel ${overlay ? "overlay" : "inline"}`, part: "panel", role: "dialog", "aria-label": title },
+      header,
+      this.#log,
+    );
     this.#panel = panel;
 
     if (!config.online) {
@@ -98,7 +103,13 @@ export class AragChat extends HTMLElement {
       }
       this.#input = el("textarea", { id: "q", class: "input", part: "input", rows: "1", placeholder: settings.placeholder });
       this.#send = el("button", { class: "send", part: "send", type: "submit" }, "Send");
-      const form = el("form", { class: "form", part: "form" }, el("label", { class: "sr-only", for: "q" }, "Your question"), this.#input, this.#send);
+      const form = el(
+        "form",
+        { class: "form", part: "form" },
+        el("label", { class: "sr-only", for: "q" }, "Your question"),
+        this.#input,
+        this.#send,
+      );
       form.addEventListener("submit", (e) => {
         e.preventDefault();
         const q = this.#input?.value.trim();
@@ -118,7 +129,14 @@ export class AragChat extends HTMLElement {
     if (overlay) {
       panel.id = "panel";
       panel.hidden = true;
-      this.#launcher = el("button", { class: "launcher", part: "launcher", type: "button", "aria-label": `Open ${title}`, "aria-expanded": "false", "aria-controls": "panel" });
+      this.#launcher = el("button", {
+        class: "launcher",
+        part: "launcher",
+        type: "button",
+        "aria-label": `Open ${title}`,
+        "aria-expanded": "false",
+        "aria-controls": "panel",
+      });
       this.#launcher.innerHTML = CHAT_ICON; // static markup, no data
       this.#launcher.addEventListener("click", () => this.#toggle());
       close.addEventListener("click", () => this.#toggle(false));
@@ -174,7 +192,9 @@ export class AragChat extends HTMLElement {
       }
       if (!answer) reply.textContent = "Sorry, I couldn't find an answer to that on this site.";
       else if (config.settings.showSources) this.#appendSources(reply, resources, citations);
-      this.#history = [...this.#history, { author: "USER" as const, text: question }, { author: "NUCLIA" as const, text: answer }].slice(-HISTORY_TURNS);
+      this.#history = [...this.#history, { author: "USER" as const, text: question }, { author: "NUCLIA" as const, text: answer }].slice(
+        -HISTORY_TURNS,
+      );
     } catch (err) {
       if (controller.signal.aborted) return;
       console.warn("[arag-chat] answer failed:", err);

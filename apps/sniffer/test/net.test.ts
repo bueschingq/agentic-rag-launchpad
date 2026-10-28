@@ -4,7 +4,17 @@ import { assertPublicUrl, isPublicAddress, safeFetchText, UnsafeUrlError } from 
 
 describe("isPublicAddress", () => {
   it("blocks private, loopback, link-local and reserved IPv4", () => {
-    for (const ip of ["10.1.2.3", "127.0.0.1", "169.254.169.254", "172.31.255.255", "192.168.0.10", "100.64.0.1", "0.0.0.0", "224.0.0.1", "255.255.255.255"]) {
+    for (const ip of [
+      "10.1.2.3",
+      "127.0.0.1",
+      "169.254.169.254",
+      "172.31.255.255",
+      "192.168.0.10",
+      "100.64.0.1",
+      "0.0.0.0",
+      "224.0.0.1",
+      "255.255.255.255",
+    ]) {
       assert.equal(isPublicAddress(ip), false, ip);
     }
   });
@@ -14,7 +24,18 @@ describe("isPublicAddress", () => {
   });
 
   it("blocks private IPv6, including IPv4 smuggled inside", () => {
-    for (const ip of ["::", "::1", "fd00::1", "fe80::1%en0", "ff02::1", "2001:db8::1", "::ffff:127.0.0.1", "::ffff:7f00:1", "64:ff9b::a9fe:a9fe", "2002:c0a8:0101::1"]) {
+    for (const ip of [
+      "::",
+      "::1",
+      "fd00::1",
+      "fe80::1%en0",
+      "ff02::1",
+      "2001:db8::1",
+      "::ffff:127.0.0.1",
+      "::ffff:7f00:1",
+      "64:ff9b::a9fe:a9fe",
+      "2002:c0a8:0101::1",
+    ]) {
       assert.equal(isPublicAddress(ip), false, ip);
     }
   });
@@ -41,7 +62,10 @@ describe("assertPublicUrl", () => {
   });
 
   it("rejects hosts that resolve anywhere private", async () => {
-    await assert.rejects(assertPublicUrl("https://sneaky.example/", resolve({ "sneaky.example": ["104.18.1.1", "10.0.0.5"] })), UnsafeUrlError);
+    await assert.rejects(
+      assertPublicUrl("https://sneaky.example/", resolve({ "sneaky.example": ["104.18.1.1", "10.0.0.5"] })),
+      UnsafeUrlError,
+    );
     await assert.rejects(assertPublicUrl("http://169.254.169.254/latest/meta-data/"), /private or reserved/);
     await assert.rejects(assertPublicUrl("http://[::1]/"), /private or reserved/);
   });

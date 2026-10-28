@@ -160,7 +160,13 @@ export class KbClient {
   // NDJSON, one entry per question, oldest first within a page. `yearMonth` is "YYYY-MM";
   // page with `startingAfter` = the last id seen. Paging and the date filter follow the API
   // reference but were not exercised in M0.
-  async askLog(q: { yearMonth: string; since?: Date; limit?: number; startingAfter?: number; show?: string[] | "all" }): Promise<AskLogEntry[]> {
+  async askLog(q: {
+    yearMonth: string;
+    since?: Date;
+    limit?: number;
+    startingAfter?: number;
+    show?: string[] | "all";
+  }): Promise<AskLogEntry[]> {
     const res = await send(`${this.baseUrl}/activity/ask/query`, {
       ...this.#opts(),
       body: {

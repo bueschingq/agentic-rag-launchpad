@@ -5,8 +5,8 @@ export {
   flatten,
   mix,
   parseColor,
-  relativeLuminance,
   type Rgba,
+  relativeLuminance,
   saturationLightness,
   toHex,
 } from "./color.ts";

@@ -52,7 +52,9 @@ export function sitemapsFromRobots(robotsTxt: string, origin: string): string[] 
 }
 
 export function parseSitemap(xml: string): { kind: "index" | "urlset" | "unknown"; locs: string[] } {
-  const locs = [...xml.matchAll(/<loc>\s*(?:<!\[CDATA\[)?\s*([^<\s\]]+)\s*(?:\]\]>)?\s*<\/loc>/gi)].map((m) => m[1]!.replace(/&amp;/g, "&"));
+  const locs = [...xml.matchAll(/<loc>\s*(?:<!\[CDATA\[)?\s*([^<\s\]]+)\s*(?:\]\]>)?\s*<\/loc>/gi)].map((m) =>
+    m[1]!.replace(/&amp;/g, "&"),
+  );
   const kind = /<sitemapindex[\s>]/i.test(xml) ? "index" : /<urlset[\s>]/i.test(xml) ? "urlset" : "unknown";
   return { kind, locs };
 }
