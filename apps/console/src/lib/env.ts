@@ -18,6 +18,21 @@ export interface ConsoleEnv {
 
 let cached: ConsoleEnv | undefined;
 
+// The dashboard only needs the database, so it works before Agentic RAG credentials are set
+// (and in CI's preview, which has none).
+export function databaseUrl(): string {
+  const url = process.env.DATABASE_URL?.trim();
+  if (!url) throw new Error("DATABASE_URL is not set.");
+  return url;
+}
+
+// ISO 4217 code for the contract rates and every cost shown. One partner, one currency.
+export function currency(): string {
+  const code = process.env.LAUNCHPAD_CURRENCY?.trim().toUpperCase() || "USD";
+  if (!Intl.supportedValuesOf("currency").includes(code)) throw new Error(`LAUNCHPAD_CURRENCY is not a currency code: ${code}`);
+  return code;
+}
+
 export function env(): ConsoleEnv {
   if (cached) return cached;
   const e = process.env;
@@ -34,11 +49,8 @@ export function env(): ConsoleEnv {
   if (classifyToken(nuaKey) !== "nua") throw new Error("PAR_NUA_KEY is not a NUA key.");
   if (!nuaAllowsKbManagement(nuaKey)) throw new Error("PAR_NUA_KEY needs KB management enabled to provision deployments.");
 
-  const databaseUrl = value("DATABASE_URL");
-  if (!databaseUrl) throw new Error("DATABASE_URL is not set.");
-
   cached = {
-    databaseUrl,
+    databaseUrl: databaseUrl(),
     masterKey: parseMasterKey(value("LAUNCHPAD_MASTER_KEY")),
     nuaKey,
     pat,

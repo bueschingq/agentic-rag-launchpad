@@ -1,15 +1,21 @@
 name: CI
 
+# Every branch push runs CI; pull requests only add a run when they come from a fork, since a
+# branch in this repository already has one.
 on:
   push:
-    branches: [main]
   pull_request:
 
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   check:
+    if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -78,3 +84,74 @@ jobs:
         with:
           name: biome-fixes
           path: biome-fixes.patch
+
+  # Runs the console against a real Postgres: migrations, the demo seed, a production build,
+  # then screenshots of every page with checks against the database (apps/console/scripts/preview.ts).
+  # The screenshots and report are attached to the run as "console-preview".
+  preview:
+    if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: launchpad
+          POSTGRES_PASSWORD: launchpad
+          POSTGRES_DB: launchpad
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U launchpad"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+    env:
+      DATABASE_URL: postgres://launchpad:launchpad@localhost:5432/launchpad
+      # Only ever guards this throwaway preview.
+      LAUNCHPAD_ADMIN_PASSWORD: preview
+      LAUNCHPAD_CURRENCY: USD
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+      - name: Install
+        run: npm ci
+      - name: Apply migrations
+        run: npm run db:migrate
+      - name: Seed demo data
+        run: npm run db:seed-demo
+      - name: Build console
+        run: npm run build --workspace @launchpad/console
+      # The standalone server, laid out as in the Docker image.
+      - name: Start console
+        run: |
+          cd apps/console/.next/standalone
+          cp -r ../static apps/console/.next/static
+          cp -r ../../public apps/console/public
+          PORT=3000 HOSTNAME=127.0.0.1 nohup node apps/console/server.js > "$RUNNER_TEMP/console.log" 2>&1 &
+          for _ in $(seq 1 30); do
+            curl -s -o /dev/null http://127.0.0.1:3000/api/health && exit 0
+            sleep 1
+          done
+          cat "$RUNNER_TEMP/console.log"
+          exit 1
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Screenshot and check every page
+        run: node apps/console/scripts/preview.ts preview
+        env:
+          BASE_URL: http://127.0.0.1:3000
+      - name: Report
+        if: ${{ !cancelled() }}
+        run: |
+          [ -f preview/report.md ] && cat preview/report.md >> "$GITHUB_STEP_SUMMARY"
+          cp "$RUNNER_TEMP/console.log" preview/ 2>/dev/null || true
+      - name: Upload preview
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: console-preview
+          path: preview/
+          if-no-files-found: ignore

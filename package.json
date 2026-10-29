@@ -20,7 +20,8 @@
     "lint": "biome check .",
     "format": "biome format --write .",
     "db:generate": "npm run generate --workspace @launchpad/db",
-    "db:migrate": "npm run migrate --workspace @launchpad/db"
+    "db:migrate": "npm run migrate --workspace @launchpad/db",
+    "db:seed-demo": "npm run seed:demo --workspace @launchpad/db"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.0",

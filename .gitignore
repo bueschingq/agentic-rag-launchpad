@@ -12,3 +12,6 @@ next-env.d.ts
 apps/console/public/arag-chat.js
 spike/out/
 .DS_Store
+
+# Console preview output (apps/console/scripts/preview.ts)
+preview/
