@@ -179,7 +179,7 @@ export function deploymentAlerts(d: DeploymentRow, sync: SyncRow | undefined, qu
     if (days >= STALE_SYNC_DAYS) alerts.push({ tone: "warning", text: `No sync for ${days} days` });
   }
   if (quality.trend !== undefined && quality.trend <= -QUALITY_DROP) {
-    alerts.push({ tone: "warning", text: `Answer quality down ${(-quality.trend).toFixed(1)} this week` });
+    alerts.push({ tone: "warning", text: `Quality down ${(-quality.trend).toFixed(1)}` });
   }
   return alerts;
 }

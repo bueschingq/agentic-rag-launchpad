@@ -76,8 +76,12 @@ try {
   const monthTotal = formatMoney(Number(month?.cents ?? 0), "USD");
   record("fleet: cost this month matches the database", monthTotal, fleet.includes(monthTotal) ? [] : [`${monthTotal} not on the page`]);
   // The demo seed sets up each of these; budget alerts depend on the day of the month, so they're left out.
-  const expected = ["Last sync failed", "Provisioning failed", "No sync for 5 days", "Answer quality down"];
-  record("fleet: alerts from the demo seed", "", expected.filter((alert) => !fleet.includes(alert)).map((alert) => `missing "${alert}"`));
+  const expected = ["Last sync failed", "Provisioning failed", "No sync for 5 days", "Quality down"];
+  record(
+    "fleet: alerts from the demo seed",
+    "",
+    expected.filter((alert) => !fleet.includes(alert)).map((alert) => `missing "${alert}"`),
+  );
 
   // Every customer page the fleet links to.
   const links = await page.locator('a[href^="/customers/"]').evaluateAll((as) => as.map((a) => a.getAttribute("href") ?? ""));

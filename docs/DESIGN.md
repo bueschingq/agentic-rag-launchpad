@@ -82,8 +82,8 @@ Every dependency becomes supply-chain surface for each partner who self-hosts th
 ## 3a. Scaffold status (2026-10-27)
 
 **Verified on a machine without npm access.** Public npm registries are blocked there, so this check covers the dependency-free code paths only:
-- 83 unit tests pass: par-client, theme (including finishes and their contrast), key sealing, console origin rules, worker dates, sniffer URL safety, detection and theme derivation, and widget session and sources.
-- All 63 `.ts` files parse.
+- 100 unit tests pass: par-client, theme (including finishes and their contrast), key sealing, console origin rules, dashboard arithmetic and settings validation, worker dates, sniffer URL safety, detection and theme derivation, and widget session and sources.
+- All 74 `.ts` files parse.
 - The widget ran end to end in Chromium from source, with Node stripping the types (`spike/widget/server.ts`), against the M0 spike KB:
   - config load, then one session token for several questions
   - streamed answers with source links built from `show: ["origin"]`
@@ -96,11 +96,18 @@ Every dependency becomes supply-chain surface for each partner who self-hosts th
 - Biome lint and format
 - `tsc` typecheck across all seven workspaces
 - the Next.js 16 build
-- the widget bundle: 4.8 KB gzipped, against a 40 KB budget
+- the widget bundle: 7.7 KB gzipped, against a 40 KB budget
 - Drizzle migration generation (`packages/db/migrations/0000_giant_sasquatch.sql`)
+- the console on Postgres 17, in the `preview` job (`apps/console/scripts/preview.ts`):
+  - the migration applies and the demo seed loads (`packages/db/src/seed-demo.ts`)
+  - the standalone server serves every dashboard page, at 1280 px and 390 px, with no errors and no sideways scrolling on a phone
+  - cost totals on the fleet and costs pages match the database, and the CSV export works
+  - the seed's sync, provisioning and quality alerts show on the fleet page
+  - a settings save reaches the database and the audit log
+  - screenshots and a report are attached to every run as `console-preview`
 
 **Not yet verified:**
-- applying the migration and running queries against Postgres
+- the worker's rollup jobs against real KBs (the preview uses seeded rollups)
 - pg-boss scheduling
 - the Playwright scan
 - Docker images and Compose
@@ -266,6 +273,11 @@ Goal: in about 10 seconds, produce a theme good enough that most partners only n
   - **Processing and storage**, from `usage?knowledgebox=` daily. This needs a PAT; without one, the dashboard shows query cost only.
 
   It then computes cost per tenant. An optional markup gives the client price; export is CSV for invoicing.
+- **Built so far (2026-10-28):**
+  - Fleet, customer, costs and settings pages over the worker's daily rollups.
+  - Budget state per customer (within budget, on track to exceed, near at 80%, over), with the month projected from the last 7 days' pace.
+  - Alerts for failed provisioning, failed or stale syncs, and a week-on-week drop of 0.4 or more in answer relevance.
+  - Not yet: alert delivery by email or webhook, the hard stop, top questions and content gaps, and processing and storage costs.
 - **Budgets:**
   - Per-tenant monthly cap, with email/Teams/Slack webhook alerts at 50 / 80 / 100%.
   - Optional hard stop: the console stops minting tokens for that deployment, so the widget shows a configurable offline message. Nothing is deleted.
@@ -297,15 +309,15 @@ Partner staff sign in with OIDC (Entra ID / Google, configurable). Customers use
 
 ## 11. Milestones
 
-|              | Scope                                                                                                                                                                                            | Exit criteria                                                                                                                            |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| **M0** spike | Script against a real enterprise account: credential model, KB + service account creation, ephemeral token → `/ask` from a browser origin, sitemap sync on a Sitefinity site, usage metric names | **Mostly done 2026-10-27** (§4a). Left: sitemap sync on a small site, PAT usage metrics, KB invites                                      |
-| **M1**       | Monorepo, `par-client`, DB, auth, tenants/deployments, provisioning wizard through hand-off values                                                                                               | New KB fully provisioned for a real Sitefinity 15.4 site from the UI. **Scaffold landed 2026-10-27** (§3a). Left: OIDC sign-in, wizard   |
-| **M2**       | `<arag-chat>` + public config/token endpoints + embed snippet                                                                                                                                    | Widget answering on a 14.x site and a non-Sitefinity site. **Widget already answers end to end** against the spike KB in a browser (§3a) |
-| **M3**       | Sniffer + theme editor                                                                                                                                                                           | On 10 sample partner sites, ≥ 8 need no more than 3 token tweaks                                                                         |
-| **M4**       | Worker, usage rollups, cost model, budgets, fleet dashboard                                                                                                                                      | Cost per tenant reconciles with the account usage total                                                                                  |
-| **M5**       | Customer viewer, client report, content-gap insights                                                                                                                                             | A customer can sign in and see only their data                                                                                           |
-| **M6**       | Hardening, docs, partner guide, Docker release, OSS launch                                                                                                                                       | `docker compose up` to first deployment in under 30 minutes on a clean machine                                                           |
+|              | Scope                                                                                                                                                                                            | Exit criteria                                                                                                                                                         |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **M0** spike | Script against a real enterprise account: credential model, KB + service account creation, ephemeral token → `/ask` from a browser origin, sitemap sync on a Sitefinity site, usage metric names | **Mostly done 2026-10-27** (§4a). Left: sitemap sync on a small site, PAT usage metrics, KB invites                                                                   |
+| **M1**       | Monorepo, `par-client`, DB, auth, tenants/deployments, provisioning wizard through hand-off values                                                                                               | New KB fully provisioned for a real Sitefinity 15.4 site from the UI. **Scaffold landed 2026-10-27** (§3a). Left: OIDC sign-in, wizard                                |
+| **M2**       | `<arag-chat>` + public config/token endpoints + embed snippet                                                                                                                                    | Widget answering on a 14.x site and a non-Sitefinity site. **Widget already answers end to end** against the spike KB in a browser (§3a)                              |
+| **M3**       | Sniffer + theme editor                                                                                                                                                                           | On 10 sample partner sites, ≥ 8 need no more than 3 token tweaks                                                                                                      |
+| **M4**       | Worker, usage rollups, cost model, budgets, fleet dashboard                                                                                                                                      | Cost per tenant reconciles with the account usage total. **Dashboard pages landed 2026-10-28** on demo data (§8). Left: worker on real KBs, alert delivery, PAT costs |
+| **M5**       | Customer viewer, client report, content-gap insights                                                                                                                                             | A customer can sign in and see only their data                                                                                                                        |
+| **M6**       | Hardening, docs, partner guide, Docker release, OSS launch                                                                                                                                       | `docker compose up` to first deployment in under 30 minutes on a clean machine                                                                                        |
 
 ## 12. Open questions
 
