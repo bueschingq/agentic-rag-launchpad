@@ -3,9 +3,13 @@
 // Loads its config from the partner's console, then talks to Agentic RAG directly with a
 // session token. All visitor and model text is set with textContent: nothing from the
 // network is parsed as HTML.
+//
+// The config's mode decides the layout (see WIDGET_MODES). Embedded, chat and popup render
+// where the element is placed; floating pins itself to a corner wherever it is. Any page
+// element with data-arag-chat-open opens the chat, e.g. an "Ask us" link in the site's nav.
 
 import { type AskStreamItem, type RetrievedResource, readAskStream } from "@launchpad/par-client/ask-stream";
-import { type PublicWidgetConfig, toCssVariables } from "@launchpad/theme";
+import { type PublicWidgetConfig, toCssVariables, type WidgetMode, type WidgetSettings, widgetMode } from "@launchpad/theme";
 import { fetchToken, TokenSession } from "./session.ts";
 import { sourcesFor } from "./sources.ts";
 import { STYLES } from "./styles.ts";
@@ -15,8 +19,13 @@ type Turn = { author: "USER" | "NUCLIA"; text: string };
 // Follow-up questions carry this many previous turns as chat_history.
 const HISTORY_TURNS = 6;
 
+// Follow the stream only while the visitor is within this many pixels of the newest text.
+const FOLLOW_SLACK = 48;
+
 const CHAT_ICON =
   '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>';
+const SEARCH_ICON =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
 
 function el<K extends keyof HTMLElementTagNameMap>(
   tag: K,
@@ -35,19 +44,44 @@ export class AragChat extends HTMLElement {
   #session: TokenSession | undefined;
   #history: Turn[] = [];
   #inFlight: AbortController | undefined;
+  #mode: WidgetMode = "floating";
   #panel: HTMLElement | undefined;
   #launcher: HTMLButtonElement | undefined;
+  #modal: HTMLDialogElement | undefined;
   #log: HTMLElement | undefined;
   #input: HTMLTextAreaElement | undefined;
   #send: HTMLButtonElement | undefined;
 
   connectedCallback() {
+    document.addEventListener("click", this.#onPageClick);
     if (!this.#config) void this.#load();
   }
 
   disconnectedCallback() {
+    document.removeEventListener("click", this.#onPageClick);
     this.#inFlight?.abort();
   }
+
+  // Floating opens its panel and popup its modal; embedded and chat move focus to the input.
+  open() {
+    if (this.#mode === "floating") this.#toggle(true);
+    else if (this.#mode === "popup" && this.#modal && !this.#modal.open) this.#modal.showModal();
+    this.#input?.focus();
+  }
+
+  close() {
+    if (this.#mode === "floating") this.#toggle(false);
+    else this.#modal?.close();
+  }
+
+  // data-arag-chat-open="" opens any chat on the page; a deployment id picks one.
+  readonly #onPageClick = (e: MouseEvent) => {
+    const opener = e.target instanceof Element ? e.target.closest("[data-arag-chat-open]") : null;
+    const wanted = opener?.getAttribute("data-arag-chat-open");
+    if (!opener || !this.#config || (wanted && wanted !== this.getAttribute("deployment"))) return;
+    e.preventDefault();
+    this.open();
+  };
 
   async #load() {
     const deployment = this.getAttribute("deployment");
@@ -66,67 +100,51 @@ export class AragChat extends HTMLElement {
   }
 
   #render(config: PublicWidgetConfig) {
-    const { settings } = config;
-    const overlay = settings.mode === "overlay";
-    this.dataset.position = config.theme.launcher.position;
+    const { settings, theme } = config;
+    const mode = widgetMode(settings.mode);
+    this.#mode = mode;
+    // Read by the stylesheet, and by partners' CSS: arag-chat[data-mode="chat"] { … }
+    this.dataset.mode = mode;
+    this.dataset.finish = theme.finish.style;
+    this.dataset.position = theme.launcher.position;
 
     const style = el("style");
-    style.textContent = `${toCssVariables(config.theme)}\n${STYLES}`;
+    style.textContent = `${toCssVariables(theme)}\n${STYLES}`;
 
     const title = settings.nickname ?? "Ask us";
+    const dismissible = mode === "floating" || mode === "popup";
     const close = el("button", { class: "close", part: "close", type: "button", "aria-label": "Close chat" }, "×");
-    const header = el("div", { class: "header", part: "header" }, el("span", { part: "title" }, title), ...(overlay ? [close] : []));
+    const header = el("div", { class: "header", part: "header" }, el("span", { part: "title" }, title), ...(dismissible ? [close] : []));
     this.#log = el("div", { class: "log", part: "log", role: "log", "aria-live": "polite" });
-    const panel = el(
-      "section",
-      { class: `panel ${overlay ? "overlay" : "inline"}`, part: "panel", role: "dialog", "aria-label": title },
-      header,
-      this.#log,
-    );
+    // The popup's <dialog> carries the label; floating is a non-modal dialog; the rest are regions.
+    const panel = el("section", {
+      class: `panel ${mode}`,
+      part: "panel",
+      ...(mode === "popup" ? {} : { "aria-label": title }),
+      ...(mode === "floating" ? { role: "dialog" } : {}),
+    });
     this.#panel = panel;
 
-    if (!config.online) {
-      this.#addMessage("assistant", config.offlineMessage);
-    } else {
-      this.#addMessage("assistant", settings.welcome);
-      if (settings.starters?.length) {
-        const starters = el("div", { class: "starters", part: "starters" });
-        for (const q of settings.starters) {
-          const chip = el("button", { class: "starter", part: "starter", type: "button" }, q);
-          chip.addEventListener("click", () => {
-            starters.remove();
-            void this.#ask(q);
-          });
-          starters.append(chip);
-        }
-        this.#log.append(starters);
-      }
-      this.#input = el("textarea", { id: "q", class: "input", part: "input", rows: "1", placeholder: settings.placeholder });
-      this.#send = el("button", { class: "send", part: "send", type: "submit" }, "Send");
-      const form = el(
-        "form",
-        { class: "form", part: "form" },
-        el("label", { class: "sr-only", for: "q" }, "Your question"),
-        this.#input,
-        this.#send,
-      );
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const q = this.#input?.value.trim();
-        if (q) void this.#ask(q);
-      });
-      this.#input.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" && !e.shiftKey) {
-          e.preventDefault();
-          form.requestSubmit();
-        }
-      });
-      panel.append(form, el("p", { class: "disclosure", part: "disclosure" }, settings.disclosure));
-      if (settings.poweredBy) panel.append(el("p", { class: "powered-by", part: "powered-by" }, "Powered by Progress® Agentic RAG"));
+    const greeting = config.online ? settings.welcome : config.offlineMessage;
+    const form = config.online ? this.#form(settings, mode === "embedded" ? "Ask" : "Send") : undefined;
+    // Offline: the message alone, without the form, disclosure or credit.
+    const controls = form ? [form] : [];
+    const notes: HTMLElement[] = [];
+    if (form) {
+      notes.push(el("p", { class: "disclosure", part: "disclosure" }, settings.disclosure));
+      if (settings.poweredBy) notes.push(el("p", { class: "powered-by", part: "powered-by" }, "Powered by Progress® Agentic RAG"));
     }
+    if (mode === "embedded") {
+      // An ask box: the greeting introduces it and answers appear underneath.
+      panel.append(el("p", { class: "intro", part: "intro" }, greeting), ...controls, this.#log, ...notes);
+    } else {
+      this.#addMessage("assistant", greeting);
+      panel.append(header, this.#log, ...controls, ...notes);
+    }
+    if (config.online && settings.starters?.length) this.#log.append(this.#starters(settings.starters));
 
     const children: Node[] = [style];
-    if (overlay) {
+    if (mode === "floating") {
       panel.id = "panel";
       panel.hidden = true;
       this.#launcher = el("button", {
@@ -143,10 +161,65 @@ export class AragChat extends HTMLElement {
       panel.addEventListener("keydown", (e) => {
         if (e.key === "Escape") this.#toggle(false);
       });
-      children.push(this.#launcher);
+      children.push(this.#launcher, panel);
+    } else if (mode === "popup") {
+      // A modal <dialog> sits in the top layer, above any z-index on the page, and brings
+      // focus trapping, Escape and focus return with it.
+      const modal = el("dialog", { class: "modal", part: "modal", "aria-label": title }, panel);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) modal.close(); // a click on the backdrop
+      });
+      close.addEventListener("click", () => modal.close());
+      this.#modal = modal;
+      const trigger = el("button", { class: "trigger", part: "trigger", type: "button", "aria-haspopup": "dialog" });
+      trigger.innerHTML = SEARCH_ICON; // static markup, no data
+      trigger.append(
+        el("span", { class: "trigger-text" }, settings.placeholder),
+        el("span", { class: "trigger-cta", part: "trigger-cta", "aria-hidden": "true" }, "Ask"),
+      );
+      trigger.addEventListener("click", () => this.open());
+      children.push(trigger, modal);
+    } else {
+      children.push(panel);
     }
-    children.push(panel);
     this.#root.replaceChildren(...children);
+  }
+
+  #form(settings: PublicWidgetConfig["settings"], sendLabel: string): HTMLFormElement {
+    this.#input = el("textarea", { id: "q", class: "input", part: "input", rows: "1", placeholder: settings.placeholder });
+    this.#send = el("button", { class: "send", part: "send", type: "submit" }, sendLabel);
+    const form = el(
+      "form",
+      { class: "form", part: "form" },
+      el("label", { class: "sr-only", for: "q" }, "Your question"),
+      this.#input,
+      this.#send,
+    );
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const q = this.#input?.value.trim();
+      if (q) void this.#ask(q);
+    });
+    this.#input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        form.requestSubmit();
+      }
+    });
+    return form;
+  }
+
+  #starters(questions: NonNullable<WidgetSettings["starters"]>): HTMLElement {
+    const starters = el("div", { class: "starters", part: "starters" });
+    for (const q of questions) {
+      const chip = el("button", { class: "starter", part: "starter", type: "button" }, q);
+      chip.addEventListener("click", () => {
+        starters.remove();
+        void this.#ask(q);
+      });
+      starters.append(chip);
+    }
+    return starters;
   }
 
   #toggle(open = this.#panel?.hidden ?? false) {
@@ -161,8 +234,18 @@ export class AragChat extends HTMLElement {
   #addMessage(role: "user" | "assistant", text: string): HTMLElement {
     const message = el("div", { class: `message ${role}`, part: `message ${role}` }, text);
     this.#log?.append(message);
-    message.scrollIntoView({ block: "end" });
+    this.#scrollLog();
     return message;
+  }
+
+  // Scrolls the log, never the page. The embedded log doesn't scroll, so this is a no-op there.
+  #scrollLog() {
+    if (this.#log) this.#log.scrollTop = this.#log.scrollHeight;
+  }
+
+  #nearEnd(): boolean {
+    const log = this.#log;
+    return !log || log.scrollHeight - log.scrollTop - log.clientHeight < FOLLOW_SLACK;
   }
 
   async #ask(question: string) {
@@ -174,6 +257,8 @@ export class AragChat extends HTMLElement {
     if (this.#input) this.#input.value = "";
     if (this.#send) this.#send.disabled = true;
 
+    // Embedded mode shows one answer at a time; the history still carries earlier turns.
+    if (this.#mode === "embedded") this.#log?.replaceChildren();
     this.#addMessage("user", question);
     const reply = this.#addMessage("assistant", "");
     reply.setAttribute("aria-busy", "true");
@@ -185,7 +270,9 @@ export class AragChat extends HTMLElement {
       for await (const item of await this.#stream(config, question, controller.signal)) {
         if (item.type === "answer") {
           answer += item.text;
+          const follow = this.#nearEnd();
           reply.textContent = answer;
+          if (follow) this.#scrollLog();
         } else if (item.type === "retrieval") resources = item.resources;
         else if (item.type === "citations") citations = item.citations;
         else if (item.type === "error") throw new Error(item.error);
@@ -236,6 +323,8 @@ export class AragChat extends HTMLElement {
     if (!sources.length) return;
     const list = el("ul", { class: "sources", part: "sources", "aria-label": "Sources" });
     for (const s of sources) list.append(el("li", {}, el("a", { href: s.href, target: "_top", part: "source" }, s.title)));
+    const follow = this.#nearEnd();
     reply.append(list);
+    if (follow) this.#scrollLog();
   }
 }

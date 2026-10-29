@@ -2,7 +2,7 @@
 // behind it, so the theme editor can highlight what deserves a human look. Contrast repair
 // happens afterwards in resolveTheme().
 
-import { mix, parseColor, type Rgba, saturationLightness, type ThemeInput, toHex } from "@launchpad/theme";
+import { type Finish, mix, parseColor, type Rgba, relativeLuminance, saturationLightness, type ThemeInput, toHex } from "@launchpad/theme";
 import type { RawButton, RawStyles } from "./extract.ts";
 
 export interface DerivedTheme {
@@ -18,11 +18,32 @@ const isBrandColor = (c: Rgba) => {
   return s >= 0.25 && l > 0.12 && l < 0.9;
 };
 
+interface Paint {
+  fill?: Rgba;
+  gradientEnd?: Rgba;
+  finish: Finish;
+}
+
+// How a button is painted. Two distinct opaque stops make a gradient (the first is its fill);
+// translucent white over a solid color is a sheen. getComputedStyle reports stops as rgb()/rgba().
+export function buttonPaint(b: RawButton): Paint {
+  const base = parseColor(b.background);
+  const solid = base && base.a >= 0.9 ? base : undefined;
+  if (!b.backgroundImage.includes("gradient(")) return { fill: solid, finish: "flat" };
+  const stops = [...b.backgroundImage.matchAll(/rgba?\([^)]*\)/g)].flatMap((m) => parseColor(m[0]) ?? []);
+  const opaque = stops.filter((c) => c.a >= 0.9);
+  const [first, last] = [opaque[0], opaque.at(-1)];
+  const distinct = first && last && Math.max(Math.abs(first.r - last.r), Math.abs(first.g - last.g), Math.abs(first.b - last.b)) > 16;
+  if (distinct) return { fill: first, gradientEnd: last, finish: "gradient" };
+  if (solid && stops.some((c) => c.a < 0.9 && relativeLuminance(c) > 0.8)) return { fill: solid, finish: "gloss" };
+  return { fill: solid ?? first, finish: "flat" };
+}
+
 // Prefer buttons that are common, large enough to be primary CTAs, and in a brand color.
 function primaryButton(buttons: RawButton[]): RawButton | undefined {
   const score = (b: RawButton) => {
-    const bg = parseColor(b.background);
-    if (!bg || bg.a < 0.9) return -1;
+    const bg = buttonPaint(b).fill;
+    if (!bg) return -1;
     return Math.min(b.count, 10) + (isBrandColor(bg) ? 10 : 0) + (b.height >= 36 ? 2 : 0);
   };
   return [...buttons].filter((b) => score(b) >= 0).sort((a, b) => score(b) - score(a))[0];
@@ -48,10 +69,10 @@ function px(value: string | undefined): number | undefined {
 const firstFamily = (stack: string) => stack.split(",")[0]?.trim().replace(/["']/g, "") ?? "";
 
 export function deriveTheme(raw: RawStyles): DerivedTheme {
-  const input: ThemeInput = { color: {}, font: {}, shape: {} };
+  const input: ThemeInput = { color: {}, font: {}, shape: {}, finish: {} };
   const confidence: Record<string, number> = {};
   const sources: Record<string, string> = {};
-  const set = <K extends "color" | "font" | "shape">(
+  const set = <K extends "color" | "font" | "shape" | "finish">(
     group: K,
     key: keyof NonNullable<ThemeInput[K]>,
     value: string,
@@ -74,18 +95,16 @@ export function deriveTheme(raw: RawStyles): DerivedTheme {
 
   // Primary: the dominant CTA button, else a brand custom property, else the link color.
   const button = primaryButton(raw.buttons);
+  const paint = button && buttonPaint(button);
   const fromVar = brandVar(raw.rootVars);
   const link = raw.linkColor ? parseColor(raw.linkColor) : undefined;
-  if (button && isBrandColor(parseColor(button.background)!)) {
-    set(
-      "color",
-      "primary",
-      toHex(parseColor(button.background)!),
-      button.count >= 3 ? 0.9 : 0.7,
-      `button "${button.text}" ×${button.count}`,
-    );
+  if (button && paint?.fill && isBrandColor(paint.fill)) {
+    set("color", "primary", toHex(paint.fill), button.count >= 3 ? 0.9 : 0.7, `button "${button.text}" ×${button.count}`);
     const on = parseColor(button.color);
     if (on) set("color", "onPrimary", toHex(on), 0.8, `button "${button.text}" text`);
+    // Finish: whatever the CTA's background implies. A plain fill is only weak evidence of flat.
+    set("finish", "style", paint.finish, paint.finish === "flat" ? 0.6 : 0.8, `button "${button.text}" background`);
+    if (paint.gradientEnd) set("finish", "gradientEnd", toHex(paint.gradientEnd), 0.8, `button "${button.text}" gradient`);
   } else if (fromVar) {
     set("color", "primary", toHex(fromVar[1]), 0.8, fromVar[0]);
   } else if (link && isBrandColor(link)) {

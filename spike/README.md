@@ -41,7 +41,7 @@ Runs the real `<arag-chat>` source in a browser without npm or a bundler: Node s
 node spike/widget/server.ts
 ```
 
-Open `http://localhost:4173/?theme=brand` (or `theme=default`; add `mode=inline` for the embedded layout).
+Open `http://localhost:4173/`. Links at the top switch the mode (`embedded`, `chat`, `popup`, `floating`), the finish (`flat`, `gloss`, `gradient`) and the theme (`brand`, `default`). The header's "Ask us" button opens the chat through `data-arag-chat-open`.
 
 ## Output
 

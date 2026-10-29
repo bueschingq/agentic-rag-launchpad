@@ -75,6 +75,25 @@ export function saturationLightness({ r, g, b }: Pick<Rgba, "r" | "g" | "b">): {
   return { s, l };
 }
 
+// Turn the hue `degrees` around the HSL wheel, keeping saturation and lightness. Derives the
+// gradient finish's second stop from the primary color.
+export function rotateHue(color: Rgba, degrees: number): Rgba {
+  const [r, g, b] = [color.r / 255, color.g / 255, color.b / 255];
+  const [max, min] = [Math.max(r, g, b), Math.min(r, g, b)];
+  const d = max - min;
+  if (d === 0) return { ...color };
+  const l = (max + min) / 2;
+  const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+  const h6 = max === r ? (g - b) / d + (g < b ? 6 : 0) : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+  const h = (((h6 * 60 + degrees) % 360) + 360) % 360;
+  const amp = s * Math.min(l, 1 - l);
+  const channel = (n: number) => {
+    const k = (n + h / 30) % 12;
+    return (l - amp * Math.max(-1, Math.min(k - 3, 9 - k, 1))) * 255;
+  };
+  return { r: channel(0), g: channel(8), b: channel(4), a: color.a };
+}
+
 // Black or white, whichever reads better on `background`.
 export function bestOn(background: Rgba): Rgba {
   return contrastRatio(BLACK, background) >= contrastRatio(WHITE, background) ? BLACK : WHITE;

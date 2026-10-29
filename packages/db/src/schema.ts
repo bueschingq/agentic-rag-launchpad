@@ -30,6 +30,8 @@ const updatedAt = () =>
 export const tenantStatus = pgEnum("tenant_status", ["active", "paused", "archived"]);
 export const deploymentStatus = pgEnum("deployment_status", ["draft", "provisioning", "live", "paused", "failed"]);
 export const contentPath = pgEnum("content_path", ["sitefinity_connector", "sitemap", "manual"]);
+// Which widget the site runs: <arag-chat> or Sitefinity's own. Its layout (embedded, chat,
+// popup, floating) is widget_settings.mode, and its finish is in theme.
 export const widgetMode = pgEnum("widget_mode", ["embed", "sitefinity_native"]);
 export const keyRole = pgEnum("key_role", ["reader", "writer", "manager"]);
 export const syncKind = pgEnum("sync_kind", ["sitefinity_connector", "sitemap", "sharepoint", "s3"]);

@@ -4,6 +4,8 @@
 export interface RawButton {
   text: string;
   background: string;
+  // Gradients and sheens live here, not in background (which is often transparent then).
+  backgroundImage: string;
   color: string;
   borderRadius: string;
   fontWeight: string;
@@ -75,7 +77,7 @@ export function extractStyles(): RawStyles {
   }
   const linkColor = [...linkColors].sort((x, y) => y[1] - x[1])[0]?.[0];
 
-  // Button-like elements with a filled background, grouped by look.
+  // Button-like elements with a filled or gradient background, grouped by look.
   const groups = new Map<string, RawButton>();
   const candidates = document.querySelectorAll(
     'button, .btn, [class*="button" i], [role="button"], input[type="submit"], input[type="button"], a[class*="cta" i]',
@@ -83,16 +85,18 @@ export function extractStyles(): RawStyles {
   for (const el of Array.from(candidates)) {
     if (!visible(el)) continue;
     const s = getComputedStyle(el);
-    if (transparent(s.backgroundColor)) continue;
+    const image = s.backgroundImage.includes("gradient(") ? s.backgroundImage.slice(0, 400) : "none";
+    if (transparent(s.backgroundColor) && image === "none") continue;
     const r = el.getBoundingClientRect();
     if (r.width < 40 || r.height < 24 || r.height > 120) continue;
-    const key = `${s.backgroundColor}|${s.color}|${s.borderRadius}`;
+    const key = `${s.backgroundColor}|${image}|${s.color}|${s.borderRadius}`;
     const existing = groups.get(key);
     if (existing) existing.count += 1;
     else
       groups.set(key, {
         text: (el.textContent ?? (el as HTMLInputElement).value ?? "").trim().slice(0, 40),
         background: s.backgroundColor,
+        backgroundImage: image,
         color: s.color,
         borderRadius: s.borderRadius,
         fontWeight: s.fontWeight,

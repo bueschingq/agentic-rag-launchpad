@@ -82,7 +82,7 @@ Every dependency becomes supply-chain surface for each partner who self-hosts th
 ## 3a. Scaffold status (2026-10-27)
 
 **Verified on a machine without npm access.** Public npm registries are blocked there, so this check covers the dependency-free code paths only:
-- 74 unit tests pass: par-client, theme, key sealing, console origin rules, worker dates, sniffer URL safety, detection and theme derivation, and widget session and sources.
+- 83 unit tests pass: par-client, theme (including finishes and their contrast), key sealing, console origin rules, worker dates, sniffer URL safety, detection and theme derivation, and widget session and sources.
 - All 63 `.ts` files parse.
 - The widget ran end to end in Chromium from source, with Node stripping the types (`spike/widget/server.ts`), against the M0 spike KB:
   - config load, then one session token for several questions
@@ -90,6 +90,7 @@ Every dependency becomes supply-chain surface for each partner who self-hosts th
   - follow-up questions via `chat_history`
   - a themed and a default look, and a full-screen layout at 375 px
   - Escape closing the panel with focus returning to the launcher
+  - all four display modes and all three finishes, including the popup's backdrop, Escape and focus return, a page button opening the chat through `data-arag-chat-open`, and full-screen floating and popup layouts at 375 px
 
 **Verified in CI** (GitHub Actions, Node 24, `npm ci` from the committed lockfile):
 - Biome lint and format
@@ -215,10 +216,21 @@ One page, three inputs: **customer**, **site URL**, **deployment name**. Everyth
 ## 6. `<arag-chat>` widget
 
 - A plain custom element (no framework) in shadow DOM, bundled by esbuild into one classic script, so `document.currentScript` works in the embed snippet. Budget **≤ 40 KB gzipped**, enforced by the build.
-- Overlay (launcher) and inline modes, welcome message, starter questions, streaming answers, markdown, source citations, thumbs feedback (`/kb/{kb}/feedback`), and an AI disclosure line.
+- Four display modes, chosen per deployment:
+  - **Embedded:** an ask box in the page flow. Answers appear underneath one at a time, and follow-ups still carry the conversation.
+  - **Chat:** the whole conversation as a panel in the page flow.
+  - **Popup:** an ask bar in the page that opens the conversation in a modal `<dialog>` above the content.
+  - **Floating** (default): a chat button in a corner of the viewport that opens a panel above it.
+- Embedded, chat and popup render where the `<arag-chat>` element is placed. Any page element with `data-arag-chat-open` opens the chat, such as an "Ask us" link in the site's navigation, and the element exposes `open()` and `close()`.
+- Three finishes for the launcher, buttons, visitor messages and header:
+  - **Flat:** solid fills.
+  - **Gloss:** a white sheen over the top half, with lit edges.
+  - **Gradient:** the primary color running into a second stop, sniffed from the site or derived from a neighbouring hue.
+- The theme package keeps every finish at AA. It adjusts the gradient's second stop, or the base under the gloss sheen, until text passes 4.5:1 across the whole fill.
+- Welcome message, starter questions, streaming answers, markdown, source citations, thumbs feedback (`/kb/{kb}/feedback`), and an AI disclosure line.
 - Accessible: focus management, ARIA live region for streamed text, full keyboard use, reduced-motion support, and AA contrast enforced by the theme package.
 - Theming in three layers, from easiest to most powerful:
-  1. **Design tokens** as CSS custom properties (color, typography, radius, shadow, spacing, launcher).
+  1. **Design tokens** as CSS custom properties (color, typography, radius, shadow, spacing, launcher, finish).
   2. **`::part()` hooks** on every structural element (launcher, panel, header, message, bubble, input, send, citation, chip).
   3. **Custom CSS** injected into the shadow root, for anything else.
 - Fonts: `@font-face` rules on the host page are usable inside the shadow root, so the widget uses the site's own fonts without loading or redistributing anything.
@@ -236,7 +248,7 @@ Goal: in about 10 seconds, produce a theme good enough that most partners only n
 **Signals**, highest confidence first:
 
 1. CSS custom properties on `:root`/`body`. Sitefinity and Bootstrap-based themes often expose `--bs-primary`, `--bs-font-sans-serif`, `--bs-border-radius`.
-2. Computed styles of the **primary button**. Candidates are `button`, `.btn`, `[type=submit]` and CTA-like links, scored by visibility, size, frequency and saturation. Captured: background, text color, radius, padding, weight, shadow, plus hover via forced `:hover`.
+2. Computed styles of the **primary button**. Candidates are `button`, `.btn`, `[type=submit]` and CTA-like links, scored by visibility, size, frequency and saturation. Captured: background, background image, text color, radius, padding, weight, shadow, plus hover via forced `:hover`. A gradient background image proposes the gradient finish with its first and last stops; translucent white over a solid fill proposes gloss.
 3. Typography: body and heading `font-family` (checked against `document.fonts` to confirm the face actually loaded), size, line-height, weight, letter-spacing.
 4. Links, inputs (border, radius, focus ring), header/nav and footer colors.
 5. A palette clustered from frequency-weighted computed colors in OKLCH, classified into primary / accent / surface / text / muted / border.

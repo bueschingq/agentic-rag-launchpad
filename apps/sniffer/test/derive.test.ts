@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { resolveTheme } from "@launchpad/theme";
-import { deriveTheme } from "../src/derive.ts";
+import { buttonPaint, deriveTheme } from "../src/derive.ts";
 import type { RawStyles } from "../src/extract.ts";
 
 // Roughly what a Bootstrap-based Sitefinity site reports.
@@ -20,6 +20,7 @@ const raw: RawStyles = {
     {
       text: "Menu",
       background: "rgb(248, 249, 250)",
+      backgroundImage: "none",
       color: "rgb(0, 0, 0)",
       borderRadius: "4px",
       fontWeight: "400",
@@ -31,6 +32,7 @@ const raw: RawStyles = {
     {
       text: "Shop now",
       background: "rgb(227, 6, 19)",
+      backgroundImage: "none",
       color: "rgb(255, 255, 255)",
       borderRadius: "24px",
       fontWeight: "700",
@@ -72,6 +74,33 @@ describe("deriveTheme", () => {
     const { input, sources } = deriveTheme({ ...raw, buttons: [] });
     assert.equal(input.color?.primary, "#0d6efd");
     assert.equal(sources["color.primary"], "--bs-primary");
+  });
+
+  it("reads the finish off the CTA's background", () => {
+    const cta = raw.buttons[1]!;
+    const withCta = (patch: Partial<typeof cta>) => deriveTheme({ ...raw, buttons: [{ ...cta, ...patch }] });
+
+    const flat = deriveTheme(raw);
+    assert.equal(flat.input.finish?.style, "flat");
+    assert.equal(flat.confidence["finish.style"], 0.6);
+
+    // Gradient buttons usually report a transparent background-color.
+    const gradient = withCta({
+      background: "rgba(0, 0, 0, 0)",
+      backgroundImage: "linear-gradient(90deg, rgb(124, 58, 237) 0%, rgb(219, 39, 119) 100%)",
+    });
+    assert.equal(gradient.input.color?.primary, "#7c3aed");
+    assert.equal(gradient.input.finish?.style, "gradient");
+    assert.equal(gradient.input.finish?.gradientEnd, "#db2777");
+
+    const gloss = withCta({ backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%)" });
+    assert.equal(gloss.input.color?.primary, "#e30613");
+    assert.equal(gloss.input.finish?.style, "gloss");
+  });
+
+  it("treats a gradient between near-identical stops as flat", () => {
+    const paint = buttonPaint({ ...raw.buttons[1]!, backgroundImage: "linear-gradient(rgb(227, 6, 19), rgb(230, 8, 20))" });
+    assert.equal(paint.finish, "flat");
   });
 
   it("produces a theme that survives sanitising and contrast checks", () => {

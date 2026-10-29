@@ -2,7 +2,11 @@
 // site) or the theme editor, and end up inside a <style> on that customer's page, so every
 // value is normalised or checked against an allow-list before it is used.
 
-import { bestOn, contrastRatio, ensureContrast, parseColor, toHex } from "./color.ts";
+import { bestOn, contrastRatio, ensureContrast, flatten, mix, parseColor, type Rgba, rotateHue, toHex } from "./color.ts";
+
+// Surface treatment of the launcher, buttons, user messages and header.
+export const FINISHES = ["flat", "gloss", "gradient"] as const;
+export type Finish = (typeof FINISHES)[number];
 
 export interface ThemeTokens {
   color: {
@@ -34,15 +38,24 @@ export interface ThemeTokens {
     offset: string;
     size: string;
   };
+  finish: {
+    style: Finish;
+    // The gradient finish runs from color.primary to this. Derived from the primary color
+    // whenever an input changes primary without naming one.
+    gradientEnd: string;
+  };
 }
 
 export type ThemeInput = { [K in keyof ThemeTokens]?: Partial<ThemeTokens[K]> };
 
+const DEFAULT_PRIMARY = "#1f2937";
+const DEFAULT_ON_PRIMARY = "#ffffff";
+
 // White-label by default: neutral, and AA-compliant as shipped.
 export const defaultTheme: ThemeTokens = {
   color: {
-    primary: "#1f2937",
-    onPrimary: "#ffffff",
+    primary: DEFAULT_PRIMARY,
+    onPrimary: DEFAULT_ON_PRIMARY,
     surface: "#ffffff",
     surfaceAlt: "#f3f4f6",
     text: "#111827",
@@ -69,6 +82,10 @@ export const defaultTheme: ThemeTokens = {
     offset: "24px",
     size: "56px",
   },
+  finish: {
+    style: "flat",
+    gradientEnd: toHex(gradientPartner(parseColor(DEFAULT_PRIMARY)!, parseColor(DEFAULT_ON_PRIMARY)!)),
+  },
 };
 
 const LENGTH = /^(0|-?\d*\.?\d+(px|rem|em|%))$/;
@@ -90,16 +107,20 @@ export function resolveTheme(input: ThemeInput = {}, base: ThemeTokens = default
     warnings.push(`${path}: ignored invalid value ${JSON.stringify(value)}`);
     return fallback;
   };
+  const hex = (path: string, raw: unknown): string | undefined => {
+    const parsed = typeof raw === "string" ? parseColor(raw) : undefined;
+    if (!parsed) warnings.push(`${path}: ignored invalid color ${JSON.stringify(raw)}`);
+    return parsed && toHex(parsed);
+  };
   const color = (key: keyof ThemeTokens["color"]) => {
     const raw = input.color?.[key];
-    if (raw === undefined) return base.color[key];
-    const parsed = typeof raw === "string" ? parseColor(raw) : undefined;
-    if (!parsed) {
-      warnings.push(`color.${key}: ignored invalid color ${JSON.stringify(raw)}`);
-      return base.color[key];
-    }
-    return toHex(parsed);
+    return (raw !== undefined && hex(`color.${key}`, raw)) || base.color[key];
   };
+  // undefined: derive it once onPrimary is final (enforceContrast).
+  const endInput = input.finish?.gradientEnd;
+  const gradientEnd =
+    (endInput !== undefined && hex("finish.gradientEnd", endInput)) ||
+    (input.color?.primary === undefined ? base.finish.gradientEnd : undefined);
 
   const theme: ThemeTokens = {
     color: {
@@ -136,6 +157,10 @@ export function resolveTheme(input: ThemeInput = {}, base: ThemeTokens = default
       offset: pick("launcher.offset", input.launcher?.offset, base.launcher.offset, (v) => LENGTH.test(v)),
       size: pick("launcher.size", input.launcher?.size, base.launcher.size, (v) => LENGTH.test(v)),
     },
+    finish: {
+      style: pick("finish.style", input.finish?.style, base.finish.style, (v) => (FINISHES as readonly string[]).includes(v)),
+      gradientEnd: gradientEnd ?? "",
+    },
   };
 
   enforceContrast(theme, warnings);
@@ -166,6 +191,53 @@ function enforceContrast(theme: ThemeTokens, warnings: string[]) {
   fix("textMuted", "surface", 4.5);
   fix("link", "surface", 4.5);
   fix("focus", "surface", 3);
+
+  // Gradient finish: onPrimary text can sit anywhere between the two stops.
+  const on = parseColor(c.onPrimary)!;
+  const end = parseColor(theme.finish.gradientEnd);
+  if (!end) {
+    theme.finish.gradientEnd = toHex(gradientPartner(parseColor(c.primary)!, on));
+  } else {
+    const fitted = toHex(fitGradient(parseColor(c.primary)!, end, on));
+    if (fitted !== theme.finish.gradientEnd) {
+      warnings.push(`finish.gradientEnd: ${theme.finish.gradientEnd} → ${fitted} for 4.5:1 contrast with color.onPrimary`);
+      theme.finish.gradientEnd = fitted;
+    }
+  }
+}
+
+// A neighbouring hue, so gradients read as the brand color rather than a second brand.
+function gradientPartner(primary: Rgba, onPrimary: Rgba): Rgba {
+  return fitGradient(primary, rotateHue(primary, 30), onPrimary);
+}
+
+// Moves `end` away from `text` until the text passes everywhere along start → end. Mixing in
+// sRGB can dip below both stops' luminance mid-way, hence the samples. `start` must pass.
+function fitGradient(start: Rgba, end: Rgba, text: Rgba, min = 4.5): Rgba {
+  const passes = (e: Rgba) => [0, 0.25, 0.5, 0.75, 1].every((t) => contrastRatio(text, mix(start, e, t)) >= min);
+  if (passes(end)) return end;
+  const away = bestOn(text);
+  for (let step = 1; step <= 10; step++) {
+    const candidate = mix(end, away, step / 10);
+    if (passes(candidate)) return candidate;
+  }
+  return away;
+}
+
+// Peak opacity of the gloss finish's white sheen; styles.ts draws it from this variable.
+export const GLOSS_SHEEN = 0.2;
+const WHITE: Rgba = { r: 255, g: 255, b: 255, a: 1 };
+
+// Gloss finish: the fill under the sheen. Where the sheen would leave `text` short of 4.5:1
+// (white text on mid-tone brand colors), the fill is deepened just enough to carry it.
+export function glossBase(fill: Rgba, text: Rgba, min = 4.5): Rgba {
+  const passes = (base: Rgba) => contrastRatio(text, flatten({ ...WHITE, a: GLOSS_SHEEN }, base)) >= min;
+  const away = bestOn(text);
+  for (let step = 0; step <= 20; step++) {
+    const base = mix(fill, away, step / 20);
+    if (passes(base)) return base;
+  }
+  return away;
 }
 
 // CSS custom properties consumed by the widget's shadow-DOM stylesheet.
@@ -191,6 +263,10 @@ export function toCssVariables(theme: ThemeTokens, selector = ":host"): string {
     ["shadow", theme.shape.shadow],
     ["launcher-offset", theme.launcher.offset],
     ["launcher-size", theme.launcher.size],
+    ["gradient-end", theme.finish.gradientEnd],
+    ["gloss-sheen", String(GLOSS_SHEEN)],
+    ["gloss-base", toHex(glossBase(parseColor(theme.color.primary)!, parseColor(theme.color.onPrimary)!))],
+    ["gloss-header-base", toHex(glossBase(parseColor(theme.color.surfaceAlt)!, parseColor(theme.color.text)!))],
   ];
   return `${selector} {\n${vars.map(([name, value]) => `  --arag-chat-${name}: ${value};`).join("\n")}\n}`;
 }
