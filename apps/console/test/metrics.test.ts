@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { formatChange, formatCount, formatMoney, formatMoneyTick } from "../src/lib/format.ts";
+import { formatChange, formatCount, formatMoney, formatMoneyTick, formatTokens } from "../src/lib/format.ts";
 import {
-  buildDashboard,
   budgetState,
+  buildDashboard,
   type DeploymentRow,
   isMonth,
   lastDays,
@@ -204,6 +204,7 @@ describe("format", () => {
     assert.equal(formatChange(5, 0), undefined);
     assert.equal(formatMoneyTick(200, "USD"), "$2");
     assert.equal(formatMoneyTick(250, "USD"), "$2.50");
+    assert.equal(formatTokens(1288.44), "1,288.4");
   });
 
   it("accepts only real YYYY-MM months", () => {

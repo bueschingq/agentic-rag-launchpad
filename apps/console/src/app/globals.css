@@ -121,6 +121,12 @@ th {
   font-weight: 500;
 }
 
+/* Headers wrap, so wide tables fit by narrowing their number columns. */
+thead th {
+  white-space: normal;
+  vertical-align: bottom;
+}
+
 tbody th,
 tfoot th {
   color: var(--arag-text);
@@ -157,35 +163,6 @@ tfoot td {
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
-}
-
-/* Masthead navigation: white on Blue P1. */
-.masthead nav {
-  margin-left: auto;
-}
-
-.masthead nav ul {
-  display: flex;
-  gap: 4px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.masthead nav a {
-  display: block;
-  padding: 4px 12px;
-  border-radius: var(--arag-radius);
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.masthead nav a:hover {
-  background: rgb(255 255 255 / 0.12);
-}
-
-.masthead nav a[aria-current="page"] {
-  background: var(--arag-blue-p2);
 }
 
 .page-head {
@@ -523,7 +500,8 @@ tfoot td {
 }
 
 /* Settings form. */
-main.narrow {
+.form,
+.notice {
   max-width: 720px;
 }
 
@@ -577,4 +555,34 @@ main.narrow {
 
 .masthead :focus-visible {
   outline-color: #ffffff;
+}
+
+/* Last, so these more specific selectors follow the general ones above. */
+/* Masthead navigation: white on Blue P1. */
+.masthead nav {
+  margin-left: auto;
+}
+
+.masthead nav ul {
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.masthead nav a {
+  display: block;
+  padding: 4px 12px;
+  border-radius: var(--arag-radius);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.masthead nav a:hover {
+  background: rgb(255 255 255 / 0.12);
+}
+
+.masthead nav a[aria-current="page"] {
+  background: var(--arag-blue-p2);
 }

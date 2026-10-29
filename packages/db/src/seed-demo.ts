@@ -1,4 +1,4 @@
-// Fills an empty database with a demo partner: five customers, seven deployments, and 60 days
+// Fills an empty database with a demo partner: five customers, eight deployments, and 60 days
 // of the usage and quality rollups the worker would write. CI's console preview runs on it.
 // It refuses a database that already has customers, so it can't mix into real data.
 //
@@ -123,7 +123,7 @@ const DEMO: DemoTenant[] = [
         status: "live",
         content: "sitefinity_connector",
         perDay: 40,
-        quality: [4.3, 3.5],
+        quality: [4.3, 3.3],
         sync: { kind: "sitefinity_connector", status: "ok", daysAgo: 5 },
       },
       {

@@ -17,7 +17,7 @@ export default async function SettingsPage({ searchParams }: Props) {
   const message = error && Object.hasOwn(FIELD_ERRORS, error) ? FIELD_ERRORS[error as SettingsField] : undefined;
 
   return (
-    <main className="shell narrow">
+    <main className="shell">
       <div className="page-head">
         <h1>Settings</h1>
         <p className="muted">Contract terms behind every cost on the dashboard.</p>

@@ -40,10 +40,9 @@ async function visit(path: string, name: string, expectStatus = 200): Promise<st
   await page.setViewportSize(DESKTOP);
   const res = await page.goto(base + path, { waitUntil: "networkidle" });
   const status = res?.status() ?? 0;
-  const text = await page
-    .locator("main")
-    .innerText()
-    .catch(() => "");
+  // textContent, not innerText: hidden text (tooltips, screen-reader summaries) gets checked too.
+  const main = page.locator("main");
+  const text = (await main.textContent().catch(() => "")) ?? "";
   // The browser logs the 404 itself as a console error.
   const notes = errors.filter((e) => !(expectStatus === 404 && e.includes("404")));
   if (status !== expectStatus) notes.push(`HTTP ${status}, expected ${expectStatus}`);
@@ -76,6 +75,9 @@ try {
     .where(gte(usageDaily.day, `${today.slice(0, 7)}-01`));
   const monthTotal = formatMoney(Number(month?.cents ?? 0), "USD");
   record("fleet: cost this month matches the database", monthTotal, fleet.includes(monthTotal) ? [] : [`${monthTotal} not on the page`]);
+  // The demo seed sets up each of these; budget alerts depend on the day of the month, so they're left out.
+  const expected = ["Last sync failed", "Provisioning failed", "No sync for 5 days", "Answer quality down"];
+  record("fleet: alerts from the demo seed", "", expected.filter((alert) => !fleet.includes(alert)).map((alert) => `missing "${alert}"`));
 
   // Every customer page the fleet links to.
   const links = await page.locator('a[href^="/customers/"]').evaluateAll((as) => as.map((a) => a.getAttribute("href") ?? ""));
@@ -98,14 +100,11 @@ try {
   await page.fill("#markupPercent", "42");
   await Promise.all([page.waitForURL(/saved=1/), page.click("button[type=submit]")]);
   const [saved] = await db.select({ markup: settings.markupPercent }).from(settings).where(eq(settings.id, 1));
-  const [audit] = await db
-    .select({ n: sql<string>`count(*)` })
-    .from(auditLog)
-    .where(eq(auditLog.action, "settings.update"));
+  const [audit] = await db.select({ n: sql<string>`count(*)` }).from(auditLog).where(eq(auditLog.action, "settings.update"));
   const settingsNotes = [
     ...(saved?.markup === 42 ? [] : [`markup is ${saved?.markup}, expected 42`]),
     ...(Number(audit?.n) === 1 ? [] : ["no audit record"]),
-    ...((await page.locator("[role=status]").innerText()).includes("saved") ? [] : ["no confirmation shown"]),
+    ...((await page.locator("[role=status]").textContent())?.includes("saved") ? [] : ["no confirmation shown"]),
   ];
   record("settings: save", "42%", settingsNotes);
   await page.screenshot({ path: `${out}/settings-saved-desktop.png`, fullPage: true });

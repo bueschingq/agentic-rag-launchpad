@@ -4,8 +4,8 @@
 import Link from "next/link";
 import { loadCosts, loadSettings } from "@/lib/dashboard.ts";
 import { currency } from "@/lib/env.ts";
-import { formatCount, formatMoney, formatMonth, formatPercent } from "@/lib/format.ts";
-import { isoDay, isMonth, withMarkup } from "@/lib/metrics.ts";
+import { formatCount, formatMoney, formatMonth, formatPercent, formatTokens } from "@/lib/format.ts";
+import { isMonth, isoDay, withMarkup } from "@/lib/metrics.ts";
 
 export const dynamic = "force-dynamic";
 
@@ -86,7 +86,7 @@ export default async function CostsPage({ searchParams }: Props) {
                       <Link href={`/customers/${l.tenantId}`}>{l.name}</Link>
                     </th>
                     <td className="num">{formatCount(l.questions)}</td>
-                    <td className="num">{l.queryTokens.toFixed(1)}</td>
+                    <td className="num">{formatTokens(l.queryTokens)}</td>
                     <td className="num">{money(l.costCents)}</td>
                     <td className="num">{money(withMarkup(l.costCents, markup))}</td>
                     <td className="num">{l.monthlyBudgetCents ? formatPercent(l.costCents / l.monthlyBudgetCents) : "—"}</td>
@@ -97,7 +97,7 @@ export default async function CostsPage({ searchParams }: Props) {
                 <tr>
                   <th scope="row">Total</th>
                   <td className="num">{formatCount(total("questions"))}</td>
-                  <td className="num">{totalTokens.toFixed(1)}</td>
+                  <td className="num">{formatTokens(totalTokens)}</td>
                   <td className="num">{money(total("costCents"))}</td>
                   <td className="num">{money(withMarkup(total("costCents"), markup))}</td>
                   <td />

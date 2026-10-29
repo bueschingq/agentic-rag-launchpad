@@ -19,6 +19,11 @@ export function formatCount(n: number): string {
   return new Intl.NumberFormat(LOCALE, { notation: n >= 10_000 ? "compact" : "standard", maximumFractionDigits: 1 }).format(n);
 }
 
+// Nuclia tokens: fractional, so one decimal.
+export function formatTokens(n: number): string {
+  return new Intl.NumberFormat(LOCALE, { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(n);
+}
+
 // REMi averages, 1–5.
 export function formatScore(v: number | undefined): string {
   return v === undefined ? "—" : v.toFixed(1);
