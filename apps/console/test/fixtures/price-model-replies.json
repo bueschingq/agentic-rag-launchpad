@@ -1,0 +1,382 @@
+{
+  "smug": {
+    "proposed": [
+      {
+        "plan": "Direct",
+        "amount": "$ 20.00",
+        "period": "month",
+        "qualifiers": ["billed annually"]
+      },
+      {
+        "plan": "Portfolio",
+        "amount": "$ 23.50",
+        "qualifiers": ["billed annually"]
+      },
+      {
+        "plan": "Pro",
+        "amount": "$ 37.00",
+        "qualifiers": ["billed annually"]
+      },
+      {
+        "plan": "RAW files",
+        "amount": "$10/mo",
+        "unit": "up to 1TB of RAW files",
+        "period": "month",
+        "qualifiers": ["up to 1TB of RAW files"],
+        "addOn": true
+      },
+      {
+        "plan": "RAW files",
+        "amount": "$6/mo",
+        "unit": "for each additional TB",
+        "period": "month",
+        "qualifiers": ["for each additional TB"],
+        "addOn": true
+      },
+      {
+        "plan": "Direct",
+        "amount": "$ 29.00",
+        "period": "month",
+        "qualifiers": ["billed monthly"]
+      },
+      {
+        "plan": "Portfolio",
+        "amount": "$ 35.50",
+        "period": "month",
+        "qualifiers": ["billed monthly"]
+      },
+      {
+        "plan": "Pro",
+        "amount": "$ 52.00",
+        "period": "month",
+        "qualifiers": ["billed monthly"]
+      }
+    ],
+    "text": "# Try for free, then decide.\n\nStart free trial\n\nPhoto by\n\nOladimeji Odunsi\n\nDisplay pricing:\n\nMONTHLY\n\nYEARLY\n\n## Direct\n\nDirect: $ 20.00 /MO\n\nbilled annually\n\n- Unlimited storage—never delete another photo.\n\n- Powerful privacy controls\n\n- Streamlined digital delivery\n\n- Seamless Lightroom integration\n\n- 24/7 live, human support.\n\nStart my trial\n\n## Portfolio\n\nPortfolio: $ 23.50, billed annually\n\n### +Direct plan features, plus:\n\n- Make money with print and digital download sales\n\n- Customizable professional website templates\n\n- ‍Watermark and photo theft protection tools.\n\n- Set profit margins and choose specific print products\n\n- Full-service customer order fulfillment.\n\n- Easy photo and gallery digital delivery for your customers\n\n## Pro\n\nPro: $ 37.00, billed annually\n\n### +Portfolio plan features, plus:\n\n- Multiple custom pricelists for photos and galleries\n\n- Offer marketing coupons and packages to maximize profit\n\n- Use client favoriting and customer download limits to fit your needs\n\n## Enterprise\n\nA white-glove, tailor-made plan for serious volume and specialized needs. Perfect for studios, teams, and institutions.\n\nreach out\n\nFeatures included:\n\nDirect\n\nPortfolio\n\nPro\n\nUnlimited photo storage\n\nDigital delivery\n\nLightroom integration\n\nDigital download sales\n\nWatermark and theft protection tools\n\nFull-service order fulfillment\n\nCustom pricelists and packages\n\nClient favoriting and download limits\n\n24/7 Live customer support\n\nBeautiful Website Templates\n\nOne safe place for all of your work\n\nUnlimited full resolution JPEG storage\n\nRAW file storage\n\nAdd on\n\nAutomatic upload from any SmugMug app\n\nAdvanced security like custom display sizes and private galleries\n\nCustom watermarks\n\nSell digital files and prints\n\nPayment integration for credit cards and PayPal\n\nAutomatic tax collection and receipts\n\nFull-service print lab integrations\n\nNot for profit\n\nIntegrated cart and checkout experience\n\nCredit card processing fees\n\nNone\n\nTake your business to the next level\n\nSell custom photo packages\n\nCoupon creator\n\nProof delay options\n\nBranded packaging and thank you notes for print sales\n\nPlatform access for assistant or second shooter\n\nSales statistics\n\nPhoto delivery\n\nQR code generation for quick delivery\n\nClient galleries for review or download\n\nFull control over client downloads\n\nClient favoriting\n\nExpert support\n\n24/7 support by real people\n\nAdvice on how to run a successful photography business\n\nShowcase your work\n\nControl of photo display at highest quality\n\nProfessional portfolio or storefront\n\nApply pricelists to select galleries\n\nUse a custom domain\n\nIntegrations\n\nSync with Adobe Lightroom\n\nUpload from Flickr\n\nUpload from Dropbox\n\nPlan Features Grid\n\n### Tempted? Sweeten the deal with exclusive perks from brands you love.\n\nEXPLORE PERKS\n\nVitaly Gariev\n\n## Don’t forget about your RAWs!\n\nStore, organize, and protect up to 1TB of RAW files for just $10/mo — then $6/mo for each additional TB. Only pay for the data you use.\n\nGet Source\n\n## Try now, decide later.\n\nNo matter which plan feels right, you’ll get the chance to explore every feature we’ve got with your 14-day free trial.\n\nThe prices above are with \"YEARLY\" selected.\n\n## Prices with \"MONTHLY\" selected\n\n## Direct\n\nDirect: $ 29.00, billed monthly\n\n## Portfolio\n\nPortfolio: $ 35.50, billed monthly\n\n## Pro\n\nPro: $ 52.00, billed monthly"
+  },
+  "kemp": {
+    "proposed": [
+      {
+        "plan": "Individual",
+        "amount": "$ 2,205",
+        "period": "year",
+        "qualifiers": ["starting from", "Subscription"]
+      },
+      {
+        "plan": "Standard",
+        "amount": "$ 4,500",
+        "qualifiers": ["Subscription"]
+      },
+      {
+        "plan": "Enterprise",
+        "amount": "$ 5,300",
+        "qualifiers": ["Subscription"]
+      },
+      {
+        "plan": "Enterprise Plus",
+        "amount": "$ 6,200",
+        "qualifiers": ["Subscription"]
+      },
+      {
+        "plan": "Individual",
+        "amount": "$ 4,290",
+        "qualifiers": ["starting from", "Perpetual"]
+      },
+      {
+        "plan": "24x7 Live Support",
+        "amount": "$ 4,620",
+        "qualifiers": ["Perpetual"]
+      },
+      {
+        "plan": "24x7x365 Live Support",
+        "amount": "$ 4,950",
+        "qualifiers": ["Perpetual"]
+      },
+      {
+        "plan": "10x5 Customer Support",
+        "amount": "$ 2,640",
+        "qualifiers": ["Hardware"]
+      },
+      {
+        "plan": "24x7 Customer Support",
+        "amount": "$ 2,860",
+        "qualifiers": ["Hardware"]
+      },
+      {
+        "plan": "24x7x365 Customer Support",
+        "amount": "$ 3,190",
+        "qualifiers": ["Hardware"]
+      },
+      {
+        "plan": "Cloud",
+        "amount": "$ 0.41",
+        "unit": "/hour",
+        "qualifiers": ["Cloud"]
+      }
+    ],
+    "text": "# Pricing\n\n- Virtual\n\n- Hardware\n\n- Cloud\n\nVirtual LoadMaster Plans\n\nEnhance application security, availability, performance and scalability with the software load balancer optimized for virtual environments. Virtual LoadMaster offers advanced load-balancing features with flexible licensing options to suit any IT environment.\n\nLicense Type\n\nSeamlessly assign, recover, or resize LoadMaster licenses from a flexible pool with our Subscription Pooled License. Scale effortlessly, upgrade plans on-demand and benefit from included support.\n\nDeploy fixed-size LoadMasters with a Perpetual license. Virtual LoadMaster is available in 1G, 5G, or Max models. Include an annual support subscription for advanced load balancing and dependable support.\n\n### Individual\n\nA single LoadMaster instance with full load balancing capabilities & world-class support. Simple, powerful, reliable.\n\nstarting from\n\n##### $ 2,205\n\nper year\n\nChoose a higher capacity\n\nGet a Quote\n\n### Standard\n\nLicense & manage multiple LoadMaster instances from a flexible throughput pool, boosting availability and scalability.\n\n##### $ 4,500\n\nPopular\n\n### Enterprise\n\nBuilding on Standard with Advanced features for stronger Application & API security, greater visibility, and enhanced resilience.\n\n##### $ 5,300\n\n### Enterprise Plus\n\nElevating Enterprise with superior Application & API protection utilizing WAF with simplified management.\n\n##### $ 6,200\n\n* Performance dependent on allocated system resources * Additional Information\n\n| Individual (Subscription only) | Standard | Enterprise | Enterprise Plus |\n\n| Features |\n\n| Support Firmware Updates are included in all tiers. | 10x5 Standard | 10x5 Standard | 24x7 Premium Support & Expert Diagnostics | 24x7x365 Premium Support & Expert Diagnostics |\n\n## Need More Information?\n\n### Licensing & Support\n\nLoadMaster may be licensed in a variety of ways to meet the differing usage models that an organization may have for application delivery.\n\nLearn More\n\n### Resources\n\nLearn more about load balancing and application delivery. Access in-depth resources including datasheets, guides, whitepapers and more.\n\n## #1 Rated Load Balancer on Leading Customer Review Sites\n\nThe industry’s top-rated load balancer and application delivery controller (ADC) across all major third-party product review websites, including Gartner Peer Insights.\n\nGartner Peer Insights 4.9/5\n\nG2 Grid Leader Enterprise Spring 2026\n\nG2 Grid Leader Mid-Market Spring 2026\n\nG2 Most Implementable Spring 2026\n\nG2 Fastest Implementation Mid-Market Spring 2026\n\nG2 Best Usability Spring 2026\n\n- Contact Us\n\n- Support\n\nUSA Office: +1-844-697-8010\n\nLoad Balancing\n\n- Load Balancer\n\n- What is Load Balancing\n\n- Hardware Load Balancer\n\n- Virtual Load Balancer\n\n- Cloud Load Balancer\n\n- Load Balancing Algorithms\n\n- Application Delivery (ADC)\n\n- Round Robin Load Balancing\n\n- Global Server Load Balancing (GSLB)\n\nSecurity\n\n- DDoS Protection\n\n- Web Application Firewall (WAF)\n\n- Reverse Proxy\n\n- OWASP Top 10\n\n- Always On VPN\n\n- Application Security\n\n- SAML\n\n- PCI-DSS\n\n- DevOps\n\nLoad Balancer Resources\n\n- Load Balancer Comparisons\n\n- Apache Load Balancer\n\n- Load Balancing NGINX\n\n- AWS Load Balancer\n\n- Azure Load Balancer\n\n- Load Balancer Case Studies\n\n- Load Balancer White Papers\n\n- Load Balancer Sizing Calculator\n\nLoadMaster\n\n- Hardware LoadMaster\n\n- Virtual LoadMaster\n\n- Cloud LoadMaster\n\n- iRules Migration Tool\n\n- LoadMaster Clusters\n\n- LoadMaster VPN\n\n- Customer Reviews\n\n- Professional Services\n\nResources\n\n- Policies\n\n- Glossary\n\n- Blog\n\n- News\n\n- Videos\n\n- AX Book\n\n- Upcoming Events\n\n- FAQ\n\nAbout Us\n\n- About Progress\n\n- Why Kemp\n\n- Strategic Partners\n\n- Careers\n\n- Reviews\n\n- Awards\n\n- Locations\n\nKemp is part of the Progress product portfolio. Progress is the leading provider of application development and digital experience technologies.\n\n- About Us\n\n- Press Releases\n\n- Media Coverage\n\n- Offices\n\nCopyright © 2026 Progress Software Corporation and/or its subsidiaries or affiliates. All Rights Reserved.\n\nProgress and certain product names used herein are trademarks or registered trademarks of Progress Software Corporation and/or one of its subsidiaries or affiliates in the U.S. and/or other countries. See Trademarks for appropriate markings. All rights in any other trademarks contained herein are reserved by their respective owners and their inclusion does not imply an endorsement, affiliation, or sponsorship as between Progress and the respective owners.\n\n- Privacy Center\n\n- Security Center\n\n- License Agreement\n\nDo Not Sell or Share My Personal Information\n\nPowered by Progress Sitefinity\n\nThe prices above are with \"Subscription\" selected.\n\n## Prices with \"Perpetual\" selected\n\nstarting from\n\n##### $ 4,290\n\n- 24x7 Live Support\n\n##### $ 4,620\n\n- 24x7x365 Live Support\n\n##### $ 4,950\n\n## Prices with \"Hardware\" selected\n\n- 10x5 Customer Support\n\n##### $ 2,640\n\n- 24x7 Customer Support\n\n##### $ 2,860\n\n- 24x7x365 Customer Support\n\n##### $ 3,190\n\n## Prices with \"Cloud\" selected\n\n##### $ 0.41 /hour"
+  },
+  "postmark": {
+    "proposed": [
+      {
+        "plan": "Free",
+        "amount": "$0.00",
+        "period": "month",
+        "qualifiers": ["100 emails/month"]
+      },
+      {
+        "plan": "Basic",
+        "amount": "$15.00",
+        "period": "month",
+        "qualifiers": ["10,000 emails"]
+      },
+      {
+        "plan": "Basic",
+        "amount": "$ 1.80",
+        "unit": "per 1,000 extra emails",
+        "qualifiers": ["10,000 emails"],
+        "addOn": true
+      },
+      {
+        "plan": "Pro",
+        "amount": "$16.50",
+        "period": "month",
+        "qualifiers": ["10,000 emails"]
+      },
+      {
+        "plan": "Pro",
+        "amount": "$ 1.30",
+        "unit": "per 1,000 extra emails",
+        "qualifiers": ["10,000 emails"],
+        "addOn": true
+      },
+      {
+        "plan": "Platform",
+        "amount": "$18.00",
+        "period": "month",
+        "qualifiers": ["10,000 emails"]
+      },
+      {
+        "plan": "Platform",
+        "amount": "$ 1.20",
+        "unit": "per 1,000 extra emails",
+        "qualifiers": ["10,000 emails"],
+        "addOn": true
+      },
+      {
+        "plan": "Dedicated IPs",
+        "amount": "$50",
+        "unit": "per IP",
+        "period": "month",
+        "qualifiers": ["Starts at", "300,000 emails per month or more", "Only available on Pro plans or higher"],
+        "addOn": true
+      },
+      {
+        "plan": "Custom activity retention",
+        "amount": "$5",
+        "period": "month",
+        "qualifiers": ["Starts at"],
+        "addOn": true
+      },
+      {
+        "plan": "DMARC monitoring",
+        "amount": "$14",
+        "unit": "per domain",
+        "period": "month",
+        "qualifiers": ["Starts at"],
+        "addOn": true
+      }
+    ],
+    "text": "# Postmark Pricing and Free Trial\n\n> Reliable email delivery from $15 per month.\n\n🤖 Teach your AI coding agent how to send email with Postmark Skills\n\nLearn more\n\nx\n\n## How many emails do you send and receive each month?\n\n10,000 emails\n\n10,000\n\n50,000\n\n125,000\n\n300,000\n\n700,000\n\n1,500,000\n\nMore\n\n### Free\n\nFree: $0.00 /mo\n\nTest your integration with 100 emails/month\n\nNo overages allowed in this plan.\n\n### Perfect for:\n\n- Testing your integration\n\n- Evaluating Postmark's deliverability\n\n- Side projects with low volume\n\nStart Free Trial\n\n### Basic\n\nBasic: $15.00 /mo\n\nFor solo developers and smaller teams\n\nExtra emails @ $ 1.80 / 1,000\n\n### Includes:\n\n- Industry-leading deliverability rates & speed\n\n- 45-day data retention\n\n- 5 Custom sending domains\n\n- Unlimited emails/day\n\n- Detailed analytics and insights\n\nBuy Now\n\nMost Popular!\n\n### Pro\n\nPro: $16.50 /mo\n\nFor start-ups and small businesses\n\nExtra emails @ $ 1.30 / 1,000\n\n- Customizable data retention up to 365 days (45-day default)\n\n- 10 Custom sending domains\n\n- Inbound email processing\n\n### Platform\n\nPlatform: $18.00 /mo\n\nFor agencies and larger teams\n\nExtra emails @ $ 1.20 / 1,000\n\n- Unlimited Custom sending domains\n\n## Get started risk-free, for free\n\nEveryone starts on our free Developer plan, which includes 100 emails every month. And it never expires or runs out.\n\nFree\n\nBasic\n\nPro\n\nPlatform\n\n## Send and Receive\n\nREST API\n\nSMTP\n\nMulti-Region Routing (SMTP)\n\nTransactional email\n\nBulk Email API\n\n-\n\nBatch sending\n\nDaily email limit\n\nUnlimited\n\nInbound Email\n\nTransactional Message Streams Marketing/Bulk/Broadcast message streams\n\nUp to 30 streams\n\nUp to 15 streams\n\nServers\n\nUp to 10 servers\n\nUp to 5 servers\n\nCustom sending domains\n\nUp to 10 domains\n\nUp to 5 domains\n\nResponsive email templates\n\nEmail template editor & import tool\n\nHigh quality, vetted IPs\n\nDedicated IPs\n\nSuppression Management\n\nAutomatic suppression\n\nDKIM, SPF, DMARC Authentication\n\n## Seamless Integration\n\nSandbox Mode\n\nDynamic API Documentation\n\nMigration guides\n\nEvent Webhooks\n\nSecure webhook endpoints\n\nOfficial SDKs\n\n## Data & Analytics\n\nDetailed Activity Retention Full message retention\n\n45 Days\n\n45 Days Custom retention available as add-on\n\nGranular bounce data\n\nDelivery, Bounce, Spam, and Open Rates\n\nEmail Open and Link tracking\n\nCustom Tagging\n\nStats API\n\n## Support & Security\n\nUser Roles\n\nGDPR compliance\n\nPenetration testing\n\nDDoS protection\n\nTwo-factor authentication\n\nAPI permission controls\n\n## Users\n\nNumber of Users\n\nUp to 6 users\n\nUp to 4 users\n\nUnlimited users\n\nOptional add-ons\n\n## Dedicated IPs\n\nStarts at $50 /month per IP\n\nOur fully managed dedicated IPs are available to customers sending 300,000 emails per month or more.\n\nOnly available on Pro plans or higher\n\nLearn more →\n\n## Custom activity retention\n\nStarts at $5 /month\n\nCustomize how long Postmark will store activity data and message content for your emails. Statistics are always kept indefinitely.\n\n## DMARC monitoring\n\nStarts at $14 /month per domain\n\nFix authentication issues that prevent your email from reaching the inbox and see who’s sending using your domain with DMARC Digests.\n\n- Industry-leading delivery speeds. Up to 4x faster than other providers.\n\n- Take the pain out of handling inbound email. Postmark turns inbound email into a handy JSON object and posts it to a web hook URL.\n\n- Responsive templates for sending transactional emails, including welcome messages, password resets, and more.\n\n- 45 days worth of full content history by default to help you troubleshoot (customizable from 7 to 365 days if needed).\n\n- We share our delivery statistics to the major inbox providers right on our status page.\n\n- Reliable link tracking so you can monitor and improve your emails.\n\n## See how Postmark stacks up againstother email service providers\n\nSelect a provider below to see a comparison.\n\n## Here’s what our customers think of us\n\n> Postmark has a reputation for high quality. Even though there are several good companies, we were convinced by Postmark’s clear documentation and transparent roadmap. Further, building email infrastructure is really a partnership — we wanted to invest in a platform that would continue to grow along with our needs, not one that was fairly static and falling behind the technology curve.\n\nRead the full story\n\n### Cliff Chang\n\nProduct Engineer at Asana\n\n> I was shocked to see Postmark open rates were an 11% improvement over SES in our test. Needless to say we started sending all of our transactional email through Postmark.\n\n### Dave Marshall\n\nCTO at Childcare.co.uk\n\n> We’re really happy we decided to use Postmark for ITV’s British Soap Awards. We only count votes from verified email addresses and Postmark’s excellent delivery has lead to our highest verification percentage ever. We'll definitely use Postmark again!\n\n### Owen Matthews\n\nCreative Director at Ten4 Design\n\n> Postmark blows every other transactional email product out of the water.\n\n### Kyle Racki\n\nCEO at Proposify\n\n## Frequently Asked Questions\n\n### Do you offer a free trial?\n\nAll new accounts start off on our free developer plan with 100 emails per month. Use it for however long you need, it doesn’t expire.\n\n### Do you offer dedicated IPs?\n\nDedicated IPs are available to high-volume senders. Read about our policy for issuing dedicated IPs .\n\n### What happens if I go over my plan’s monthly email limit?\n\nExtra emails on our paid plans are calculated at the end of your billing cycle and included with your plan cost for the upcoming month.\n\nVisit our support article for more information.\n\n### What payment types do you accept?\n\nWe accept payments via Visa, MasterCard, American Express, Diners, and JCB. We do not accept PayPal or Purchase Orders.\n\n### Do you have a tier smaller than 10,000 emails/month?\n\nWe do not offer a tier between 100 emails/month (our free developer plan) and 10,000 emails/month.\n\n### Can I send bulk marketing email through Postmark?\n\nYes you can! To comply with industry best practices and to maintain our high deliverability, it's important though that transactional and marketing emails never mix. That's why we created Message Streams , a parallel but completely separate sending infrastructures for your transactional and broadcast emails.\n\n### Do you offer high-volume plans?\n\nYes! Contact us to learn more about our high-volume pricing.\n\n### Do unused emails roll over into the next month?\n\nNo. If you are under your email limit at the end of a billing period, the unused emails do not roll over to the next billing period.\n\n### Do you offer a discount for bootstrapped companies?\n\nYes! If you’ve launched your product, are charging for it, and haven’t taken outside investment, contact our support team and we’ll give you $75 account credit to help with your email costs.\n\n### Do you offer annual plans?\n\nNot right now, but we’d like to! We’re looking at introducing annual plans, which can offer some flexibility to customers who have lower and/or seasonal volume. Contact us if you’d like to be notified when we introduce annual plans.\n\n### Trusted by leading businesses worldwide\n\nJoin thousands of businesses that already trust their email delivery to Postmark.\n\n- IKEA\n\n- litmus\n\n- desk\n\n- minecraft\n\n- livestream\n\n- UNICEF\n\n- Asana\n\n- Moz\n\n- Code Climate\n\n- LiveChat\n\n- 1Password\n\nTry Postmark Free No Credit Card Required"
+  },
+  "savvycal": {
+    "proposed": [
+      {
+        "plan": "Basic",
+        "amount": "$10",
+        "unit": "per user",
+        "period": "month",
+        "qualifiers": ["billed annually"]
+      },
+      {
+        "plan": "Basic",
+        "amount": "$12",
+        "unit": "per user",
+        "period": "month",
+        "qualifiers": ["monthly"]
+      },
+      {
+        "plan": "Premium",
+        "amount": "$200",
+        "unit": "per user",
+        "period": "year"
+      },
+      {
+        "plan": "Premium",
+        "amount": "$20",
+        "unit": "per user",
+        "period": "month",
+        "qualifiers": ["monthly"]
+      },
+      {
+        "plan": "Basic",
+        "amount": "$10",
+        "unit": "user",
+        "period": "month"
+      },
+      {
+        "plan": "Premium",
+        "amount": "$17",
+        "unit": "user",
+        "period": "month"
+      },
+      {
+        "plan": "Basic",
+        "amount": "$120",
+        "unit": "per user",
+        "period": "year"
+      }
+    ],
+    "text": "# Pricing: Plans from $10 per User per Month\n\n> SavvyCal Basic is $10 per user per month billed annually, or $12 monthly. Premium is $200 per user per year or $20 monthly, and adds custom domains, delegation, and paid bookings. Free to sign up, with a 30-day money-back guarantee.\n\n## Compare plans\n\n| Feature | Basic$10/user/mo | Premium$17/user/mo |\n\n| Scheduling |\n\n| Scheduling links | Unlimited | Unlimited |\n\n| Meeting polls | Unlimited | Unlimited |\n\n| Calendar connections | Unlimited | Unlimited |\n\n| Teams | Unlimited | Unlimited |\n\n| Collective mode | Included | Included |\n\n| Round robin mode | Included | Included |\n\n| Group mode | Included | Included |\n\n| Availability sharing | Included | Included |\n\n| Website embedding | Included | Included |\n\n| Browser extension | Included | Included |\n\n| Delegated access | Not included | Included |\n\n| Automation |\n\n| Reminders and workflows | Included | Included |\n\n| Conferencing integrations | Included | Included |\n\n| CRM integrations | Included | Included |\n\n| Zapier integration | Included | Included |\n\n| AI assistants (MCP) | Included | Included |\n\n| API and webhooks | Included | Included |\n\n| Branding |\n\n| Colors, avatar, and banner | Included | Included |\n\n| Custom domains | Not included | Included |\n\n| Custom sending domains | Not included | Included |\n\n| Remove SavvyCal branding | Not included | Included |\n\n| Time defense |\n\n| Optimized availability | Included | Included |\n\n| Ranked availability | Included | Included |\n\n| Time blocking | Included | Included |\n\n| Frequency limits | Included | Included |\n\n| Commerce |\n\n| Take payment when people book (Stripe) | Not included | Included |\n\n## What comes with every plan?\n\nYou pay per person on your team, and that’s it. The essentials come standard on every plan, with no add-ons to unlock.\n\nUnlimited everythingCreate as many links, polls, and teams as you like, and connect every calendar you use.\n\nYour AI assistant, includedConnect Claude, ChatGPT, or any assistant that supports MCP to find times and book meetings from a chat.\n\nRisk-free for 30 daysNot the right fit? Ask for a refund in your first 30 days, no questions asked.\n\n## Why people upgrade\n\n> Officially cancelled my Calendly and upgraded my SavvyCal. Allowing my invitees to overlay their own calendar to pick a good time is game changing!\n\nMike Kelly\n\nFounder of Membervault\n\n> I use SavvyCal so my customers can easily compare my availability to their own. Making their lives a little easier is a treat I’m happy to pay for.\n\nMatt Wensing\n\nFounder of Summit\n\n> I am a power user of scheduling tools. I’ve been using Calendly for years and loved it, but when I saw SavvyCal, I knew I had to switch.\n\nJay Clouse\n\nHost of Creative Elements\n\n## Questions, answered\n\nSomething we didn’t cover? Drop us a line .\n\nIs there a free plan?\n\nYou can sign up, connect your calendars, set up your links, and use meeting polls for free. To let people book from your links, you need Basic or Premium.\n\nIs there a free trial?\n\nThere’s no self-serve trial. Every plan has a 30-day money-back guarantee instead: if SavvyCal isn’t right for you, ask for a full refund within 30 days of paying. If you need to try it with your team first, email support@savvycal.com.\n\nDo people who book with me need an account?\n\nNo. People who book from your links never need an account or a paid plan. They can also overlay their own calendar on your link for free.\n\nWho needs a paid seat?\n\nEveryone who hosts meetings needs a seat: the organizer of each link and every host in a round robin pool. You can still invite people without a seat to meetings by email. When you invite someone to your team, we add a seat to your subscription, and remove it when they leave.\n\nCan I mix Basic and Premium seats?\n\nNo. Everyone on a subscription is on the same plan.\n\nHow much do I save with annual billing?\n\nTwo months free. Basic is $120 per user per year instead of $144, and Premium is $200 instead of $240.\n\nDo you offer nonprofit, education, or student discounts?\n\nYes. Nonprofits, educators (including independent teachers), and students get 25% off, and it stacks with annual billing. For example, Basic is $90 per user per year with both. Email support@savvycal.com with a little about your organization, and we’ll apply it.\n\nWhat’s the difference between Basic and Premium?\n\nBasic includes unlimited links, calendars, and meeting polls, team scheduling with round robin and collective links, availability controls, workflows, integrations, and the API. Premium adds booking pages on your own domain, removing SavvyCal branding, emails sent from your own address, delegating to an assistant, and taking payment through Stripe when people book.\n\nDo you offer volume pricing?\n\nYes. Teams of more than 50 users can email support@savvycal.com to ask about volume pricing.\n\nCan I get a refund?\n\nYes. Ask within 30 days of your first payment for a full refund, no questions asked.\n\nWhat happens if I cancel?\n\nYour subscription stays active until the end of your billing period. After that, we deactivate your links but keep your data, as long as you don’t delete your account.\n\nWhen you’re ready to come back, reactivate your subscription. In the meantime, you can still overlay your calendar on other people’s links and use free features like meeting polls."
+  },
+  "transistor": {
+    "proposed": [
+      {
+        "plan": "Starter",
+        "amount": "$19",
+        "period": "month",
+        "qualifiers": ["Billed monthly"]
+      },
+      {
+        "plan": "Starter",
+        "amount": "$190",
+        "period": "year"
+      },
+      {
+        "plan": "Professional",
+        "amount": "$49",
+        "period": "month",
+        "qualifiers": ["Billed monthly"]
+      },
+      {
+        "plan": "Professional",
+        "amount": "$490",
+        "period": "year"
+      },
+      {
+        "plan": "Business",
+        "amount": "$99",
+        "period": "month",
+        "qualifiers": ["Billed monthly"]
+      },
+      {
+        "plan": "Business",
+        "amount": "$990",
+        "period": "year"
+      },
+      {
+        "plan": "Transcription",
+        "amount": "$5",
+        "period": "month",
+        "qualifiers": ["5 hrs per month", "Billed monthly"],
+        "addOn": true
+      },
+      {
+        "plan": "Transcription",
+        "amount": "$50",
+        "period": "year",
+        "qualifiers": ["5 hrs per month"],
+        "addOn": true
+      },
+      {
+        "plan": "Transcription",
+        "amount": "$20",
+        "period": "month",
+        "qualifiers": ["20 hrs per month", "Billed monthly"],
+        "addOn": true
+      },
+      {
+        "plan": "Transcription",
+        "amount": "$200",
+        "period": "year",
+        "qualifiers": ["20 hrs per month"],
+        "addOn": true
+      },
+      {
+        "plan": "Enterprise 1",
+        "amount": "$199",
+        "period": "month",
+        "qualifiers": ["Billed monthly"]
+      },
+      {
+        "plan": "Enterprise 1",
+        "amount": "$1990",
+        "period": "year"
+      }
+    ],
+    "text": "Video podcasting is here!Learn more\n\n# Podcast hosting pricing\n\nTry us free for 14 days.\n\nAll prices in USD. Billed monthly.\n\n## Starter\n\nStarter: $19 /mo\n\nStarter: $190 per year\n\nPublish audio podcasts everywhere.\n\nStart free trial — Starter\n\n- Unlimited podcasts\n\n- 20,000 monthly audio downloads\n\n- Unlimited team members\n\n- 50 private podcast subscribers\n\n- Live customer support\n\n- Advanced analytics\n\n- API + MCP access\n\n- Built-in podcast website\n\n- Podcast network website\n\nRecommended\n\n## Professional\n\nProfessional: $49 /mo\n\nProfessional: $490 per year\n\nPublish audio and video podcasts.\n\nStart free trial — Professional\n\n- Publish video on\n\n- Everything in Starter, plus:\n\n- Unlimited podcasts — including video\n\n- 500 GB of file storage\n\n- 100,000 monthly audio downloads\n\n- 500 private podcast subscribers\n\n- Dynamic ads (pre-roll, mid-roll, post-roll)\n\n- Dynamic show notes\n\n## Business\n\nBusiness: $99 /mo\n\nBusiness: $990 per year\n\nMore capacity for growing podcasts.\n\nStart free trial — Business\n\n- Everything in Professional, plus:\n\n- 1 TB of file storage\n\n- 250,000 monthly audio downloads\n\n- 3,000 private podcast subscribers\n\n- Remove Transistor branding\n\n## Subscription Add-ons\n\nTranscription (5 hrs per month) $5/mo\n\nTranscription (5 hrs per month) $50 per year\n\nTranscription (20 hrs per month) $20/mo\n\nTranscription (20 hrs per month) $200 per year\n\n## Enterprise 1\n\nEnterprise 1: $199 /mo\n\nEnterprise 1: $1990 per year\n\nStart free trial — Enterprise 1\n\n- Everything in Business, plus:\n\n- 2 TB of file storage\n\n- 600,000 monthly audio downloads\n\n- 6,000 private subscribers\n\n- Third-party ad tracking (pixels)\n\n★★★★★\n\n> Transistor is incredibly easy to use, is very reliable, and has the best customer service! After starting my free trial, I immediately fell in love with how easy to use their interface was. I also like that they integrate with Zapier.\n\nDan Schoonmaker CasterKit\n\n## Frequently Asked Questions\n\nWhat happens when I go over my download limit?\n\nLet's say you're on the Starter plan with 20,000 downloads per month. If we notice that you’re consistently going over your download limit we’ll reach out to you and get you to upgrade to the next level. There's no \"automatic shut off;\" we'll continue to serve audio for your listeners.\n\nWhat counts toward file storage?\n\nFile storage is the total size of all the audio and video files you have uploaded across your podcasts. The allowance is shared across all the podcasts you own, and is separate from your monthly audio download allowance.\n\nYou can check your usage and view a storage breakdown under Plan Features & Usage on your account page. Learn more about storage limits .\n\nHow many podcasts can I have?\n\nWith Transistor, you have the flexibility to host an unlimited number of podcasts using a single account. Regardless of your subscription plan, you can create and manage multiple podcasts.\n\nThere are no restrictions on the number of episodes you can have within each podcast. Professional includes 500 GB of file storage, Business includes 1 TB, and Enterprise 1 includes 2 TB. Each podcast you create on Transistor gets its own RSS feed, podcast website, and analytics page. Enjoy the freedom to explore and produce as many podcasts as you desire!\n\nDo I own my content on Transistor?\n\nYes! You retain ownership over all your content on Transistor.\n\nIn our terms , you are simply giving us permission to host and distribute your content. Aside from this permission, Transistor doesn't acquire any right, title, or interest in or to your content.\n\nFurthermore, you can do whatever you'd like with your show: run your own ads, create a Patreon membership, and distribute it any way you'd like.\n\nHow do I make a podcast?\n\n- Get a USB microphone (the ATR2100 or the Samson Q2U are both good).\n\n- Connect your microphone to your computer, iPhone, Android, or tablet.\n\n- Record your audio. You can use free software like Garage Band (Mac) or Audacity (PC).\n\n- Export your recorded audio to MP3. For audio quality, choose 44100 Hz and 128 kb/s in your export settings.\n\n- Log in to your Transistor hosting account.\n\n- Upload the MP3 file you recorded, and then publish your episode.\n\n- Now, your hosting provider will generate an RSS feed for your podcast.\n\n- Submit your podcast's RSS feed to Spotify and Apple Podcasts.\n\n- Every time you publish a new episode, listeners will automatically get it in their podcast player!\n\nFor more information, please read our guide: How to start a podcast .\n\nIs there a limit to the hours/size of a podcast that can be hosted on Transistor?\n\nOn Transistor, you can start as many separate podcasts as you'd like! We also don't limit the number of episodes you can upload on Transistor. Individual audio files can be up to 2 GB; video files can be up to 30 GB. Our pricing plans are based on monthly downloads and file storage.\n\n## From the blog\n\n### Over 20,000 podcasts are hosted on Transistor\n\nOur podcast hosting platform just hit a new milestone: we now have over 20,000 podcast feeds on Transistor.\n\nTransistor Team\n\nMay 11, 2022 1 min\n\n### What is a video podcast?\n\nA video podcast is an on-demand series you can watch or listen to anytime. Video podcasts can be distributed to YouTube, Spotify, Apple Podc\n\nJustin Jackson\n\nApr 7, 2026 7 min\n\n### Best podcasting resources and guides\n\nIf you're researching the podcast industry, here are the best guides, newsletters, social media platforms, apps, and communities.\n\nMay 19, 2022 1 min\n"
+  },
+  "alfred": {
+    "proposed": [
+      {
+        "plan": "Single License",
+        "amount": "£34",
+        "period": "once",
+        "qualifiers": ["Single User", "v5 License"]
+      },
+      {
+        "plan": "Mega Supporter",
+        "amount": "£59",
+        "period": "once",
+        "qualifiers": ["Free Lifetime Upgrades"]
+      }
+    ],
+    "text": "# Buy the Alfred 5 Powerpack\n\nBuy now and and get a free upgrade to Alfred 6\n\n## Single License\n\n### £34\n\nSingle User\n\nv5 License\n\n## Mega Supporter\n\n### £59\n\nFree Lifetime Upgrades\n\nGot an older license? Upgrade your Powerpack to Alfred 5.\n\nLove what we do and want to support Alfred more? Legendary+\n\nBy purchasing, you agree to the Terms & Conditions. Learn more about the license types .\n\n## Latest Blog Post:\n\nAlfred 6 Expanded Sneak Peek\n\n\"Alfred\" is a registered trademark of Running with Crayons Ltd. ©2026 Running with Crayons Ltd. All rights reserved.\n\nTerms & Conditions, Privacy Policy, Cookies.\n"
+  },
+  "buzzsprout": {
+    "proposed": [
+      {
+        "plan": "Audio",
+        "amount": "$15",
+        "period": "month",
+        "qualifiers": ["billed annually"]
+      },
+      {
+        "plan": "Audio + Video",
+        "amount": "$25",
+        "period": "month",
+        "qualifiers": ["billed annually"]
+      },
+      {
+        "plan": "Multi-Podcast",
+        "amount": "$30",
+        "period": "month",
+        "qualifiers": ["billed annually", "Up to 5", "Audio"]
+      },
+      {
+        "plan": "Archive plan",
+        "amount": "$5",
+        "period": "month"
+      },
+      {
+        "plan": "Audio",
+        "amount": "$18",
+        "period": "month",
+        "qualifiers": ["billed monthly"]
+      },
+      {
+        "plan": "Audio + Video",
+        "amount": "$30",
+        "period": "month",
+        "qualifiers": ["billed monthly"]
+      },
+      {
+        "plan": "Multi-Podcast",
+        "amount": "$36",
+        "period": "month",
+        "qualifiers": ["billed monthly"]
+      }
+    ],
+    "text": "# Start podcasting today\n\nJoin the 1,695 podcasters who started podcasting with Buzzsprout this week.\n\nMost Popular\n\n### Audio\n\n- Upload up to 72 hrs / yr\n\n- Easiest way to get started\n\n- Listed in Podcast Directories\n\n- Advanced Stats\n\n- Unlimited Episodes\n\n- Premium Website\n\n- Add-on Availability\n\n- All Premium Features\n\nAudio: $15 / month When billed annually\n\nCurrent Plan\n\n### Audio + Video\n\n- Publish video on Apple Podcasts, Spotify, and YouTube\n\n- 1080p Video Resolution\n\n- Audio and video all from the same place\n\nAudio + Video: $25 / month, billed annually\n\n### Multi-Podcast\n\nMedia Type\n\nAudio Audio + Video\n\nNumber of Podcasts\n\nUp to 5 Up to 10\n\n- Upload up to 180 hrs / yr\n\n- Affordably scales with your success\n\nMulti-Podcast: $30 / month, billed annually\n\nStart a Podcast for Free\n\nNo credit card required. Try before you buy. Cancel anytime.\n\n## What our customers are saying about us\n\nOver 3,600 5-star reviews from Buzzsprout Podcasters.\n\n> As a 77-year-old new to podcasting, you flattened my learning curve with simple instructions and super responsive support.\n\nThe Baltimore Boomer\n\n> Easy to use & everything in one location. Professional with very little effort. A great value!\n\nLance Wylie\n\n> Hosted on Buzzsprout since 2020. Never a single issue, never considered another platform, and never a price increase.\n\nAnnie, Starting Over Stronger\n\n> Without Buzzsprout making it so simple, I wouldn’t have a podcast. Now I’m sitting on 50k downloads in 111 countries.\n\nELIMINATION Podcast\n\n## Premium features\n\nAll the features you need to start and keep podcasting\n\n- Listener Support\n\n- Subscriptions\n\n- Buzzsprout Ads\n\n- Podcast Website\n\n- Visual Soundbites\n\n- Unlimited Team Members\n\n- Easy Podcast Migration\n\n- Podcast RSS Feed\n\n- Dynamic Content\n\n- Podcast Achievements\n\n- Custom Embed Players\n\n- High-Quality Transcripts\n\n- In-depth Podcasting Guides\n\n- Cohost AI (Add-on)\n\n- Magic Mastering (Add-on)\n\n## Frequently asked questions\n\n### 1. Which Buzzsprout plan should I choose?\n\nWhen you're just getting started, we recommend a single Audio Podcast plan. If you decide to add video in the future, you can upgrade to an Audio + Video plan, which adds video distribution to Apple Podcasts, Spotify, and YouTube.\n\nIf you have multiple podcasts, you can upgrade to a Multi-Podcast plan that can support either 5 or 10 podcasts.\n\n### 2. How many podcasts can I have on each plan?\n\nThe standard Audio Podcast plan includes a single podcast with unlimited episodes. Audio + Video includes a single audio podcast with video distribution to Apple Podcasts, Spotify, and YouTube. Multi-Podcast plans include 5 or 10 podcasts.\n\n### 3. Are upload hours per podcast or shared across my shows?\n\nOn Multi-Podcast plans, upload hours are shared across all of your podcasts.\n\n### 4. How do upload limits work?\n\nEvery Buzzsprout plan includes a set number of upload hours each month or year for new content. When you upload an episode, its full length counts toward that period’s total.\n\nUnused upload hours don’t roll over to the next month or year.\n\n### 5. What happens if I go over my upload hours?\n\nIf you upload more than your plan includes, you can keep publishing as usual. We’ll bill the additional upload time at your plan’s hourly rate and add it to your next invoice.\n\n### 6. Can I pay annually instead of monthly?\n\nYes, all plans have the option to pay annually and receive a discount. Annual plans include a full year of upload hours.\n\n### 7. What happens if I use all of my upload time on an annual plan?\n\nYou can keep publishing as usual. Additional upload time is billed monthly at your plan’s hourly rate.\n\n### 8. What do I get on the free plan?\n\nThe free plan includes 2 hours of free podcast uploads each month, and we host your episodes for 90 days. The free plan does not include paid add-ons or video distribution.\n\n### 9. What happens if I stop publishing?\n\nWe offer an Archive plan for $5/month that keeps your podcast live without new uploads. You can switch back to a standard plan anytime if you start publishing again.\n\n### 10. Are transcripts included in my plan?\n\nYes, Buzzsprout automatically creates transcripts for new episodes on all current paid plans at no additional cost. Your transcripts are included in your RSS feed, distributed to podcast apps, and included on your Buzzsprout website.\n\n### 11. What is Cohost AI?\n\nCohost AI is a paid add-on that helps you create your episode titles, descriptions, chapter markers, blog posts, and social posts.\n\n### 12. What are the paid add-ons?\n\nWe offer optional add-ons like Cohost AI and Magic Mastering. Pricing depends on your plan, and you can add or remove them at any time.\n\n### 13. What if I'm on a Legacy plan?\n\nExisting customers may keep their Legacy plans and pricing. If you downgrade, cancel, or move your podcast, you will not be eligible for Legacy pricing.\n\nIf you’re considering a change, you can review your options in your account or reach out to our success team.\n\n### 14. Will I be charged sales tax?\n\nWe collect sales tax where required based on your billing location. If it applies, you’ll see it clearly on your invoice.\n\nIf you’re tax-exempt, send us a support request with your tax exemption form.\n\n## Start podcasting today\n\nNo credit card required. Host your audio or video podcast and see why over 111,713 podcasters trust Buzzsprout.\n\n## Prices billed monthly\n\n### Audio\n\nAudio: $18 / month, billed monthly\n\n### Audio + Video\n\nAudio + Video: $30 / month, billed monthly\n\n### Multi-Podcast\n\nMulti-Podcast: $36 / month, billed monthly\n"
+  }
+}

@@ -7,7 +7,8 @@
   "type": "module",
   "scripts": {
     "start": "node src/main.ts",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json",
+    "test:browser": "node --test e2e/*.e2e.ts"
   },
   "dependencies": {
     "@launchpad/theme": "*",

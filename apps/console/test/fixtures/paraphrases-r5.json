@@ -1,0 +1,626 @@
+{
+  "en": {
+    "nonAnswers": [
+      {
+        "question": "How much does the Pro plan cost?",
+        "answer": "The Pro plan page doesn't specify what it costs. Our sales team would be glad to prepare a quote tailored to your needs.",
+        "style": "page doesn't specify"
+      },
+      {
+        "question": "What are your prices for window cleaning?",
+        "answer": "We don't publish our window cleaning rates on the website. If you get in touch with our team, they can walk you through the options.",
+        "style": "website doesn't publish"
+      },
+      {
+        "question": "How do I get red wine out of a carpet?",
+        "answer": "Our cleaning guides cover quite a few common stains, but red wine on carpet isn't one of them. Our customer care team may be able to advise you directly.",
+        "style": "guides don't cover"
+      },
+      {
+        "question": "How do I reset my password?",
+        "answer": "I couldn't find any instructions for resetting a password in our help articles. Please reach out to our support team and they'll help you get back into your account.",
+        "style": "I couldn't find"
+      },
+      {
+        "question": "When is the next webinar?",
+        "answer": "Our most recent webinar has already taken place, and we haven't announced any new sessions yet. Subscribing to our newsletter is the best way to hear about future ones.",
+        "style": "event already taken place"
+      },
+      {
+        "question": "Are there any upcoming events?",
+        "answer": "There are no upcoming events on our calendar at the moment. Please check back later, or ask our team to let you know when something is planned.",
+        "style": "there are no"
+      },
+      {
+        "question": "What is your support phone number?",
+        "answer": "Our pages don't list a phone number for support. I'd suggest contacting our team through the contact form instead.",
+        "style": "pages don't list"
+      },
+      {
+        "question": "How can I reach your sales team?",
+        "answer": "Unfortunately, the contact details for our sales department aren't available in the information I can access. Our general support team should be able to point you in the right direction.",
+        "style": "unfortunately not available"
+      },
+      {
+        "question": "Does the AeroClean vacuum come with a HEPA filter?",
+        "answer": "Our product information doesn't state whether the AeroClean includes a HEPA filter. Our team would be happy to confirm that for you.",
+        "style": "information doesn't state"
+      },
+      {
+        "question": "What's the battery life on the Nova headphones?",
+        "answer": "We have no information about the battery life of the Nova headphones. For the full specifications, please contact our support team.",
+        "style": "we have no information"
+      },
+      {
+        "question": "How do I sign up for the open house?",
+        "answer": "The open house is over, so registration has closed. We'd be glad to let you know once the next one is scheduled.",
+        "style": "event is over"
+      },
+      {
+        "question": "When is the next live product demo?",
+        "answer": "The live demo has passed and is no longer available. Earlier sessions are only offered on demand, and we don't have a new date to share right now.",
+        "style": "event passed / on-demand only"
+      },
+      {
+        "question": "How do I descale my espresso machine?",
+        "answer": "Our maintenance tips don't include anything on descaling espresso machines. For guidance specific to your model, our service team is the best point of contact.",
+        "style": "unusual subject: maintenance tips"
+      },
+      {
+        "question": "How much is shipping to Europe?",
+        "answer": "The resources we have don't mention shipping costs for European destinations. Our customer service team can give you an exact amount.",
+        "style": "unusual subject: resources we have"
+      },
+      {
+        "question": "How do I cancel my subscription?",
+        "answer": "Our FAQ doesn't provide the steps for cancelling a subscription. Please get in touch with our accounts team and they'll take care of it for you.",
+        "style": "unusual subject: FAQ"
+      },
+      {
+        "question": "What sizes does the Trailblazer jacket come in?",
+        "answer": "Our current materials don't show which sizes the Trailblazer jacket is available in. Our store team would be happy to check for you.",
+        "style": "unusual subject: current materials"
+      },
+      {
+        "question": "How much is the annual membership?",
+        "answer": "No price for the annual membership is listed at the moment. Our membership team can share the current rates with you.",
+        "style": "no X is listed"
+      },
+      {
+        "question": "When does the next training course start?",
+        "answer": "No dates for upcoming courses have been published yet. Our training coordinators can add you to the interest list in the meantime.",
+        "style": "no X published"
+      },
+      {
+        "question": "What's the email address for customer support?",
+        "answer": "Our contact page doesn't give an email address for customer support. You're welcome to reach us through the chat instead.",
+        "style": "page doesn't give"
+      },
+      {
+        "question": "Is the Solara lamp dimmable?",
+        "answer": "Our product sheet for the Solara lamp doesn't have any details on dimming. Our team will gladly look into it for you.",
+        "style": "product sheet doesn't have"
+      }
+    ],
+    "controls": [
+      {
+        "question": "What would it cost for 250 users?",
+        "answer": "We don't publish a price for 250 users; the Business plan is $12 per user per month, and larger teams can request a custom quote from our pricing page.",
+        "kind": "partial"
+      },
+      {
+        "question": "When is the next webinar?",
+        "answer": "We haven't set a date for the next live webinar yet, but the recording of our last session, “Getting Started with Automations”, is available in the Resources section, and new dates are usually announced at the start of each month.",
+        "kind": "partial"
+      },
+      {
+        "question": "How do I remove crayon from a painted wall?",
+        "answer": "Our guide doesn't cover painted walls specifically, but for crayon on washable surfaces we recommend rubbing gently with a dry melamine sponge, wiping the area with warm soapy water, and drying it with a soft cloth.",
+        "kind": "partial"
+      },
+      {
+        "question": "What is your support phone number?",
+        "answer": "We don't offer phone support, but you can reach our team at support@brightdesk.com or through live chat, Monday to Friday from 8 am to 6 pm CET.",
+        "kind": "partial"
+      },
+      {
+        "question": "Does the Nova headset work with PlayStation?",
+        "answer": "PlayStation compatibility isn't listed in the specs, but the Nova connects via Bluetooth 5.3 or a USB-C dongle and is officially supported on Windows, macOS, iOS and Android.",
+        "kind": "partial"
+      },
+      {
+        "question": "Is there a setup fee?",
+        "answer": "No, there's no setup fee. You only pay the monthly subscription.",
+        "kind": "plain"
+      },
+      {
+        "question": "How long is the free trial?",
+        "answer": "The free trial lasts 14 days and doesn't require a credit card.",
+        "kind": "plain"
+      },
+      {
+        "question": "Do you ship to Australia?",
+        "answer": "Unfortunately, we don't ship to Australia. We currently deliver within the EU, the UK and Switzerland.",
+        "kind": "plain"
+      },
+      {
+        "question": "How can I reach sales?",
+        "answer": "You can reach our sales team at +1 415 555 0142 or sales@northwind.io, Monday to Friday from 9 am to 5 pm PT.",
+        "kind": "plain"
+      },
+      {
+        "question": "Are there any cancellation fees?",
+        "answer": "There are no cancellation fees. You can cancel at any time from your account settings.",
+        "kind": "plain"
+      }
+    ]
+  },
+  "de": {
+    "nonAnswers": [
+      {
+        "question": "Was kostet das Pro-Paket?",
+        "answer": "Auf der Seite zum Pro-Paket ist leider nicht angegeben, was es kostet. Unser Vertriebsteam erstellt Ihnen aber gerne ein individuelles Angebot.",
+        "style": "page doesn't specify"
+      },
+      {
+        "question": "Wie sind Ihre Preise für die Fensterreinigung?",
+        "answer": "Preise für die Fensterreinigung veröffentlichen wir auf unserer Website nicht. Wenden Sie sich gerne an unser Team, das Sie zu den Möglichkeiten berät.",
+        "style": "website doesn't publish"
+      },
+      {
+        "question": "Wie entferne ich Kaffeeflecken aus einem Teppich?",
+        "answer": "Unsere Reinigungsratgeber behandeln zwar verschiedene Flecken, Kaffee auf Teppichen gehört jedoch nicht dazu. Unser Kundenservice kann Ihnen hier sicher weiterhelfen.",
+        "style": "guides don't cover"
+      },
+      {
+        "question": "Wie setze ich mein Passwort zurück?",
+        "answer": "Ich konnte in unseren Hilfeartikeln keine Anleitung zum Zurücksetzen des Passworts finden. Bitte wenden Sie sich an unseren Support, dort hilft man Ihnen gerne, wieder Zugang zu Ihrem Konto zu erhalten.",
+        "style": "I couldn't find"
+      },
+      {
+        "question": "Wann findet das nächste Webinar statt?",
+        "answer": "Unser letztes Webinar hat bereits stattgefunden, und ein neuer Termin wurde bisher nicht bekannt gegeben. Abonnieren Sie gerne unseren Newsletter, um nichts zu verpassen.",
+        "style": "event already took place"
+      },
+      {
+        "question": "Gibt es demnächst Veranstaltungen?",
+        "answer": "Derzeit stehen keine kommenden Veranstaltungen in unserem Kalender. Schauen Sie gerne zu einem späteren Zeitpunkt wieder vorbei.",
+        "style": "there are no"
+      },
+      {
+        "question": "Wie lautet Ihre Telefonnummer für den Support?",
+        "answer": "Auf unseren Seiten ist keine Telefonnummer für den Support aufgeführt. Ich empfehle Ihnen, sich über das Kontaktformular an unser Team zu wenden.",
+        "style": "pages don't list"
+      },
+      {
+        "question": "Wie erreiche ich Ihren Vertrieb?",
+        "answer": "Leider sind die Kontaktdaten unseres Vertriebs in den mir vorliegenden Informationen nicht verfügbar. Unser allgemeiner Kundenservice kann Sie aber sicher weitervermitteln.",
+        "style": "unfortunately not available"
+      },
+      {
+        "question": "Hat der AeroClean-Staubsauger einen HEPA-Filter?",
+        "answer": "Aus unseren Produktinformationen geht nicht hervor, ob der AeroClean mit einem HEPA-Filter ausgestattet ist. Unser Team bestätigt Ihnen das gerne.",
+        "style": "information doesn't state"
+      },
+      {
+        "question": "Wie lange hält der Akku der Nova-Kopfhörer?",
+        "answer": "Zur Akkulaufzeit der Nova-Kopfhörer haben wir keine Informationen. Für die vollständigen technischen Daten wenden Sie sich bitte an unseren Kundendienst.",
+        "style": "we have no information"
+      },
+      {
+        "question": "Wo kann ich mich für den Tag der offenen Tür anmelden?",
+        "answer": "Der Tag der offenen Tür ist bereits vorbei, eine Anmeldung ist daher nicht mehr möglich. Gerne informieren wir Sie, sobald der nächste Termin feststeht.",
+        "style": "event is over"
+      },
+      {
+        "question": "Wann ist die nächste Live-Produktdemo?",
+        "answer": "Die Live-Demo ist bereits vorüber und nicht mehr verfügbar. Frühere Sitzungen gibt es nur noch als Aufzeichnung auf Abruf, und einen neuen Termin können wir Ihnen derzeit nicht nennen.",
+        "style": "event passed / on-demand only"
+      },
+      {
+        "question": "Wie entkalke ich meine Espressomaschine?",
+        "answer": "Unsere Pflegetipps enthalten leider nichts zum Entkalken von Espressomaschinen. Für Hinweise zu Ihrem Modell ist unser Serviceteam der richtige Ansprechpartner.",
+        "style": "unusual subject: care tips"
+      },
+      {
+        "question": "Was kostet der Versand in die Schweiz?",
+        "answer": "Die Unterlagen, die uns vorliegen, erwähnen keine Versandkosten in die Schweiz. Unser Kundenservice nennt Ihnen gerne den genauen Betrag.",
+        "style": "unusual subject: documents we have"
+      },
+      {
+        "question": "Wie kündige ich mein Abo?",
+        "answer": "Unsere FAQ geben keine Auskunft darüber, wie Sie Ihr Abonnement kündigen können. Bitte kontaktieren Sie unser Kundenteam, das sich gerne darum kümmert.",
+        "style": "unusual subject: FAQ"
+      },
+      {
+        "question": "In welchen Größen gibt es die Trailblazer-Jacke?",
+        "answer": "Unsere aktuellen Materialien zeigen leider nicht, in welchen Größen die Trailblazer-Jacke erhältlich ist. Unser Filialteam prüft das gerne für Sie.",
+        "style": "unusual subject: current materials"
+      },
+      {
+        "question": "Wie viel kostet die Jahresmitgliedschaft?",
+        "answer": "Für die Jahresmitgliedschaft ist derzeit kein Preis hinterlegt. Unser Mitgliederservice teilt Ihnen die aktuellen Konditionen gerne mit.",
+        "style": "no X is listed"
+      },
+      {
+        "question": "Wann beginnt der nächste Schulungskurs?",
+        "answer": "Es wurden noch keine Termine für kommende Kurse veröffentlicht. Unsere Schulungskoordination nimmt Sie aber gerne in die Interessentenliste auf.",
+        "style": "no X published"
+      },
+      {
+        "question": "Unter welcher E-Mail-Adresse erreiche ich den Kundenservice?",
+        "answer": "Unsere Kontaktseite nennt keine E-Mail-Adresse für den Kundenservice. Sie können uns aber gerne über den Chat erreichen.",
+        "style": "page doesn't give"
+      },
+      {
+        "question": "Ist die Solara-Leuchte dimmbar?",
+        "answer": "Unser Produktdatenblatt zur Solara-Leuchte enthält keine Angaben zur Dimmbarkeit. Gerne klärt unser Team das für Sie ab.",
+        "style": "product sheet has no details"
+      }
+    ],
+    "controls": [
+      {
+        "question": "Was kostet die Lizenz für 250 Nutzer?",
+        "answer": "Einen Preis für 250 Nutzer nennen wir auf der Website nicht; der Business-Tarif kostet 12 € pro Nutzer und Monat, und für größere Teams können Sie über unsere Preisseite ein individuelles Angebot anfordern.",
+        "kind": "partial"
+      },
+      {
+        "question": "Wann ist das nächste Webinar?",
+        "answer": "Ein Termin für das nächste Live-Webinar steht noch nicht fest, aber die Aufzeichnung unseres letzten Webinars „Erste Schritte mit Automatisierungen“ finden Sie im Bereich Ressourcen. Neue Termine veröffentlichen wir in der Regel zu Monatsbeginn.",
+        "kind": "partial"
+      },
+      {
+        "question": "Wie entferne ich Wachsmalstift von einer gestrichenen Wand?",
+        "answer": "Eine eigene Anleitung für gestrichene Wände haben wir nicht, bei abwaschbaren Oberflächen empfehlen wir aber, die Stelle vorsichtig mit einem trockenen Schmutzradierer abzureiben, mit warmem Seifenwasser nachzuwischen und mit einem weichen Tuch zu trocknen.",
+        "kind": "partial"
+      },
+      {
+        "question": "Wie lautet Ihre Support-Telefonnummer?",
+        "answer": "Telefonischen Support bieten wir nicht an, Sie erreichen unser Team aber per E-Mail an support@brightdesk.de oder über den Live-Chat, montags bis freitags von 8 bis 18 Uhr.",
+        "kind": "partial"
+      },
+      {
+        "question": "Funktioniert das Nova-Headset mit der PlayStation?",
+        "answer": "Die PlayStation-Kompatibilität ist in den technischen Daten nicht aufgeführt, das Nova verbindet sich aber per Bluetooth 5.3 oder USB-C-Dongle und wird offiziell unter Windows, macOS, iOS und Android unterstützt.",
+        "kind": "partial"
+      },
+      {
+        "question": "Gibt es eine Einrichtungsgebühr?",
+        "answer": "Nein, eine Einrichtungsgebühr fällt nicht an. Sie zahlen ausschließlich das monatliche Abonnement.",
+        "kind": "plain"
+      },
+      {
+        "question": "Wie lange dauert die kostenlose Testphase?",
+        "answer": "Die kostenlose Testphase dauert 14 Tage, eine Kreditkarte ist dafür nicht erforderlich.",
+        "kind": "plain"
+      },
+      {
+        "question": "Liefern Sie nach Australien?",
+        "answer": "Nach Australien liefern wir leider nicht. Wir versenden ausschließlich innerhalb der EU, nach Großbritannien und in die Schweiz.",
+        "kind": "plain"
+      },
+      {
+        "question": "Wie erreiche ich den Vertrieb?",
+        "answer": "Unser Vertriebsteam erreichen Sie unter +49 30 5550 1420 oder per E-Mail an vertrieb@northwind.de, montags bis freitags von 9 bis 17 Uhr.",
+        "kind": "plain"
+      },
+      {
+        "question": "Fallen Kündigungsgebühren an?",
+        "answer": "Es gibt keine Kündigungsgebühren. Sie können Ihr Abonnement jederzeit in den Kontoeinstellungen kündigen.",
+        "kind": "plain"
+      }
+    ]
+  },
+  "fr": {
+    "nonAnswers": [
+      {
+        "question": "Combien coûte la formule Pro ?",
+        "answer": "La page consacrée à la formule Pro ne précise pas son tarif. Notre équipe commerciale se fera un plaisir de vous établir un devis.",
+        "style": "page doesn't specify"
+      },
+      {
+        "question": "Quels sont vos tarifs pour le nettoyage de vitres ?",
+        "answer": "Nous ne publions pas nos tarifs de nettoyage de vitres sur notre site. N'hésitez pas à contacter notre équipe, qui pourra vous présenter les différentes options.",
+        "style": "website doesn't publish"
+      },
+      {
+        "question": "Comment enlever une tache de vin rouge sur un canapé en tissu ?",
+        "answer": "Nos guides d'entretien abordent de nombreuses taches, mais pas le vin rouge sur un canapé en tissu. Notre service client pourra sans doute vous conseiller.",
+        "style": "guides don't cover"
+      },
+      {
+        "question": "Comment réinitialiser mon mot de passe ?",
+        "answer": "Je n'ai pas trouvé de procédure de réinitialisation du mot de passe dans nos articles d'aide. Je vous invite à contacter notre support, qui vous aidera à récupérer l'accès à votre compte.",
+        "style": "I couldn't find"
+      },
+      {
+        "question": "Quand a lieu le prochain webinaire ?",
+        "answer": "Notre dernier webinaire a déjà eu lieu et aucune nouvelle session n'a été annoncée pour l'instant. Inscrivez-vous à notre newsletter pour être informé des prochaines dates.",
+        "style": "event already took place"
+      },
+      {
+        "question": "Y a-t-il des événements à venir ?",
+        "answer": "Il n'y a aucun événement prévu dans notre agenda pour le moment. N'hésitez pas à revenir consulter cette page ultérieurement.",
+        "style": "there are no"
+      },
+      {
+        "question": "Quel est votre numéro de téléphone pour le support ?",
+        "answer": "Nos pages n'indiquent pas de numéro de téléphone pour le support. Je vous recommande de passer par le formulaire de contact pour joindre notre équipe.",
+        "style": "pages don't list"
+      },
+      {
+        "question": "Comment puis-je joindre votre service commercial ?",
+        "answer": "Malheureusement, les coordonnées de notre service commercial ne sont pas disponibles dans les informations dont je dispose. Notre service client saura sans doute vous orienter.",
+        "style": "unfortunately not available"
+      },
+      {
+        "question": "L'aspirateur AeroClean est-il équipé d'un filtre HEPA ?",
+        "answer": "Nos informations produit ne permettent pas de dire si l'AeroClean est équipé d'un filtre HEPA. Notre équipe pourra vous le confirmer.",
+        "style": "information doesn't state"
+      },
+      {
+        "question": "Quelle est l'autonomie du casque Nova ?",
+        "answer": "Nous n'avons aucune information sur l'autonomie du casque Nova. Pour obtenir la fiche technique complète, veuillez contacter notre service après-vente.",
+        "style": "we have no information"
+      },
+      {
+        "question": "Comment m'inscrire à la journée portes ouvertes ?",
+        "answer": "La journée portes ouvertes est terminée, les inscriptions sont donc closes. Nous serons ravis de vous prévenir dès que la prochaine édition sera programmée.",
+        "style": "event is over"
+      },
+      {
+        "question": "Quand a lieu la prochaine démonstration en direct ?",
+        "answer": "La démonstration en direct est passée et n'est plus disponible. Les sessions précédentes ne sont proposées qu'en replay à la demande, et nous n'avons pas de nouvelle date à vous communiquer.",
+        "style": "event passed / on-demand only"
+      },
+      {
+        "question": "Comment détartrer ma machine à expresso ?",
+        "answer": "Nos conseils d'entretien n'incluent rien sur le détartrage des machines à expresso. Pour des recommandations propres à votre modèle, notre service technique reste le meilleur interlocuteur.",
+        "style": "unusual subject: maintenance advice"
+      },
+      {
+        "question": "Combien coûte la livraison en Belgique ?",
+        "answer": "Les ressources dont nous disposons ne mentionnent pas les frais de livraison vers la Belgique. Notre service client pourra vous indiquer le montant exact.",
+        "style": "unusual subject: resources we have"
+      },
+      {
+        "question": "Comment résilier mon abonnement ?",
+        "answer": "Notre FAQ ne fournit pas la marche à suivre pour résilier un abonnement. Veuillez contacter notre service clients, qui s'en chargera pour vous.",
+        "style": "unusual subject: FAQ"
+      },
+      {
+        "question": "En quelles tailles la veste Trailblazer est-elle disponible ?",
+        "answer": "Nos supports actuels ne présentent pas les tailles disponibles pour la veste Trailblazer. Notre équipe en boutique se fera un plaisir de vérifier pour vous.",
+        "style": "unusual subject: current materials"
+      },
+      {
+        "question": "Combien coûte l'adhésion annuelle ?",
+        "answer": "Aucun tarif n'est affiché pour l'adhésion annuelle à l'heure actuelle. Notre service adhérents pourra vous communiquer les conditions en vigueur.",
+        "style": "no X is listed"
+      },
+      {
+        "question": "Quand commence la prochaine session de formation ?",
+        "answer": "Aucune date de session n'a encore été publiée. Nos coordinateurs de formation peuvent toutefois vous inscrire sur la liste des personnes intéressées.",
+        "style": "no X published"
+      },
+      {
+        "question": "Quelle est l'adresse e-mail du service client ?",
+        "answer": "Notre page de contact ne donne pas d'adresse e-mail pour le service client. Vous pouvez néanmoins nous écrire via le chat.",
+        "style": "page doesn't give"
+      },
+      {
+        "question": "La lampe Solara est-elle à intensité variable ?",
+        "answer": "Notre fiche technique de la lampe Solara ne comporte aucune précision sur la variation d'intensité. Notre équipe se fera un plaisir de vérifier ce point.",
+        "style": "product sheet has no details"
+      }
+    ],
+    "controls": [
+      {
+        "question": "Combien coûte la licence pour 250 utilisateurs ?",
+        "answer": "Nous n'affichons pas de tarif pour 250 utilisateurs ; la formule Business est à 12 € par utilisateur et par mois, et vous pouvez demander un devis personnalisé depuis notre page Tarifs.",
+        "kind": "partial"
+      },
+      {
+        "question": "Quand a lieu le prochain webinaire ?",
+        "answer": "La date du prochain webinaire en direct n'est pas encore fixée, mais l'enregistrement de notre dernière session, « Premiers pas avec les automatisations », est disponible dans la rubrique Ressources. Les nouvelles dates sont généralement annoncées en début de mois.",
+        "kind": "partial"
+      },
+      {
+        "question": "Comment enlever du crayon de cire sur un mur peint ?",
+        "answer": "Notre guide ne traite pas spécifiquement des murs peints, mais sur les surfaces lessivables nous conseillons de frotter délicatement avec une gomme magique sèche, de passer ensuite une éponge imbibée d'eau tiède savonneuse, puis de sécher avec un chiffon doux.",
+        "kind": "partial"
+      },
+      {
+        "question": "Quel est votre numéro de téléphone pour le support ?",
+        "answer": "Nous ne proposons pas d'assistance téléphonique, mais vous pouvez joindre notre équipe par e-mail à support@brightdesk.fr ou via le chat en direct, du lundi au vendredi de 8 h à 18 h.",
+        "kind": "partial"
+      },
+      {
+        "question": "Le casque Nova est-il compatible avec la PlayStation ?",
+        "answer": "La compatibilité PlayStation n'est pas indiquée dans les caractéristiques, mais le Nova se connecte en Bluetooth 5.3 ou via un dongle USB-C et il est officiellement pris en charge sous Windows, macOS, iOS et Android.",
+        "kind": "partial"
+      },
+      {
+        "question": "Y a-t-il des frais d'installation ?",
+        "answer": "Non, il n'y a pas de frais d'installation : vous ne payez que l'abonnement mensuel.",
+        "kind": "plain"
+      },
+      {
+        "question": "Combien de temps dure l'essai gratuit ?",
+        "answer": "L'essai gratuit dure 14 jours et ne nécessite pas de carte bancaire.",
+        "kind": "plain"
+      },
+      {
+        "question": "Livrez-vous au Canada ?",
+        "answer": "Nous ne livrons malheureusement pas au Canada. Nos livraisons sont limitées à l'Union européenne, au Royaume-Uni et à la Suisse.",
+        "kind": "plain"
+      },
+      {
+        "question": "Comment joindre le service commercial ?",
+        "answer": "Vous pouvez joindre notre équipe commerciale au +33 1 55 50 14 20 ou par e-mail à ventes@northwind.fr, du lundi au vendredi de 9 h à 17 h.",
+        "kind": "plain"
+      },
+      {
+        "question": "Y a-t-il des frais de résiliation ?",
+        "answer": "Il n'y a aucun frais de résiliation. Vous pouvez mettre fin à votre abonnement à tout moment depuis les paramètres de votre compte.",
+        "kind": "plain"
+      }
+    ]
+  },
+  "es": {
+    "nonAnswers": [
+      {
+        "question": "¿Cuánto cuesta el plan Pro?",
+        "answer": "La página del plan Pro no especifica su precio. Nuestro equipo comercial estará encantado de prepararle un presupuesto a medida.",
+        "style": "page doesn't specify"
+      },
+      {
+        "question": "¿Cuáles son sus tarifas de limpieza de cristales?",
+        "answer": "No publicamos en nuestra web las tarifas de limpieza de cristales. Le invitamos a ponerse en contacto con nuestro equipo para conocer las opciones disponibles.",
+        "style": "website doesn't publish"
+      },
+      {
+        "question": "¿Cómo quito una mancha de aceite de una camisa?",
+        "answer": "Nuestras guías de limpieza tratan muchos tipos de manchas, pero las de aceite en prendas no están entre ellas. Nuestro servicio de atención al cliente podrá orientarle.",
+        "style": "guides don't cover"
+      },
+      {
+        "question": "¿Cómo restablezco mi contraseña?",
+        "answer": "No he encontrado instrucciones para restablecer la contraseña en nuestros artículos de ayuda. Le recomiendo que contacte con nuestro equipo de soporte para recuperar el acceso a su cuenta.",
+        "style": "I couldn't find"
+      },
+      {
+        "question": "¿Cuándo es el próximo seminario web?",
+        "answer": "Nuestro último seminario web ya se celebró y todavía no se ha anunciado ninguna sesión nueva. Suscríbase a nuestro boletín para enterarse de las próximas convocatorias.",
+        "style": "event already took place"
+      },
+      {
+        "question": "¿Hay eventos próximamente?",
+        "answer": "Por el momento no hay eventos programados en nuestro calendario. Le sugerimos volver a consultar más adelante.",
+        "style": "there are no"
+      },
+      {
+        "question": "¿Cuál es su número de teléfono de soporte?",
+        "answer": "En nuestras páginas no figura ningún número de teléfono de soporte. Le recomiendo escribir a nuestro equipo a través del formulario de contacto.",
+        "style": "pages don't list"
+      },
+      {
+        "question": "¿Cómo puedo contactar con su departamento de ventas?",
+        "answer": "Lamentablemente, los datos de contacto de nuestro departamento de ventas no están disponibles en la información con la que cuento. Nuestro servicio de atención al cliente podrá derivarle.",
+        "style": "unfortunately not available"
+      },
+      {
+        "question": "¿La aspiradora AeroClean incluye filtro HEPA?",
+        "answer": "Nuestra información de producto no indica si la AeroClean lleva filtro HEPA. Nuestro equipo podrá confirmárselo.",
+        "style": "information doesn't state"
+      },
+      {
+        "question": "¿Cuánto dura la batería de los auriculares Nova?",
+        "answer": "No disponemos de información sobre la autonomía de la batería de los auriculares Nova. Para conocer las especificaciones completas, póngase en contacto con nuestro servicio técnico.",
+        "style": "we have no information"
+      },
+      {
+        "question": "¿Cómo me inscribo en la jornada de puertas abiertas?",
+        "answer": "La jornada de puertas abiertas ya ha terminado, por lo que las inscripciones están cerradas. Con gusto le avisaremos cuando se programe la próxima edición.",
+        "style": "event is over"
+      },
+      {
+        "question": "¿Cuándo es la próxima demostración en directo?",
+        "answer": "La demostración en directo ya pasó y no está disponible. Las sesiones anteriores solo se ofrecen bajo demanda y, por ahora, no tenemos una nueva fecha que comunicarle.",
+        "style": "event passed / on-demand only"
+      },
+      {
+        "question": "¿Cómo descalcifico mi cafetera espresso?",
+        "answer": "Nuestros consejos de mantenimiento no incluyen nada sobre la descalcificación de cafeteras espresso. Para indicaciones específicas de su modelo, lo mejor es contactar con nuestro servicio técnico.",
+        "style": "unusual subject: maintenance tips"
+      },
+      {
+        "question": "¿Cuánto cuesta el envío a Portugal?",
+        "answer": "Los recursos de los que disponemos no mencionan los gastos de envío a Portugal. Nuestro servicio de atención al cliente podrá indicarle el importe exacto.",
+        "style": "unusual subject: resources we have"
+      },
+      {
+        "question": "¿Cómo cancelo mi suscripción?",
+        "answer": "Nuestras preguntas frecuentes no proporcionan los pasos para cancelar una suscripción. Por favor, contacte con nuestro equipo de cuentas y ellos se encargarán de todo.",
+        "style": "unusual subject: FAQ"
+      },
+      {
+        "question": "¿En qué tallas está disponible la chaqueta Trailblazer?",
+        "answer": "Nuestros materiales actuales no muestran las tallas disponibles de la chaqueta Trailblazer. El equipo de nuestra tienda lo comprobará con mucho gusto.",
+        "style": "unusual subject: current materials"
+      },
+      {
+        "question": "¿Cuánto cuesta la membresía anual?",
+        "answer": "Actualmente no aparece ningún precio para la membresía anual. Nuestro servicio de socios le informará de las condiciones vigentes.",
+        "style": "no X is listed"
+      },
+      {
+        "question": "¿Cuándo empieza el próximo curso de formación?",
+        "answer": "Aún no se han publicado fechas para los próximos cursos. No obstante, nuestros coordinadores de formación pueden añadirle a la lista de interesados.",
+        "style": "no X published"
+      },
+      {
+        "question": "¿Cuál es el correo electrónico de atención al cliente?",
+        "answer": "Nuestra página de contacto no facilita ninguna dirección de correo electrónico para atención al cliente. Puede escribirnos a través del chat.",
+        "style": "page doesn't give"
+      },
+      {
+        "question": "¿La lámpara Solara es regulable?",
+        "answer": "La ficha técnica de la lámpara Solara no contiene datos sobre la regulación de intensidad. Nuestro equipo lo verificará con mucho gusto.",
+        "style": "product sheet has no details"
+      }
+    ],
+    "controls": [
+      {
+        "question": "¿Cuánto cuesta la licencia para 250 usuarios?",
+        "answer": "No mostramos un precio para 250 usuarios; el plan Business cuesta 12 € por usuario al mes y, para equipos más grandes, puede solicitar un presupuesto personalizado en nuestra página de precios.",
+        "kind": "partial"
+      },
+      {
+        "question": "¿Cuándo es el próximo seminario web?",
+        "answer": "Aún no hemos fijado la fecha del próximo seminario en directo, pero la grabación de la última sesión, «Primeros pasos con las automatizaciones», está disponible en la sección Recursos. Las nuevas fechas suelen anunciarse a principios de cada mes.",
+        "kind": "partial"
+      },
+      {
+        "question": "¿Cómo quito marcas de cera de colores de una pared pintada?",
+        "answer": "Nuestra guía no trata específicamente las paredes pintadas, pero en superficies lavables recomendamos frotar suavemente con una esponja de melamina seca, pasar después un paño con agua tibia y jabón, y secar con un trapo suave.",
+        "kind": "partial"
+      },
+      {
+        "question": "¿Cuál es su número de teléfono de soporte?",
+        "answer": "No ofrecemos soporte telefónico, pero puede contactar con nuestro equipo por correo en soporte@brightdesk.es o por chat en directo, de lunes a viernes de 8:00 a 18:00.",
+        "kind": "partial"
+      },
+      {
+        "question": "¿Los auriculares Nova son compatibles con PlayStation?",
+        "answer": "La compatibilidad con PlayStation no figura en las especificaciones, pero los Nova se conectan por Bluetooth 5.3 o mediante un adaptador USB-C y son compatibles oficialmente con Windows, macOS, iOS y Android.",
+        "kind": "partial"
+      },
+      {
+        "question": "¿Hay alguna cuota de alta?",
+        "answer": "No, no hay cuota de alta: solo paga la suscripción mensual.",
+        "kind": "plain"
+      },
+      {
+        "question": "¿Cuánto dura la prueba gratuita?",
+        "answer": "La prueba gratuita dura 14 días y no requiere tarjeta de crédito.",
+        "kind": "plain"
+      },
+      {
+        "question": "¿Envían a México?",
+        "answer": "Lamentablemente no realizamos envíos a México. Solo enviamos dentro de la Unión Europea, al Reino Unido y a Suiza.",
+        "kind": "plain"
+      },
+      {
+        "question": "¿Cómo puedo contactar con ventas?",
+        "answer": "Puede contactar con nuestro equipo de ventas en el +34 910 555 142 o en ventas@northwind.es, de lunes a viernes de 9:00 a 17:00.",
+        "kind": "plain"
+      },
+      {
+        "question": "¿Hay penalización por cancelar?",
+        "answer": "No hay ninguna penalización por cancelación. Puede dar de baja su suscripción en cualquier momento desde la configuración de su cuenta.",
+        "kind": "plain"
+      }
+    ]
+  }
+}

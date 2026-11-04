@@ -2,6 +2,7 @@
 // REMi scores appeared within minutes of each answer in M0.
 
 import { qualityDaily } from "@launchpad/db";
+import { noteAccountBlock } from "../../../console/src/lib/account-block.ts";
 import { activeDeployments, type JobContext, managerClient } from "../context.ts";
 import { addDays, isoDate } from "../dates.ts";
 
@@ -25,6 +26,7 @@ export async function rollupQuality(ctx: JobContext, day: Date): Promise<void> {
         .onConflictDoUpdate({ target: [qualityDaily.deploymentId, qualityDaily.day], set: { ...values, updatedAt: new Date() } });
     } catch (err) {
       ctx.log(`quality rollup failed for deployment ${d.id}: ${err instanceof Error ? err.message : err}`);
+      await noteAccountBlock(ctx.db, err, "quality");
     }
   }
 }

@@ -10,13 +10,16 @@
   },
   "scripts": {
     "build": "node build.ts",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json",
+    "test:browser": "node build.ts && node --test e2e/*.e2e.ts"
   },
   "dependencies": {
     "@launchpad/par-client": "*",
     "@launchpad/theme": "*"
   },
   "devDependencies": {
-    "esbuild": "^0.25.9"
+    "@axe-core/playwright": "^4.14.0",
+    "esbuild": "^0.25.9",
+    "playwright": "^1.64.1"
   }
 }

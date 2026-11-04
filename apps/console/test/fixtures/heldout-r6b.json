@@ -1,0 +1,273 @@
+{
+  "en": {
+    "nonAnswers": [
+      {
+        "question": "How much does the Enterprise plan cost per year?",
+        "answer": "I'm sorry, but I couldn't find pricing details for the Enterprise plan in the information I have access to. Our sales team would be the best people to help with a quote."
+      },
+      {
+        "question": "How do I reset the thermostat to factory settings?",
+        "answer": "Unfortunately, the steps for a factory reset aren't covered in the material available to me. I'd recommend reaching out to our support team for guidance."
+      },
+      {
+        "question": "Are you holding any webinars next month?",
+        "answer": "I don't have any information about upcoming webinars at the moment. It's possible nothing has been announced yet."
+      },
+      {
+        "question": "What's the phone number for your Berlin office?",
+        "answer": "Sorry, I wasn't able to find contact details for the Berlin office on our website."
+      },
+      {
+        "question": "What is the battery life of the X200 headset?",
+        "answer": "That's a great question! The pages I can see don't mention the battery life of the X200, so I can't give you an accurate figure."
+      },
+      {
+        "question": "Do you offer a student discount, and how much is it?",
+        "answer": "I'm afraid there's no mention of a student discount in the content I've been given, so I can't confirm whether one is available."
+      },
+      {
+        "question": "How do I integrate your API with Salesforce?",
+        "answer": "Instructions for a Salesforce integration don't appear to be included in our documentation. Please get in touch with us and we'll be happy to help."
+      },
+      {
+        "question": "When is your next trade show appearance?",
+        "answer": "Hmm, I'm not seeing anything about upcoming trade shows in what's published on our site. Feel free to check back later!"
+      },
+      {
+        "question": "Who should I email about a partnership?",
+        "answer": "I apologize, but the information provided to me doesn't include a contact for partnership inquiries."
+      },
+      {
+        "question": "What materials is the Nova chair made from?",
+        "answer": "Details about the Nova chair's materials are not specified in the product information available to me. I'm sorry I can't be more helpful here."
+      }
+    ],
+    "controls": [
+      { "question": "Do you ship to Canada?", "answer": "We don't ship to Canada. We currently deliver within the US and Mexico only." },
+      { "question": "Is there a setup fee?", "answer": "There's no setup fee. You only pay the monthly subscription." },
+      {
+        "question": "How much would it cost for 300 users?",
+        "answer": "The page doesn't give a price for 300 users, but plans start at €24 per user per month, and teams over 250 can request volume pricing."
+      },
+      {
+        "question": "How do I cancel my subscription?",
+        "answer": "Go to Settings > Billing and click Cancel subscription. Your access continues until the end of the current billing period."
+      },
+      {
+        "question": "What's your support phone number and hours?",
+        "answer": "You can reach support at +1 415 555 0142. I couldn't find the exact weekend hours, but weekday support runs 8am to 6pm PT."
+      },
+      {
+        "question": "Does the X200 headset have noise cancelling?",
+        "answer": "No, the X200 doesn't have active noise cancelling. If you need that, the X300 offers ANC with up to 30 hours of battery life."
+      }
+    ]
+  },
+  "de": {
+    "nonAnswers": [
+      {
+        "question": "Was kostet das Premium-Paket im Monat?",
+        "answer": "Leider konnte ich in den mir vorliegenden Informationen keine Preisangaben zum Premium-Paket finden. Bitte wenden Sie sich für ein Angebot an unser Vertriebsteam."
+      },
+      {
+        "question": "Wie richte ich die App auf meinem Tablet ein?",
+        "answer": "Eine Anleitung zur Einrichtung auf dem Tablet ist in unseren Unterlagen leider nicht enthalten."
+      },
+      {
+        "question": "Gibt es dieses Jahr noch Veranstaltungen in München?",
+        "answer": "Zu kommenden Veranstaltungen in München liegen mir derzeit keine Informationen vor. Möglicherweise wurden noch keine Termine bekannt gegeben."
+      },
+      {
+        "question": "Wie lautet die E-Mail-Adresse Ihrer Buchhaltung?",
+        "answer": "Es tut mir leid, aber auf unserer Website habe ich keine Kontaktdaten für die Buchhaltung gefunden."
+      },
+      {
+        "question": "Wie hoch ist die maximale Traglast des Regals Modell Atlas?",
+        "answer": "Die maximale Traglast des Atlas-Regals wird in den Produktinformationen, auf die ich Zugriff habe, nicht angegeben."
+      },
+      {
+        "question": "Bieten Sie Ratenzahlung an?",
+        "answer": "Dazu finde ich in den verfügbaren Seiten leider nichts. Ich kann daher nicht sagen, ob Ratenzahlung möglich ist."
+      },
+      {
+        "question": "Wie kann ich meine Daten aus dem alten System migrieren?",
+        "answer": "Hierzu habe ich leider keine Informationen. Die Datenmigration wird in dem Material, das mir zur Verfügung steht, nicht beschrieben."
+      },
+      {
+        "question": "Wann findet das nächste Kundenwebinar statt?",
+        "answer": "Entschuldigung, über anstehende Webinare ist in unseren Inhalten nichts zu finden. Schauen Sie gern später noch einmal vorbei."
+      },
+      {
+        "question": "Unter welcher Nummer erreiche ich den technischen Support?",
+        "answer": "Eine Telefonnummer für den technischen Support konnte ich in den mir bereitgestellten Informationen leider nicht ausfindig machen."
+      },
+      {
+        "question": "Ist die Jacke Nordkap wasserdicht?",
+        "answer": "Ob die Jacke Nordkap wasserdicht ist, geht aus den Produktseiten, die ich einsehen kann, leider nicht hervor."
+      }
+    ],
+    "controls": [
+      {
+        "question": "Liefern Sie in die Schweiz?",
+        "answer": "Wir liefern nicht in die Schweiz. Der Versand erfolgt derzeit nur innerhalb Deutschlands und nach Österreich."
+      },
+      {
+        "question": "Fällt eine Einrichtungsgebühr an?",
+        "answer": "Es gibt keine Einrichtungsgebühr. Sie zahlen lediglich die monatliche Grundgebühr."
+      },
+      {
+        "question": "Was kostet die Lizenz für 500 Mitarbeitende?",
+        "answer": "Einen Preis für 500 Mitarbeitende nennt die Seite nicht, aber die Pläne beginnen bei 19 € pro Nutzer und Monat."
+      },
+      {
+        "question": "Wie ändere ich mein Passwort?",
+        "answer": "Klicken Sie oben rechts auf Ihr Profil, wählen Sie Sicherheit und dann Passwort ändern. Sie erhalten anschließend eine Bestätigungs-E-Mail."
+      },
+      {
+        "question": "Wann hat Ihr Laden in Hamburg geöffnet?",
+        "answer": "Der Laden in Hamburg ist Montag bis Freitag von 9 bis 19 Uhr geöffnet. Zu den Samstagszeiten habe ich leider keine Angaben gefunden."
+      },
+      {
+        "question": "Hat das Modell Atlas eine Garantie?",
+        "answer": "Ja, auf das Modell Atlas gewähren wir 5 Jahre Garantie. Eine verlängerte Garantie wird nicht angeboten."
+      }
+    ]
+  },
+  "fr": {
+    "nonAnswers": [
+      {
+        "question": "Quel est le tarif de l'abonnement annuel ?",
+        "answer": "Je suis désolé, mais je n'ai pas trouvé d'information sur le tarif de l'abonnement annuel dans les contenus à ma disposition. Notre équipe commerciale pourra vous renseigner."
+      },
+      {
+        "question": "Comment connecter l'imprimante au Wi-Fi ?",
+        "answer": "Malheureusement, la procédure de connexion au Wi-Fi n'est pas décrite dans la documentation à laquelle j'ai accès."
+      },
+      {
+        "question": "Organisez-vous des portes ouvertes ce printemps ?",
+        "answer": "Je ne dispose d'aucune information concernant des portes ouvertes à venir. Il est possible qu'aucune date n'ait encore été annoncée."
+      },
+      {
+        "question": "Quel est le numéro de téléphone du service client ?",
+        "answer": "Désolé, je n'ai pas pu trouver les coordonnées du service client sur notre site."
+      },
+      {
+        "question": "Quelle est la puissance du robot Chef Pro ?",
+        "answer": "La puissance du Chef Pro n'est pas précisée dans les fiches produit que je peux consulter."
+      },
+      {
+        "question": "Proposez-vous une remise pour les associations ?",
+        "answer": "Je n'ai rien trouvé à ce sujet dans les pages qui m'ont été fournies, je ne peux donc pas vous confirmer l'existence d'une telle remise."
+      },
+      {
+        "question": "Comment exporter mes factures au format CSV ?",
+        "answer": "Cette information ne figure pas dans les ressources disponibles. N'hésitez pas à contacter notre support, qui pourra vous aider."
+      },
+      {
+        "question": "Quand aura lieu votre prochain salon ?",
+        "answer": "Hélas, aucune information sur nos prochains salons n'apparaît dans le contenu publié sur le site."
+      },
+      {
+        "question": "À quelle adresse e-mail envoyer ma candidature ?",
+        "answer": "Je suis navré, mais les informations dont je dispose ne mentionnent pas d'adresse pour les candidatures."
+      },
+      {
+        "question": "Le canapé Lina est-il déhoussable ?",
+        "answer": "Je ne trouve pas cette précision dans la description du canapé Lina qui m'est accessible, je préfère donc ne pas vous induire en erreur."
+      }
+    ],
+    "controls": [
+      {
+        "question": "Livrez-vous en Belgique ?",
+        "answer": "Nous ne livrons pas en Belgique. Nos livraisons sont actuellement limitées à la France métropolitaine."
+      },
+      {
+        "question": "Y a-t-il des frais d'installation ?",
+        "answer": "Il n'y a aucun frais d'installation. Seul l'abonnement mensuel est facturé."
+      },
+      {
+        "question": "Combien coûte l'offre pour 200 utilisateurs ?",
+        "answer": "La page n'indique pas de prix pour 200 utilisateurs, mais les offres commencent à 15 € par utilisateur et par mois."
+      },
+      {
+        "question": "Comment supprimer mon compte ?",
+        "answer": "Rendez-vous dans Paramètres > Compte, puis cliquez sur Supprimer mon compte et confirmez par e-mail."
+      },
+      {
+        "question": "Quels sont vos horaires d'ouverture à Lyon ?",
+        "answer": "Notre boutique de Lyon est ouverte du mardi au samedi, de 10 h à 19 h. Je n'ai pas trouvé d'information sur les jours fériés."
+      },
+      {
+        "question": "Le Chef Pro va-t-il au lave-vaisselle ?",
+        "answer": "Non, le bloc moteur du Chef Pro ne passe pas au lave-vaisselle, mais le bol et les lames, eux, le supportent."
+      }
+    ]
+  },
+  "es": {
+    "nonAnswers": [
+      {
+        "question": "¿Cuánto cuesta el plan Profesional?",
+        "answer": "Lo siento, no he encontrado información sobre el precio del plan Profesional en el contenido al que tengo acceso. Te recomiendo contactar con nuestro equipo comercial."
+      },
+      {
+        "question": "¿Cómo actualizo el firmware del router?",
+        "answer": "Lamentablemente, los pasos para actualizar el firmware no aparecen en la documentación disponible."
+      },
+      {
+        "question": "¿Tenéis algún evento programado en Madrid?",
+        "answer": "No tengo información sobre próximos eventos en Madrid. Es posible que todavía no se haya anunciado ninguno."
+      },
+      {
+        "question": "¿Cuál es el correo de atención al cliente?",
+        "answer": "Disculpa, no he podido encontrar los datos de contacto de atención al cliente en nuestra web."
+      },
+      {
+        "question": "¿Qué capacidad tiene la mochila Trek 40?",
+        "answer": "La capacidad de la mochila Trek 40 no se especifica en la información de producto que puedo consultar."
+      },
+      {
+        "question": "¿Hacéis descuentos para pedidos al por mayor?",
+        "answer": "No encuentro nada al respecto en las páginas que tengo, así que no puedo confirmarte si existen descuentos por volumen."
+      },
+      {
+        "question": "¿Cómo configuro el inicio de sesión único (SSO)?",
+        "answer": "Esa información no está incluida en el material que se me ha proporcionado. Nuestro equipo de soporte podrá ayudarte."
+      },
+      {
+        "question": "¿Cuándo es la próxima feria en la que participáis?",
+        "answer": "Vaya, no veo ninguna referencia a próximas ferias en lo que tenemos publicado en el sitio."
+      },
+      {
+        "question": "¿A qué teléfono llamo para hablar con ventas?",
+        "answer": "Lo lamento, pero la información de la que dispongo no incluye un teléfono de contacto para el departamento de ventas."
+      },
+      {
+        "question": "¿La lámpara Sol es regulable?",
+        "answer": "Lamentablemente, en las fichas de producto a las que tengo acceso no se indica si la lámpara Sol es regulable."
+      }
+    ],
+    "controls": [
+      {
+        "question": "¿Enviáis a Portugal?",
+        "answer": "No enviamos a Portugal. Por ahora solo realizamos envíos dentro de España peninsular."
+      },
+      { "question": "¿Hay que pagar una cuota de alta?", "answer": "No hay cuota de alta. Solo pagas la suscripción mensual." },
+      {
+        "question": "¿Cuánto costaría para 150 usuarios?",
+        "answer": "La página no indica un precio para 150 usuarios, pero los planes empiezan en 12 € por usuario al mes."
+      },
+      {
+        "question": "¿Cómo devuelvo un pedido?",
+        "answer": "Entra en Mis pedidos, selecciona el artículo y pulsa Solicitar devolución. Tienes 30 días desde la entrega."
+      },
+      {
+        "question": "¿Qué horario tiene la tienda de Barcelona?",
+        "answer": "La tienda de Barcelona abre de lunes a sábado de 10:00 a 20:00. No he encontrado información sobre la apertura en domingos."
+      },
+      {
+        "question": "¿La mochila Trek 40 es impermeable?",
+        "answer": "No, la Trek 40 no es impermeable, aunque incluye una funda para la lluvia."
+      }
+    ]
+  }
+}

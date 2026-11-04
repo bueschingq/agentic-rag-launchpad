@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/agentic-rag-launchpad/agentic-rag-launchpad/blob/main/docs/lead-payload.schema.json",
+  "title": "Agentic RAG Launchpad lead, schema version 2",
+  "description": "The JSON body the console posts to a deployment's lead webhook when a visitor sends the chat's contact form. Version 1's fields are unchanged; version 2 adds schemaVersion, consent, trigger and attribution. Optional fields may be added within version 2, so don't reject unknown ones. See docs/leads.md.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "kind",
+    "receivedAt",
+    "deployment",
+    "customer",
+    "conversationId",
+    "fields",
+    "consent",
+    "trigger",
+    "attribution"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 2 },
+    "kind": { "const": "lead" },
+    "receivedAt": { "type": "string", "format": "date-time", "description": "When the console received the lead." },
+    "deployment": { "type": "string", "description": "The deployment's name in the console, e.g. \"Main site\"." },
+    "customer": { "type": "string", "description": "The name visitors see (the customer's \"Name visitors see\", else its name)." },
+    "test": {
+      "const": true,
+      "description": "Present only when the form was sent from a staging domain or localhost: a test, not a real visitor. The subject starts \"[Test, from a staging page]\"."
+    },
+    "conversationId": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "The chat conversation's random id; the same id is on the chat's analytics events."
+    },
+    "fields": {
+      "type": "object",
+      "description": "What the visitor typed, for the fields the form shows. At least one of email and phone.",
+      "properties": {
+        "name": { "type": "string", "maxLength": 120 },
+        "email": { "type": "string", "maxLength": 200 },
+        "phone": { "type": "string", "maxLength": 40 },
+        "message": { "type": "string", "maxLength": 2000 }
+      },
+      "additionalProperties": false
+    },
+    "pageUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The page the form was sent from, without its query string or fragment."
+    },
+    "language": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "The language the widget reported (version 1). consent.language is the one it was served in."
+    },
+    "transcript": {
+      "type": "array",
+      "maxItems": 20,
+      "description": "The conversation, only when the visitor ticked \"Include this conversation\".",
+      "items": {
+        "type": "object",
+        "required": ["author", "text"],
+        "properties": {
+          "author": { "enum": ["USER", "NUCLIA"] },
+          "text": { "type": "string", "maxLength": 4000 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "consent": {
+      "type": "object",
+      "description": "The consent the visitor gave by ticking the form's box. Required: there is no lead without it.",
+      "required": ["given", "text", "language", "at"],
+      "properties": {
+        "given": { "const": true },
+        "text": { "type": "string", "description": "The exact wording the visitor ticked, in their language." },
+        "language": { "type": "string", "description": "The language it was shown in, e.g. \"de\"." },
+        "privacyUrl": { "type": "string", "format": "uri", "description": "The privacy notice linked under the box, when one is set." },
+        "at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+    "trigger": {
+      "type": "object",
+      "description": "What opened the form.",
+      "required": ["placement"],
+      "properties": {
+        "placement": {
+          "enum": ["header", "no-answer", "after-answer", "cta"],
+          "description": "header: \"Talk to a person\" in the chat header. no-answer: a reply with no answer. after-answer: \"Still need help?\" under an answer. cta: a call-to-action button."
+        },
+        "ctaLabel": {
+          "type": "string",
+          "maxLength": 40,
+          "description": "The button's label, in the visitor's language, when placement is cta."
+        }
+      },
+      "additionalProperties": false
+    },
+    "attribution": {
+      "type": "object",
+      "description": "Where the visit came from, captured on the first page of the visit (in the browser tab's sessionStorage, no cookies). Pages are without their query string; only these campaign keys are kept, and a value that looks like an email address is dropped. Empty when the visitor's browser blocks storage and nothing was found on the page.",
+      "properties": {
+        "landingPage": { "type": "string", "format": "uri" },
+        "referrer": { "type": "string", "format": "uri" },
+        "utm_source": { "type": "string", "maxLength": 200 },
+        "utm_medium": { "type": "string", "maxLength": 200 },
+        "utm_campaign": { "type": "string", "maxLength": 200 },
+        "utm_term": { "type": "string", "maxLength": 200 },
+        "utm_content": { "type": "string", "maxLength": 200 },
+        "gclid": { "type": "string", "maxLength": 200 }
+      },
+      "additionalProperties": false
+    },
+    "subject": { "type": "string", "description": "Added by delivery: \"New lead from the <customer> website chat\"." },
+    "text": { "type": "string", "description": "Added by delivery: a readable summary, which Slack and Teams show." },
+    "link": { "type": "string" }
+  },
+  "additionalProperties": false
+}

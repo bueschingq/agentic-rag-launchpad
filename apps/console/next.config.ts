@@ -6,7 +6,7 @@ const config: NextConfig = {
   output: "standalone",
   outputFileTracingRoot: path.resolve(process.cwd(), "../.."),
   // Workspace packages ship TypeScript source.
-  transpilePackages: ["@launchpad/db", "@launchpad/par-client", "@launchpad/theme"],
+  transpilePackages: ["@launchpad/db", "@launchpad/notify", "@launchpad/par-client", "@launchpad/theme"],
   poweredByHeader: false,
   async headers() {
     return [

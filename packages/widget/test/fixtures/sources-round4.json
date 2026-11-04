@@ -1,0 +1,1915 @@
+{
+  "wug-demo": {
+    "where": "whatsupgold.com (marketer r4), the starter",
+    "asked": "2026-10-30",
+    "question": "Can I watch a demo?",
+    "answer": "Yes. You can watch a WhatsUp Gold demo, and you can also request a price quote or start a free trial.",
+    "brand": "WhatsUp Gold",
+    "language": "en",
+    "resources": {
+      "883c02e2567249429a3904577480e1f3": {
+        "id": "883c02e2567249429a3904577480e1f3",
+        "title": "VLAN Management",
+        "origin": {
+          "url": "https://www.whatsupgold.com/network-mapping/vlan-management"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "883c02e2567249429a3904577480e1f3/t/body/1574-1687": {
+                "score": 0.8196,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in Your Network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      },
+      "0079bcf39a444210aef35c641a67509e": {
+        "id": "0079bcf39a444210aef35c641a67509e",
+        "title": "What is Cisco NBAR",
+        "origin": {
+          "url": "https://www.whatsupgold.com/network-traffic-monitoring/cisco-nbar"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "0079bcf39a444210aef35c641a67509e/t/body/2738-2851": {
+                "score": 0.8195,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in Your Network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      },
+      "4f646a4776c44f86bbf11513bdd70577": {
+        "id": "4f646a4776c44f86bbf11513bdd70577",
+        "title": "How to Be an On-Call Sysadmin Without Going Crazy",
+        "origin": {
+          "url": "https://www.whatsupgold.com/resources/webinars/how-to-be-an-on-call-sysadmin-without-going-crazy"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "4f646a4776c44f86bbf11513bdd70577/t/body/1336-1449": {
+                "score": 0.8091,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in your network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      },
+      "847966bbe46040ce9d5afc3f14ac2bd6": {
+        "id": "847966bbe46040ce9d5afc3f14ac2bd6",
+        "title": "SNMP Management Software - SNMP Monitor",
+        "origin": {
+          "url": "https://www.whatsupgold.com/snmp/snmp-management-software"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "847966bbe46040ce9d5afc3f14ac2bd6/t/body/3053-3166": {
+                "score": 0.8195,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in Your Network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      },
+      "06bead8cc16f4eae9e8af02d6086f7d9": {
+        "id": "06bead8cc16f4eae9e8af02d6086f7d9",
+        "title": "Editions and Pricing - Compare Plans",
+        "origin": {
+          "url": "https://www.whatsupgold.com/pricing/perpetual"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "06bead8cc16f4eae9e8af02d6086f7d9/t/body/2098-2176": {
+                "score": 0.8678,
+                "score_type": "RERANKER",
+                "text": "Want to learn more? Watch a demo Request a price quote Try it yourself"
+              }
+            }
+          }
+        }
+      },
+      "5d58897c74234e11a2d20c9862adda92": {
+        "id": "5d58897c74234e11a2d20c9862adda92",
+        "title": "Network Device Discovery",
+        "origin": {
+          "url": "https://www.whatsupgold.com/network-discovery/network-device-discovery"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "5d58897c74234e11a2d20c9862adda92/t/body/5205-5296": {
+                "score": 0.8434,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in Your Network Start Your Free Trial of WhatsUp Gold Watch a Demo"
+              }
+            }
+          }
+        }
+      },
+      "bbe6db63df474921b3df36b697287a9d": {
+        "id": "bbe6db63df474921b3df36b697287a9d",
+        "title": "What is sFlow?",
+        "origin": {
+          "url": "https://www.whatsupgold.com/network-traffic-monitoring/sflow"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "bbe6db63df474921b3df36b697287a9d/t/body/2074-2187": {
+                "score": 0.8196,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in Your Network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      },
+      "ec8e6808648f4d0fae78fa9936577b31": {
+        "id": "ec8e6808648f4d0fae78fa9936577b31",
+        "title": "SSH, WMI, Telnet, SNMP Monitoring Best Practices",
+        "origin": {
+          "url": "https://www.whatsupgold.com/snmp/ssh-wmi-telnet-snmp-monitoring"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "ec8e6808648f4d0fae78fa9936577b31/t/body/3789-3902": {
+                "score": 0.8196,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in Your Network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      },
+      "0bc086672d6b44e4a64602948808bdb9": {
+        "id": "0bc086672d6b44e4a64602948808bdb9",
+        "title": "Reveal Hidden Network Issues with Network Traffic Analysis Plus",
+        "origin": {
+          "url": "https://www.whatsupgold.com/resources/webinars/reveal-hidden-network-issues-with-network-traffic-analysis-plus"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "0bc086672d6b44e4a64602948808bdb9/t/body/1346-1459": {
+                "score": 0.8091,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in your network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      },
+      "2de0a05bf28248d5bfe4e6b19d0834e4": {
+        "id": "2de0a05bf28248d5bfe4e6b19d0834e4",
+        "title": "Windows SNMP Server - SNMP Monitor",
+        "origin": {
+          "url": "https://www.whatsupgold.com/snmp/windows-snmp-server"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "2de0a05bf28248d5bfe4e6b19d0834e4/t/body/2827-2940": {
+                "score": 0.8195,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in Your Network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      }
+    },
+    "citations": {
+      "5d58897c74234e11a2d20c9862adda92/t/body/5205-5296": [[0, 101]],
+      "0079bcf39a444210aef35c641a67509e/t/body/2738-2851": [[0, 101]],
+      "4f646a4776c44f86bbf11513bdd70577/t/body/1336-1449": [[0, 101]],
+      "bbe6db63df474921b3df36b697287a9d/t/body/2074-2187": [[0, 101]],
+      "883c02e2567249429a3904577480e1f3/t/body/1574-1687": [[0, 101]],
+      "0bc086672d6b44e4a64602948808bdb9/t/body/1346-1459": [[0, 101]],
+      "847966bbe46040ce9d5afc3f14ac2bd6/t/body/3053-3166": [[0, 101]],
+      "ec8e6808648f4d0fae78fa9936577b31/t/body/3789-3902": [[0, 101]],
+      "2de0a05bf28248d5bfe4e6b19d0834e4/t/body/2827-2940": [[0, 101]],
+      "06bead8cc16f4eae9e8af02d6086f7d9/t/body/2098-2176": [[0, 101]]
+    }
+  },
+  "wug-trial": {
+    "where": "whatsupgold.com (marketer r4), the starter",
+    "asked": "2026-10-30",
+    "question": "Can I start a free trial?",
+    "answer": "Yes. You can start a free trial of WhatsUp Gold—select **Download Free Trial**.",
+    "brand": "WhatsUp Gold",
+    "language": "en",
+    "resources": {
+      "883c02e2567249429a3904577480e1f3": {
+        "id": "883c02e2567249429a3904577480e1f3",
+        "title": "VLAN Management",
+        "origin": {
+          "url": "https://www.whatsupgold.com/network-mapping/vlan-management"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "883c02e2567249429a3904577480e1f3/t/body/1574-1687": {
+                "score": 0.6569,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in Your Network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      },
+      "0079bcf39a444210aef35c641a67509e": {
+        "id": "0079bcf39a444210aef35c641a67509e",
+        "title": "What is Cisco NBAR",
+        "origin": {
+          "url": "https://www.whatsupgold.com/network-traffic-monitoring/cisco-nbar"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "0079bcf39a444210aef35c641a67509e/t/body/2738-2851": {
+                "score": 0.6581,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in Your Network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      },
+      "4f646a4776c44f86bbf11513bdd70577": {
+        "id": "4f646a4776c44f86bbf11513bdd70577",
+        "title": "How to Be an On-Call Sysadmin Without Going Crazy",
+        "origin": {
+          "url": "https://www.whatsupgold.com/resources/webinars/how-to-be-an-on-call-sysadmin-without-going-crazy"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "4f646a4776c44f86bbf11513bdd70577/t/body/1336-1449": {
+                "score": 0.653,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in your network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      },
+      "847966bbe46040ce9d5afc3f14ac2bd6": {
+        "id": "847966bbe46040ce9d5afc3f14ac2bd6",
+        "title": "SNMP Management Software - SNMP Monitor",
+        "origin": {
+          "url": "https://www.whatsupgold.com/snmp/snmp-management-software"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "847966bbe46040ce9d5afc3f14ac2bd6/t/body/3053-3166": {
+                "score": 0.6569,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in Your Network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      },
+      "bbe6db63df474921b3df36b697287a9d": {
+        "id": "bbe6db63df474921b3df36b697287a9d",
+        "title": "What is sFlow?",
+        "origin": {
+          "url": "https://www.whatsupgold.com/network-traffic-monitoring/sflow"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "bbe6db63df474921b3df36b697287a9d/t/body/2074-2187": {
+                "score": 0.6569,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in Your Network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      },
+      "ea19ddac859a4a878a463881ab1c4f0e": {
+        "id": "ea19ddac859a4a878a463881ab1c4f0e",
+        "title": "SPARK Matrix™ Network Observability Report 2026",
+        "origin": {
+          "url": "https://www.whatsupgold.com/resources/analyst-reports/spark-matrix-network-observability-report-2026"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "ea19ddac859a4a878a463881ab1c4f0e/t/body/1156-1269": {
+                "score": 0.653,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in your network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      },
+      "a8705e3f5fb8416bb387302356518b9a": {
+        "id": "a8705e3f5fb8416bb387302356518b9a",
+        "title": "What is Network Discovery?",
+        "origin": {
+          "url": "https://www.whatsupgold.com/resources/ebooks/what-is-network-discovery"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "a8705e3f5fb8416bb387302356518b9a/t/body/896-1125": {
+                "score": 0.7219,
+                "score_type": "RERANKER",
+                "text": "Download your free copy and start discovering your network today! Download the eBook All fields are required. Monitor Everything in your network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      },
+      "cbf473d6b5f142ed8e61a2c0e4bfdca5": {
+        "id": "cbf473d6b5f142ed8e61a2c0e4bfdca5",
+        "title": "Network Monitoring Tools & Software",
+        "origin": {
+          "url": "https://www.whatsupgold.com"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "cbf473d6b5f142ed8e61a2c0e4bfdca5/t/body/8078-8286": {
+                "score": 0.6795,
+                "score_type": "RERANKER",
+                "text": "Read the Report Try it. Download a free trial. Download Trial Buy it. Choose the right plan for your organization. Get Started Free Edition. Monitor 10 devices at no cost and no obligation."
+              }
+            }
+          }
+        }
+      },
+      "ec8e6808648f4d0fae78fa9936577b31": {
+        "id": "ec8e6808648f4d0fae78fa9936577b31",
+        "title": "SSH, WMI, Telnet, SNMP Monitoring Best Practices",
+        "origin": {
+          "url": "https://www.whatsupgold.com/snmp/ssh-wmi-telnet-snmp-monitoring"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "ec8e6808648f4d0fae78fa9936577b31/t/body/3789-3902": {
+                "score": 0.6581,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in Your Network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      },
+      "2de0a05bf28248d5bfe4e6b19d0834e4": {
+        "id": "2de0a05bf28248d5bfe4e6b19d0834e4",
+        "title": "Windows SNMP Server - SNMP Monitor",
+        "origin": {
+          "url": "https://www.whatsupgold.com/snmp/windows-snmp-server"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "2de0a05bf28248d5bfe4e6b19d0834e4/t/body/2827-2940": {
+                "score": 0.6581,
+                "score_type": "RERANKER",
+                "text": "Monitor Everything in Your Network Start Your Free Trial of WhatsUp Gold Download Free Trial Watch a Demo"
+              }
+            }
+          }
+        }
+      }
+    },
+    "citations": {
+      "4f646a4776c44f86bbf11513bdd70577/t/body/1336-1449": [[0, 79]],
+      "ea19ddac859a4a878a463881ab1c4f0e/t/body/1156-1269": [[0, 79]],
+      "883c02e2567249429a3904577480e1f3/t/body/1574-1687": [[0, 79]],
+      "0079bcf39a444210aef35c641a67509e/t/body/2738-2851": [[0, 79]],
+      "ec8e6808648f4d0fae78fa9936577b31/t/body/3789-3902": [[0, 79]],
+      "bbe6db63df474921b3df36b697287a9d/t/body/2074-2187": [[0, 79]],
+      "847966bbe46040ce9d5afc3f14ac2bd6/t/body/3053-3166": [[0, 79]],
+      "2de0a05bf28248d5bfe4e6b19d0834e4/t/body/2827-2940": [[0, 79]],
+      "a8705e3f5fb8416bb387302356518b9a/t/body/896-1125": [[0, 79]]
+    }
+  },
+  "wug-de-price": {
+    "where": "whatsupgold.com (marketer r4), asked of the German pages",
+    "asked": "2026-10-30",
+    "question": "Was kostet WhatsUp Gold für 300 Geräte?",
+    "answer": "Auf unserer Website sind Preise ab 50 Geräten angegeben: Business ab 1.229 USD, Enterprise ab 2.049 USD und Enterprise Plus ab 3.469 USD pro Jahr. Einen Preis für 300 Geräte nennen wir dort nicht. Bitte fordern Sie ein Angebot an.",
+    "brand": "WhatsUp Gold",
+    "language": "de",
+    "resources": {
+      "422dbc7227ad40e4b574ae6ca9be2555": {
+        "id": "422dbc7227ad40e4b574ae6ca9be2555",
+        "title": "Preise und Lizenzierung WhatsUp Gold",
+        "origin": {
+          "url": "https://www.whatsupgold.com/de/preise"
+        },
+        "metadata": {
+          "language": "de"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "422dbc7227ad40e4b574ae6ca9be2555/t/body/2107-3480": {
+                "score": 0.7394,
+                "score_type": "RERANKER",
+                "text": "| Wichtigste Funktionen | Business | Enterprise | Enterprise PlusAm beliebtesten | | Preis ab$ 1,229 für 50 Geräte pro JahrAngebot anfragen | Preis ab$ 2,049 für 50 Geräte pro JahrAngebot anfragen | Preis ab$ 3,469 für 50 Geräte pro JahrAngebot anfragen | | Wichtigste Funktionen | Business | Enterprise | Enterprise Plus | | Aspekte/Kanäle pro Gerät | Unbegrenzt | Unbegrenzt | Unbegrenzt | | Maxima"
+              },
+              "422dbc7227ad40e4b574ae6ca9be2555/t/body/1494-1900": {
+                "score": 0.2032,
+                "score_type": "RERANKER",
+                "text": "Enterprise Plus umfasst: Bis zu 4 Installationen von WhatsUp Gold $ 3,469 Add-ons Available Network Detection & Response Lite Erkennung von Verhaltensbedrohungen und Überwachung von Anomalien für mehr SicherheitAb $866 pro Jahr Enterprise Scale Für Großunternehmen mit anspruchsvollen IT-Infrastrukturanforderungen, die Skalierbarkeit, Automatisierung und umfassende Überwachung benötigen."
+              }
+            }
+          },
+          "/a/title": {
+            "paragraphs": {
+              "422dbc7227ad40e4b574ae6ca9be2555/a/title/0-36": {
+                "score": 0.015,
+                "score_type": "RERANKER",
+                "text": "Preise und Lizenzierung WhatsUp Gold"
+              }
+            }
+          }
+        }
+      },
+      "64d07ca8ea0441b1a5d5f577e0e306c9": {
+        "id": "64d07ca8ea0441b1a5d5f577e0e306c9",
+        "title": "Infrastruktur, Performance & Traffic-Monitoring",
+        "origin": {
+          "url": "https://www.whatsupgold.com/de/netzwerk-monitoring-software"
+        },
+        "metadata": {
+          "language": "de"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "64d07ca8ea0441b1a5d5f577e0e306c9/t/body/13013-13303": {
+                "score": 0.0633,
+                "score_type": "RERANKER",
+                "text": "Enterprise Plus $ 3,469 Ideal für alle großen Unternehmen, die eine leistungsstarke und anpassungsfähige Überwachungslösung mit erweiterten Funktionen benötigen. Kostenfreie Testversion Füllen Sie das Formular aus, um Ihre kostenlose Testversion von WhatsUp Gold herunterzuladen."
+              }
+            }
+          }
+        }
+      },
+      "65ffa5c02f7a4527a05c99e54fb6137f": {
+        "id": "65ffa5c02f7a4527a05c99e54fb6137f",
+        "title": "Azure Monitoring-Lösungen - Cloud-Überwachung",
+        "origin": {
+          "url": "https://www.whatsupgold.com/de/cloud-monitoring/azure-monitoring"
+        },
+        "metadata": {
+          "language": "de"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "65ffa5c02f7a4527a05c99e54fb6137f/t/body/0-326": {
+                "score": 0.0019,
+                "score_type": "RERANKER",
+                "text": "Mit Azure-Überwachung von WhatsUp Gold können Sie Cloudressourcen in Ihre Netzwerküberwachung integrieren. Einrichten von Warnungen, Analysieren von Trends und Verwalten von Kosten. Überwachen von Microsoft Azure Cloud Services Erfahren Sie genau, wie sich Ihr Netzwerk in Azure integriert – und wie viel es kostet!"
+              }
+            }
+          }
+        }
+      },
+      "3ca74af84e2842939aeb401f12eddd55": {
+        "id": "3ca74af84e2842939aeb401f12eddd55",
+        "title": "Berichterstellung zur Netzwerküberwachung",
+        "origin": {
+          "url": "https://www.whatsupgold.com/de/netzwerk-monitoring-software/reporting"
+        },
+        "metadata": {
+          "language": "de"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "3ca74af84e2842939aeb401f12eddd55/t/body/5923-6222": {
+                "score": 0.1289,
+                "score_type": "RERANKER",
+                "text": "Enterprise Plus $ 3,469 Ideal für alle großen Unternehmen, die eine leistungsstarke und anpassungsfähige Überwachungslösung mit erweiterten Funktionen benötigen. All-in-One-Überwachung Ihrer gesamten Infrastruktur.Testen Sie WhatsUp Gold kostenfreiZur kostenfreien Testversion Demo anschauen"
+              }
+            }
+          }
+        }
+      },
+      "843950ba3c484ae09c1e474e0b0723fc": {
+        "id": "843950ba3c484ae09c1e474e0b0723fc",
+        "title": "So sorgt WhatsUp Gold für einen reibungslosen Netzwerkbetrieb in der Hattiesburg Clinic",
+        "origin": {
+          "url": "https://www.whatsupgold.com/de/ressourcen/kundenreferenz/wie-whatsup-gold-das-netzwerk-der-hattiesburg-clinic-reibungslos-am-laufen-haelt"
+        },
+        "metadata": {
+          "language": "de"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "843950ba3c484ae09c1e474e0b0723fc/t/body/4072-4466": {
+                "score": 0.0205,
+                "score_type": "RERANKER",
+                "text": "Dank WhatsUp Gold von Progress ist das Netzwerk, das mehr als 300 Ärzte und Anbieter sowie rund 2.000 Mitarbeiter versorgt, für die Klinik kein Grund zur Sorge. Weitere Informationen finden Sie unter https://www.hattiesburgclinic.com/ Mehr erfahren Überwachen Sie alles in Ihrem Netzwerk Starten Sie Ihre Kostenfreie Testversion von WhatsUp Gold Kostenfreie Testversion Demo starten"
+              }
+            }
+          }
+        }
+      },
+      "99c09021e821467c8899107c7d3974cf": {
+        "id": "99c09021e821467c8899107c7d3974cf",
+        "title": "SNMP-Überwachungstools und -Software",
+        "origin": {
+          "url": "https://www.whatsupgold.com/de/snmp"
+        },
+        "metadata": {
+          "language": "de"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "99c09021e821467c8899107c7d3974cf/t/body/1427-1636": {
+                "score": 0.0046,
+                "score_type": "RERANKER",
+                "text": "Skalierbar und flexibelVom kleinen Unternehmen bis zum Großkonzern: WhatsUp Gold wächst mit Ihren Anforderungen. Überwachen Sie problemlos Tausende Geräte in Cloud-, Hybrid- oder On-Premises-Umgebungen."
+              }
+            }
+          }
+        }
+      },
+      "e4d0d2c7878c45378e5b38f7bf01372e": {
+        "id": "e4d0d2c7878c45378e5b38f7bf01372e",
+        "title": "SNMP Management Software - SNMP Monitor",
+        "origin": {
+          "url": "https://www.whatsupgold.com/de/snmp/snmp-management-software"
+        },
+        "metadata": {
+          "language": "de"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "e4d0d2c7878c45378e5b38f7bf01372e/t/body/3253-3501": {
+                "score": 0.0034,
+                "score_type": "RERANKER",
+                "text": "Mit WhatsUp Gold können Sie Geräte in Ihrem Netzwerk erkennen, die Überwachung dieser Geräte initiieren und Aktionen basierend auf Gerätestatusänderungen ausführen, damit Sie Netzwerkausfälle identifizieren können, bevor sie katastrophal werden."
+              }
+            }
+          }
+        }
+      },
+      "89001f203c2d4da78ef0a2be7077b2b7": {
+        "id": "89001f203c2d4da78ef0a2be7077b2b7",
+        "title": "Lösungen zur Überwachung von Gesundheitsnetzwerken",
+        "origin": {
+          "url": "https://www.whatsupgold.com/de/industries/gesundheitswesen"
+        },
+        "metadata": {
+          "language": "de"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "89001f203c2d4da78ef0a2be7077b2b7/t/body/6860-7104": {
+                "score": 0.003,
+                "score_type": "RERANKER",
+                "text": "Wie viel kostet WhatsUp Gold im Vergleich zu Alternativen? Kann WhatsUp Gold mehrere Krankenhausstandorte überwachen? Kostenfreie Testversion Füllen Sie das Formular aus, um Ihre kostenlose Testversion von WhatsUp Gold herunterzuladen."
+              }
+            }
+          }
+        }
+      }
+    },
+    "citations": {
+      "422dbc7227ad40e4b574ae6ca9be2555/t/body/2107-3480": [[0, 230]],
+      "64d07ca8ea0441b1a5d5f577e0e306c9/t/body/12674-13013": [[0, 230]],
+      "3ca74af84e2842939aeb401f12eddd55/t/body/5584-5923": [[0, 230]],
+      "3ca74af84e2842939aeb401f12eddd55/t/body/5923-6222": [[0, 230]]
+    }
+  },
+  "wug-de-price-all": {
+    "where": "whatsupgold.com (marketer r4), asked of every page (the retry)",
+    "asked": "2026-10-30",
+    "question": "Was kostet WhatsUp Gold für 300 Geräte?",
+    "answer": "Für 300 Geräte nennen wir keinen festen Preis. Unsere Preise beginnen bei 1.229 US-Dollar pro Jahr für 50 Geräte (Business), 2.049 US-Dollar (Enterprise) und 3.469 US-Dollar (Enterprise Plus). Bitte kontaktieren Sie uns für ein Angebot für 300 Geräte.",
+    "brand": "WhatsUp Gold",
+    "language": "de",
+    "resources": {
+      "c74de63bc30941f9b0614aed36348d9b": {
+        "id": "c74de63bc30941f9b0614aed36348d9b",
+        "title": "Herramientas de monitoreo de ancho de banda",
+        "origin": {
+          "url": "https://www.whatsupgold.com/es/monitoreo-del-ancho-de-banda"
+        },
+        "metadata": {
+          "language": "es"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "c74de63bc30941f9b0614aed36348d9b/t/body/5241-5494": {
+                "score": 0.0416,
+                "score_type": "RERANKER",
+                "text": "Enterprise Plus $ 3,469 Para grandes organizaciones que necesitan una solución de monitorización potente y adaptable con funciones avanzadas. Descarga una prueba Gratuita Complete el formulario a continuación y comience a probar WhatsUp Gold."
+              }
+            }
+          }
+        }
+      },
+      "e5f6e955590e48f5b0b7f60c0615441d": {
+        "id": "e5f6e955590e48f5b0b7f60c0615441d",
+        "title": "The Real Cost of a Network Monitor: SolarWinds vs. WhatsUp Gold",
+        "origin": {
+          "url": "https://www.whatsupgold.com/blog/real-cost-of-network-monitor"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "e5f6e955590e48f5b0b7f60c0615441d/t/body/5673-6214": {
+                "score": 0.9816,
+                "score_type": "RERANKER",
+                "text": "It's a pretty clear math equation. If your network has 245 devices, you would need 245 points. This would land you within our Total Plus 300 license for $7,995 with a $2,000 annual service fee. WhatsUp Gold's all-in-one licensing model means that you can bundle network monitoring with network traffic analysis, virtual monitoring, application performance monitoring, and storage monitoring. The Tota"
+              }
+            }
+          }
+        }
+      },
+      "422dbc7227ad40e4b574ae6ca9be2555": {
+        "id": "422dbc7227ad40e4b574ae6ca9be2555",
+        "title": "Preise und Lizenzierung WhatsUp Gold",
+        "origin": {
+          "url": "https://www.whatsupgold.com/de/preise"
+        },
+        "metadata": {
+          "language": "de"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "422dbc7227ad40e4b574ae6ca9be2555/t/body/2107-3480": {
+                "score": 0.7394,
+                "score_type": "RERANKER",
+                "text": "| Wichtigste Funktionen | Business | Enterprise | Enterprise PlusAm beliebtesten | | Preis ab$ 1,229 für 50 Geräte pro JahrAngebot anfragen | Preis ab$ 2,049 für 50 Geräte pro JahrAngebot anfragen | Preis ab$ 3,469 für 50 Geräte pro JahrAngebot anfragen | | Wichtigste Funktionen | Business | Enterprise | Enterprise Plus | | Aspekte/Kanäle pro Gerät | Unbegrenzt | Unbegrenzt | Unbegrenzt | | Maxima"
+              }
+            }
+          },
+          "/a/title": {
+            "paragraphs": {
+              "422dbc7227ad40e4b574ae6ca9be2555/a/title/0-36": {
+                "score": 0.015,
+                "score_type": "RERANKER",
+                "text": "Preise und Lizenzierung WhatsUp Gold"
+              }
+            }
+          }
+        }
+      },
+      "843950ba3c484ae09c1e474e0b0723fc": {
+        "id": "843950ba3c484ae09c1e474e0b0723fc",
+        "title": "So sorgt WhatsUp Gold für einen reibungslosen Netzwerkbetrieb in der Hattiesburg Clinic",
+        "origin": {
+          "url": "https://www.whatsupgold.com/de/ressourcen/kundenreferenz/wie-whatsup-gold-das-netzwerk-der-hattiesburg-clinic-reibungslos-am-laufen-haelt"
+        },
+        "metadata": {
+          "language": "de"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "843950ba3c484ae09c1e474e0b0723fc/t/body/4072-4466": {
+                "score": 0.0205,
+                "score_type": "RERANKER",
+                "text": "Dank WhatsUp Gold von Progress ist das Netzwerk, das mehr als 300 Ärzte und Anbieter sowie rund 2.000 Mitarbeiter versorgt, für die Klinik kein Grund zur Sorge. Weitere Informationen finden Sie unter https://www.hattiesburgclinic.com/ Mehr erfahren Überwachen Sie alles in Ihrem Netzwerk Starten Sie Ihre Kostenfreie Testversion von WhatsUp Gold Kostenfreie Testversion Demo starten"
+              }
+            }
+          }
+        }
+      },
+      "39d407305c0947e6904fa7efa6d01473": {
+        "id": "39d407305c0947e6904fa7efa6d01473",
+        "title": "Editions and Pricing - Compare Plans",
+        "origin": {
+          "url": "https://www.whatsupgold.com/pricing"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "39d407305c0947e6904fa7efa6d01473/t/body/1522-2888": {
+                "score": 0.6239,
+                "score_type": "RERANKER",
+                "text": "Enterprise Scale Includes: Customise the number of Whatup Gold installs based on your business needs NOTE: Prices do not include taxes, which vary by country. | Key Features | Business | Enterprise | Enterprise PlusMost Popular | | starting from$ 1,229 for 50 devices, per yearContact Sales | starting from$ 2,049 for 50 devices, per yearContact Sales | starting from$ 3,469 for 50 devices, per yearC"
+              }
+            }
+          }
+        }
+      },
+      "37f82f175b564c8abe3fcc3a3b5b5e47": {
+        "id": "37f82f175b564c8abe3fcc3a3b5b5e47",
+        "title": "A Global Life Sciences IT Team Finds Reliable Monitoring with Progress WhatsUp Gold",
+        "origin": {
+          "url": "https://www.whatsupgold.com/resources/case-studies/a-global-life-sciences-it-team-finds-reliable-monitoring-with-progress-whatsup-gold"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "37f82f175b564c8abe3fcc3a3b5b5e47/t/body/518-758": {
+                "score": 0.0248,
+                "score_type": "RERANKER",
+                "text": "The Solution They reached out to Progress WhatsUp Gold to implement a streamlined, effective monitoring setup. With Progress WhatsUp Gold, they were able to: Monitor 300+ servers, lab instruments, URLs, and Windows services"
+              }
+            }
+          }
+        }
+      },
+      "89001f203c2d4da78ef0a2be7077b2b7": {
+        "id": "89001f203c2d4da78ef0a2be7077b2b7",
+        "title": "Lösungen zur Überwachung von Gesundheitsnetzwerken",
+        "origin": {
+          "url": "https://www.whatsupgold.com/de/industries/gesundheitswesen"
+        },
+        "metadata": {
+          "language": "de"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "89001f203c2d4da78ef0a2be7077b2b7/t/body/6860-7104": {
+                "score": 0.0029,
+                "score_type": "RERANKER",
+                "text": "Wie viel kostet WhatsUp Gold im Vergleich zu Alternativen? Kann WhatsUp Gold mehrere Krankenhausstandorte überwachen? Kostenfreie Testversion Füllen Sie das Formular aus, um Ihre kostenlose Testversion von WhatsUp Gold herunterzuladen."
+              }
+            }
+          }
+        }
+      },
+      "f8c62dabb1504b9aacbeb7f421a742c6": {
+        "id": "f8c62dabb1504b9aacbeb7f421a742c6",
+        "title": "Why Desca Chose WhatsUp Gold",
+        "origin": {
+          "url": "https://www.whatsupgold.com/resources/case-studies/why-desca-chose-whatsup-gold"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "f8c62dabb1504b9aacbeb7f421a742c6/t/body/2377-2609": {
+                "score": 0.2698,
+                "score_type": "RERANKER",
+                "text": "Desca licenses and solutions: WhatsUp Gold licenses for 2500 devices Remote licenses: (six separate licenses) for about 300 devices Flow Monitor VoIP Monitor Log Management for correlating events"
+              }
+            }
+          }
+        }
+      },
+      "35e2340a8b6f48bc939419ff48647008": {
+        "id": "35e2340a8b6f48bc939419ff48647008",
+        "title": "Top Medical School Heals Network with WhatsUp Gold",
+        "origin": {
+          "url": "https://www.whatsupgold.com/resources/case-studies/top-medical-school-heals-network-with-network-monitoring-tool"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "35e2340a8b6f48bc939419ff48647008/t/body/3420-3834": {
+                "score": 0.0988,
+                "score_type": "RERANKER",
+                "text": "With support from Grant McGregor, Hoensch installed WhatsUp Gold with 300 devices. The staff began monitoring key servers and storage; then progressed slowly to key network devices, firewalls, switches and more. They then moved to monitor wireless AP and almost all network switches, and even environmental sensors in server rooms, ready to send an alert in the event of a smoke, heat, flood or secur"
+              }
+            }
+          }
+        }
+      }
+    },
+    "citations": {}
+  },
+  "cr-coloring": {
+    "where": "crayola.com (UX r4), a starter",
+    "asked": "2026-10-30",
+    "question": "Where can I find free coloring pages?",
+    "answer": "You can find free, printable coloring pages on our Free Coloring Pages page. They’re designed to inspire imagination and creativity.",
+    "brand": "Crayola",
+    "language": "en",
+    "resources": {
+      "889010c979cb47ff91e503b947de1e00": {
+        "id": "889010c979cb47ff91e503b947de1e00",
+        "title": "Crayola Aliens & Monster Glow in the Dark Coloring Set",
+        "origin": {
+          "url": "https://www.crayola.com/products/art-kits-and-easels/crayola-aliens-monster-glow-in-the-dark-coloring-set-747492"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "889010c979cb47ff91e503b947de1e00/t/body/1833-2055": {
+                "score": 0.8746,
+                "score_type": "RERANKER",
+                "text": "Free Coloring Pages Unlock creativity with free, printable coloring pages designed to inspire imagination. View Pages Creativity Week Join the free celebration for schools, libraries, and homes. Learn More"
+              }
+            }
+          }
+        }
+      },
+      "82eddd7c16a74f5faab118f34f783b3a": {
+        "id": "82eddd7c16a74f5faab118f34f783b3a",
+        "title": "Story Creator Instructions",
+        "origin": {
+          "url": "https://www.crayola.com/feature/story-creator/story-creator-instructions"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "82eddd7c16a74f5faab118f34f783b3a/t/body/2317-2424": {
+                "score": 0.4037,
+                "score_type": "RERANKER",
+                "text": "Free Coloring Pages Crayons Coloring Books and Paper Markers Colored Pencils"
+              }
+            }
+          }
+        }
+      },
+      "56eef2276d6d4e6dae54fe9646727417": {
+        "id": "56eef2276d6d4e6dae54fe9646727417",
+        "title": "Art Supplies for Kids & Adults",
+        "origin": {
+          "url": "https://www.crayola.com/products/featured/art-supplies"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "56eef2276d6d4e6dae54fe9646727417/t/body/3286-3394": {
+                "score": 0.396,
+                "score_type": "RERANKER",
+                "text": "Free Coloring Pages Products Classpacks and Bulk Supplies Custom Coloring Pages"
+              }
+            }
+          }
+        }
+      },
+      "c6f8f75c782f415a83880e16a54eea6f": {
+        "id": "c6f8f75c782f415a83880e16a54eea6f",
+        "title": "Free Disney Kids Coloring Pages & Sheets for Kids",
+        "origin": {
+          "url": "https://www.crayola.com/disney"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/a/title": {
+            "paragraphs": {
+              "c6f8f75c782f415a83880e16a54eea6f/a/title/0-49": {
+                "score": 0.1582,
+                "score_type": "RERANKER",
+                "text": "Free Disney Kids Coloring Pages & Sheets for Kids"
+              }
+            }
+          }
+        }
+      },
+      "85840ebd87574246aa88b8e5a2c2251e": {
+        "id": "85840ebd87574246aa88b8e5a2c2251e",
+        "title": "Crayola Sustainability and Green Initiatives",
+        "origin": {
+          "url": "https://www.crayola.com/about-us/sustainability"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "85840ebd87574246aa88b8e5a2c2251e/t/body/1483-1744": {
+                "score": 0.131,
+                "score_type": "RERANKER",
+                "text": "Craft Milk Carton Bird Feeder View Craft Paper Bag Star Coloring Free Coloring Pages View Pages FAQs Find answers to common questions about creating with our art supplies — explore tips, techniques, and ideas to inspire your next masterpiece!"
+              }
+            }
+          }
+        }
+      },
+      "daac9ba56657449b99874f8950c31ea6": {
+        "id": "daac9ba56657449b99874f8950c31ea6",
+        "title": "Irresistible Bookmarks",
+        "origin": {
+          "url": "https://www.crayola.com/crafts/irresistible-bookmarks-craft"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "daac9ba56657449b99874f8950c31ea6/t/body/2179-2303": {
+                "score": 0.8253,
+                "score_type": "RERANKER",
+                "text": "Free Coloring Pages Unlock creativity with free, printable coloring pages designed to inspire imagination. View Pages"
+              }
+            }
+          }
+        }
+      },
+      "fb56badf7b3448cb92ad5df025d6e975": {
+        "id": "fb56badf7b3448cb92ad5df025d6e975",
+        "title": "With All My Heart Card",
+        "origin": {
+          "url": "https://www.crayola.com/crafts/with-all-my-heart-card-craft"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "fb56badf7b3448cb92ad5df025d6e975/t/body/1802-1926": {
+                "score": 0.8253,
+                "score_type": "RERANKER",
+                "text": "Free Coloring Pages Unlock creativity with free, printable coloring pages designed to inspire imagination. View Pages"
+              }
+            }
+          }
+        }
+      },
+      "96c99bc62f2148b990b6d298e9f0c2f0": {
+        "id": "96c99bc62f2148b990b6d298e9f0c2f0",
+        "title": "Color Wonder Mess Free Lilo & Stitch Coloring Pages & Markers",
+        "origin": {
+          "url": "https://www.crayola.com/products/color-wonder/color-wonder-mess-free-lilo-stitch-coloring-pages-markers-757196"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/a/title": {
+            "paragraphs": {
+              "96c99bc62f2148b990b6d298e9f0c2f0/a/title/0-61": {
+                "score": 0.1722,
+                "score_type": "RERANKER",
+                "text": "Color Wonder Mess Free Lilo & Stitch Coloring Pages & Markers"
+              }
+            }
+          }
+        }
+      },
+      "be5e074ec7904238944524f3ed8073b0": {
+        "id": "be5e074ec7904238944524f3ed8073b0",
+        "title": "Free Printable Coloring Pages, Sheets & Activities",
+        "origin": {
+          "url": "https://www.crayola.com/free-coloring-pages"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/a/title": {
+            "paragraphs": {
+              "be5e074ec7904238944524f3ed8073b0/a/title/0-50": {
+                "score": 0.6116,
+                "score_type": "RERANKER",
+                "text": "Free Printable Coloring Pages, Sheets & Activities"
+              }
+            }
+          }
+        }
+      },
+      "36318c2681454c00a1b632a43baff028": {
+        "id": "36318c2681454c00a1b632a43baff028",
+        "title": "Color Wonder Mess Free Coloring and Creativity",
+        "origin": {
+          "url": "https://www.crayola.com/feature/color-wonder"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "36318c2681454c00a1b632a43baff028/t/body/1793-2389": {
+                "score": 0.1341,
+                "score_type": "RERANKER",
+                "text": "Shop All Characters Ms. Rachel Bluey Disney Frozen Barbie PAW Patrol Peppa Pig Disney Princess Spidey and His Amazing Friends Toy Story Lilo & Stitch CoComelon Disney Jr. Mickey Award Winning Products Award Winning Products Slider Color Wonder Mess Free Ms. Rachel Magic Light & Sound Brush Set Color Wonder Mess Free Gabby's Dollhouse Coloring Set Color Wonder Mess Free Activity Kit, Bluey Color Wo"
+              }
+            }
+          }
+        }
+      }
+    },
+    "citations": {
+      "fb56badf7b3448cb92ad5df025d6e975/t/body/1802-1926": [[0, 132]],
+      "daac9ba56657449b99874f8950c31ea6/t/body/2179-2303": [[0, 132]],
+      "889010c979cb47ff91e503b947de1e00/t/body/1833-2055": [[0, 132]],
+      "be5e074ec7904238944524f3ed8073b0/a/title/0-50": [[0, 132]]
+    }
+  },
+  "cr-support": {
+    "where": "crayola.com (UX r4)",
+    "asked": "2026-10-30",
+    "question": "How do I contact Crayola customer support?",
+    "answer": "Call or text us at **1-800-CRAYOLA** on weekdays from **9 AM to 4 PM Eastern Time**. You can also email us through our contact us page.\n\nFor support outside the United States, Canada, Mexico, the UK, or Australia, please contact the Crayola representative for your country or region listed on our Global Support page.",
+    "brand": "Crayola",
+    "language": "en",
+    "resources": {
+      "d54df0b4cd444d8eaa91675bcde5c220": {
+        "id": "d54df0b4cd444d8eaa91675bcde5c220",
+        "title": "How are Crayola Colored Pencils made?",
+        "origin": {
+          "url": "https://www.crayola.com/faqs/how-are-crayola-colored-pencils-made-faq"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "d54df0b4cd444d8eaa91675bcde5c220/t/body/4284-4315": {
+                "score": 0.0003,
+                "score_type": "RERANKER",
+                "text": "We're here to help! Support"
+              }
+            }
+          }
+        }
+      },
+      "e817520e5a2a460d952229f86e93b233": {
+        "id": "e817520e5a2a460d952229f86e93b233",
+        "title": "Do you offer helpful tips for using the Scribble Scrubbie App?",
+        "origin": {
+          "url": "https://www.crayola.com/faqs/do-you-offer-helpful-tips-for-using-the-scribble-scrubbies-app-faq"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "e817520e5a2a460d952229f86e93b233/t/body/3733-3764": {
+                "score": 0.0003,
+                "score_type": "RERANKER",
+                "text": "We're here to help! Support"
+              }
+            }
+          }
+        }
+      },
+      "4183832cb1ff4425835c37b42d2f1a18": {
+        "id": "4183832cb1ff4425835c37b42d2f1a18",
+        "title": "Company",
+        "origin": {
+          "url": "https://www.crayola.com/company"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "4183832cb1ff4425835c37b42d2f1a18/t/body/2226-4687": {
+                "score": 0.556,
+                "score_type": "RERANKER",
+                "text": "Connect with us! Company Crayola Locations Corporate Headquarters 1100 Church Lane Easton, Pennsylvania 18044-0431 Phone: (610) 253-6271 View Map Manufacturing Facilities Easton, Pennsylvania Bethlehem, Pennsylvania Mexico City, Mexico International Sales and Marketing Facilities Australia Asia Canada Italy Mexico United Kingdom Crayola Leadership Pete Ruggiero President & Chief Executive Officer "
+              },
+              "4183832cb1ff4425835c37b42d2f1a18/t/body/1395-1624": {
+                "score": 0.1574,
+                "score_type": "RERANKER",
+                "text": "Support Your one stop shop for answers to commonly asked questions, contact information, and more. Find Support Press Center Find Crayola press materials, images, or video assets, and media inquiry contact information."
+              }
+            }
+          }
+        }
+      },
+      "f72d1a4a72f1414a80139b119c304451": {
+        "id": "f72d1a4a72f1414a80139b119c304451",
+        "title": "Where are Crayola-themed retail stores located?",
+        "origin": {
+          "url": "https://www.crayola.com/faqs/where-are-crayola-themed-retail-stores-located-faq"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "f72d1a4a72f1414a80139b119c304451/t/body/742-1033": {
+                "score": 0.9492,
+                "score_type": "RERANKER",
+                "text": "To explore our vibrant array of products, visit Crayola.com . If you have additional questions, we would love to hear from you! Feel free to call or text us at 1-800-CRAYOLA weekdays between 9 AM and 4 PM Eastern Time. If you would prefer to send us an email, visit our contact us page."
+              },
+              "f72d1a4a72f1414a80139b119c304451/t/body/1237-1268": {
+                "score": 0.0003,
+                "score_type": "RERANKER",
+                "text": "We're here to help! Support"
+              }
+            }
+          }
+        }
+      },
+      "2fe64e55714446da95fc206e3bf939b4": {
+        "id": "2fe64e55714446da95fc206e3bf939b4",
+        "title": "Crayola Partnership Details",
+        "origin": {
+          "url": "https://www.crayola.com/feature/partnerships/partner-details"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/a/title": {
+            "paragraphs": {
+              "2fe64e55714446da95fc206e3bf939b4/a/title/0-27": {
+                "score": 0.0008,
+                "score_type": "RERANKER",
+                "text": "Crayola Partnership Details"
+              }
+            }
+          }
+        }
+      },
+      "f0321682784d4fb5a7e5b1a1800ed940": {
+        "id": "f0321682784d4fb5a7e5b1a1800ed940",
+        "title": "Crayola Animated Glow Board",
+        "origin": {
+          "url": "https://www.crayola.com/faqs/crayola-animated-glow-board---how-it-works--setup--and-troubleshooting-tips-faq"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "f0321682784d4fb5a7e5b1a1800ed940/t/body/2729-2760": {
+                "score": 0.0003,
+                "score_type": "RERANKER",
+                "text": "We're here to help! Support"
+              }
+            }
+          }
+        }
+      },
+      "c1a3abd52fd6498e8237d91aa0a2e6eb": {
+        "id": "c1a3abd52fd6498e8237d91aa0a2e6eb",
+        "title": "How do I clean my Scribble Scrubbie Pets?",
+        "origin": {
+          "url": "https://www.crayola.com/faqs/how-do-i-clean-my-scribble-scrubbies-pets-faq"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "c1a3abd52fd6498e8237d91aa0a2e6eb/t/body/1073-1416": {
+                "score": 0.7771,
+                "score_type": "RERANKER",
+                "text": "Explore Our Collection: Check out our entire collection of Scribble Scrubbie Pet products at Crayola.com. If you have additional questions, we would love to hear from you! Feel free to call or text us at 1-800-CRAYOLA weekdays between 9 AM and 4 PM Eastern Time. If you would prefer to send us an email, visit our contact us page."
+              }
+            }
+          }
+        }
+      },
+      "2877eb50546945628b3103db546e234d": {
+        "id": "2877eb50546945628b3103db546e234d",
+        "title": "Global Support",
+        "origin": {
+          "url": "https://www.crayola.com/support/global-support"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "2877eb50546945628b3103db546e234d/t/body/0-3358": {
+                "score": 0.9851,
+                "score_type": "RERANKER",
+                "text": "Support contact details for Crayola Global Support If you are not from the United States, Canada, Mexico, the UK, or Australia, please see below for the location nearest to you to contact. | Country/Region | Company | Contact | Website | | Africa, India, Middle East, Russia, South Africa, Turkey & European countries (not listed separately) | Crayola | Holly Ann Lee - HLee@crayola.com | | Asia (if "
+              }
+            }
+          }
+        }
+      }
+    },
+    "citations": {
+      "c1a3abd52fd6498e8237d91aa0a2e6eb/t/body/1073-1416": [[0, 135]],
+      "f72d1a4a72f1414a80139b119c304451/t/body/742-1033": [[0, 135]],
+      "2877eb50546945628b3103db546e234d/t/body/0-3358": [[135, 317], [0, 135]],
+      "2fe64e55714446da95fc206e3bf939b4/a/title/0-27": [[135, 317]]
+    }
+  },
+  "ex-devcraft": {
+    "where": "telerik.com (Exec r4)",
+    "asked": "2026-10-30",
+    "question": "How much does Telerik DevCraft Complete cost?",
+    "answer": "Telerik DevCraft Complete costs **$1,299**.",
+    "brand": "Telerik",
+    "language": "en",
+    "resources": {
+      "bf3b883e56a54d64bfec3d711f73edc8": {
+        "id": "bf3b883e56a54d64bfec3d711f73edc8",
+        "title": "120+ ASP.NET AJAX Components",
+        "origin": {
+          "url": "https://www.telerik.com/products/aspnet-ajax.aspx"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "bf3b883e56a54d64bfec3d711f73edc8/t/body/5251-5475": {
+                "score": 0.9361,
+                "score_type": "RERANKER",
+                "text": "$ 1,149 DevCraft Complete Everything a team needs to build, test, report and deliver production-ready apps. $ 1,299 Embedded reporting for web and desktop with Mocking solution for rapid unit testing"
+              }
+            }
+          }
+        }
+      },
+      "f3fcc245ced449d1a7f165221f84fa8c": {
+        "id": "f3fcc245ced449d1a7f165221f84fa8c",
+        "title": "Kendo UI for Vue",
+        "origin": {
+          "url": "https://www.telerik.com/kendo-vue-ui"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "f3fcc245ced449d1a7f165221f84fa8c/t/body/6973-7197": {
+                "score": 0.9361,
+                "score_type": "RERANKER",
+                "text": "$ 1,149 DevCraft Complete Everything a team needs to build, test, report and deliver production-ready apps. $ 1,299 Embedded reporting for web and desktop with Mocking solution for rapid unit testing"
+              }
+            }
+          }
+        }
+      },
+      "75e3f40af1f94922ad6161c5cf340b15": {
+        "id": "75e3f40af1f94922ad6161c5cf340b15",
+        "title": "Kendo UI for jQuery",
+        "origin": {
+          "url": "https://www.telerik.com/kendo-jquery-ui"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "75e3f40af1f94922ad6161c5cf340b15/t/body/5802-6011": {
+                "score": 0.8993,
+                "score_type": "RERANKER",
+                "text": ".NET and JavaScript UI components for web, desktop and mobile Document processing libraries DevCraft Complete $ 1,299 Embedded reporting for web and desktop AI Report Generator"
+              }
+            }
+          }
+        }
+      },
+      "1c7aa0c6e59144a98be31b8525a059e7": {
+        "id": "1c7aa0c6e59144a98be31b8525a059e7",
+        "title": "Telerik UI for Blazor",
+        "origin": {
+          "url": "https://www.telerik.com/blazor-ui"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "1c7aa0c6e59144a98be31b8525a059e7/t/body/7022-7246": {
+                "score": 0.9361,
+                "score_type": "RERANKER",
+                "text": "$ 1,149 DevCraft Complete Everything a team needs to build, test, report and deliver production-ready apps. $ 1,299 Embedded reporting for web and desktop with Mocking solution for rapid unit testing"
+              }
+            }
+          }
+        }
+      },
+      "762bf4735ec941c5bb166d9ca81fbf59": {
+        "id": "762bf4735ec941c5bb166d9ca81fbf59",
+        "title": "ASP.NET Core Components",
+        "origin": {
+          "url": "https://www.telerik.com/aspnet-core-ui"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "762bf4735ec941c5bb166d9ca81fbf59/t/body/6327-6551": {
+                "score": 0.9361,
+                "score_type": "RERANKER",
+                "text": "$ 1,149 DevCraft Complete Everything a team needs to build, test, report and deliver production-ready apps. $ 1,299 Embedded reporting for web and desktop with Mocking solution for rapid unit testing"
+              }
+            }
+          }
+        }
+      },
+      "0677bf53f8214a5695b0820489e0a09f": {
+        "id": "0677bf53f8214a5695b0820489e0a09f",
+        "title": "Telerik DevCraft",
+        "origin": {
+          "url": "https://www.telerik.com/devcraft"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "0677bf53f8214a5695b0820489e0a09f/t/body/4035-4472": {
+                "score": 0.923,
+                "score_type": "RERANKER",
+                "text": "$ 1,299 Embedded reporting for web and desktop with Mocking solution for rapid unit testing DevCraft Ultimate Extended enterprise capabilities for advanced reporting and theming. $ 1,649 End-to-end report management solution See Detailed Comparison Awards Greatness—it's one thing to say you have it, but it means more when others recognize it. Telerik is proud to hold the following industry awards."
+              },
+              "0677bf53f8214a5695b0820489e0a09f/t/body/3754-4035": {
+                "score": 0.9143,
+                "score_type": "RERANKER",
+                "text": "Flexible Pricing Packages DevCraft UI Subscription Get started quickly with the essential UI and AI developer tools for modern apps. $ 1,149 per developer, per year DevCraft Complete Everything a team needs to build, test, report and deliver production-ready apps."
+              }
+            }
+          }
+        }
+      },
+      "89c4445c96874198a79b23cc4bde9ea2": {
+        "id": "89c4445c96874198a79b23cc4bde9ea2",
+        "title": "JavaScript UI Components - Build Better Apps Faster",
+        "origin": {
+          "url": "https://www.telerik.com/kendo-ui"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "89c4445c96874198a79b23cc4bde9ea2/t/body/7159-7383": {
+                "score": 0.9361,
+                "score_type": "RERANKER",
+                "text": "$ 1,149 DevCraft Complete Everything a team needs to build, test, report and deliver production-ready apps. $ 1,299 Embedded reporting for web and desktop with Mocking solution for rapid unit testing"
+              }
+            }
+          }
+        }
+      },
+      "eaba1ca7e10146e0870999b6f15f3f8f": {
+        "id": "eaba1ca7e10146e0870999b6f15f3f8f",
+        "title": "ASP.NET MVC UI Controls for Fast App Development",
+        "origin": {
+          "url": "https://www.telerik.com/aspnet-mvc"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "eaba1ca7e10146e0870999b6f15f3f8f/t/body/6174-6398": {
+                "score": 0.9361,
+                "score_type": "RERANKER",
+                "text": "$ 1,149 DevCraft Complete Everything a team needs to build, test, report and deliver production-ready apps. $ 1,299 Embedded reporting for web and desktop with Mocking solution for rapid unit testing"
+              }
+            }
+          }
+        }
+      },
+      "c57156a944e2446a980cdd36f026d97a": {
+        "id": "c57156a944e2446a980cdd36f026d97a",
+        "title": "Join Windows' Future With WinUI Controls",
+        "origin": {
+          "url": "https://www.telerik.com/winui"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "c57156a944e2446a980cdd36f026d97a/t/body/3823-4076": {
+                "score": 0.9225,
+                "score_type": "RERANKER",
+                "text": "DevCraft UI Subscription Get started quickly with the essential UI and AI developer tools for modern apps. $ 1,149 per developer, per year DevCraft Complete Everything a team needs to build, test, report and deliver production-ready apps."
+              }
+            }
+          }
+        }
+      }
+    },
+    "citations": {
+      "0677bf53f8214a5695b0820489e0a09f/t/body/4035-4472": [[0, 43]],
+      "1c7aa0c6e59144a98be31b8525a059e7/t/body/7022-7246": [[0, 43]],
+      "89c4445c96874198a79b23cc4bde9ea2/t/body/7159-7383": [[0, 43]],
+      "bf3b883e56a54d64bfec3d711f73edc8/t/body/5251-5475": [[0, 43]],
+      "eaba1ca7e10146e0870999b6f15f3f8f/t/body/6174-6398": [[0, 43]],
+      "762bf4735ec941c5bb166d9ca81fbf59/t/body/6327-6551": [[0, 43]],
+      "f3fcc245ced449d1a7f165221f84fa8c/t/body/6973-7197": [[0, 43]],
+      "75e3f40af1f94922ad6161c5cf340b15/t/body/5802-6011": [[0, 43]]
+    }
+  },
+  "se-support": {
+    "where": "telerik.com (SE r4)",
+    "asked": "2026-10-30",
+    "question": "How do I contact support?",
+    "answer": "Contact Support",
+    "brand": "Telerik",
+    "language": "en",
+    "resources": {
+      "095f59d9fb1e447d94aa8d0766e9c8dd": {
+        "id": "095f59d9fb1e447d94aa8d0766e9c8dd",
+        "title": "React Drawing Overview",
+        "origin": {
+          "url": "https://www.telerik.com/kendo-react-ui/components/drawing"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "095f59d9fb1e447d94aa8d0766e9c8dd/t/body/4291-4308": {
+                "score": 0.9946,
+                "score_type": "RERANKER",
+                "text": "Contact Support"
+              }
+            }
+          }
+        }
+      },
+      "e7cd6006d6de46d7a2b77ea5581614e5": {
+        "id": "e7cd6006d6de46d7a2b77ea5581614e5",
+        "title": "React Buttons Overview",
+        "origin": {
+          "url": "https://www.telerik.com/kendo-react-ui/components/buttons"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "e7cd6006d6de46d7a2b77ea5581614e5/t/body/4133-4150": {
+                "score": 0.9946,
+                "score_type": "RERANKER",
+                "text": "Contact Support"
+              }
+            }
+          }
+        }
+      },
+      "f9eaee34c6cf4caf9212c45c33318170": {
+        "id": "f9eaee34c6cf4caf9212c45c33318170",
+        "title": "React Inputs Overview",
+        "origin": {
+          "url": "https://www.telerik.com/kendo-react-ui/components/inputs"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "f9eaee34c6cf4caf9212c45c33318170/t/body/6826-6843": {
+                "score": 0.9946,
+                "score_type": "RERANKER",
+                "text": "Contact Support"
+              }
+            }
+          }
+        }
+      },
+      "3c583db51401412592814891bfcfcad8": {
+        "id": "3c583db51401412592814891bfcfcad8",
+        "title": "React Grid Overview",
+        "origin": {
+          "url": "https://www.telerik.com/kendo-react-ui/components/grid"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "3c583db51401412592814891bfcfcad8/t/body/8057-8074": {
+                "score": 0.9946,
+                "score_type": "RERANKER",
+                "text": "Contact Support"
+              }
+            }
+          }
+        }
+      },
+      "d0ce2e84c6474143b751392319f7d928": {
+        "id": "d0ce2e84c6474143b751392319f7d928",
+        "title": "React Diagram Overview",
+        "origin": {
+          "url": "https://www.telerik.com/kendo-react-ui/components/diagram"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "d0ce2e84c6474143b751392319f7d928/t/body/5171-5188": {
+                "score": 0.9946,
+                "score_type": "RERANKER",
+                "text": "Contact Support"
+              }
+            }
+          }
+        }
+      },
+      "efc708c35e984a5aaff1eab7b8f5994b": {
+        "id": "efc708c35e984a5aaff1eab7b8f5994b",
+        "title": "React File Saver Overview",
+        "origin": {
+          "url": "https://www.telerik.com/kendo-react-ui/components/filesaver"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "efc708c35e984a5aaff1eab7b8f5994b/t/body/2847-2864": {
+                "score": 0.9946,
+                "score_type": "RERANKER",
+                "text": "Contact Support"
+              }
+            }
+          }
+        }
+      },
+      "21db4ed1819b484f89cd777041cf852a": {
+        "id": "21db4ed1819b484f89cd777041cf852a",
+        "title": "Cheat Sheet",
+        "origin": {
+          "url": "https://www.telerik.com/documentation/style-guide/cheat-sheet"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "21db4ed1819b484f89cd777041cf852a/t/body/25007-25024": {
+                "score": 0.9946,
+                "score_type": "RERANKER",
+                "text": "Contact Support"
+              }
+            }
+          }
+        }
+      },
+      "95d37e32e18b4be091255b62b15bd45e": {
+        "id": "95d37e32e18b4be091255b62b15bd45e",
+        "title": "React Data Tools Overview",
+        "origin": {
+          "url": "https://www.telerik.com/kendo-react-ui/components/datatools"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "95d37e32e18b4be091255b62b15bd45e/t/body/6205-6222": {
+                "score": 0.9946,
+                "score_type": "RERANKER",
+                "text": "Contact Support"
+              }
+            }
+          }
+        }
+      },
+      "f0ef757260024d83a76160f41cc31dd4": {
+        "id": "f0ef757260024d83a76160f41cc31dd4",
+        "title": "React Layout Overview",
+        "origin": {
+          "url": "https://www.telerik.com/kendo-react-ui/components/layout"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "f0ef757260024d83a76160f41cc31dd4/t/body/7578-7595": {
+                "score": 0.9946,
+                "score_type": "RERANKER",
+                "text": "Contact Support"
+              }
+            }
+          }
+        }
+      },
+      "3e55828563c14f3bb89837fc8510dac1": {
+        "id": "3e55828563c14f3bb89837fc8510dac1",
+        "title": "React Date Math Overview",
+        "origin": {
+          "url": "https://www.telerik.com/kendo-react-ui/components/datemath"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "3e55828563c14f3bb89837fc8510dac1/t/body/3730-3747": {
+                "score": 0.9946,
+                "score_type": "RERANKER",
+                "text": "Contact Support"
+              }
+            }
+          }
+        }
+      }
+    },
+    "citations": {
+      "21db4ed1819b484f89cd777041cf852a/t/body/25007-25024": [[0, 15]],
+      "3c583db51401412592814891bfcfcad8/t/body/8057-8074": [[0, 15]],
+      "095f59d9fb1e447d94aa8d0766e9c8dd/t/body/4291-4308": [[0, 15]],
+      "f9eaee34c6cf4caf9212c45c33318170/t/body/6826-6843": [[0, 15]],
+      "f0ef757260024d83a76160f41cc31dd4/t/body/7578-7595": [[0, 15]],
+      "efc708c35e984a5aaff1eab7b8f5994b/t/body/2847-2864": [[0, 15]],
+      "95d37e32e18b4be091255b62b15bd45e/t/body/6205-6222": [[0, 15]],
+      "d0ce2e84c6474143b751392319f7d928/t/body/5171-5188": [[0, 15]],
+      "e7cd6006d6de46d7a2b77ea5581614e5/t/body/4133-4150": [[0, 15]],
+      "3e55828563c14f3bb89837fc8510dac1/t/body/3730-3747": [[0, 15]]
+    }
+  },
+  "demo-wordpress": {
+    "where": "the demo",
+    "asked": "2026-10-30",
+    "question": "Is Sitefinity better than WordPress?",
+    "answer": "Sitefinity and WordPress serve different needs. Our comparison focuses on how Sitefinity helps enterprises reduce complexity and scale governed content and AI experiences.\n\nSitefinity brings CMS, customer data, personalization and AI together in one platform. It supports marketer self-service, flexible development and scalable digital experiences across channels.",
+    "brand": "Sitefinity assistant",
+    "language": "en",
+    "resources": {
+      "29827eef877542d389727bba4bb940da": {
+        "id": "29827eef877542d389727bba4bb940da",
+        "title": "Compare Sitefinity to Top CMS Alternatives",
+        "origin": {
+          "url": "https://www.progress.com/sitefinity-cms/compare"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "29827eef877542d389727bba4bb940da/t/body/1450-1793": {
+                "score": 0.9887,
+                "score_type": "RERANKER",
+                "text": "Sitefinity vs WordPress Compare Sitefinity vs WordPress to see how a governed digital experience platform reduces complexity and scales enterprise content and AI experiences. Sitefinity vs Webflow Compare Sitefinity vs Webflow to evaluate governance, multi-site management, personalization and AI capabilities for enterprise websites."
+              },
+              "29827eef877542d389727bba4bb940da/t/body/1793-2488": {
+                "score": 0.5808,
+                "score_type": "RERANKER",
+                "text": "Sitefinity vs SharePoint Compare Sitefinity vs SharePoint for websites, portals and digital experiences. Discover why organizations choose Sitefinity as a SharePoint alternative. Why Sitefinity CMS Sitefinity CMS brings content management, customer data, personalization and AI together in one unified platform, so teams can deliver better digital experiences without the complexity of managing multi"
+              },
+              "29827eef877542d389727bba4bb940da/t/body/775-1107": {
+                "score": 0.1964,
+                "score_type": "RERANKER",
+                "text": "Sitefinity vs Kentico Compare Sitefinity vs Kentico to see which CMS better supports complex digital experiences, scalability, governance, AI strategy and long‑term growth. Sitefinity vs Sitecore Compare Sitecore vs Sitefinity to see how enterprises reduce cost, simplify upgrades and migrate from Sitecore with confidence."
+              }
+            }
+          },
+          "/a/title": {
+            "paragraphs": {
+              "29827eef877542d389727bba4bb940da/a/title/0-42": {
+                "score": 0.4837,
+                "score_type": "RERANKER",
+                "text": "Compare Sitefinity to Top CMS Alternatives"
+              }
+            }
+          }
+        }
+      },
+      "1575b939253648ad9c4c362bc2fc465e": {
+        "id": "1575b939253648ad9c4c362bc2fc465e",
+        "title": "Customer Journey Personalization Software",
+        "origin": {
+          "url": "https://www.progress.com/sitefinity-cms/customer-journey-personalization"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "1575b939253648ad9c4c362bc2fc465e/t/body/1025-1255": {
+                "score": 0.0096,
+                "score_type": "RERANKER",
+                "text": "Build Better Experiences with Sitefinity Effortlessly overcome the challenges of creating and delivering personalized web content and omnichannel experiences—reaching your customers wherever they are and whenever they engage."
+              }
+            }
+          }
+        }
+      },
+      "908f7c6a7c37489bac13d29b5a12fa08": {
+        "id": "908f7c6a7c37489bac13d29b5a12fa08",
+        "title": "Complete Set of CMS Tools for Content Creators and Developers",
+        "origin": {
+          "url": "https://www.progress.com/sitefinity-cms/platform"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "908f7c6a7c37489bac13d29b5a12fa08/t/body/6877-7169": {
+                "score": 0.0071,
+                "score_type": "RERANKER",
+                "text": "ASP.NET Core Support The latest ASP.NET Core technology to boost resource efficiency, developer productivity and quick delivery of custom functionality. Native Next.js Support Manage content and pages in Sitefinity CMS. Render with Next.js for better, faster, richer web experiences."
+              }
+            }
+          }
+        }
+      },
+      "6d7c8c415d4d41b8aea7dd0a2f4c6328": {
+        "id": "6d7c8c415d4d41b8aea7dd0a2f4c6328",
+        "title": "Headless Support in Sitefinity",
+        "origin": {
+          "url": "https://www.progress.com/sitefinity-cms/faq/headless-support-in-sitefinity"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "6d7c8c415d4d41b8aea7dd0a2f4c6328/t/body/17723-17979": {
+                "score": 0.414,
+                "score_type": "RERANKER",
+                "text": "Progress Sitefinity stands out as an enterprise hybrid headless CMS with a decoupled presentation. It can serve diverse headless scenarios—users can choose frontend technology while its backend retains all the value-adding enablers of a traditional CMS."
+              }
+            }
+          }
+        }
+      },
+      "7af2f699dce34e9e92d60334f2e9286d": {
+        "id": "7af2f699dce34e9e92d60334f2e9286d",
+        "title": "Request a Sitefinity CMS Trial",
+        "origin": {
+          "url": "https://www.progress.com/sitefinity-cms/try-now/trial"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/a/title": {
+            "paragraphs": {
+              "7af2f699dce34e9e92d60334f2e9286d/a/title/0-30": {
+                "score": 0.0082,
+                "score_type": "RERANKER",
+                "text": "Request a Sitefinity CMS Trial"
+              }
+            }
+          }
+        }
+      },
+      "801aaebef0454df3854474f422072e7b": {
+        "id": "801aaebef0454df3854474f422072e7b",
+        "title": "Sitefinity vs Umbraco",
+        "origin": {
+          "url": "https://www.progress.com/sitefinity-cms/compare/sitefinity-vs-umbraco"
+        },
+        "metadata": {
+          "language": "en"
+        },
+        "fields": {
+          "/t/body": {
+            "paragraphs": {
+              "801aaebef0454df3854474f422072e7b/t/body/0-316": {
+                "score": 0.1048,
+                "score_type": "RERANKER",
+                "text": "Sitefinity vs Umbraco Compare Sitefinity CMS vs Umbraco to understand differences in AI delivery, marketer autonomy, cloud operations and enterprise content management. Sitefinity CMS 15.4 Update is Here—Built for What's NextLearn More Sitefinity vs Umbraco: Which CMS Scales Better for Enterprise Teams?"
+              }
+            }
+          },
+          "/a/title": {
+            "paragraphs": {
+              "801aaebef0454df3854474f422072e7b/a/title/0-21": {
+                "score": 0.0372,
+                "score_type": "RERANKER",
+                "text": "Sitefinity vs Umbraco"
+              }
+            }
+          }
+        }
+      }
+    },
+    "citations": {
+      "29827eef877542d389727bba4bb940da/t/body/1793-2488": [[171, 365], [0, 171]],
+      "29827eef877542d389727bba4bb940da/t/body/1450-1793": [[171, 365], [0, 171]],
+      "7af2f699dce34e9e92d60334f2e9286d/a/title/0-30": [[171, 365], [0, 171]],
+      "908f7c6a7c37489bac13d29b5a12fa08/t/body/6220-6877": [[171, 365], [0, 171]],
+      "29827eef877542d389727bba4bb940da/t/body/0-775": [[171, 365]],
+      "801aaebef0454df3854474f422072e7b/t/body/316-888": [[171, 365], [0, 171]],
+      "801aaebef0454df3854474f422072e7b/t/body/0-316": [[171, 365]],
+      "6d7c8c415d4d41b8aea7dd0a2f4c6328/t/body/17979-18386": [[171, 365]],
+      "1575b939253648ad9c4c362bc2fc465e/t/body/480-1025": [[171, 365]],
+      "29827eef877542d389727bba4bb940da/t/body/775-1107": [[171, 365]],
+      "29827eef877542d389727bba4bb940da/a/title/0-42": [[0, 171]]
+    }
+  }
+}

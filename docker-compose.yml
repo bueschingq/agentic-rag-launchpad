@@ -49,8 +49,11 @@ services:
     env_file: .env
     environment:
       DATABASE_URL: *database-url
+      # Content sync renders pages through the sniffer.
+      SNIFFER_URL: http://sniffer:4100
     depends_on:
       migrate: { condition: service_completed_successfully }
+      sniffer: { condition: service_started }
     networks: [data, public]
 
   sniffer:

@@ -139,7 +139,13 @@ jobs:
           exit 1
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
+      - name: Widget in a browser (layouts, axe, strict CSP, languages)
+        run: npm run test:browser --workspace @launchpad/widget
+      - name: Content extraction in a browser (accordions, tabs, overlays, short text)
+        if: ${{ !cancelled() }}
+        run: npm run test:browser --workspace @launchpad/sniffer
       - name: Screenshot and check every page
+        if: ${{ !cancelled() }}
         run: node apps/console/scripts/preview.ts preview
         env:
           BASE_URL: http://127.0.0.1:3000

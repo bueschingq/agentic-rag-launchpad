@@ -26,6 +26,11 @@ export function databaseUrl(): string {
   return url;
 }
 
+// Where customer sites load the widget and tokens from: the embed snippet's origin.
+export function publicBaseUrl(): string {
+  return (process.env.PUBLIC_BASE_URL?.trim() || "http://localhost:3000").replace(/\/$/, "");
+}
+
 // ISO 4217 code for the contract rates and every cost shown. One partner, one currency.
 export function currency(): string {
   const code = process.env.LAUNCHPAD_CURRENCY?.trim().toUpperCase() || "USD";
@@ -56,7 +61,7 @@ export function env(): ConsoleEnv {
     pat,
     accountOverride: value("PAR_ACCOUNT"),
     zoneOverride: value("PAR_ZONE"),
-    publicBaseUrl: (value("PUBLIC_BASE_URL") ?? "http://localhost:3000").replace(/\/$/, ""),
+    publicBaseUrl: publicBaseUrl(),
     snifferUrl: value("SNIFFER_URL"),
     snifferToken: value("SNIFFER_TOKEN"),
     adminPassword: value("LAUNCHPAD_ADMIN_PASSWORD"),

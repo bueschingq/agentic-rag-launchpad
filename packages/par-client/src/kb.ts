@@ -1,12 +1,13 @@
 // Knowledge Box–scoped calls, authenticated with one of that KB's service-account keys or an
 // ephemeral token. Which role each call needs (all verified in M0 unless noted):
-//   writer   createResource, getResource
+//   writer   createResource, putTextResource, deleteResourceBySlug, getResource
 //   manager  saveSearchConfig, activityMetrics, askLog, remiScores (NUA keys get 403 on analytics)
 //   reader   ask, askStream, find, mintEphemeralToken; ephemeral tokens minted from it can ask/find, not write
 
 import type { Aggregation } from "./account.ts";
 import { type AskStreamItem, readAskStream } from "./ask-stream.ts";
 import type { Credential } from "./credentials.ts";
+import { ParError } from "./errors.ts";
 import { apiDateTime, type FetchLike, requestJson, send, zoneApi } from "./http.ts";
 
 export interface ResourceInput {
@@ -64,6 +65,8 @@ export interface AskLogEntry {
   total_duration?: number;
   status?: number;
   feedback_good?: boolean | null;
+  resources_count?: number;
+  client_type?: string;
   [key: string]: unknown;
 }
 
@@ -71,6 +74,16 @@ export interface RemiBucket {
   timestamp: string;
   metrics: { name: "answer_relevance" | "context_relevance" | "groundedness" | string; min: number; max: number; average: number }[];
 }
+
+export interface AskOptions {
+  signal?: AbortSignal;
+  // A question asked by partner staff (preview, validation, prompt tests), not a visitor. The
+  // question log records it with client_type "dashboard" (verified 2026-10-30), so usage,
+  // cost and reports can leave it out.
+  partnerTest?: boolean;
+}
+
+const clientHeader = (opts: AskOptions): Record<string, string> => (opts.partnerTest ? { "X-NDB-CLIENT": "dashboard" } : {});
 
 export class KbClient {
   readonly zone: string;
@@ -104,17 +117,91 @@ export class KbClient {
     });
   }
 
+  // A synced page: created under its slug, or, when the slug exists (409), its title, origin and
+  // text replaced, which reprocesses it. Returns the resource id when it was created.
+  // labels: the page's classifications (usermetadata.classifications), which /ask's
+  // filter_expression filters on ({ field: { prop: "label", labelset, label } }); always sent, so
+  // a page that loses a label loses it in the Knowledge Box too. metadata: extra.metadata, kept
+  // with the resource and never indexed as text. Should Agentic RAG refuse the labels or the
+  // metadata (400 or 422), the page is sent once more without them (labelled: false), so a
+  // sync never stops over its labels.
+  async putTextResource(input: {
+    slug: string;
+    title: string;
+    originUrl: string;
+    body: string;
+    format?: "PLAIN" | "MARKDOWN" | "HTML";
+    labels?: readonly { labelset: string; label: string }[];
+    metadata?: Record<string, unknown>;
+  }): Promise<{ uuid?: string; created: boolean; labelled: boolean }> {
+    const text = { body: input.body, format: input.format ?? "MARKDOWN" };
+    const labelled = {
+      usermetadata: { classifications: (input.labels ?? []).map((l) => ({ labelset: l.labelset, label: l.label })) },
+      ...(input.metadata && { extra: { metadata: input.metadata } }),
+    };
+    const put = async (more: Record<string, unknown>): Promise<{ uuid?: string; created: boolean }> => {
+      try {
+        const { uuid } = await requestJson<{ uuid: string }>(`${this.baseUrl}/resources`, {
+          ...this.#opts(),
+          body: { slug: input.slug, title: input.title, origin: { url: input.originUrl }, texts: { body: text }, ...more },
+        });
+        return { uuid, created: true };
+      } catch (err) {
+        if (!(err instanceof ParError && err.status === 409)) throw err;
+      }
+      const res = await send(`${this.baseUrl}/slug/${encodeURIComponent(input.slug)}`, {
+        ...this.#opts(),
+        method: "PATCH",
+        body: { title: input.title, origin: { url: input.originUrl }, texts: { body: text }, ...more },
+      });
+      await res.body?.cancel();
+      return { created: false };
+    };
+    try {
+      return { ...(await put(labelled)), labelled: true };
+    } catch (err) {
+      if (!(err instanceof ParError && (err.status === 400 || err.status === 422))) throw err;
+      return { ...(await put({})), labelled: false };
+    }
+  }
+
+  // A page that left the site. Gone already counts as done.
+  async deleteResourceBySlug(slug: string): Promise<void> {
+    try {
+      const res = await send(`${this.baseUrl}/slug/${encodeURIComponent(slug)}`, { ...this.#opts(), method: "DELETE" });
+      await res.body?.cancel();
+    } catch (err) {
+      if (!(err instanceof ParError && err.status === 404)) throw err;
+    }
+  }
+
+  // How much the KB holds, whatever put it there (sync, Sitefinity's connector, the dashboard).
+  counters(): Promise<{ resources: number; paragraphs: number; fields: number; sentences: number }> {
+    return requestJson(`${this.baseUrl}/counters`, this.#opts());
+  }
+
+  // Processing status lives in metadata.status: PENDING, PROCESSED or ERROR.
+  getResourceBySlug(slug: string): Promise<{ id: string; title?: string; metadata?: { status?: string } }> {
+    return requestJson(`${this.baseUrl}/slug/${encodeURIComponent(slug)}`, { ...this.#opts(), query: { show: ["basic"] } });
+  }
+
   getResource(rid: string, show: string[] = ["basic"]): Promise<{ id: string; title?: string; metadata?: { status?: string } }> {
     return requestJson(`${this.baseUrl}/resource/${rid}`, { ...this.#opts(), query: { show } });
   }
 
   // ---- configuration (manager) ----
 
+  // Creates the configuration, or replaces it: POST answers 409 once it exists, and PATCH
+  // then overwrites it (verified 2026-10-29).
   async saveSearchConfig(name: string, config: AskConfig): Promise<void> {
-    await send(`${this.baseUrl}/search_configurations/${encodeURIComponent(name)}`, {
-      ...this.#opts(),
-      body: { kind: "ask", config: { query: "", ...config } },
-    });
+    const url = `${this.baseUrl}/search_configurations/${encodeURIComponent(name)}`;
+    const body = { kind: "ask", config: { query: "", ...config } };
+    try {
+      await send(url, { ...this.#opts(), body });
+    } catch (err) {
+      if (!(err instanceof ParError && err.status === 409)) throw err;
+      await send(url, { ...this.#opts(), method: "PATCH", body });
+    }
   }
 
   listSearchConfigs(): Promise<Record<string, { kind: string; config: AskConfig }>> {
@@ -123,19 +210,24 @@ export class KbClient {
 
   // ---- answers (reader key or ephemeral token) ----
 
-  ask(body: AskBody, opts: { signal?: AbortSignal } = {}): Promise<AskResult> {
+  ask(body: AskBody, opts: AskOptions = {}): Promise<AskResult> {
     return requestJson<AskResult>(`${this.baseUrl}/ask`, {
       ...this.#opts(),
       body,
-      headers: { "X-Synchronous": "true" },
+      headers: { "X-Synchronous": "true", ...clientHeader(opts) },
       signal: opts.signal,
     });
   }
 
-  async *askStream(body: AskBody, opts: { signal?: AbortSignal } = {}): AsyncGenerator<AskStreamItem> {
-    const res = await send(`${this.baseUrl}/ask`, { ...this.#opts(), body, signal: opts.signal });
+  async *askStream(body: AskBody, opts: AskOptions = {}): AsyncGenerator<AskStreamItem> {
+    yield* readAskStream(await this.askRaw(body, opts));
+  }
+
+  // The NDJSON answer stream as bytes, for relaying unchanged (the console's widget preview).
+  async askRaw(body: AskBody, opts: AskOptions = {}): Promise<ReadableStream<Uint8Array>> {
+    const res = await send(`${this.baseUrl}/ask`, { ...this.#opts(), body, headers: clientHeader(opts), signal: opts.signal });
     if (!res.body) throw new Error("/ask returned no body to stream.");
-    yield* readAskStream(res.body);
+    return res.body;
   }
 
   // A browser token scoped like the key that mints it. Use the reader key. Sent as ?eph-token=.
@@ -158,8 +250,8 @@ export class KbClient {
   }
 
   // NDJSON, one entry per question, oldest first within a page. `yearMonth` is "YYYY-MM";
-  // page with `startingAfter` = the last id seen. Paging and the date filter follow the API
-  // reference but were not exercised in M0.
+  // page with `startingAfter` = the last id seen. The date filter must fall inside `yearMonth`
+  // (422 otherwise) and takes a zone-less timestamp: a trailing "Z" is a 500.
   async askLog(q: {
     yearMonth: string;
     since?: Date;
@@ -172,7 +264,7 @@ export class KbClient {
       body: {
         year_month: q.yearMonth,
         show: q.show ?? ["id", "date", "question", "nuclia_tokens", "model", "total_duration", "status", "feedback_good"],
-        filters: q.since ? { date: { ge: q.since.toISOString() } } : {},
+        filters: q.since ? { date: { ge: apiDateTime(q.since) } } : {},
         pagination: { limit: q.limit ?? 100, ...(q.startingAfter !== undefined && { starting_after: q.startingAfter }) },
       },
     });

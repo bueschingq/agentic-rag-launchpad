@@ -8,6 +8,7 @@
 
 import { lookup } from "node:dns/promises";
 import { isIP } from "node:net";
+import { gunzipSync } from "node:zlib";
 
 export class UnsafeUrlError extends Error {
   override name = "UnsafeUrlError";
@@ -81,6 +82,11 @@ const systemResolver: Resolver = async (host) => (await lookup(host, { all: true
 
 const PRIVATE_SUFFIX = /(^|\.)(localhost|local|internal|intranet|lan|home\.arpa|corp)$/i;
 
+// Development only: SNIFFER_ALLOW_LOOPBACK=1 lets the sniffer load test pages on this machine
+// (localhost, any port). Never set it where the sniffer could reach anything else private.
+const loopbackAllowed = () => process.env.SNIFFER_ALLOW_LOOPBACK === "1";
+const LOOPBACK = new Set(["localhost", "127.0.0.1", "::1"]);
+
 export async function assertPublicUrl(raw: string, resolve: Resolver = systemResolver): Promise<URL> {
   let url: URL;
   try {
@@ -88,6 +94,7 @@ export async function assertPublicUrl(raw: string, resolve: Resolver = systemRes
   } catch {
     throw new UnsafeUrlError("Not a valid URL.");
   }
+  if (loopbackAllowed() && LOOPBACK.has(url.hostname.replace(/^\[|\]$/g, "")) && /^https?:$/.test(url.protocol)) return url;
   if (url.protocol !== "https:" && url.protocol !== "http:") throw new UnsafeUrlError("Only http and https URLs can be scanned.");
   if (url.username || url.password) throw new UnsafeUrlError("URLs with credentials can't be scanned.");
   if (url.port && url.port !== "80" && url.port !== "443") throw new UnsafeUrlError("Only standard ports (80, 443) can be scanned.");
@@ -109,9 +116,23 @@ export interface FetchedText {
   url: string;
   status: number;
   text: string;
+  // The response's headers (lower-case names): what bot-protection detection reads.
+  headers: Record<string, string>;
+  // A 429 or 503's Retry-After, in milliseconds, when it gives one.
+  retryAfterMs?: number;
 }
 
-// fetch() with every hop re-checked, a size cap and a timeout.
+// Retry-After as milliseconds: seconds ("120") or an HTTP date. Undefined when it says neither. Pure.
+export function retryAfterMs(value: string | null | undefined, now = Date.now()): number | undefined {
+  const raw = value?.trim();
+  if (!raw) return undefined;
+  if (/^\d+$/.test(raw)) return Number(raw) * 1000;
+  const at = Date.parse(raw);
+  return Number.isNaN(at) ? undefined : Math.max(0, at - now);
+}
+
+// fetch() with every hop re-checked, a size cap and a timeout. A gzipped body (a .gz sitemap served
+// as a file, without Content-Encoding) is decompressed; fetch already undoes Content-Encoding.
 export async function safeFetchText(
   raw: string,
   opts: { maxBytes?: number; maxRedirects?: number; timeoutMs?: number; resolve?: Resolver; fetch?: typeof fetch } = {},
@@ -131,13 +152,36 @@ export async function safeFetchText(
       current = new URL(location, url).href;
       continue;
     }
-    return { url: url.href, status: res.status, text: await readCapped(res, maxBytes) };
+    const headers: Record<string, string> = {};
+    res.headers.forEach((value, name) => {
+      headers[name.toLowerCase()] = value;
+    });
+    const wait = res.status === 429 || res.status === 503 ? retryAfterMs(res.headers.get("retry-after")) : undefined;
+    return {
+      url: url.href,
+      status: res.status,
+      text: decodeBody(await readCapped(res, maxBytes), maxBytes * 10),
+      headers,
+      ...(wait !== undefined && { retryAfterMs: wait }),
+    };
   }
   throw new UnsafeUrlError("Too many redirects.");
 }
 
-async function readCapped(res: Response, maxBytes: number): Promise<string> {
-  if (!res.body) return "";
+// The body as text, gunzipped first when it's gzip (its first two bytes), up to maxOutput bytes.
+export function decodeBody(body: Buffer, maxOutput = 60_000_000): string {
+  if (body.length >= 2 && body[0] === 0x1f && body[1] === 0x8b) {
+    try {
+      return new TextDecoder().decode(gunzipSync(body, { maxOutputLength: maxOutput }));
+    } catch (err) {
+      throw new Error(`A gzipped body couldn't be read: ${err instanceof Error ? err.message : err}`);
+    }
+  }
+  return new TextDecoder().decode(body);
+}
+
+async function readCapped(res: Response, maxBytes: number): Promise<Buffer> {
+  if (!res.body) return Buffer.alloc(0);
   const reader = res.body.getReader();
   const chunks: Uint8Array[] = [];
   let size = 0;
@@ -151,7 +195,7 @@ async function readCapped(res: Response, maxBytes: number): Promise<string> {
     }
     chunks.push(value);
   }
-  return new TextDecoder().decode(Buffer.concat(chunks));
+  return Buffer.concat(chunks);
 }
 
 export const USER_AGENT = "LaunchpadSniffer/0.1 (+https://github.com/; theme and sitemap scan)";

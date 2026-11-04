@@ -75,6 +75,16 @@ describe("KbClient", () => {
     assert.equal(calls[0]!.headers["X-NUCLIA-SERVICEACCOUNT"], "Bearer reader");
   });
 
+  it("hands over the raw answer stream for relaying", async () => {
+    const ndjson = '{"item":{"type":"answer","text":"Open"}}\n{"item":{"type":"answer","text":" Friday."}}\n';
+    const { fetch, calls } = mockFetch(() => new Response(ndjson, { headers: { "Content-Type": "application/x-ndjson" } }));
+    const kb = new KbClient({ zone: ZONE, kbId: KB, credential: { kind: "key", token: "reader" }, fetch });
+    const stream = await kb.askRaw({ query: "Friday hours?", search_configuration: "launchpad-default" });
+    assert.equal(await new Response(stream).text(), ndjson);
+    assert.equal(calls[0]!.url, `https://${ZONE}.dp.progress.cloud/api/v1/kb/${KB}/ask`);
+    assert.equal(calls[0]!.headers["X-Synchronous"], undefined);
+  });
+
   it("mints an ephemeral token from the reader key", async () => {
     const { fetch, calls } = mockFetch(() => json({ token: "eph" }, 201));
     const kb = new KbClient({ zone: ZONE, kbId: KB, credential: { kind: "key", token: "reader" }, fetch });
@@ -102,6 +112,19 @@ describe("KbClient", () => {
     });
   });
 
+  it("replaces a search configuration that already exists", async () => {
+    const { fetch, calls } = mockFetch((call) =>
+      call.method === "POST" ? json({ detail: "Search configuration already exists" }, 409) : new Response(null, { status: 200 }),
+    );
+    const kb = new KbClient({ zone: ZONE, kbId: KB, credential: { kind: "key", token: "manager" }, fetch });
+    await kb.saveSearchConfig("launchpad-default", { prompt: { system: "Be brief." } });
+    assert.deepEqual(
+      calls.map((c) => c.method),
+      ["POST", "PATCH"],
+    );
+    assert.deepEqual(calls[1]!.body, { kind: "ask", config: { query: "", prompt: { system: "Be brief." } } });
+  });
+
   it("reads the NDJSON ask log", async () => {
     const ndjson = '{"id":1,"question":"a","nuclia_tokens":0.1881}\n{"id":2,"question":"b","nuclia_tokens":0.141162}\n';
     const { fetch, calls } = mockFetch(() => new Response(ndjson));
@@ -110,6 +133,13 @@ describe("KbClient", () => {
     assert.equal(rows.length, 2);
     assert.equal(rows.reduce((sum, r) => sum + (r.nuclia_tokens ?? 0), 0).toFixed(6), "0.329262");
     assert.equal((calls[0]!.body as { year_month: string }).year_month, "2026-10");
+  });
+
+  it("sends the ask log date filter without a zone suffix", async () => {
+    const { fetch, calls } = mockFetch(() => new Response(""));
+    const kb = new KbClient({ zone: ZONE, kbId: KB, credential: { kind: "key", token: "manager" }, fetch });
+    await kb.askLog({ yearMonth: "2026-10", since: new Date("2026-10-15T00:00:00Z") });
+    assert.deepEqual((calls[0]!.body as { filters: unknown }).filters, { date: { ge: "2026-10-15T00:00:00" } });
   });
 });
 
