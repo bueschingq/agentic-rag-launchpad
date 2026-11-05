@@ -7,7 +7,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { after, before, describe, it } from "node:test";
 import { type Browser, chromium } from "playwright";
-import { extractContent } from "../src/content.ts";
+import { EXTRACT_SCRIPT, type RawPage } from "../src/content.ts";
 import { operateToggles, withBillingViews, withToggleViews } from "../src/pages.ts";
 
 // Pages as the sites served them on 30 Oct 2026, their text replaced by a short stand-in.
@@ -54,7 +54,7 @@ describe("extractContent in a browser", () => {
   it("keeps accordion, tab, read-more and details content, and drops overlays and plain hidden elements", async () => {
     const page = await browser.newPage();
     await page.setContent(PAGE);
-    const raw = await page.evaluate(extractContent);
+    const raw = await page.evaluate<RawPage>(EXTRACT_SCRIPT);
     await page.close();
     assert.equal(raw.root, "main");
     for (const kept of [
@@ -77,7 +77,7 @@ describe("extractContent in a browser", () => {
     const read = async (html: string) => {
       const page = await browser.newPage();
       await page.setContent(html);
-      const raw = await page.evaluate(extractContent);
+      const raw = await page.evaluate<RawPage>(EXTRACT_SCRIPT);
       await page.close();
       return { published: raw.datePublished, modified: raw.dateModified, type: raw.articleType };
     };
@@ -132,10 +132,10 @@ describe("extractContent in a browser", () => {
     // Tabs the extraction doesn't recognise (a custom class, display:none) hide most of the text.
     await page.setContent(`<!doctype html><html><body><main><h1>Plans</h1><p>Compare our plans.</p>
       <div class="custom-tab" style="display:none">${answers}</div></main></body></html>`);
-    const hidden = await page.evaluate(extractContent);
+    const hidden = await page.evaluate<RawPage>(EXTRACT_SCRIPT);
     assert.ok(hidden.textChars < hidden.rootChars / 2, `${hidden.textChars} of ${hidden.rootChars}`);
     await page.setContent(`<!doctype html><html><body><main><h1>Blog Listing</h1><ul>${listing}</ul></main></body></html>`);
-    const overview = await page.evaluate(extractContent);
+    const overview = await page.evaluate<RawPage>(EXTRACT_SCRIPT);
     await page.close();
     assert.ok(overview.linkShare > 0.5, String(overview.linkShare));
   });
@@ -166,7 +166,7 @@ describe("pricing pages (extractor 3)", () => {
 
   it("keeps a plan card's name held in a heading's button, and writes out data-yearly figures (transistor.fm)", async () => {
     const page = await load("https://transistor.fm/pricing/", pricing("transistor"));
-    const raw = await page.evaluate(extractContent);
+    const raw = await page.evaluate<RawPage>(EXTRACT_SCRIPT);
     await page.close();
     for (const kept of ["## Starter\n\n$19 /mo\n\n$190 per year", "## Professional", "## Enterprise 1\n\n$199 /mo\n\n$1990 per year"]) {
       assert.ok(raw.markdown.includes(kept), `missing: ${kept}\n---\n${raw.markdown}`);
@@ -178,7 +178,7 @@ describe("pricing pages (extractor 3)", () => {
 
   it("reads a card wrapped in a link as its own headings (alfredapp.com)", async () => {
     const page = await load("https://www.alfredapp.com/shop/", pricing("alfred"));
-    const raw = await page.evaluate(extractContent);
+    const raw = await page.evaluate<RawPage>(EXTRACT_SCRIPT);
     await page.close();
     assert.ok(raw.markdown.includes("## Single License\n\n### £34"), raw.markdown);
     assert.ok(raw.markdown.includes("## Mega Supporter\n\n### £59"), raw.markdown);
@@ -188,16 +188,16 @@ describe("pricing pages (extractor 3)", () => {
     const page = await load("https://www.buzzsprout.com/pricing", pricing("buzzsprout"), {
       "?period=monthly": pricing("buzzsprout-monthly"),
     });
-    const raw = await page.evaluate(extractContent);
+    const raw = await page.evaluate<RawPage>(EXTRACT_SCRIPT);
     assert.ok(raw.markdown.includes("### Audio + Video"), raw.markdown);
     assert.ok(raw.markdown.includes("$25 / month"));
     assert.equal(raw.billingShown, "annual");
     assert.deepEqual(raw.billingViews, [{ period: "monthly", url: "https://www.buzzsprout.com/pricing?period=monthly" }]);
     await page.goto(raw.billingViews![0]!.url);
-    const monthly = await page.evaluate(extractContent);
+    const monthly = await page.evaluate<RawPage>(EXTRACT_SCRIPT);
     await page.close();
     const text = withBillingViews(raw.markdown, raw.billingShown, [{ period: "monthly", markdown: monthly.markdown }]);
-    assert.ok(text.includes("$25 / month, billed annually"), text);
+    assert.ok(text.includes("$25 / month\n\nWhen billed annually"), text);
     assert.ok(text.includes("## Prices billed monthly\n\n### Audio\n\n$18 / month, billed monthly"), text);
     assert.ok(text.includes("### Multi-Podcast\n\n$36 / month, billed monthly"), text);
   });
@@ -212,7 +212,7 @@ describe("pricing pages (extractor 3)", () => {
       <section><span data-monthly="12" data-yearly="120">€12</span> <span>/mo</span></section>
       </main></body></html>`,
     );
-    const raw = await page.evaluate(extractContent);
+    const raw = await page.evaluate<RawPage>(EXTRACT_SCRIPT);
     await page.close();
     assert.ok(raw.markdown.includes("## Basic"), raw.markdown);
     assert.ok(raw.markdown.includes("€8 per month"), raw.markdown);
@@ -257,7 +257,7 @@ describe("operateToggles in a real browser", () => {
     const page = await browser.newPage();
     await page.route("https://toggle.test/**", (r) => r.fulfill({ contentType: "text/html", body: html }));
     await page.goto("https://toggle.test/plans");
-    const raw = await page.evaluate(extractContent);
+    const raw = await page.evaluate<RawPage>(EXTRACT_SCRIPT);
     const toggled = await operateToggles(page, raw);
     const url = page.url();
     await page.close();
