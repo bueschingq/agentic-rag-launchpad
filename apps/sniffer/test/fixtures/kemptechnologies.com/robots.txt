@@ -1,0 +1,8 @@
+User-agent: * 
+Disallow: /search
+Disallow: /Search
+
+Sitemap: https://www.chef.io/sitemap.xml
+
+#Video Sitemap
+Sitemap: https://www.chef.io/sitemap_video.xml

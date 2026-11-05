@@ -1,9 +1,11 @@
 // Small presentational pieces shared by the dashboard pages. Status always travels as an icon
 // plus words, never as color alone.
 
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { formatPercent, formatScore } from "@/lib/format.ts";
 import type { Alert, QualitySummary } from "@/lib/metrics.ts";
+import { Icon, type IconName } from "./icon.tsx";
 
 export type Tone = "good" | "neutral" | "warning" | "critical";
 
@@ -46,6 +48,16 @@ const STATUS: Record<string, [Tone, string]> = {
   archived: ["neutral", "Archived"],
 };
 
+// A table that scrolls sideways on a phone: keyboard users can focus it to scroll it.
+export function TableScroll({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    // biome-ignore lint/a11y/noNoninteractiveTabindex: a scrolling region must take focus to scroll by keyboard (WCAG 2.1.1).
+    <section className="table-scroll" tabIndex={0} aria-label={label}>
+      {children}
+    </section>
+  );
+}
+
 export function StatusBadge({ status }: { status: string }) {
   const [tone, label] = STATUS[status] ?? ["neutral", status];
   return <Badge tone={tone}>{label}</Badge>;
@@ -57,7 +69,13 @@ export function Alerts({ alerts }: { alerts: Alert[] }) {
     <ul className="alerts">
       {alerts.map((a) => (
         <li key={a.text}>
-          <Badge tone={a.tone}>{a.text}</Badge>
+          {a.href ? (
+            <Link className="alert-link" href={a.href}>
+              <Badge tone={a.tone}>{a.text}</Badge>
+            </Link>
+          ) : (
+            <Badge tone={a.tone}>{a.text}</Badge>
+          )}
         </li>
       ))}
     </ul>
@@ -78,6 +96,48 @@ export function StatTile({ label, value, detail, children }: StatTileProps) {
       <p className="tile-value">{value}</p>
       {children}
       {detail && <p className="tile-detail">{detail}</p>}
+    </div>
+  );
+}
+
+interface KpiCardProps {
+  icon: IconName;
+  label: string;
+  value: ReactNode;
+  detail?: ReactNode;
+  // A change against an earlier period, with what it compares ("+12% on the 30 days before").
+  trend?: { change: string; against: string };
+  // A sparkline or similar picture of the figure; hidden from assistive tech, the words carry it.
+  chart?: ReactNode;
+  link?: { href: string; label: string };
+}
+
+// The dashboard's headline figures: an icon, the number and what it is, a small chart, and the
+// change against an earlier period where the data has one.
+export function KpiCard({ icon, label, value, detail, trend, chart, link }: KpiCardProps) {
+  const up = trend?.change.startsWith("+");
+  const down = trend?.change.startsWith("−");
+  return (
+    <div className="kpi">
+      <div className="kpi-top">
+        <span className="kpi-icon">
+          <Icon name={icon} size={22} />
+        </span>
+        {chart}
+      </div>
+      <p className="kpi-value">{value}</p>
+      <p className="kpi-label">{label}</p>
+      {trend && (
+        <p className="kpi-trend">
+          <span aria-hidden="true">{up ? "▲" : down ? "▼" : "●"}</span> {trend.change} <span className="muted">{trend.against}</span>
+        </p>
+      )}
+      {detail && <p className="kpi-detail">{detail}</p>}
+      {link && (
+        <p className="kpi-detail">
+          <Link href={link.href}>{link.label}</Link>
+        </p>
+      )}
     </div>
   );
 }

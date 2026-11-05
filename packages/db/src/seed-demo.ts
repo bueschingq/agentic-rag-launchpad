@@ -4,9 +4,20 @@
 //
 //   DATABASE_URL=… node packages/db/src/seed-demo.ts
 
-import { count } from "drizzle-orm";
+import { count, eq } from "drizzle-orm";
 import { createDb } from "./client.ts";
-import { deployments, qualityDaily, settings, syncSources, tenants, usageDaily } from "./schema.ts";
+import {
+  contentPages,
+  deployments,
+  type ProvisioningStep,
+  qualityDaily,
+  settings,
+  syncSources,
+  tenants,
+  usageDaily,
+  type ValidationResult,
+} from "./schema.ts";
+import { visitorSettingsHash } from "./sign-off.ts";
 
 // Contract price per nuclia token, made up for the demo. Answers cost 0.14–0.23 tokens (M0).
 const RATE = 0.25;
@@ -25,6 +36,8 @@ interface DemoDeployment {
   // Answer relevance 60 days ago and yesterday; the change happens over the last two weeks.
   quality?: [number, number];
   sync?: { kind: "sitefinity_connector" | "sitemap"; status: string; daysAgo: number };
+  theme?: Record<string, Record<string, string>>;
+  widget?: Record<string, unknown>;
 }
 
 interface DemoTenant {
@@ -51,6 +64,26 @@ const DEMO: DemoTenant[] = [
         perDay: 25,
         quality: [4.4, 4.5],
         sync: { kind: "sitefinity_connector", status: "ok", daysAgo: 0 },
+        theme: { color: { primary: "#0e7490" }, shape: { radius: "16px", buttonRadius: "999px" }, finish: { style: "flat" } },
+        widget: {
+          nickname: "Harbor View Dental",
+          welcome: "Hi! Ask me about appointments, treatments, insurance or finding us.",
+          starters: ["Do you take new patients?", "Which insurance plans do you accept?", "What are your opening hours?"],
+          handoff: {
+            contacts: [
+              { kind: "link", url: "tel:+15550102030" },
+              { kind: "link", url: "https://www.harborviewdental.example/contact", label: "Contact the front desk" },
+            ],
+            show: ["no-answer", "header"],
+          },
+          ctas: [
+            {
+              label: "Book an appointment",
+              url: "https://www.harborviewdental.example/book",
+              keywords: ["appointment", "book", "booking", "visit"],
+            },
+          ],
+        },
       },
     ],
   },
@@ -151,6 +184,70 @@ const DEMO: DemoTenant[] = [
   },
 ];
 
+// Pages a sitemap sync found on a demo site: path, title, words.
+const PAGES: [string, string, number][] = [
+  ["/", "Home", 420],
+  ["/about", "About us", 610],
+  ["/contact", "Contact", 180],
+  ["/faq", "Frequently asked questions", 1540],
+  ["/services", "Services", 880],
+  ["/locations", "Locations and opening hours", 360],
+  ["/privacy", "Privacy notice", 2100],
+  ["/search", "Search", 12],
+];
+
+const ago = (days: number) => new Date(Date.now() - days * DAY_MS);
+
+// What a deployment's history looks like for its status, so no page contradicts itself: live
+// and paused ones were provisioned, validated, domain-locked and in use; the failed one stopped
+// at its keys; drafts have no history.
+function history(d: DemoDeployment, t: DemoTenant) {
+  const at = (days: number) => ago(days).toISOString();
+  const ok = (step: string, days: number, detail?: string): ProvisioningStep => ({
+    step,
+    status: "ok",
+    at: at(days),
+    ...(detail && { detail }),
+  });
+  if (d.status === "failed") {
+    return {
+      provisioningLog: [
+        ok("kb", 3, "Created"),
+        {
+          step: "keys",
+          status: "failed",
+          at: at(3),
+          detail: "Agentic RAG refused the key request (403): the account key needs KB management.",
+        },
+      ] as ProvisioningStep[],
+    };
+  }
+  if (d.status !== "live" && d.status !== "paused") return {};
+  const validation: ValidationResult = {
+    at: at(DAYS + 1),
+    passed: true,
+    questions: ["What are your opening hours?", "Where are you?", "How do I get in touch?", "What services do you offer?"].map(
+      (question, i) => ({
+        question,
+        answer: `Demo answer from ${t.name}'s site.`,
+        sources: [{ title: PAGES[i]![1], url: new URL(PAGES[i]![0], d.site).href }],
+        answered: true,
+      }),
+    ),
+  };
+  return {
+    provisioningLog: [ok("kb", DAYS + 1, "Created"), ok("keys", DAYS + 1), ok("prompt", DAYS + 1), ok("live", DAYS + 1)],
+    validation,
+    preflight: { at: at(DAYS + 1), origins: [{ origin: new URL(d.site).origin, ok: true, status: 200 }] },
+    readyAt: ago(DAYS + 1),
+    firstSeenAt: ago(DAYS),
+    firstSeenOrigin: new URL(d.site).origin,
+    systemPrompt: `You are the website assistant for ${t.name}. Answer only from the provided context, and suggest contacting ${t.name} when it doesn't say.`,
+    ...(d.theme && { theme: d.theme }),
+    ...(d.widget && { widgetSettings: d.widget }),
+  };
+}
+
 // Seeded, so every run draws the same shapes (mulberry32).
 function randomFrom(seed: number): () => number {
   let a = seed;
@@ -202,13 +299,54 @@ try {
             kbId: hasKb ? `demo-${d.slug}` : null,
             kbSlug: `northwind-${t.slug}-${d.slug}`,
             status: d.status,
+            // Live and paused ones were serving before sign-off existed, like real ones migrated.
+            published: d.status === "live" || d.status === "paused",
+            ...history(d, t),
           })
-          .returning({ id: deployments.id });
+          .returning();
         const deploymentId = deployment!.id;
+        // Signed off when they were onboarded, except one, to show a deployment serving without a
+        // review. No audit entry, so the fleet's onboarding clock leaves demo data out.
+        if (deployment!.published && d.slug !== "lcu-help") {
+          const at = new Date(deployment!.readyAt ?? now).toISOString();
+          await tx
+            .update(deployments)
+            .set({ signOff: { by: null, name: "Morgan Lee", at, verified: true, settingsHash: visitorSettingsHash(deployment!) } })
+            .where(eq(deployments.id, deploymentId));
+        }
 
         if (d.sync) {
           const syncedAt = new Date(now.getTime() - d.sync.daysAgo * DAY_MS - 3 * 3_600_000);
-          await tx.insert(syncSources).values({ deploymentId, kind: d.sync.kind, lastJobStatus: d.sync.status, lastSyncedAt: syncedAt });
+          await tx.insert(syncSources).values({
+            deploymentId,
+            kind: d.sync.kind,
+            lastJobStatus: d.sync.status,
+            lastSyncedAt: syncedAt,
+            ...(d.sync.kind === "sitemap" && {
+              pageBudget: 200,
+              pagesFound: PAGES.length,
+              discovery: "sitemap",
+              ...(d.sync.status === "failed" && {
+                lastError: "The site answered 503 while its sitemap was being read: it may have been down. Sync again to retry.",
+              }),
+            }),
+          });
+          if (d.sync.kind === "sitemap") {
+            await tx.insert(contentPages).values(
+              PAGES.map(([path, title, words], i) => ({
+                deploymentId,
+                url: new URL(path, d.site).href,
+                title,
+                slug: `page-demo-${d.slug}-${i}`,
+                words,
+                status: words < 40 ? ("skipped" as const) : ("indexed" as const),
+                detail: words < 40 ? `Too little text to answer from (${words} words).` : null,
+                text: words < 40 ? null : `# ${title}\n\nDemo content for ${title.toLowerCase()}.`,
+                sentAt: syncedAt,
+                indexedAt: words < 40 ? null : syncedAt,
+              })),
+            );
+          }
         }
         if (!d.perDay || !d.quality) continue;
 

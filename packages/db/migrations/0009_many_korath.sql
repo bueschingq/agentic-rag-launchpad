@@ -1,0 +1,1 @@
+ALTER TABLE "settings" ADD COLUMN "augment_new_deployments" boolean DEFAULT false NOT NULL;

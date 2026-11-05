@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { countSitemapPages, detectPlatform, parseSitemap, sitemapsFromRobots } from "../src/detect.ts";
+import { countSitemapPages, detectPlatform, parseSitemap, parseSitemapEntries, sitemapsFromRobots } from "../src/detect.ts";
 
 describe("detectPlatform", () => {
   it("reads the version when the generator tag is present", () => {
@@ -31,7 +31,11 @@ describe("sitemaps", () => {
       "https://www.crayola.com/sitemap/sitemap.xml",
       "https://www.crayola.com/news.xml",
     ]);
-    assert.deepEqual(sitemapsFromRobots("User-agent: *", "https://a.example"), ["https://a.example/sitemap.xml"]);
+    assert.deepEqual(sitemapsFromRobots("User-agent: *", "https://a.example"), [
+      "https://a.example/sitemap.xml",
+      "https://a.example/sitemap/sitemap.xml",
+      "https://a.example/sitemap_index.xml",
+    ]);
   });
 
   it("parses url sets and indexes, including CDATA and entities", () => {
@@ -50,5 +54,28 @@ describe("sitemaps", () => {
     const fetchText = async (url: string) => files[url] ?? "";
     assert.deepEqual(await countSitemapPages("https://a.example/index.xml", fetchText), { pages: 3, truncated: false });
     assert.deepEqual(await countSitemapPages("https://a.example/index.xml", fetchText, 1), { pages: 2, truncated: true });
+  });
+
+  it("reads each url's lastmod, priority and own hreflang", () => {
+    // Shaped like progress.com's and whatsupgold.com's Sitefinity sitemaps.
+    const xml = `<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml">
+      <url><loc>https://www.whatsupgold.com/jp/blog/general-it</loc><lastmod>2026-09-03T12:57+00:00</lastmod>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://www.whatsupgold.com/jp/blog/general-it" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.whatsupgold.com/blog/general-it" />
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.whatsupgold.com/tw/blog/general-it" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://www.whatsupgold.com/blog/general-it" /></url>
+      <url><loc>https://www.example.com/a</loc><priority>0.8</priority><lastmod>not a date</lastmod></url>
+      <url><loc>https://www.example.com/b/</loc><xhtml:link href="https://www.example.com/b" hreflang="EN" rel="alternate"/></url>
+    </urlset>`;
+    assert.deepEqual(parseSitemapEntries(xml).entries, [
+      { url: "https://www.whatsupgold.com/jp/blog/general-it", lastmod: "2026-09-03", lang: "ja", alternates: 3 },
+      { url: "https://www.example.com/a", priority: 0.8 },
+      { url: "https://www.example.com/b/", lang: "en", alternates: 1 },
+    ]);
+    assert.deepEqual(parseSitemapEntries("<sitemapindex><sitemap><loc>https://a.example/1.xml</loc></sitemap></sitemapindex>"), {
+      kind: "index",
+      sitemaps: ["https://a.example/1.xml"],
+      entries: [],
+    });
   });
 });

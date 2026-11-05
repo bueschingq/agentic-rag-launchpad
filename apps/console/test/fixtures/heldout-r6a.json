@@ -1,0 +1,312 @@
+{
+  "en": {
+    "nonAnswers": [
+      {
+        "question": "How much does the Pro plan cost for a team of 40?",
+        "answer": "Our pages are quiet on pricing for a team that size, I'm afraid."
+      },
+      {
+        "question": "What are the steps to reset my router to factory settings?",
+        "answer": "I've combed through our material and it draws a blank on factory resets."
+      },
+      { "question": "Are you hosting any workshops next month?", "answer": "A search of our site for upcoming workshops comes up empty." },
+      {
+        "question": "What's the direct email for your billing department?",
+        "answer": "That isn't something I can speak to from here; billing contact details aren't part of what I've been given."
+      },
+      { "question": "Is the X200 blender dishwasher-safe?", "answer": "The product pages leave that question hanging, unfortunately." },
+      {
+        "question": "How do I export my data to CSV?",
+        "answer": "Nothing in our help content walks through that, so I can't point you to the steps."
+      },
+      {
+        "question": "When is your next webinar?",
+        "answer": "Our event pages haven't caught up with any future webinars yet, so there's nothing on the calendar I can see."
+      },
+      {
+        "question": "What's the warranty on the standing desk?",
+        "answer": "Warranty terms for the desk aren't covered anywhere in the documents I work from."
+      },
+      {
+        "question": "Do you have a phone number for the Munich office?",
+        "answer": "The Munich office's phone line never comes up in anything I have access to."
+      },
+      { "question": "How much is shipping to Canada?", "answer": "Shipping costs to Canada fall outside what our pages cover." },
+      {
+        "question": "What's the battery life of the Pulse headphones?",
+        "answer": "I'm coming up short on that one; battery life for the Pulse isn't stated in our product material."
+      },
+      {
+        "question": "How do I set up two-factor authentication?",
+        "answer": "Our guides are silent on two-factor setup, so I can't walk you through it from here."
+      },
+      {
+        "question": "Is there a discount for nonprofits?",
+        "answer": "Nonprofit discounts aren't addressed in the material I'm drawing on."
+      },
+      {
+        "question": "Are you exhibiting at any trade fairs this year?",
+        "answer": "Trade fair appearances haven't made it onto our site, so I'm in the dark on that."
+      },
+      { "question": "Who do I contact for press inquiries?", "answer": "Press contacts are a gap in what I've got to go on." }
+    ],
+    "controls": [
+      { "question": "Do you ship to Switzerland?", "answer": "We don't ship outside the EU, so Switzerland isn't covered at the moment." },
+      { "question": "Is there a setup fee?", "answer": "There's no setup fee; you only pay the monthly subscription." },
+      {
+        "question": "What would it cost for 300 users?",
+        "answer": "The page doesn't give a price for 300 users, but plans start at €24 per user per month."
+      },
+      { "question": "Can I reach support via chat?", "answer": "Our support line is +49 30 1234567; we don't offer chat support." },
+      { "question": "What are your opening hours?", "answer": "We're open Monday to Friday, 9:00 to 17:00. We're closed on weekends." },
+      {
+        "question": "Do you offer a student discount?",
+        "answer": "I couldn't find anything about a student discount, but you can save 20% by choosing annual billing."
+      },
+      {
+        "question": "Are there any upcoming events?",
+        "answer": "Our next open house is on 14 November at our Berlin office, starting at 18:00."
+      },
+      {
+        "question": "How do I reset my password?",
+        "answer": "Click 'Forgot password' on the login page, enter your email, and follow the link we send you."
+      },
+      { "question": "Is the kettle BPA-free?", "answer": "Yes, the kettle is BPA-free and holds 1.7 litres." },
+      {
+        "question": "Is there a free trial?",
+        "answer": "There isn't a free trial, but every plan comes with a 14-day money-back guarantee."
+      }
+    ]
+  },
+  "de": {
+    "nonAnswers": [
+      {
+        "question": "Was kostet das Business-Paket für 50 Nutzer?",
+        "answer": "Zu Preisen in dieser Größenordnung schweigen sich unsere Seiten leider aus."
+      },
+      {
+        "question": "Wie richte ich die App auf meinem Tablet ein?",
+        "answer": "Eine Anleitung dafür findet sich in unseren Unterlagen nicht."
+      },
+      {
+        "question": "Gibt es im Dezember Veranstaltungen bei Ihnen?",
+        "answer": "Für Dezember gibt unser Veranstaltungskalender nichts her."
+      },
+      {
+        "question": "Wie lautet die E-Mail-Adresse des Kundenservice?",
+        "answer": "Da muss ich passen: Eine E-Mail-Adresse des Kundenservice taucht in meinem Material nirgends auf."
+      },
+      { "question": "Ist der Rucksack wasserdicht?", "answer": "Darüber geben die Produktseiten keine Auskunft." },
+      {
+        "question": "Wie lange dauert die Lieferung nach Österreich?",
+        "answer": "Lieferzeiten nach Österreich sind auf unserer Website nicht hinterlegt."
+      },
+      {
+        "question": "Wann ist der nächste Tag der offenen Tür?",
+        "answer": "Da tappe ich im Dunkeln, ein Termin dafür ist auf unseren Seiten nicht zu finden."
+      },
+      {
+        "question": "Welche Garantie gibt es auf die Waschmaschine?",
+        "answer": "Zur Garantie der Waschmaschine ist in den mir vorliegenden Dokumenten nichts festgehalten."
+      },
+      {
+        "question": "Wie ist die Telefonnummer der Filiale in Hamburg?",
+        "answer": "Die Rufnummer der Hamburger Filiale gehört nicht zu dem, was ich hier einsehen kann."
+      },
+      { "question": "Wie kündige ich mein Abo?", "answer": "Auf diese Frage liefern unsere Hilfeseiten leider keine Antwort." },
+      { "question": "Wie viel wiegt das E-Bike?", "answer": "Das Gewicht des E-Bikes geht aus unserem Material nicht hervor." },
+      { "question": "Gibt es einen Rabatt für Studierende?", "answer": "Beim Thema Studentenrabatt muss unsere Website leider passen." },
+      { "question": "Bieten Sie im Frühjahr Schulungen an?", "answer": "Hierzu bin ich mit meinen Quellen überfragt." },
+      {
+        "question": "An wen wende ich mich bei Presseanfragen?",
+        "answer": "Ein Ansprechpartner für Presseanfragen ist bei uns online nicht verzeichnet."
+      },
+      {
+        "question": "Wie exportiere ich meine Rechnungen?",
+        "answer": "Da läuft meine Suche ins Leere, denn unsere Anleitungen gehen auf den Rechnungsexport nicht ein."
+      }
+    ],
+    "controls": [
+      { "question": "Liefern Sie in die Schweiz?", "answer": "Wir liefern nicht außerhalb der EU, daher leider nicht in die Schweiz." },
+      { "question": "Gibt es eine Einrichtungsgebühr?", "answer": "Es fällt keine Einrichtungsgebühr an." },
+      {
+        "question": "Was kostet es für 300 Nutzer?",
+        "answer": "Für 300 Nutzer nennt die Seite keinen Preis, aber die Tarife beginnen bei 24 € pro Nutzer und Monat."
+      },
+      {
+        "question": "Gibt es einen Chat-Support?",
+        "answer": "Unsere Hotline erreichen Sie unter +49 30 1234567; einen Chat-Support bieten wir nicht an."
+      },
+      {
+        "question": "Wann haben Sie geöffnet?",
+        "answer": "Wir haben Montag bis Freitag von 8 bis 18 Uhr geöffnet, samstags bleibt das Geschäft geschlossen."
+      },
+      { "question": "Kann ich Ware zurückgeben?", "answer": "Ungeöffnete Ware können Sie innerhalb von 30 Tagen zurückgeben." },
+      { "question": "Gibt es bald eine Veranstaltung?", "answer": "Unser nächster Workshop findet am 21. November in Köln statt." },
+      {
+        "question": "Wie setze ich mein Passwort zurück?",
+        "answer": "Klicken Sie auf der Anmeldeseite auf „Passwort vergessen“, geben Sie Ihre E-Mail-Adresse ein und folgen Sie dem Link in der Mail."
+      },
+      {
+        "question": "Kann ich das kostenlos testen?",
+        "answer": "Eine kostenlose Testphase gibt es nicht, dafür können Sie jeden Tarif monatlich kündigen."
+      },
+      { "question": "Hat das Gerät einen Akku?", "answer": "Nein, das Gerät hat keinen Akku, es wird über ein 230-V-Netzkabel betrieben." }
+    ]
+  },
+  "fr": {
+    "nonAnswers": [
+      {
+        "question": "Combien coûte l'abonnement Entreprise pour 60 personnes ?",
+        "answer": "Nos pages restent muettes sur les tarifs pour une équipe de cette taille."
+      },
+      { "question": "Comment connecter l'imprimante au Wi-Fi ?", "answer": "Je fais chou blanc dans notre documentation sur ce point." },
+      { "question": "Y a-t-il des salons prévus cet hiver ?", "answer": "Rien ne ressort de notre site concernant des salons à venir." },
+      {
+        "question": "Quelle est l'adresse e-mail du service client ?",
+        "answer": "Ce n'est pas une question à laquelle je peux répondre à partir de ce que j'ai sous la main."
+      },
+      { "question": "La veste est-elle imperméable ?", "answer": "Les fiches produit font l'impasse sur ce détail, malheureusement." },
+      {
+        "question": "Quel est le délai de livraison en Belgique ?",
+        "answer": "Nos contenus ne s'étendent pas aux délais de livraison vers la Belgique."
+      },
+      {
+        "question": "Quand a lieu la prochaine journée portes ouvertes ?",
+        "answer": "Aucune date ne figure pour l'instant dans nos pages."
+      },
+      {
+        "question": "Quelle est la garantie de l'aspirateur ?",
+        "answer": "La question de la garantie n'est abordée nulle part dans les documents dont je dispose."
+      },
+      {
+        "question": "Quel est le numéro de l'agence de Lyon ?",
+        "answer": "Le numéro de l'agence lyonnaise m'échappe : il n'apparaît pas dans ce que je peux consulter."
+      },
+      { "question": "Comment résilier mon abonnement ?", "answer": "Nos guides passent sous silence la procédure de résiliation." },
+      {
+        "question": "Quelle est l'autonomie de la trottinette ?",
+        "answer": "Je sèche sur l'autonomie de la trottinette, notre site n'en dit mot."
+      },
+      {
+        "question": "Proposez-vous une réduction pour les étudiants ?",
+        "answer": "Le sujet des réductions étudiantes n'est pas traité dans nos supports."
+      },
+      {
+        "question": "Organisez-vous des formations au printemps ?",
+        "answer": "Je n'ai rien sous les yeux qui me permette de vous parler des formations du printemps."
+      },
+      { "question": "Qui contacter pour la presse ?", "answer": "Côté contact presse, nos pages ne m'apprennent rien." },
+      {
+        "question": "Comment exporter mes factures ?",
+        "answer": "Ma recherche dans l'aide en ligne ne donne rien sur l'export des factures."
+      }
+    ],
+    "controls": [
+      { "question": "Livrez-vous en Suisse ?", "answer": "Nous ne livrons pas hors de l'Union européenne, donc pas en Suisse." },
+      { "question": "Y a-t-il des frais d'installation ?", "answer": "Il n'y a aucun frais d'installation." },
+      {
+        "question": "Quel est le prix pour 300 utilisateurs ?",
+        "answer": "La page n'indique pas de prix pour 300 utilisateurs, mais les offres commencent à 24 € par utilisateur et par mois."
+      },
+      {
+        "question": "Avez-vous un support par chat ?",
+        "answer": "Notre assistance téléphonique est joignable au +33 1 23 45 67 89 ; nous ne proposons pas de chat."
+      },
+      {
+        "question": "Quels sont vos horaires ?",
+        "answer": "Nous sommes ouverts du mardi au samedi, de 10 h à 19 h ; le magasin est fermé le lundi."
+      },
+      { "question": "Puis-je retourner un article ?", "answer": "Vous disposez de 30 jours pour retourner un article non utilisé." },
+      { "question": "Avez-vous des événements prévus ?", "answer": "Notre prochain atelier aura lieu le 28 novembre à Bordeaux, à 14 h." },
+      {
+        "question": "Comment réinitialiser mon mot de passe ?",
+        "answer": "Cliquez sur « Mot de passe oublié » sur la page de connexion, saisissez votre adresse e-mail puis suivez le lien reçu."
+      },
+      {
+        "question": "Y a-t-il un essai gratuit ?",
+        "answer": "Il n'existe pas d'essai gratuit, mais vous pouvez résilier à tout moment sans frais."
+      },
+      {
+        "question": "Le bol passe-t-il au lave-vaisselle ?",
+        "answer": "Non, le bol n'est pas compatible lave-vaisselle : un lavage à la main est recommandé."
+      }
+    ]
+  },
+  "es": {
+    "nonAnswers": [
+      {
+        "question": "¿Cuánto cuesta el plan Empresa para 80 usuarios?",
+        "answer": "Nuestras páginas guardan silencio sobre precios para equipos de ese tamaño."
+      },
+      {
+        "question": "¿Cómo instalo el termostato?",
+        "answer": "He buscado en nuestro material y me quedo en blanco con la instalación del termostato."
+      },
+      { "question": "¿Hay algún evento el mes que viene?", "answer": "La búsqueda de próximos eventos en nuestro sitio no arroja nada." },
+      {
+        "question": "¿Cuál es el correo del departamento de facturación?",
+        "answer": "Eso no es algo sobre lo que pueda pronunciarme desde aquí."
+      },
+      { "question": "¿La mochila es impermeable?", "answer": "Las fichas de producto pasan por alto ese detalle." },
+      {
+        "question": "¿Cuánto tarda el envío a Portugal?",
+        "answer": "Los plazos de envío a Portugal quedan fuera de lo que cubren nuestras páginas."
+      },
+      { "question": "¿Cuándo es la próxima jornada de puertas abiertas?", "answer": "De momento no consta ninguna fecha en nuestra web." },
+      {
+        "question": "¿Qué garantía tiene la lavadora?",
+        "answer": "Lo relativo a la garantía de la lavadora no aparece recogido en los documentos que manejo."
+      },
+      {
+        "question": "¿Cuál es el teléfono de la oficina de Sevilla?",
+        "answer": "El teléfono de la oficina de Sevilla se me escapa: no figura en lo que tengo a mano."
+      },
+      { "question": "¿Cómo cancelo mi suscripción?", "answer": "Nuestras guías no entran en el tema de la cancelación." },
+      {
+        "question": "¿Qué autonomía tiene el patinete?",
+        "answer": "Ahí me pillas: nuestra web no dice ni pío sobre la autonomía del patinete."
+      },
+      {
+        "question": "¿Tienen descuento para estudiantes?",
+        "answer": "El tema de los descuentos para estudiantes no se trata en nuestros contenidos."
+      },
+      {
+        "question": "¿Ofrecen cursos en primavera?",
+        "answer": "No tengo delante nada que me permita hablarte de los cursos de primavera."
+      },
+      {
+        "question": "¿Con quién hablo para temas de prensa?",
+        "answer": "En cuanto a contacto de prensa, nuestras páginas no me sacan de dudas."
+      },
+      {
+        "question": "¿Cómo exporto mis facturas?",
+        "answer": "Rastreando la ayuda en línea me quedo con las manos vacías sobre la exportación de facturas."
+      }
+    ],
+    "controls": [
+      { "question": "¿Envían a Suiza?", "answer": "No enviamos fuera de la UE, así que a Suiza no llegamos." },
+      { "question": "¿Hay cuota de alta?", "answer": "No hay cuota de alta." },
+      {
+        "question": "¿Cuánto cuesta para 300 usuarios?",
+        "answer": "La página no da un precio para 300 usuarios, pero los planes empiezan en 24 € por usuario al mes."
+      },
+      {
+        "question": "¿Tienen soporte por chat?",
+        "answer": "Nuestra línea de soporte es el +34 91 123 45 67; no ofrecemos soporte por chat."
+      },
+      { "question": "¿Qué horario tienen?", "answer": "Abrimos de lunes a viernes de 9:00 a 20:00 y los sábados de 10:00 a 14:00." },
+      { "question": "¿Puedo devolver un producto?", "answer": "Puedes devolver artículos sin usar en un plazo de 30 días." },
+      { "question": "¿Tienen algún evento próximo?", "answer": "Nuestro próximo taller es el 12 de diciembre en Valencia, a las 17:00." },
+      {
+        "question": "¿Cómo restablezco mi contraseña?",
+        "answer": "Pulsa «He olvidado mi contraseña» en la página de acceso, introduce tu correo y sigue el enlace que te enviamos."
+      },
+      {
+        "question": "¿Hay descuento para estudiantes?",
+        "answer": "No encontré nada sobre descuentos para estudiantes, pero con la facturación anual ahorras un 20 %."
+      },
+      { "question": "¿La batería es extraíble?", "answer": "No, la batería no es extraíble; dura hasta 10 horas con una carga." }
+    ]
+  }
+}

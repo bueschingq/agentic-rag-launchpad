@@ -1,0 +1,7 @@
+{
+  "_note": "The 402 Agentic RAG sent during the budget block of 2026-11-02 (verification/T2/B-validate-allfail.txt), ids replaced.",
+  "status": 402,
+  "body": {
+    "detail": "Access denied, as account 00000000-1111-2222-3333-444444444444 has an active 'AccountBlockingState.BUDGET' blockage on this features: upload,processing,search,generative,training,public_upload,public_search"
+  }
+}

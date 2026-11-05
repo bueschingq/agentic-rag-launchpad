@@ -1,0 +1,473 @@
+# Toggl Pricing Plans for Teams & Individuals
+
+> Free, Starter, Premium, and Enterprise time tracking and capacity planning plans that fit into any workflow. Try Toggl for free today.
+
+Toggl uses cookies
+
+We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.
+
+Detailed information on how we use cookies can be found in our Cookie Declaration and the Privacy Policies .
+
+[#GPC_BANNER_ICON#]
+
+[#GPC_TOAST_TEXT#]
+
+Consent Selection
+
+Necessary
+
+Preferences
+
+Statistics
+
+Marketing
+
+Show details
+
+Toggl Pricing
+
+# The time tracking teams love, now with capacity management and project planning
+
+Speak to Sales
+
+Save up to 33% a year Annual Monthly
+
+Free
+
+$0
+
+Free for a limited number of users.
+
+Sign up for free
+
+Choose Free if you want:
+
+Leading tracking and planning experience
+
+Time tracking : Manual & real-time timers, focus mode, and calendar integrations
+
+Simple planning : Tasks, boards, and task estimates
+
+Google & Outlook Calendars integrations
+
+Personal-level insights : Reports to track individual progress
+
+Starter
+
+$9
+
+per user per month
+
+Start 30-day trial
+
+Choose Starter if you want:
+
+Accurate billing
+
+Team-level productivity and revenue reports
+
+Team-level capacity signals
+
+Everything in Free +
+
+Billable rates
+
+Smarter planning: Timeline views, tags, and milestones
+
+Capacity basics: PTO, public holidays, and flexible hours
+
+Team visibility: Team reports, timeline filtered by team members, projects, and other entities
+
+Premium
+
+Best value
+
+$16
+
+Save up to 33% • 4 months on us
+
+Choose Premium if you want:
+
+Precise data on team productivity, billing, profitability and workload
+
+Built-in data accuracy features
+
+Monitor capacity, and optimize margins
+
+Everything in Starter +
+
+Labor costs and Profitability reports
+
+Fixed fee projects
+
+Project dashboards: Time actuals vs. estimates, progress breakdowns by task and member
+
+Timesheet approvals
+
+Data accuracy features
+
+Jira and Asana integrations
+
+Single sign-on (SSO)
+
+Enterprise
+
+Contact Us
+
+Book a demo
+
+Choose Enterprise if you want:
+
+Personalized onboarding and dedicated support to ensure successful adoption across your team
+
+Everything in Premium +
+
+Personalised onboarding and dedicated customer success manager
+
+Custom solutions for your setup, workflows, and integrations
+
+Custom access levels
+
+## Add-ons
+
+Add-ons help you do more with your plan
+
+Add-on
+
+### Time Off Management
+
+$2 / per user per month
+
+Manage approvals, balances, and policies
+
+Flexible policies for every team
+
+Approved time off updates capacity automatically
+
+Learn more
+
+### Capacity Management
+
+$6 $5 / per user per month
+
+Save 17%
+
+See capacity months ahead, not just this week and month
+
+Group the Timeline by team to balance workloads
+
+Forecast profit, utilization and workload in reports
+
+Draft projects for work you haven't won yet
+
+$12
+
+$24
+
+$6 / per user per month
+
+Still unsure?
+
+Compare all plan features
+
+## Why 70,000+ companies trust Toggl
+
+100% team adoption
+
+So easy to use, your whole team will actually use it. Voted highly for fast setup, ease of use, and customer support.
+
+Secure & reliable
+
+ISO-certified and SOC 2 Type II compliant with 99.9% uptime.
+
+Anti-surveillance stance
+
+We believe and see in practice that products built on trust deliver real data and results — not vanity metrics.
+
+Time tracking at the core
+
+Other tools treat time tracking as an afterthought. We build everything around it, so decisions are based on real data, not guesses.
+
+## Recognized for ROI. Proven by teams like yours.
+
+Our customers don't need to wait a full fiscal year to prove impact. Teams see ROI in just 2.4 months, which is 3-4x faster than G2’s benchmark. Use our ROI calculator to see how quickly Toggl can pay off for your team.
+
+Calculate your ROI
+
+Or speak with our Sales team
+
+Trust & compliance
+
+99.99%
+
+uptime — monitored around the clock
+
+Independently audited. Your team's data stays your team's data.
+
+SOC 2 Type II
+
+ISO 27001
+
+No screenshots, no surveillance
+
+## Full Plan Comparison
+
+Jump to...
+
+Select a section...
+
+Get Started
+
+Web, mobile, desktop apps and browser extension
+
+Real-time, manual, tracking
+
+Tracking in calendar, list, and board views
+
+### Automated Time Tracking
+
+Desktop activity tracking
+
+Auto track calendar events
+
+Auto track selected pages via browser extension
+
+Automated tracking with keywords
+
+Idle time detection
+
+### Personal Productivity
+
+Personal time tracking goals
+
+Pomodoro timer
+
+Personal time tracking reminders
+
+### Planning
+
+Task and board views
+
+Time blocks
+
+Project and task estimates
+
+Tasks only
+
+Recurring tasks
+
+Unlimited projects
+
+Unlimited tags
+
+AI Task Creator
+
+Toggl AI
+
+Bulk Edit Projects and Tasks
+
+Timeline view
+
+Multiple assignees per task
+
+Milestones
+
+Private projects and tasks
+
+Guest access
+
+Granular zoom levels into Timeline view
+
+Project templates
+
+Recurring projects
+
+### Team Management
+
+Teams
+
+Team access level management
+
+Team Lead access level
+
+Add time for team members
+
+### Data Compliance and Accuracy
+
+Alerts
+
+Required fields
+
+Time tracking reminders
+
+Audit log
+
+### Reports and Insights
+
+Personal reports
+
+Summary, Time Logs reports
+
+CSV imports
+
+PDF exports
+
+CSV and XLSX exports
+
+Team-level reports, with filters
+
+Rounding
+
+Profitability reports
+
+Labor costs
+
+Fixed fees
+
+Utilization and workload reports
+
+Project dashboards
+
+Custom fields
+
+Saved report views
+
+Report sharing
+
+External report sharing
+
+Custom company logo
+
+Scheduled report emails
+
+### Capacity Planning
+
+PTO & Public Holidays
+
+Public holidays
+
+Flexible working hours
+
+Individual-level capacity
+
+Your own
+
+### Integrations
+
+Calendar integrations
+
+Toggl API
+
+MCP/CLI
+
+Jira integration
+
+Asana integration
+
+### Enterprise Setup & Support
+
+Custom setup, integration, or reporting solutions
+
+Personalised onboarding & dedicated Customer Success Manager
+
+Priority support with faster response times
+
+Multiple workspaces under one Organization
+
+### Add-on: Capacity Management
+
+Capacity by team
+
+Capacity add-on
+
+Draft projects for tentative work
+
+Forecasting in reports
+
+Capacity beyond this month
+
+Organization holiday calendar
+
+### Add-on: Time Off Management
+
+Approval workflows
+
+Time Off add-on
+
+Accrual balances
+
+Custom policies
+
+Team time off visibility
+
+Absence & Balances report
+
+Time Accounting report
+
+## FAQs
+
+What project views does Toggl have?
+
+A Board for Kanban-style status, a Task list, a Timeline that works as a Gantt chart, and a Calendar for dropping work onto specific days. Switching views rebuilds nothing as it's one set of tasks shown differently, and filters carry across when you switch.
+
+Can I see whether my plans matched reality with Toggl?
+
+Yes. In Toggl, each task carries an estimate, your team tracks time against that same task, and the block shows planned against logged. Estimates versus actuals, workload, and utilization sit in reports.
+
+Does Toggl monitor employees or take screenshots?
+
+No. Toggl doesn’t monitor employees, take screenshots, or record keystrokes, browsing history, or location. Toggl records how long work took and what it was for. Saying no to surveillance is a deliberate product decision, because employee buy-in is what makes the data accurate in the first place.
+
+Is Toggl free for freelancers?
+
+Yes, and the free plan is built to be genuinely usable solo rather than a trial in disguise as it includes one-click tracking, focus mode, calendar integrations, and useful planning with boards, tasks, and task estimates. When you’re ready to upgrade, you get billable rates, timeline views, milestones, tags, and much more.
+
+Is Toggl free for teams?
+
+Yes, up to 3 users. The free tier includes manual and real-time timers, calendar integrations, and simple planning with tasks and boards. Beyond that, paid plans add the things many teams need, like approval workflows, billable rates, capacity planning, PTO, budgets and alerts, and the reporting depth that turns tracked hours into utilization and margin.
+
+## Online, offline or on the go? We have an app for that!
+
+Your data instantly syncs across all apps and devices
+
+NEW WEBSITE
+
+12 of 20h
+
+Mobile apps
+
+Start and stop tracking from anywhere
+
+Android iOS iPad
+
+Desktop apps
+
+For users who want to work with minimal distractions
+
+Windows macOS
+
+Web app
+
+To view time reports, manage projects and teams
+
+Browser plugins
+
+Integrations with your favorite online tools
+
+Firefox Chrome
+
+REACHED
+
+Code every day
+
+5/5 hours
+
+Sign up for free! No credit card required
+
+Sign up with email
+
+Or sign up with:
+
+Google Apple
+
+By signing up, you agree to our terms of service, privacy policy and to receiving marketing communication from Toggl. You can opt out anytime.

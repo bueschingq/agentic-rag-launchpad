@@ -2,9 +2,10 @@
 // TypeScript on the fly. Stands in for the console's two public endpoints, minting real
 // ephemeral tokens for the M0 spike KB, whose allowed_origins is http://localhost:4173.
 //
-//   node spike/widget/server.ts   → http://localhost:4173/?theme=brand&mode=floating&finish=gloss
+//   node spike/widget/server.ts   → http://localhost:4173/?theme=brand&mode=floating&finish=gloss&lang=es
 //
 // mode: embedded | chat | popup | floating · finish: flat | gloss | gradient · theme: brand | default
+// lang: en | es | fr | de | nl | pt | it | auto (the page's English copy is used for en only)
 
 import { readFileSync } from "node:fs";
 import { createServer, type ServerResponse } from "node:http";
@@ -15,6 +16,8 @@ import {
   defaultWidgetSettings,
   FINISHES,
   type Finish,
+  LANGUAGES,
+  languageSetting,
   type PublicTokenResponse,
   type PublicWidgetConfig,
   resolveTheme,
@@ -45,12 +48,14 @@ const THEMES: Record<string, ThemeInput> = {
   },
 };
 
+const LANGS = [...LANGUAGES.map((l) => l.code), "auto"];
+
 const choice = (current: string, values: readonly string[], href: (v: string) => string) =>
   values.map((v) => (v === current ? `<b>${v}</b>` : `<a href="${href(v)}">${v}</a>`)).join(" · ");
 
-const page = (theme: string, mode: string, finish: string) => {
-  const deployment = `spike-${theme}-${mode}-${finish}`;
-  const link = (t: string, m: string, f: string) => `/?theme=${t}&amp;mode=${m}&amp;finish=${f}`;
+const page = (theme: string, mode: string, finish: string, lang: string) => {
+  const deployment = `spike-${theme}-${mode}-${finish}-${lang}`;
+  const link = (t: string, m: string, f: string, l = lang) => `/?theme=${t}&amp;mode=${m}&amp;finish=${f}&amp;lang=${l}`;
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Harbor View Dental</title>
@@ -70,6 +75,7 @@ const page = (theme: string, mode: string, finish: string) => {
     <div><span>mode</span>${choice(mode, WIDGET_MODES, (m) => link(theme, m, finish))}</div>
     <div><span>finish</span>${choice(finish, FINISHES, (f) => link(theme, mode, f))}</div>
     <div><span>theme</span>${choice(theme, Object.keys(THEMES), (t) => link(t, mode, finish))}</div>
+    <div><span>lang</span>${choice(lang, LANGS, (l) => link(theme, mode, finish, l))}</div>
   </nav>
   <main>
     <h1>Gentle dentistry by the harbor</h1>
@@ -100,22 +106,24 @@ function serveSource(urlPath: string, res: ServerResponse) {
 
 function config(deployment: string): PublicWidgetConfig {
   const s = readState();
-  const [, themeName = "default", mode, finish = "flat"] = deployment.split("-");
+  const [, themeName = "default", mode, finish = "flat", lang = "en"] = deployment.split("-");
+  const language = languageSetting(lang);
+  // The clinic's own copy is English; other languages show the widget's defaults.
+  const copy =
+    language === "en"
+      ? {
+          welcome: "Hi! I can answer questions about our hours, insurance and first visits.",
+          starters: ["When are you open on Friday?", "Do you take Aetna?", "What should new patients bring?"],
+        }
+      : {};
   return {
     deploymentId: deployment,
     zone: s.zone!,
     kbId: s.kbId!,
     searchConfig: s.searchConfig ?? "launchpad-default",
     theme: resolveTheme({ ...THEMES[themeName], finish: { style: finish as Finish } }).theme,
-    settings: {
-      ...defaultWidgetSettings,
-      mode: widgetMode(mode),
-      nickname: "Harbor View Dental",
-      welcome: "Hi! I can answer questions about our hours, insurance and first visits.",
-      starters: ["When are you open on Friday?", "Do you take Aetna?", "What should new patients bring?"],
-    },
+    settings: { ...defaultWidgetSettings, mode: widgetMode(mode), language, nickname: "Harbor View Dental", ...copy },
     online: true,
-    offlineMessage: "Chat is unavailable right now.",
   };
 }
 
@@ -142,7 +150,7 @@ createServer(async (req, res) => {
         return value && values.includes(value) ? value : fallback;
       };
       const theme = pick("theme", Object.keys(THEMES), "brand");
-      const html = page(theme, pick("mode", WIDGET_MODES, "floating"), pick("finish", FINISHES, "flat"));
+      const html = page(theme, pick("mode", WIDGET_MODES, "floating"), pick("finish", FINISHES, "flat"), pick("lang", LANGS, "en"));
       return send(res, 200, "text/html; charset=utf-8", html);
     }
     if (req.method === "GET" && url.pathname.startsWith("/packages/")) return serveSource(url.pathname, res);

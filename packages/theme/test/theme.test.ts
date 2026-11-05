@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { contrastRatio, ensureContrast, flatten, mix, parseColor, rotateHue, toHex } from "../src/color.ts";
 import { widgetMode } from "../src/settings.ts";
-import { defaultTheme, GLOSS_SHEEN, glossBase, resolveTheme, type ThemeTokens, toCssVariables } from "../src/tokens.ts";
+import { defaultTheme, GLOSS_SHEEN, glossBase, launcherOutline, resolveTheme, type ThemeTokens, toCssVariables } from "../src/tokens.ts";
 
 const ratio = (a: string, b: string) => contrastRatio(parseColor(a)!, parseColor(b)!);
 
@@ -73,12 +73,60 @@ describe("resolveTheme", () => {
     assert.equal(warnings.length, 4);
   });
 
+  it("ships control borders, secondary text and links that pass on the panel and in answers", () => {
+    const c = defaultTheme.color;
+    assert.ok(ratio(c.border, c.surface) >= 3);
+    for (const bg of [c.surface, c.surfaceAlt]) {
+      assert.ok(ratio(c.textMuted, bg) >= 4.5);
+      assert.ok(ratio(c.link, bg) >= 4.5);
+    }
+  });
+
+  // Measured in round 1: the question box border, and "Still need help?" on the answer bubble.
+  const scanned: Record<string, ThemeTokens["color"]> = {
+    "progress.com": { ...defaultTheme.color, primary: "#0c2a6f", surfaceAlt: "#f5f5f7", textMuted: "#6e7381", border: "#dbdce0" },
+    "crayola.com": { ...defaultTheme.color, primary: "#00502e", onPrimary: "#ffcc33", border: "#d9d9da", textMuted: "#6b6b6b" },
+  };
+  for (const [site, color] of Object.entries(scanned)) {
+    it(`repairs the borders and secondary text measured on ${site}`, () => {
+      const { theme, repairs } = resolveTheme({ color });
+      assert.ok(ratio(theme.color.border, theme.color.surface) >= 3, theme.color.border);
+      assert.ok(ratio(theme.color.textMuted, theme.color.surfaceAlt) >= 4.5, theme.color.textMuted);
+      assert.ok(ratio(theme.color.textMuted, theme.color.surface) >= 4.5);
+      assert.ok(repairs.some((r) => r.path === "color.border" && r.from === color.border && r.min === 3));
+    });
+  }
+
+  it("outlines a chat button that doesn't stand out from the page, keeping the brand fill", () => {
+    assert.equal(launcherOutline(defaultTheme), undefined);
+    const { theme, repairs } = resolveTheme({ color: { primary: "#ffcc33" } });
+    assert.equal(theme.color.primary, "#ffcc33");
+    const outline = launcherOutline(theme) ?? "";
+    assert.ok(ratio(outline, theme.color.surface) >= 3);
+    assert.deepEqual(
+      repairs.find((r) => r.path === "launcher.outline"),
+      { path: "launcher.outline", from: "none", to: outline, against: "color.surface", min: 3 },
+    );
+    assert.match(toCssVariables(theme), new RegExp(`--arag-chat-launcher-outline: ${outline};`));
+  });
+
   it("fixes failing contrast and says what it changed", () => {
     const { theme, warnings } = resolveTheme({ color: { primary: "#ffd000", onPrimary: "#ffffff", text: "#aaaaaa" } });
     assert.equal(theme.color.onPrimary, "#000000");
     assert.ok(ratio(theme.color.text, theme.color.surface) >= 4.5);
     assert.ok(warnings.some((w) => w.startsWith("color.onPrimary")));
     assert.ok(warnings.some((w) => w.startsWith("color.text")));
+  });
+});
+
+describe("launcher", () => {
+  it("keeps the chat button where older themes put it, and moves it up on its own", () => {
+    assert.equal(resolveTheme({ launcher: { offset: "40px" } }).theme.launcher.bottom, "40px");
+    const lifted = resolveTheme({ launcher: { offset: "16px", bottom: "72px" } }).theme.launcher;
+    assert.deepEqual([lifted.offset, lifted.bottom], ["16px", "72px"]);
+    const { theme, warnings } = resolveTheme({ launcher: { bottom: "calc(1px)" } });
+    assert.equal(theme.launcher.bottom, defaultTheme.launcher.bottom);
+    assert.equal(warnings.length, 1);
   });
 });
 
@@ -153,6 +201,8 @@ describe("toCssVariables", () => {
     assert.match(css, /--arag-chat-color-primary: #1f2937;/);
     assert.match(css, /--arag-chat-launcher-size: 56px;/);
     assert.match(css, /--arag-chat-gloss-base: #1f2937;/);
-    assert.equal(css.match(/--arag-chat-/g)?.length, 24);
+    assert.match(css, /--arag-chat-launcher-bottom: 24px;/);
+    assert.match(css, /--arag-chat-launcher-outline: transparent;/);
+    assert.equal(css.match(/--arag-chat-/g)?.length, 27);
   });
 });

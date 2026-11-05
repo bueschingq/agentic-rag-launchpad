@@ -2,11 +2,9 @@
 // M0: Sitefinity sites often strip the generator meta tag (crayola.com did), so markup
 // fingerprints carry most of the weight.
 
-export interface PlatformGuess {
-  platform: "sitefinity" | "wordpress" | "drupal" | "sitecore" | "unknown";
-  version?: string;
-  evidence: string[];
-}
+import type { SitePlatform } from "@launchpad/theme";
+
+export type PlatformGuess = SitePlatform;
 
 const count = (html: string, re: RegExp) => html.match(re)?.length ?? 0;
 
@@ -39,7 +37,13 @@ export function detectPlatform(html: string): PlatformGuess {
   return { platform: "unknown", evidence };
 }
 
-export function sitemapsFromRobots(robotsTxt: string, origin: string): string[] {
+// Where a site's own sitemap usually is, when robots.txt names none or names another site's:
+// the usual place, Sitefinity's (its sitemap module publishes /sitemap/sitemap.xml), and the
+// index WordPress SEO plugins publish.
+export const SITEMAP_FALLBACKS = ["/sitemap.xml", "/sitemap/sitemap.xml", "/sitemap_index.xml"];
+
+// The sitemaps robots.txt lists, as given (they may be on another host).
+export function robotsSitemaps(robotsTxt: string, origin: string): string[] {
   const listed = [...robotsTxt.matchAll(/^\s*sitemap:\s*(\S+)/gim)].map((m) => m[1]!);
   const urls = listed.flatMap((u) => {
     try {
@@ -48,7 +52,12 @@ export function sitemapsFromRobots(robotsTxt: string, origin: string): string[] 
       return [];
     }
   });
-  return urls.length ? [...new Set(urls)] : [new URL("/sitemap.xml", origin).href];
+  return [...new Set(urls)];
+}
+
+export function sitemapsFromRobots(robotsTxt: string, origin: string): string[] {
+  const urls = robotsSitemaps(robotsTxt, origin);
+  return urls.length ? urls : SITEMAP_FALLBACKS.map((path) => new URL(path, origin).href);
 }
 
 export function parseSitemap(xml: string): { kind: "index" | "urlset" | "unknown"; locs: string[] } {
@@ -57,6 +66,51 @@ export function parseSitemap(xml: string): { kind: "index" | "urlset" | "unknown
   );
   const kind = /<sitemapindex[\s>]/i.test(xml) ? "index" : /<urlset[\s>]/i.test(xml) ? "urlset" : "unknown";
   return { kind, locs };
+}
+
+export interface SitemapEntry {
+  url: string;
+  // The sitemap's lastmod as a day (YYYY-MM-DD), when it gives a valid one.
+  lastmod?: string;
+  priority?: number;
+  // The language the url's own hreflang link gives it (lower case), and how many languages its
+  // links offer: a lone self-link is often a CMS default rather than a translation set.
+  lang?: string;
+  alternates?: number;
+}
+
+const attr = (tag: string, name: string) => new RegExp(`\\s${name}\\s*=\\s*["']([^"']*)["']`, "i").exec(tag)?.[1];
+const sameUrl = (a: string, b: string) => a.replace(/\/+$/, "").toLowerCase() === b.replace(/\/+$/, "").toLowerCase();
+
+function day(raw: string | undefined): string | undefined {
+  const t = raw ? Date.parse(raw.trim()) : Number.NaN;
+  return Number.isNaN(t) ? undefined : new Date(t).toISOString().slice(0, 10);
+}
+
+// A sitemap file with each url's dates, priority and language: what the content plan reads.
+export function parseSitemapEntries(xml: string): { kind: "index" | "urlset" | "unknown"; sitemaps: string[]; entries: SitemapEntry[] } {
+  const parsed = parseSitemap(xml);
+  if (parsed.kind !== "urlset") return { kind: parsed.kind, sitemaps: parsed.kind === "index" ? parsed.locs : [], entries: [] };
+  const entries: SitemapEntry[] = [];
+  for (const [, block] of xml.matchAll(/<url\b[^>]*>([\s\S]*?)<\/url>/gi)) {
+    const url = /<loc>\s*(?:<!\[CDATA\[)?\s*([^<\s\]]+)/i.exec(block!)?.[1]?.replace(/&amp;/g, "&");
+    if (!url) continue;
+    const entry: SitemapEntry = { url };
+    const lastmod = day(/<lastmod>\s*([^<]+)</i.exec(block!)?.[1]);
+    if (lastmod) entry.lastmod = lastmod;
+    const priority = Number(/<priority>\s*([\d.]+)\s*</i.exec(block!)?.[1]);
+    if (Number.isFinite(priority) && priority >= 0 && priority <= 1) entry.priority = priority;
+    const links = [...block!.matchAll(/<(?:xhtml:)?link\b[^>]*>/gi)]
+      .map(([tag]) => ({ lang: attr(tag, "hreflang")?.toLowerCase(), href: attr(tag, "href")?.replace(/&amp;/g, "&") }))
+      .filter((l): l is { lang: string; href: string } => Boolean(l.lang && l.href && l.lang !== "x-default"));
+    const self = links.find((l) => sameUrl(l.href, url));
+    if (self) {
+      entry.lang = self.lang;
+      entry.alternates = new Set(links.map((l) => l.lang)).size;
+    }
+    entries.push(entry);
+  }
+  return { kind: "urlset", sitemaps: [], entries };
 }
 
 // Page count across a sitemap, following one level of sitemap index (up to `maxChildren`).

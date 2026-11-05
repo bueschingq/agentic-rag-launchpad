@@ -1,0 +1,367 @@
+{
+  "alfred": {
+    "rows": [
+      {
+        "plan": "Single License",
+        "amount": "£34",
+        "value": 34,
+        "currency": "GBP",
+        "url": "https://www.alfredapp.com/shop/",
+        "line": "Single License: £34 Single User"
+      },
+      {
+        "plan": "Mega Supporter",
+        "amount": "£59",
+        "value": 59,
+        "currency": "GBP",
+        "url": "https://www.alfredapp.com/shop/",
+        "line": "Mega Supporter: £59 Free Lifetime Upgrades"
+      }
+    ],
+    "cases": [
+      {
+        "question": "How much is the Single License?",
+        "mislabel": "The Single License costs £59 for one user.",
+        "expect": "Single License is £34 on /shop/; answer gives £59",
+        "judge": {
+          "verdict": "contradicts",
+          "reason": "The Single License is listed at £34; £59 is the Mega Supporter price."
+        },
+        "real": "Our “Buy the Alfred Powerpack” page lists the Alfred 5 Single License at £34 for a single user."
+      },
+      {
+        "question": "How much does the Mega Supporter licence cost?",
+        "mislabel": "Mega Supporter is £34 for a single user, with free lifetime upgrades.",
+        "expect": "Mega Supporter is £59 on /shop/; answer gives £34",
+        "judge": {
+          "verdict": "contradicts",
+          "reason": "Mega Supporter costs £59, not £34."
+        },
+        "real": "Our **Buy the Alfred Powerpack** page lists the **Mega Supporter** single-user licence at **£59**, with free lifetime upgrades."
+      },
+      {
+        "question": "What are your Powerpack prices?",
+        "mislabel": "The Powerpack comes in two licences: Single License at £59 and Mega Supporter at £34.",
+        "expect": "Single £34 / Mega £59 swapped",
+        "judge": {
+          "verdict": "contradicts",
+          "reason": "It swaps the listed prices for Single License and Mega Supporter."
+        },
+        "real": "Our **Buy the Alfred Powerpack** page lists:\n\n- **Single License:** £34 — Single User v5 License  \n- **Mega Supporter:** £59 — Single User, free lifetime upgrades  \n\nBoth purchases include a free upgrade to Alfred 6."
+      },
+      {
+        "question": "How much is a Powerpack licence?",
+        "mislabel": "Our shop page doesn't state the price of the Single License. The Mega Supporter licence is £59.",
+        "expect": "Single License is £34 on /shop/; answer says it isn't listed",
+        "judge": {
+          "verdict": "contradicts",
+          "reason": "It falsely says the Single License price is unstated; it is £34."
+        },
+        "real": "Our **Buy the Alfred Powerpack** page lists the Alfred 5 Powerpack Single License at **£34** for a single user."
+      },
+      {
+        "question": "How much does Alfred cost?",
+        "mislabel": "Alfred is free. The Powerpack Single License is £29 and the Mega Supporter licence is £59.",
+        "expect": "Single License is £34 on /shop/; answer gives £29",
+        "judge": {
+          "verdict": "contradicts",
+          "reason": "It gives £29 for Single License, but the site lists £34."
+        },
+        "real": "Our “Buy the Alfred Powerpack” page lists:\n\n- **Single License:** £34 — Single User v5 License  \n- **Mega Supporter:** £59 — Single User, Free Lifetime Upgrades  \n\nBuying either includes a free upgrade to Alfred 6."
+      }
+    ]
+  },
+  "buzzsprout": {
+    "rows": [
+      {
+        "plan": "Audio",
+        "amount": "$15",
+        "value": 15,
+        "currency": "USD",
+        "period": "month",
+        "qualifiers": ["billed annually", "billing toggle: the other billing cycle to $18"],
+        "url": "https://www.buzzsprout.com/pricing",
+        "line": "Audio: $15 / month When billed annually"
+      },
+      {
+        "plan": "Audio + Video",
+        "amount": "$25",
+        "value": 25,
+        "currency": "USD",
+        "period": "month",
+        "qualifiers": ["billed annually", "billing toggle: the other billing cycle to $30"],
+        "url": "https://www.buzzsprout.com/pricing",
+        "line": "Audio + Video: $25 / month, billed annually"
+      },
+      {
+        "plan": "Multi-Podcast",
+        "amount": "$30",
+        "value": 30,
+        "currency": "USD",
+        "period": "month",
+        "qualifiers": ["billed annually", "billing toggle: the other billing cycle to $36"],
+        "url": "https://www.buzzsprout.com/pricing",
+        "line": "Multi-Podcast: $30 / month, billed annually"
+      },
+      {
+        "plan": "Audio",
+        "amount": "$18",
+        "value": 18,
+        "currency": "USD",
+        "period": "month",
+        "qualifiers": ["billed monthly", "billing toggle: $15 on the other billing cycle"],
+        "url": "https://www.buzzsprout.com/pricing",
+        "line": "Audio: $18 / month, billed monthly"
+      },
+      {
+        "plan": "Audio + Video",
+        "amount": "$30",
+        "value": 30,
+        "currency": "USD",
+        "period": "month",
+        "qualifiers": ["billed monthly", "billing toggle: $25 on the other billing cycle"],
+        "url": "https://www.buzzsprout.com/pricing",
+        "line": "Audio + Video: $30 / month, billed monthly"
+      },
+      {
+        "plan": "Multi-Podcast",
+        "amount": "$36",
+        "value": 36,
+        "currency": "USD",
+        "period": "month",
+        "qualifiers": ["billed monthly", "billing toggle: $30 on the other billing cycle"],
+        "url": "https://www.buzzsprout.com/pricing",
+        "line": "Multi-Podcast: $36 / month, billed monthly"
+      }
+    ],
+    "cases": [
+      {
+        "question": "How much is the Audio plan?",
+        "mislabel": "The Audio plan is $25/month when billed annually.",
+        "expect": "Audio is $15/month billed annually ($18 monthly); answer gives $25 (Audio + Video's)",
+        "judge": {
+          "verdict": "contradicts",
+          "reason": "The site says paid plans start at $15/month, not $25/month."
+        },
+        "real": "Our pricing page says paid plans start at $15/month, but it doesn’t list a specific price for the Audio Podcast plan."
+      },
+      {
+        "question": "How much is the Audio + Video plan?",
+        "mislabel": "The Audio + Video plan costs $15/month when billed annually.",
+        "expect": "Audio + Video is $25 (annual) / $30 (monthly); answer gives $15",
+        "judge": {
+          "verdict": "not-on-site",
+          "reason": "The site does not state the Audio + Video plan's price."
+        },
+        "real": "Our Buzzsprout Pricing page doesn’t list a price for the Audio + Video plan. It says paid plans start at $15/month, but does not specify which plan that price applies to."
+      },
+      {
+        "question": "What are your prices?",
+        "mislabel": "Paid plans start at $12/month for 3 hours of uploads.",
+        "expect": "blog figure $12; plans start at $15 (annual) on /pricing",
+        "judge": {
+          "verdict": "contradicts",
+          "reason": "Site lists $5/month for 6 hours, not $12/month for 3 hours."
+        },
+        "real": "Our pricing depends on the product or plan.\n\n- **Magic Mastering:** $5/month for 6 hours, $10/month for 15 hours, or $20/month for 35 hours. Annual plans start at $60/year for 72 hours. See **“Magic Mastering Pricing.”**\n- **Additional upload hours:** $2–$4 per hour, depending on your plan. See **“Can I have additional hours?”**\n- Sales tax may be added based on your billing address. See **“Sales Tax.”**\n\nThe pages listed don’t state the base price of our podcast hosting plans."
+      },
+      {
+        "question": "How much does the Multi-Podcast plan cost?",
+        "mislabel": "Our pricing page doesn't list a price for the Multi-Podcast plan.",
+        "expect": "Multi-Podcast is $30/mo annual, $36 monthly on /pricing; answer says it isn't listed",
+        "judge": {
+          "verdict": "contradicts",
+          "reason": "Multi-Podcast plans cost $39 or $79 monthly, with annual options also listed."
+        },
+        "real": "Our Multi-Podcast plans are available for up to 5 or 10 podcasts.\n\n- $39/month: up to 5 podcasts with 15 shared upload hours\n- $79/month: up to 10 podcasts with 35 shared upload hours\n\nAnnual Billing lists annual audio options at $360/year for up to 5 podcasts and $780/year for up to 10 podcasts."
+      },
+      {
+        "question": "What does the Audio plan cost per month?",
+        "mislabel": "The Audio plan is $30 per month.",
+        "expect": "Audio is $18 monthly / $15 annual; answer gives $30",
+        "judge": {
+          "verdict": "contradicts",
+          "reason": "The site says paid plans start at $15 per month, not $30."
+        },
+        "real": "Our Pricing page says paid plans start at $15/month, but it doesn’t list the specific monthly price for the Audio Podcast plan."
+      }
+    ]
+  },
+  "transistor": {
+    "rows": [
+      {
+        "plan": "Starter",
+        "amount": "$19",
+        "value": 19,
+        "currency": "USD",
+        "period": "month",
+        "url": "https://transistor.fm/pricing/",
+        "line": "Starter: $19 /mo",
+        "qualifiers": ["billing toggle: the other billing cycle to $190"]
+      },
+      {
+        "plan": "Starter",
+        "amount": "$190",
+        "value": 190,
+        "currency": "USD",
+        "period": "year",
+        "url": "https://transistor.fm/pricing/",
+        "line": "Starter: $190 per year",
+        "qualifiers": ["billing toggle: $19 on the other billing cycle"]
+      },
+      {
+        "plan": "Professional",
+        "amount": "$49",
+        "value": 49,
+        "currency": "USD",
+        "period": "month",
+        "url": "https://transistor.fm/pricing/",
+        "line": "Professional: $49 /mo",
+        "qualifiers": ["billing toggle: the other billing cycle to $490"]
+      },
+      {
+        "plan": "Professional",
+        "amount": "$490",
+        "value": 490,
+        "currency": "USD",
+        "period": "year",
+        "url": "https://transistor.fm/pricing/",
+        "line": "Professional: $490 per year",
+        "qualifiers": ["billing toggle: $49 on the other billing cycle"]
+      },
+      {
+        "plan": "Business",
+        "amount": "$99",
+        "value": 99,
+        "currency": "USD",
+        "period": "month",
+        "url": "https://transistor.fm/pricing/",
+        "line": "Business: $99 /mo",
+        "qualifiers": ["billing toggle: the other billing cycle to $990"]
+      },
+      {
+        "plan": "Business",
+        "amount": "$990",
+        "value": 990,
+        "currency": "USD",
+        "period": "year",
+        "url": "https://transistor.fm/pricing/",
+        "line": "Business: $990 per year",
+        "qualifiers": ["billing toggle: $99 on the other billing cycle"]
+      },
+      {
+        "plan": "Transcription (5 hrs per month)",
+        "amount": "$5",
+        "value": 5,
+        "currency": "USD",
+        "period": "month",
+        "url": "https://transistor.fm/pricing/",
+        "line": "Subscription Add-ons: Transcription (5 hrs per month) $5/mo",
+        "addOn": true,
+        "qualifiers": ["billing toggle: the other billing cycle to $50"]
+      },
+      {
+        "plan": "Transcription (5 hrs per month)",
+        "amount": "$50",
+        "value": 50,
+        "currency": "USD",
+        "period": "year",
+        "url": "https://transistor.fm/pricing/",
+        "line": "Subscription Add-ons: Transcription (5 hrs per month) $50 per year",
+        "addOn": true,
+        "qualifiers": ["billing toggle: $5 on the other billing cycle"]
+      },
+      {
+        "plan": "Transcription (20 hrs per month)",
+        "amount": "$20",
+        "value": 20,
+        "currency": "USD",
+        "period": "month",
+        "url": "https://transistor.fm/pricing/",
+        "line": "Subscription Add-ons: Transcription (20 hrs per month) $20/mo",
+        "addOn": true,
+        "qualifiers": ["billing toggle: the other billing cycle to $200"]
+      },
+      {
+        "plan": "Transcription (20 hrs per month)",
+        "amount": "$200",
+        "value": 200,
+        "currency": "USD",
+        "period": "year",
+        "url": "https://transistor.fm/pricing/",
+        "line": "Subscription Add-ons: Transcription (20 hrs per month) $200 per year",
+        "addOn": true,
+        "qualifiers": ["billing toggle: $20 on the other billing cycle"]
+      },
+      {
+        "plan": "Enterprise 1",
+        "amount": "$199",
+        "value": 199,
+        "currency": "USD",
+        "period": "month",
+        "url": "https://transistor.fm/pricing/",
+        "line": "Enterprise 1: $199 /mo",
+        "qualifiers": ["billing toggle: the other billing cycle to $1990"]
+      },
+      {
+        "plan": "Enterprise 1",
+        "amount": "$1990",
+        "value": 1990,
+        "currency": "USD",
+        "period": "year",
+        "url": "https://transistor.fm/pricing/",
+        "line": "Enterprise 1: $1990 per year",
+        "qualifiers": ["billing toggle: $199 on the other billing cycle"]
+      }
+    ],
+    "cases": [
+      {
+        "question": "How much is the Professional plan?",
+        "mislabel": "The Professional plan is $99 per month, billed monthly.",
+        "expect": "Professional is $49/mo on /pricing/; answer gives $99 (Business's)",
+        "judge": {
+          "verdict": "contradicts",
+          "reason": "Professional is listed at $49/mo; $99/mo is Business."
+        },
+        "real": "Our “Podcast hosting pricing: how much does it cost?” page lists the Professional plan at **$49 /mo**, billed monthly in USD."
+      },
+      {
+        "question": "How much is the Starter plan?",
+        "mislabel": "Starter is $49 per month.",
+        "expect": "Starter is $19/mo on /pricing/; answer gives $49",
+        "judge": {
+          "verdict": "contradicts",
+          "reason": "Starter is listed at $19 per month, not $49."
+        },
+        "real": "Our “Podcast hosting pricing: how much does it cost?” page lists the Starter plan at **$19 /mo**, billed monthly in USD."
+      },
+      {
+        "question": "What are your prices?",
+        "mislabel": "Our pricing page lists: Starter $19/mo, Professional $99/mo, Business $49/mo, Enterprise 1 $199/mo.",
+        "expect": "Professional $49 / Business $99 swapped",
+        "judge": {
+          "verdict": "contradicts",
+          "reason": "It mislabels the $49 and $99 plans and calls $199 Enterprise 1."
+        },
+        "real": "Our **Podcast hosting pricing: how much does it cost?** page lists monthly USD pricing:\n\n- Starter: **$19 /mo**\n- Professional: **$49 /mo**\n- Business: **$99 /mo**\n- Enterprise 1: **$199 /mo**\n\nAll prices are billed monthly. We also offer transcription add-ons: **$5/mo** for 5 hours per month or **$20/mo** for 20 hours per month. You can try us free for 14 days."
+      },
+      {
+        "question": "How much is the Business plan?",
+        "mislabel": "Our pricing page doesn't list a price for the Business plan.",
+        "expect": "Business is $99/mo on /pricing/; answer says not listed",
+        "judge": null,
+        "real": "Our Business plan is $99/month, billed monthly in USD."
+      },
+      {
+        "question": "How much is Enterprise 1?",
+        "mislabel": "Enterprise 1 is $99 per month.",
+        "expect": "Enterprise 1 is $199/mo on /pricing/; answer gives $99",
+        "judge": {
+          "verdict": "contradicts",
+          "reason": "Enterprise 1 is listed at $199 per month, not $99."
+        },
+        "real": "Enterprise 1 is **$199 /mo**. All prices are in USD and billed monthly."
+      }
+    ]
+  }
+}

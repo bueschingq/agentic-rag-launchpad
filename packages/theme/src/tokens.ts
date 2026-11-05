@@ -16,6 +16,7 @@ export interface ThemeTokens {
     surfaceAlt: string; // header, assistant messages
     text: string;
     textMuted: string;
+    // Outlines controls (the question box, starter questions), so 3:1 on surface.
     border: string;
     link: string;
     focus: string;
@@ -35,7 +36,10 @@ export interface ThemeTokens {
   };
   launcher: {
     position: "bottom-right" | "bottom-left";
+    // From the side of the window.
     offset: string;
+    // From the bottom, e.g. to clear a cookie bar. Follows offset when an input leaves it out.
+    bottom: string;
     size: string;
   };
   finish: {
@@ -60,7 +64,7 @@ export const defaultTheme: ThemeTokens = {
     surfaceAlt: "#f3f4f6",
     text: "#111827",
     textMuted: "#4b5563",
-    border: "#d1d5db",
+    border: "#868b93",
     link: "#1d4ed8",
     focus: "#2563eb",
   },
@@ -80,6 +84,7 @@ export const defaultTheme: ThemeTokens = {
   launcher: {
     position: "bottom-right",
     offset: "24px",
+    bottom: "24px",
     size: "56px",
   },
   finish: {
@@ -93,14 +98,28 @@ const UNITLESS = /^\d*\.?\d+$/;
 const FONT_STACK = /^[\w\s,"'.-]{1,200}$/;
 const SHADOW = /^(none|[\w\s.,()#%-]{1,160})$/;
 
+// A color the theme changed so text or a control stays readable: `path` went from `from`
+// to `to` to reach `min`:1 against `against`. launcher.outline is drawn around the chat
+// button when the primary color alone doesn't stand out from the page.
+export interface Repair {
+  path: string;
+  from: string;
+  to: string;
+  against: string;
+  min: number;
+}
+
 export interface ResolvedTheme {
   theme: ThemeTokens;
   // Values dropped or adjusted, for the theme editor to show.
   warnings: string[];
+  // The adjusted ones, structured, for the editor to put in plain words.
+  repairs: Repair[];
 }
 
 export function resolveTheme(input: ThemeInput = {}, base: ThemeTokens = defaultTheme): ResolvedTheme {
   const warnings: string[] = [];
+  const repairs: Repair[] = [];
   const pick = <T extends string>(path: string, value: unknown, fallback: T, valid: (v: string) => boolean): T => {
     if (value === undefined) return fallback;
     if (typeof value === "string" && valid(value.trim())) return value.trim() as T;
@@ -135,8 +154,10 @@ export function resolveTheme(input: ThemeInput = {}, base: ThemeTokens = default
       focus: color("focus"),
     },
     font: {
-      family: pick("font.family", input.font?.family, base.font.family, (v) => FONT_STACK.test(v)),
-      headingFamily: pick("font.headingFamily", input.font?.headingFamily, base.font.headingFamily, (v) => FONT_STACK.test(v)),
+      family: withFallback(pick("font.family", input.font?.family, base.font.family, (v) => FONT_STACK.test(v))),
+      headingFamily: withFallback(
+        pick("font.headingFamily", input.font?.headingFamily, base.font.headingFamily, (v) => FONT_STACK.test(v)),
+      ),
       size: pick("font.size", input.font?.size, base.font.size, (v) => LENGTH.test(v)),
       lineHeight: pick("font.lineHeight", input.font?.lineHeight, base.font.lineHeight, (v) => UNITLESS.test(v) || LENGTH.test(v)),
     },
@@ -155,6 +176,7 @@ export function resolveTheme(input: ThemeInput = {}, base: ThemeTokens = default
         (v) => v === "bottom-right" || v === "bottom-left",
       ),
       offset: pick("launcher.offset", input.launcher?.offset, base.launcher.offset, (v) => LENGTH.test(v)),
+      bottom: "",
       size: pick("launcher.size", input.launcher?.size, base.launcher.size, (v) => LENGTH.test(v)),
     },
     finish: {
@@ -163,19 +185,29 @@ export function resolveTheme(input: ThemeInput = {}, base: ThemeTokens = default
     },
   };
 
-  enforceContrast(theme, warnings);
-  return { theme, warnings };
+  // Themes saved before the vertical offset existed keep their chat button where it was.
+  const sideways = input.launcher?.offset === undefined ? base.launcher.bottom : theme.launcher.offset;
+  theme.launcher.bottom = pick("launcher.bottom", input.launcher?.bottom, sideways, (v) => LENGTH.test(v));
+
+  enforceContrast(theme, warnings, repairs);
+  return { theme, warnings, repairs };
 }
 
-// WCAG AA: 4.5:1 for text, 3:1 for the focus ring and borders that identify controls.
-function enforceContrast(theme: ThemeTokens, warnings: string[]) {
+// WCAG 2.2 AA: 4.5:1 for text; 3:1 for the focus ring, the borders that identify controls
+// (1.4.11) and the chat button. Secondary text and links sit on the panel and inside answers,
+// so they're checked against both.
+function enforceContrast(theme: ThemeTokens, warnings: string[], repairs: Repair[]) {
   const c = theme.color;
+  const record = (path: string, from: string, to: string, against: string, min: number) => {
+    warnings.push(`${path}: ${from} → ${to} for ${min}:1 contrast on ${against}`);
+    repairs.push({ path, from, to, against, min });
+  };
   const fix = (key: keyof ThemeTokens["color"], against: keyof ThemeTokens["color"], min: number) => {
     const fg = parseColor(c[key])!;
     const bg = parseColor(c[against])!;
     if (contrastRatio(fg, bg) >= min) return;
     const fixed = toHex(ensureContrast(fg, bg, min));
-    warnings.push(`color.${key}: ${c[key]} → ${fixed} for ${min}:1 contrast on color.${against}`);
+    record(`color.${key}`, c[key], fixed, `color.${against}`, min);
     c[key] = fixed;
   };
 
@@ -183,14 +215,21 @@ function enforceContrast(theme: ThemeTokens, warnings: string[]) {
   const primary = parseColor(c.primary)!;
   if (contrastRatio(parseColor(c.onPrimary)!, primary) < 4.5) {
     const fixed = toHex(bestOn(primary));
-    warnings.push(`color.onPrimary: ${c.onPrimary} → ${fixed} for 4.5:1 contrast on color.primary`);
+    record("color.onPrimary", c.onPrimary, fixed, "color.primary", 4.5);
     c.onPrimary = fixed;
   }
   fix("text", "surface", 4.5);
   fix("text", "surfaceAlt", 4.5);
   fix("textMuted", "surface", 4.5);
+  fix("textMuted", "surfaceAlt", 4.5);
   fix("link", "surface", 4.5);
+  fix("link", "surfaceAlt", 4.5);
+  fix("border", "surface", 3);
   fix("focus", "surface", 3);
+  fix("focus", "surfaceAlt", 3);
+
+  const outline = launcherOutline(theme);
+  if (outline) record("launcher.outline", "none", outline, "color.surface", 3);
 
   // Gradient finish: onPrimary text can sit anywhere between the two stops.
   const on = parseColor(c.onPrimary)!;
@@ -224,6 +263,15 @@ function fitGradient(start: Rgba, end: Rgba, text: Rgba, min = 4.5): Rgba {
   return away;
 }
 
+// The chat button's fill must stand out 3:1 from the page, which the panel's background stands
+// in for. A light brand color (yellow on white) keeps its fill and gets an outline that does.
+export function launcherOutline(theme: ThemeTokens): string | undefined {
+  const [primary, surface] = [parseColor(theme.color.primary)!, parseColor(theme.color.surface)!];
+  if (contrastRatio(primary, surface) >= 3) return undefined;
+  const candidates = [theme.color.text, theme.color.onPrimary, toHex(bestOn(surface))];
+  return candidates.find((color) => contrastRatio(parseColor(color)!, surface) >= 3);
+}
+
 // Peak opacity of the gloss finish's white sheen; styles.ts draws it from this variable.
 export const GLOSS_SHEEN = 0.2;
 const WHITE: Rgba = { r: 255, g: 255, b: 255, a: 1 };
@@ -241,6 +289,14 @@ export function glossBase(fill: Rgba, text: Rgba, min = 4.5): Rgba {
 }
 
 // CSS custom properties consumed by the widget's shadow-DOM stylesheet.
+// The scan's family, with something to fall back on: a page that doesn't load the client's web font
+// otherwise shows the chat in the browser's default serif (round 7: "Noto Sans" alone). In the resolved
+// theme, so the widget's config, the preview and the snippet's theme all have it.
+const withFallback = <T extends string | undefined>(family: T): T =>
+  (family && !/serif|monospace|system-ui|inherit/i.test(family)
+    ? `${family}, system-ui, -apple-system, "Segoe UI", sans-serif`
+    : family) as T;
+
 export function toCssVariables(theme: ThemeTokens, selector = ":host"): string {
   const vars: [string, string][] = [
     ["color-primary", theme.color.primary],
@@ -250,6 +306,8 @@ export function toCssVariables(theme: ThemeTokens, selector = ":host"): string {
     ["color-text", theme.color.text],
     ["color-text-muted", theme.color.textMuted],
     ["color-border", theme.color.border],
+    // Lines that separate rather than identify (the header's edge, the handoff card), softer.
+    ["color-divider", toHex(mix(parseColor(theme.color.border)!, parseColor(theme.color.surface)!, 0.5))],
     ["color-link", theme.color.link],
     ["color-focus", theme.color.focus],
     ["font-family", theme.font.family],
@@ -262,6 +320,8 @@ export function toCssVariables(theme: ThemeTokens, selector = ":host"): string {
     ["input-radius", theme.shape.inputRadius],
     ["shadow", theme.shape.shadow],
     ["launcher-offset", theme.launcher.offset],
+    ["launcher-bottom", theme.launcher.bottom],
+    ["launcher-outline", launcherOutline(theme) ?? "transparent"],
     ["launcher-size", theme.launcher.size],
     ["gradient-end", theme.finish.gradientEnd],
     ["gloss-sheen", String(GLOSS_SHEEN)],

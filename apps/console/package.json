@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@launchpad/db": "*",
+    "@launchpad/notify": "*",
     "@launchpad/par-client": "*",
     "@launchpad/theme": "*",
     "drizzle-orm": "^0.44.5",

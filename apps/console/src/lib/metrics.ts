@@ -2,6 +2,9 @@
 // React, so they run under node:test. Days are UTC "YYYY-MM-DD" strings, as Postgres `date`
 // columns come back.
 
+import type { ValidationResult } from "@launchpad/db";
+import { isFallbackQuestion, needsCheck, partialContentNote, type RunQuestion } from "./validation-rules.ts";
+
 export interface UsageDay {
   deploymentId: string;
   day: string;
@@ -157,6 +160,8 @@ export function budgetState(usage: Pick<UsageSummary, "monthCents" | "projectedC
 export interface Alert {
   tone: "warning" | "critical";
   text: string;
+  // The panel that explains it and fixes it.
+  href?: string;
 }
 
 const BUDGET_ALERTS: Partial<Record<BudgetState, Alert>> = {
@@ -170,25 +175,141 @@ const STALE_SYNC_DAYS = 3;
 // A week-on-week drop in answer relevance (1–5) worth a look.
 const QUALITY_DROP = 0.4;
 
-export function deploymentAlerts(d: DeploymentRow, sync: SyncRow | undefined, quality: QualitySummary, now: Date): Alert[] {
+// What a run leaves for a person, question by question: an answer failing a check, no answer
+// (unless a person said the site doesn't cover it), or a flagged answer nobody has checked. The
+// worker's alerts and Fleet's needing-attention list both go by it. Pure.
+export function openItems(questions: readonly ValidationResult["questions"][number][]): { question: string; what: string }[] {
+  return questions.flatMap((q) => {
+    const r = q as RunQuestion;
+    const what = q.failure
+      ? `failed: ${q.failure}`
+      : !q.answered && !r.notCovered && !isFallbackQuestion(q.question)
+        ? "no answer"
+        : needsCheck(q)
+          ? q.flags?.includes("price")
+            ? "a price to check"
+            : "an answer to check"
+          : undefined;
+    return what ? [{ question: q.question, what }] : [];
+  });
+}
+
+// A signed-off deployment's latest run, when it no longer passes: what it left open (sign-off
+// left nothing open), and whether the console ran it by itself. Not a run on partial content,
+// which runs again by itself. Pure.
+export function openSinceSignOff(
+  signedOff: boolean,
+  validation: ValidationResult | null | undefined,
+  now = new Date(),
+): { open: number; auto: boolean } | undefined {
+  if (!signedOff || !validation || validation.passed || partialContentNote(validation, now)) return undefined;
+  const open = openItems(validation.questions).length;
+  return open ? { open, auto: Boolean((validation as { auto?: unknown }).auto) } : undefined;
+}
+
+// Starters the automatic re-run took off the live chat since the deployment's sign-off (B's
+// deployment.starters.removed), that nobody has picked again since (deployment.starters, or a
+// new sign-off). `entries` are the deployment's audit entries of those three kinds. Pure.
+export function startersRemoved(
+  entries: readonly { action: string; at: Date; detail: unknown }[],
+  signedOffAt: Date | undefined,
+): string[] {
+  if (!signedOffAt) return [];
+  const sorted = [...entries].sort((a, b) => a.at.getTime() - b.at.getTime());
+  let removed: string[] = [];
+  for (const e of sorted) {
+    if (e.action === "deployment.starters.removed" && e.at >= signedOffAt) {
+      const question = (e.detail as { question?: unknown } | null)?.question;
+      if (typeof question === "string" && question.trim()) removed.push(question.trim());
+    } else if (
+      (e.action === "deployment.starters" || e.action === "deployment.signoff") &&
+      !(e.detail as { auto?: unknown } | null)?.auto
+    ) {
+      // A person picked starters again, or signed off again.
+      removed = [];
+    }
+  }
+  return removed;
+}
+
+// What happened to a signed-off deployment since its sign-off that a person hasn't resolved: what
+// its latest run left open (openSinceSignOff), and starters the automatic re-run
+// took off the live chat (startersRemoved). Fleet lists the customer as needing attention until
+// both are gone.
+export interface AfterSignOff {
+  open?: { open: number; auto: boolean };
+  removed: string[];
+}
+
+const quoted = (q: string) => `“${q.length > 40 ? `${q.slice(0, 40)}…` : q}”`;
+
+export function afterSignOffAlerts(d: Pick<DeploymentRow, "id" | "tenantId">, after: AfterSignOff | undefined): Alert[] {
+  if (!after) return [];
+  const at = `/customers/${d.tenantId}/deployments/${d.id}#validate`;
   const alerts: Alert[] = [];
-  if (d.status === "failed") alerts.push({ tone: "critical", text: "Provisioning failed" });
-  if (sync?.lastJobStatus && /fail|error/i.test(sync.lastJobStatus)) alerts.push({ tone: "critical", text: "Last sync failed" });
+  const n = after.removed.length;
+  if (n) {
+    const which = n === 1 ? `Starter ${quoted(after.removed[0]!)} removed` : `${n} starters removed`;
+    alerts.push({ tone: "critical", text: `${which}: pick again`, href: at });
+  }
+  if (after.open) {
+    // Whoever ran it: the worker re-asking one question marks a person's run as automatic, so the
+    // saved run can't say who opened what (the alerts go by the runs' audit entries instead).
+    const { open } = after.open;
+    alerts.push({ tone: "warning", text: `Since sign-off: ${open} ${open === 1 ? "answer" : "answers"} open`, href: at });
+  }
+  return alerts;
+}
+
+export function deploymentAlerts(
+  d: DeploymentRow,
+  sync: SyncRow | undefined,
+  quality: QualitySummary,
+  now: Date,
+  after?: AfterSignOff,
+): Alert[] {
+  const alerts: Alert[] = [...afterSignOffAlerts(d, after)];
+  const at = (panel: string) => `/customers/${d.tenantId}/deployments/${d.id}#${panel}`;
+  if (d.status === "failed") alerts.push({ tone: "critical", text: "Provisioning failed", href: at("provisioning") });
+  if (sync?.lastJobStatus && /fail|error/i.test(sync.lastJobStatus))
+    alerts.push({ tone: "critical", text: "Last sync failed", href: at("content") });
   else if (d.status === "live" && sync?.lastSyncedAt) {
     const days = Math.floor((now.getTime() - sync.lastSyncedAt.getTime()) / DAY_MS);
-    if (days >= STALE_SYNC_DAYS) alerts.push({ tone: "warning", text: `No sync for ${days} days` });
+    if (days >= STALE_SYNC_DAYS) alerts.push({ tone: "warning", text: `No sync for ${days} days`, href: at("content") });
   }
   if (quality.trend !== undefined && quality.trend <= -QUALITY_DROP) {
-    alerts.push({ tone: "warning", text: `Quality down ${(-quality.trend).toFixed(1)}` });
+    alerts.push({ tone: "warning", text: `Quality down ${(-quality.trend).toFixed(1)}`, href: `/customers/${d.tenantId}#quality` });
   }
   return alerts;
 }
 
 export interface DeploymentView extends DeploymentRow {
+  // Where it stands (onboarding.ts); set by the loader, which has the data for it.
+  stage?: { key: string; label: string; detail: string; tone: "good" | "neutral" | "warning" | "critical" };
+  // Signed off under the review's older checks (review.ts underOlderChecks), and when it was signed
+  // off: set by the loader, for Fleet's tile and filter.
+  olderChecks?: boolean;
+  signedOffAt?: string;
+  // A published chat on older answering rules than the console's latest (item 6: held by its
+  // re-check, or waiting for it).
+  olderRules?: boolean;
+  // Its price table needs a person to confirm it (overview.ts priceTableIssue): "changed" after a
+  // re-read changed confirmed rows (price-table.ts needsConfirmingAgain), "unconfirmed" on a live
+  // chat whose table was never confirmed, "unread" when a pricing page's prices could not be read. Set by the loader.
+  priceTable?: "changed" | "unconfirmed" | "unread" | "doubted";
   usage: UsageSummary;
   quality: QualitySummary;
   sync: SyncRow | undefined;
   alerts: Alert[];
+}
+
+// The deployments signed off under older checks, oldest sign-off first: Fleet's "Signed off under
+// older checks: N" tile and filter, and what "Read the pages again for all, tonight" queues (exec
+// review round 5: 9 of 13 deployments flagged, with nothing at fleet level to work through). Pure.
+export function olderChecksFirst<D extends Pick<DeploymentView, "olderChecks" | "signedOffAt">>(deployments: readonly D[]): D[] {
+  // A sign-off without a readable date counts as the oldest.
+  const at = (d: D) => Date.parse(d.signedOffAt ?? "") || 0;
+  return deployments.filter((d) => d.olderChecks).sort((a, b) => at(a) - at(b));
 }
 
 export interface TenantView extends TenantRow {
@@ -214,6 +335,8 @@ export interface DashboardInput {
   usage: UsageDay[];
   quality: QualityDay[];
   syncs: SyncRow[];
+  // Per deployment id: what's unresolved since its sign-off.
+  afterSignOff?: ReadonlyMap<string, AfterSignOff>;
 }
 
 const latest = (a: SyncRow | undefined, b: SyncRow) => (!a || (b.lastSyncedAt?.getTime() ?? 0) > (a.lastSyncedAt?.getTime() ?? 0) ? b : a);
@@ -234,7 +357,13 @@ export function buildDashboard(input: DashboardInput): Dashboard {
       const dUsage = forDeployments(usageRows, one);
       const quality = summarizeQuality(forDeployments(input.quality, one), dUsage, today);
       const sync = syncs.get(d.id);
-      return { ...d, usage: summarizeUsage(dUsage, today), quality, sync, alerts: deploymentAlerts(d, sync, quality, input.now) };
+      return {
+        ...d,
+        usage: summarizeUsage(dUsage, today),
+        quality,
+        sync,
+        alerts: deploymentAlerts(d, sync, quality, input.now, input.afterSignOff?.get(d.id)),
+      };
     });
     const budget = budgetState(usage, t.monthlyBudgetCents);
     const budgetAlert = BUDGET_ALERTS[budget];
@@ -243,7 +372,7 @@ export function buildDashboard(input: DashboardInput): Dashboard {
       usage,
       quality: summarizeQuality(forDeployments(input.quality, ids), usageRows, today),
       budget,
-      alerts: [...(budgetAlert ? [budgetAlert] : []), ...deployments.flatMap((d) => d.alerts)],
+      alerts: [...(budgetAlert ? [{ ...budgetAlert, href: `/customers/${t.id}/edit` }] : []), ...deployments.flatMap((d) => d.alerts)],
       deployments,
     };
   });

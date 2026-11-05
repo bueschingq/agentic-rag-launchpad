@@ -1,0 +1,20 @@
+{
+  "name": "@launchpad/notify",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Sends alerts and leads to a webhook (Slack, Teams) and, when SMTP is configured, by email.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "nodemailer": "^7.0.6"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^7.0.1"
+  }
+}

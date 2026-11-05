@@ -1,0 +1,866 @@
+[
+  {
+    "id": "vd-001",
+    "question": "Can I get a free trial?",
+    "reply": "Yes. We offer a free trial of ShareFile. Our Plans & Pricing page lets you start a free trial, and our File Transfer page says no card is needed.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\executive.md",
+    "note": "Correct trial answer; \"no card is needed\" is part of the answer, not a missing-information claim. The product held it as a non-answer."
+  },
+  {
+    "id": "vd-002",
+    "question": "Hoe neem ik contact op met sales?",
+    "reply": "Neem contact met ons op via onze contactpagina.",
+    "language": "nl",
+    "label": "deflection",
+    "source": "written",
+    "note": "Only \"use our contact page\" (nl)."
+  },
+  {
+    "id": "vd-003",
+    "question": "Are there any upcoming webinars or events?",
+    "reply": "No upcoming webinar or event dates are stated on the pages provided. We do offer on-demand webinar recordings, including: - “Why AI recommends your competitor and not you” - “All your projects in view with Teamleader. Less follow-up thanks to Focus AI” - “Never lose a customer again with Focus AI”",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\h2-validate-run3.json",
+    "note": "\"No upcoming webinar or event dates are stated on the pages provided\"; on-demand recordings are not what was asked."
+  },
+  {
+    "id": "vd-004",
+    "question": "Are there any upcoming webinars?",
+    "reply": "Yes. Our next live webinars are:\n\nThe Agency of 2027: Turning AI Savings Into Margin — Wednesday, November 4, 2026\nProfessional Services in 2027: When AI Joins the Team — Thursday, November 5, 2026\n\nBoth focus on protecting revenue and margins as AI changes billable work.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\h1\\chat-results.jsonl",
+    "note": "Correct short answer: dates."
+  },
+  {
+    "id": "vd-005",
+    "question": "Does WhatsUp Gold have a mobile app?",
+    "reply": "Yes. Our WhatsUp Gold mobile app lets you see which devices are up, down or in maintenance from one screen. You can drill into device details and resolve issues from anywhere.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\whatsupgold\\chat-results.jsonl",
+    "note": ""
+  },
+  {
+    "id": "vd-006",
+    "question": "How can I buy Teamleader?",
+    "reply": "You can get started with a 14-day free trial—no credit card needed—on our pricing page, “Choose the package that suits you.”\n\nFor Teamleader Focus, the page lists €24.75 per user/month for the first year, excluding VAT and including discounts. It also mentions:\n\nFirst 3 months free\n25% off your first invoice\n17% off an annual subscription\n50% off from the sixth user\n\nYou can also request a no-obligation quote on “Request a quote, with no obligation!”.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck-2\\chat-results.jsonl",
+    "note": ""
+  },
+  {
+    "id": "vd-007",
+    "question": "How much does WhatsUp Gold cost for 300 devices?",
+    "reply": "Pricing is listed starting at 50 devices, not specifically for 300 devices. Contact Sales on our Editions and Pricing page for a quote tailored to 300 devices.",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\recheck\\chat-results.jsonl",
+    "note": "Says there is no 300-device price and gives no figure at all; only a pointer to sales."
+  },
+  {
+    "id": "vd-008",
+    "question": "Where can I buy Kemp?",
+    "reply": "You can buy Kemp LoadMaster by requesting a quote on our Get a Quote page or through a Kemp partner. Pricing is provided by quote; no specific prices are listed.",
+    "language": "en",
+    "label": "answered",
+    "source": "written",
+    "note": "Built around the round-6 sales-engineer quote (\"Pricing is provided by quote; no specific prices are listed\"). The where-to-buy question is answered; the false price negative is not about what was asked (an accuracy check, not the verdict, should catch it)."
+  },
+  {
+    "id": "vd-009",
+    "question": "How much do Telerik products cost?",
+    "reply": "Our product pricing varies by product and subscription. Examples shown on our site include:\n\nTelerik Reporting: $599 per developer, per year\nDevCraft UI: $1,149 per developer, per year\nDevCraft Complete: $1,299\nDevCraft Ultimate: $1,649\nTelerik UI for Blazor: starting at $749 per developer, per year\nKendoReact: $649 per developer, per year\nKendo UI: $799 per developer, per year\n\nEach subscription includes one year of maintenance and support. See our [Pricing and Licensing FAQs] or [Purchase Telerik Software Development Tools] page for product-specific options.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\recheck\\chat-results.jsonl",
+    "note": "Correct short answer: prices."
+  },
+  {
+    "id": "vd-010",
+    "question": "Can I run Agentic RAG on my own servers?",
+    "reply": "Yes. Progress Agentic RAG supports cloud, hybrid or fully self-hosted deployment, so you can run it on your own servers with nothing in Progress Cloud.",
+    "language": "en",
+    "label": "answered",
+    "source": "written",
+    "note": "Built around the round-6 UX review quotes (\"Yes… supporting cloud, hybrid or fully self-hosted deployment\" and \"…with nothing in Progress Cloud\"; ux-designer.md). The negative clause is not about what was asked."
+  },
+  {
+    "id": "vd-011",
+    "question": "Comment contacter le service commercial ?",
+    "reply": "Pour contacter notre service commercial concernant Teamleader Focus, remplissez le formulaire de contact sur la page « Curieux de savoir si Teamleader Focus est fait pour vous ? ». Vous pouvez aussi demander un devis sans engagement : indiquez vos coordonnées et nous vous recontacterons dans les plus brefs délais.",
+    "language": "fr",
+    "label": "deflection",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\h2-validate-run1.json",
+    "note": "Only content is \"use the contact form/page\" with no channel detail (phone, email, hours, callback). Adds a quote form, still only pointers (fr)."
+  },
+  {
+    "id": "vd-012",
+    "question": "What's your email address?",
+    "reply": "Ghost(Pro) customers can reach us at **support@ghost.org**.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\pilot\\results-A-r2.json",
+    "note": "Correct short answer: email address."
+  },
+  {
+    "id": "vd-013",
+    "question": "How much does the Basics plan cost?",
+    "reply": "The details I can see stop short of naming any dollar amounts for the plans.",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\h1\\nonanswers-result.json",
+    "note": "Non-answer wording written by the round-6 verifier and fed to the rule; the site has the information."
+  },
+  {
+    "id": "vd-014",
+    "question": "Can I get a free trial or demo?",
+    "reply": "Yes. You can start a free WhatsUp Gold trial or request a personalized demo to see visibility across your infrastructure.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\recheck\\b2-wug-validate-run1.txt",
+    "note": "Brief \"Yes\" with the step counts as answered."
+  },
+  {
+    "id": "vd-015",
+    "question": "How do I contact support?",
+    "reply": "You can contact us by: - Email: Complete our contact form for email support. - Phone or text: Call or text 1-800-CRAYOLA (1-800-272-9652), Monday–Friday, 9 AM–4 PM EST. Text charges may apply. - Mail: Crayola, LLC, Attn: Consumer Affairs, P.O. Box 431, Easton, PA 18044-0431. - Facebook Messenger: Send us a private message.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\recheck\\k1-crayola-validate-run1.txt",
+    "note": "Correct short answer: phone number and hours."
+  },
+  {
+    "id": "vd-016",
+    "question": "Combien coûte l'accompagnement pour externaliser la mise en place ?",
+    "reply": "Pour externaliser la mise en place de Teamleader Focus, le forfait unique coûte 1 250 € hors TVA pour les formules Smart, Grow ou Flow.\n\nIl comprend l’équivalent de 10 heures de mise en œuvre, frais de déplacement inclus. Les éventuelles heures supplémentaires sont à définir avec votre partenaire de service certifié.",
+    "language": "fr",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\chat-results.jsonl",
+    "note": "Correct short answer: price (fr)."
+  },
+  {
+    "id": "vd-017",
+    "question": "How do I get marker off carpet?",
+    "reply": "For Gel FX Markers or Light Designer Markers on 100% nylon carpet: 1. Blot with a damp sponge, changing it as it picks up color. 2. If needed, blot with rubbing alcohol on a cotton ball. 3. For persistent stains, leave an alcohol-dampened cotton ball on the stain overnight under a weight, covered to keep it moist. 4. If still visible, use Spot Shot Carpet Stain Remover as directed. Do not l…",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\recheck\\k1-crayola-validate-run1.txt",
+    "note": "The source stores this reply cut off (…)."
+  },
+  {
+    "id": "vd-018",
+    "question": "How do I get crayon off a painted wall?",
+    "reply": "Our tips stop short of painted walls, sorry.",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\ux-designer.md",
+    "note": "The reviewer wrote this wording to test the chat rule. Question taken from the painted-wall starter."
+  },
+  {
+    "id": "vd-019",
+    "question": "How do I contact sales?",
+    "reply": "Contact us through our Contact page.",
+    "language": "en",
+    "label": "deflection",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\marketer.md",
+    "note": "Only \"use the Contact page\"."
+  },
+  {
+    "id": "vd-020",
+    "question": "Can WhatsUp Gold monitor my Cisco switches with SNMP?",
+    "reply": "Yes. WhatsUp Gold can monitor network devices, including switches, using SNMP v1–3. It uses active SNMP monitors to check availability and performance, and can also analyze SNMP traps for near-time issue detection. You can track metrics such as CPU load, memory utilization and bandwidth consumption, with alerts and reporting when thresholds are exceeded.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\recheck\\b2-wug-validate-run1.txt",
+    "note": ""
+  },
+  {
+    "id": "vd-021",
+    "question": "When is the next WhatsUp Gold webinar?",
+    "reply": "No date is given for an upcoming WhatsUp Gold webinar. See our Network Monitoring Tools & Software page for available on-demand webinars.",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck-2\\pv-results.jsonl",
+    "note": "Negative plus a pointer; nothing of the kind asked."
+  },
+  {
+    "id": "vd-022",
+    "question": "Where can I find free coloring pages?",
+    "reply": "Find free, printable coloring pages on our Free Printable Coloring Pages, Sheets & Activities page.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\recheck\\k1-crayola-validate-run1.txt",
+    "note": "For a \"how do I contact / where can I find\" question, a named channel or page with concrete detail is the answer itself."
+  },
+  {
+    "id": "vd-023",
+    "question": "¿Cuáles son sus precios?",
+    "reply": "Nuestros precios de Teamleader Focus incluyen:\n\nGrow: € 24,75 por usuario/mes durante el primer año, con pago anual. Precios sin IVA e incluyen descuentos.\nBoosters por cuenta:\nGestión de proyectos: €35/mes\nPlanificación: €35/mes\nCaptación de leads: €20/mes\nÓrdenes de trabajo: €20/mes\nBandeja de entrada compartida: €50/mes\nEstadísticas avanzadas: €25/mes\n\nOfrecemos 14 días gratis sin tarjeta de crédito. La página «Elige el paquete que más te convenga - Flexible y claro» no muestra el precio de Focus IA Pro.",
+    "language": "es",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\chat-results.jsonl",
+    "note": ""
+  },
+  {
+    "id": "vd-024",
+    "question": "When is the next WhatsUp Gold webinar?",
+    "reply": "Our next webinar is Beyond the Firewall: Eliminate Blind Spots with Network Path Analysis on Thursday, November 5, 2026, at 11:00 AM local time.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck-2\\pv-results.jsonl",
+    "note": "Correct short answer: date. Contrast with other replies to the same question that say no date is listed."
+  },
+  {
+    "id": "vd-025",
+    "question": "Do you have a price list?",
+    "reply": "Pricing is provided by quote; no specific prices are listed.",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "written",
+    "note": "The round-6 sales-engineer quote (Kemp) asked as a price question. The only content is a whole-site negative, and it is false: Kemp lists four prices."
+  },
+  {
+    "id": "vd-026",
+    "question": "Wanneer is het volgende webinar?",
+    "reply": "Helaas vond ik op deze website geen antwoord op die vraag.",
+    "language": "nl",
+    "label": "may-not-answer",
+    "source": "written",
+    "note": "No-answer reply (nl)."
+  },
+  {
+    "id": "vd-027",
+    "question": "How much does it cost?",
+    "reply": "Ghost(Pro) pricing shown for annual billing:\n\n- Starter: **$15 USD / mo**, billed yearly\n- Publisher: **$29** per month\n- Business: **$199** per month\n- Custom: **Custom** pricing\n\nFor Custom plan pricing, please use the **Get in touch** option on the Ghost(Pro) plans & pricing page.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\pilot\\results-A-r2.json",
+    "note": "Correct short answer: prices."
+  },
+  {
+    "id": "vd-028",
+    "question": "How much does Chef cost?",
+    "reply": "Chef 360 uses a predictable subscription model, typically calculated per managed node. Our website does not list specific subscription prices. Visit our Pricing & Plans page.",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\nonanswers-result.json",
+    "note": "Real-reply shape used as a verifier test: pricing model plus a false whole-site negative (the site lists Business at $59/node). Compare the partly item that also gives the open-source $0 fact."
+  },
+  {
+    "id": "vd-029",
+    "question": "¿Hay una prueba gratuita?",
+    "reply": "Sí. Ofrecemos una prueba gratuita de Teamleader Focus de 14 días, sin necesidad de tarjeta de crédito. Puedes acceder a todas las funcionalidades durante la prueba.",
+    "language": "es",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck-2\\h2-validate-run1.json",
+    "note": "Correct trial answer with \"sin necesidad de tarjeta de crédito\" (es)."
+  },
+  {
+    "id": "vd-030",
+    "question": "¿Cómo puedo descargar una prueba gratuita?",
+    "reply": "No indica cómo descargar una prueba gratuita.",
+    "language": "es",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\marketer.md",
+    "note": "Fragment quoted in the review; says how to get the trial is not stated (es)."
+  },
+  {
+    "id": "vd-031",
+    "question": "Can I point two domains at one site?",
+    "reply": "The “Adding a custom domain” page explains how to map a domain to a Ghost(Pro) publication and redirect between a root domain and its www subdomain. It does not state whether two separate custom domains can point to one site.",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\pilot\\results-A.json",
+    "note": "Explains a related setup but says the asked point is not stated."
+  },
+  {
+    "id": "vd-032",
+    "question": "Do you offer any discounts?",
+    "reply": "We offer several discount options for publishers to use with paid memberships:\n\n- Retention offers: free months or percentage discounts on upcoming payments for members who cancel.\n- Special offers: free trials shared through a custom offer link.\n- Annual pricing can include a discount compared with monthly billing.\n\nYou can manage retention offers in Ghost Admin under **Settings → Offers**.",
+    "language": "en",
+    "label": "substituted",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\pilot\\results-A-r2.json",
+    "note": "Asked about discounts for the customer; answers about offers publishers can give their readers."
+  },
+  {
+    "id": "vd-033",
+    "question": "Can I get a refund?",
+    "reply": "Our Terms of Service state that all sales are final and refunds are not provided unless Ghost Foundation explicitly decides otherwise. Upgrade fees are also non-refundable.\n\nFor gift subscriptions, the buyer can request a refund from the publication owner—for example, if a gift expires unredeemed or the recipient already has a paid subscription. The owner can issue it through Stripe.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\pilot\\results-A-r2.json",
+    "note": "Correct negative answer: no refunds."
+  },
+  {
+    "id": "vd-034",
+    "question": "How do I get Silly Putty off a painted wall?",
+    "reply": "Dampen paper towels with warm water and liquid dish soap (we prefer Dawn or Joy). Work the area gently in a circular motion to loosen and remove as much Silly Putty as possible.\n\nSpray any remaining residue with an all-purpose cleaner, such as Windex or Formula 409, and wipe with paper towels. Repeat as needed.\n\nResults may vary, so test first.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\recheck\\second\\chat-results.jsonl",
+    "note": ""
+  },
+  {
+    "id": "vd-035",
+    "question": "Are there any upcoming webinars or events?",
+    "reply": "Our webinar pages list on-demand recordings, including: - Never lose a customer again with Focus AI (English) - Don’t lose track of a customer again with Focus AI - Get all your projects in view with Teamleader, with less follow-up thanks to Focus AI - Why AI recommends your competitor and not you No upcoming webinar or event date is stated on these pages.",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\h2-validate-run1.json",
+    "note": "Lists on-demand recordings, then says no upcoming date is stated."
+  },
+  {
+    "id": "vd-036",
+    "question": "When is the next Teamleader webinar or event?",
+    "reply": "The next listed Teamleader event is Agency Life Off The Record on 1 December 2026 in Munich, Germany, at FITZROY. You can join the guest list via the Agency Life Off The Record page. It states that applications are reviewed by our team.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck-2\\h2-validate-run1.json",
+    "note": "Correct short answer: event date."
+  },
+  {
+    "id": "vd-037",
+    "question": "How do I contact sales?",
+    "reply": "Contact our Sales team by: - Email: sales@teamwork.com - US phone: +1 303 300 5318 - Ireland phone: +353 21 2128700 You can also use the Contact Us page to get in touch with us.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\h1-validate-run1.json",
+    "note": "Correct short answer: email and phone numbers."
+  },
+  {
+    "id": "vd-038",
+    "question": "Do you have a price list?",
+    "reply": "Unfortunately nothing in my sources goes into the subscription fees.",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\h1\\nonanswers-result.json",
+    "note": "Non-answer wording written by the round-6 verifier and fed to the rule; the site has the information."
+  },
+  {
+    "id": "vd-039",
+    "question": "Hoeveel kost Teamleader voor 30 gebruikers?",
+    "reply": "De prijs start vanaf € 24,75 per gebruiker per maand in het eerste jaar. Een totaalprijs voor 30 gebruikers staat niet op de site; vraag hiervoor een offerte aan.",
+    "language": "nl",
+    "label": "partly",
+    "source": "written",
+    "note": "Per-user price given, honest that the 30-user total needs a quote (nl)."
+  },
+  {
+    "id": "vd-040",
+    "question": "Comment contacter le service commercial ?",
+    "reply": "Pour contacter notre service commercial, remplissez le formulaire de contact : un consultant vous répondra dans un délai d’un jour ouvrable. Vous pouvez aussi demander à être rappelé : un consultant vous rappelle dans les cinq minutes pendant les heures d’ouverture.",
+    "language": "fr",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\h2-validate-run2.json",
+    "note": "Callback within five minutes; answered (fr)."
+  },
+  {
+    "id": "vd-041",
+    "question": "Can I try it for free?",
+    "reply": "Yes. We support free trials for paid tiers, special offers, and complimentary plans.\n\n- Paid-tier and offer trials require card details, but we won’t charge the card if the member cancels before the trial ends.\n- Complimentary plans can provide paid access without a card for 1 week, 1 month, 6 months, 1 year, or forever.\n\nThe **Free trials in Ghost** page explains the available trial options, but does not state how to start a trial for Ghost itself.",
+    "language": "en",
+    "label": "substituted",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\pilot\\results-A-r2.json",
+    "note": "Asked whether the visitor can try Ghost for free; answers how publishers can give their members trials, then says how to start a Ghost trial is not stated."
+  },
+  {
+    "id": "vd-042",
+    "question": "How can I contact you?",
+    "reply": "You can contact us by post:\n\nGhost Foundation  \n160 Robinson Road  \n#14-04 SBF Center  \nSingapore, 068914\n\nFor Ghost(Pro) support, email **support@ghost.org**. For general support, visit our forum.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\pilot\\results-A-r2.json",
+    "note": ""
+  },
+  {
+    "id": "vd-043",
+    "question": "Hoe neem ik contact op met sales?",
+    "reply": "Nog geen klant? Vul het contactformulier in om een vraag achter te laten of een terugbelverzoek te doen. Een consultant belt je binnen vijf minuten terug tijdens kantooruren, of beantwoordt je vraag binnen één werkdag. Je kunt ook een kort gesprek van ongeveer 15 minuten plannen via ‘Niet zeker of Teamleader iets voor jou is?’.",
+    "language": "nl",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck-2\\h2-validate-run2.json",
+    "note": "Form plus callback within five minutes; answered (nl)."
+  },
+  {
+    "id": "vd-044",
+    "question": "What are your prices?",
+    "reply": "I'm not able to find pricing details in what I have to work with.",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\nonanswers-result.json",
+    "note": "Non-answer wording written by the round-6 verifier and fed to the rule; the site has the information."
+  },
+  {
+    "id": "vd-045",
+    "question": "Combien coûte le forfait Flow ?",
+    "reply": "Le forfait Grow coûte € 24,75 par utilisateur/mois la première année. Le prix du forfait Flow n’est pas indiqué ; demandez un devis.",
+    "language": "fr",
+    "label": "partly",
+    "source": "written",
+    "note": "Gives another plan’s price and is honest that the asked plan is not priced (fr)."
+  },
+  {
+    "id": "vd-046",
+    "question": "How much does Telerik DevCraft Complete cost?",
+    "reply": "Telerik DevCraft Complete costs $1,299 per developer, per year.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\recheck\\d3-telerik-validate-run1.txt",
+    "note": "Correct short answer: one price."
+  },
+  {
+    "id": "vd-047",
+    "question": "Was kostet WhatsUp Gold für 300 Geräte?",
+    "reply": "Leider habe ich auf dieser Website keine Antwort darauf gefunden.",
+    "language": "de",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\recheck\\chat-results.jsonl",
+    "note": "Fallback no-answer reply (de)."
+  },
+  {
+    "id": "vd-048",
+    "question": "How do I get crayon off wallpaper?",
+    "reply": "For Construction Paper or Gel FX Crayons on smooth wallpaper, wash the surface with Comet Cleaner and wipe. Test first—results may vary. For Fabric Crayons, removal suggestions are not available because they are designed for permanency. For non-washable materials, consult a professional cleaner.",
+    "language": "en",
+    "label": "partly",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\recheck\\k1-crayola-validate-run1.txt",
+    "note": "Steps only for some crayon types; says fabric crayons have none and gives nothing for regular crayons."
+  },
+  {
+    "id": "vd-049",
+    "question": "Does Swiffer offer a money-back guarantee?",
+    "reply": "Yes. We offer a money-back satisfaction guarantee on all our products. If you are not completely satisfied with a Swiffer product for any reason, we’ll refund the purchase price on a prepaid card. For details, download the guarantee PDF, complete the form, and send the completed form, original UPC, and sales receipt to the address on the form.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\h3\\v1-validate-run1.txt",
+    "note": ""
+  },
+  {
+    "id": "vd-050",
+    "question": "When is the next webinar?",
+    "reply": "Our next webinar is Professional Services in 2027: When AI Joins the Team, on Thursday, November 5, 2026.\n\nWe also have The Agency of 2027: Turning AI Savings Into Margin on Wednesday, November 4, 2026, at 8:00am PST / 11:00am EST / 4:00pm GMT.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\chat-results.jsonl",
+    "note": "Correct short answer: date."
+  },
+  {
+    "id": "vd-051",
+    "question": "Quel est votre numéro de téléphone ?",
+    "reply": "Notre numéro d’assistance Teamleader Focus est le +33 9 70 73 33 00. Laissez-nous un message vocal et nous vous recontacterons avec une réponse adaptée.",
+    "language": "fr",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\chat-results.jsonl",
+    "note": "Correct short answer: phone number (fr)."
+  },
+  {
+    "id": "vd-052",
+    "question": "How do I contact sales?",
+    "reply": "To contact our sales team, fill in the contact form. We’ll connect you with the right person. You can also request a callback: a consultant will call within five minutes during office hours. Alternatively, leave your question and we’ll respond within one working day. You can also schedule a short demo call (about 15 minutes) at a time that suits you.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\h2-validate-run1.json",
+    "note": ""
+  },
+  {
+    "id": "vd-053",
+    "question": "How do I get crayon off a painted wall?",
+    "reply": "For regular or glitter crayons on painted walls:\n\nSpray the area with an all-purpose cleaner, such as Windex or Formula 409, and wipe with paper towels.\nIf needed, use a sponge dampened with warm water and liquid dish soap (Dawn or Joy preferred). Work in circular motions.\nRinse with water and dry with paper towels.\nRepeat as needed.\n\nA Mr. Clean Magic Eraser may also be used according to the manufacturer’s directions. Results may vary—test first.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\recheck\\chat-results.jsonl",
+    "note": ""
+  },
+  {
+    "id": "vd-054",
+    "question": "How do I contact support?",
+    "reply": "Contact our Support team by email at support@teamwork.com, or use the contact form in our Support Center. We also offer email, live chat, and phone support. Support is available Monday through Friday, 7:00am–12:00am IST, with limited weekend cover.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\h1-validate-run1.json",
+    "note": "Correct short answer: email, hours."
+  },
+  {
+    "id": "vd-055",
+    "question": "What are your prices?",
+    "reply": "Ghost pricing starts from $15/month. We charge 0% transaction fees, so you keep all of your subscription revenue, with payments processed through your own Stripe account.\n\nThe pages provided do not state the full plan breakdown or all pricing options.",
+    "language": "en",
+    "label": "partly",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\pilot\\results-B-citeon-r2.json",
+    "note": "Gives a starting price and says the full breakdown is not stated."
+  },
+  {
+    "id": "vd-056",
+    "question": "Wie erreiche ich den Support?",
+    "reply": "Bitte nutzen Sie dafür unsere Kontaktseite.",
+    "language": "de",
+    "label": "deflection",
+    "source": "written",
+    "note": "Only a pointer (de)."
+  },
+  {
+    "id": "vd-057",
+    "question": "When is the next Teamwork.com webinar?",
+    "reply": "Sadly, the information at hand doesn't mention when the next webinar takes place.",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\nonanswers-result.json",
+    "note": "Non-answer wording written by the round-6 verifier and fed to the rule; the site has the information."
+  },
+  {
+    "id": "vd-058",
+    "question": "Gibt es eine Partnerschaft für Agenturen?",
+    "reply": "Yes. Sitefinity is built for digital agencies that prioritize speed, quality and flexibility. We offer a global partner network, and agencies can use our flexible content architecture, ready-to-use content modules and versatile deployment options.\n\nYou can search our Progress Partner database to find a suitable partner, or explore Sitefinity partner integrations and services.",
+    "language": "de",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\chat-results.jsonl",
+    "note": "German question answered in English (configured behaviour); the content answers it."
+  },
+  {
+    "id": "vd-059",
+    "question": "What are your prices?",
+    "reply": "Our comparison pages list Ghost pricing from **$15/month**. They also state that Ghost takes **0% transaction fees**, so you keep your subscription revenue.\n\nThe pricing shown depends on the comparison page; the excerpts do not provide a full plan-by-plan price list.",
+    "language": "en",
+    "label": "partly",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\pilot\\results-A-r2.json",
+    "note": "Gives a starting price and says the full plan list is not available (the site has one)."
+  },
+  {
+    "id": "vd-060",
+    "question": "Wat zijn jullie prijzen?",
+    "reply": "Voor Teamleader Focus start de prijs vanaf € 24,75 per gebruiker per maand, tijdens het eerste jaar, exclusief btw en inclusief korting.\n\nBoosters koop je per account:\n\nProjectmanagement: € 35/maand\nPlanning: € 35/maand\nLead capture: € 20/maand\nWerkbonnen: € 20/maand\nCentrale inbox: € 50/maand\nGeavanceerde statistieken: € 25/maand\nBoekhoudconnector: € 5/maand\n\nJe kunt 14 dagen gratis starten, zonder kredietkaart. Onze pagina ‘Kies het product dat bij je past’ vermeldt geen volledige prijzen voor alle pakketten of Focus AI Pro.",
+    "language": "nl",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\chat-results.jsonl",
+    "note": ""
+  },
+  {
+    "id": "vd-061",
+    "question": "When is the next WhatsUp Gold webinar?",
+    "reply": "No upcoming WhatsUp Gold webinar date is listed. We offer on-demand webinars, including “Unified Visibility, Faster Resolution: What’s Next for Network Monitoring” and “Beyond the Dashboard: Integrating Network Monitoring with Your IT Ecosystem.”",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\demo\\pv-results.jsonl",
+    "note": "No date; on-demand recordings are not what was asked (the next webinar date)."
+  },
+  {
+    "id": "vd-062",
+    "question": "Who should I talk to about becoming a Sitefinity partner?",
+    "reply": "Contact us to discuss becoming a Sitefinity partner. Our Contact page says a representative will respond within one business day.",
+    "language": "en",
+    "label": "deflection",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\demo\\chat-results.jsonl",
+    "note": "The partner question answered with \"contact us\"; only a pointer (reviewed as a deflection in round 6)."
+  },
+  {
+    "id": "vd-063",
+    "question": "When is the PSA Mastermind in London?",
+    "reply": "The PSA Mastermind in London is on March 19, 2026, from 12–3pm at The Parcel Yard, King’s Cross.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\h1\\chat-results.jsonl",
+    "note": "Correct short answer: date, time and place."
+  },
+  {
+    "id": "vd-064",
+    "question": "What is your phone number?",
+    "reply": "You can reach our support team by email at support@example-cms.com.",
+    "language": "en",
+    "label": "substituted",
+    "source": "written",
+    "note": "Asked for a phone number; gives an email address only and no phone number."
+  },
+  {
+    "id": "vd-065",
+    "question": "How can I request a free trial?",
+    "reply": "Our Sitefinity CMS Interactive Demos page lets you explore interactive demos. It does not state how to request a free trial. Visit the Sitefinity CMS Interactive Demos page and select Schedule a demo.",
+    "language": "en",
+    "label": "substituted",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\ux-designer.md",
+    "note": "Demo given for a trial question; the only step is about the demo. Near-exact (the review elides two phrases, filled with the page name)."
+  },
+  {
+    "id": "vd-066",
+    "question": "Was kosten Ihre Produkte?",
+    "reply": "Unsere Preise für Teamleader Focus beginnen bei € 24,75 pro Nutzer/Monat im ersten Jahr für Fakturierung. Alle Preise verstehen sich ohne MwSt. und inklusive Rabatt.\n\nZusätzliche Booster pro Konto:\n\nProjektmanagement: €35/Monat\nPlanung: €35/Monat\nLead-Erfassung: €20/Monat\nArbeitsaufträge: €20/Monat\nGemeinsamer Posteingang: €50/Monat\nErweiterte Statistiken: €25/Monat\nBuchhaltungsconnector: €5/Monat\n\nDie Preisseite nennt außerdem 14 Tage kostenlos testen, ohne Kreditkarte.",
+    "language": "de",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\chat-results.jsonl",
+    "note": ""
+  },
+  {
+    "id": "vd-067",
+    "question": "¿Cuánto cuesta WhatsUp Gold para 300 dispositivos?",
+    "reply": "El precio exacto para 300 dispositivos no se indica en nuestro sitio.\n\nNuestros planes comienzan en $1,229 USD al año para 50 dispositivos (Business), $2,049 USD al año (Enterprise) y $3,469 USD al año (Enterprise Plus). Los precios no incluyen impuestos y pueden variar según el país.\n\nPara una cotización para 300 dispositivos, contacte a nuestro equipo de ventas en la página Precios de WUG.",
+    "language": "es",
+    "label": "partly",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\recheck\\chat-results.jsonl",
+    "note": "Prices for 50 devices, quote for 300 (es)."
+  },
+  {
+    "id": "vd-068",
+    "question": "How much does a Sitefinity license cost?",
+    "reply": "Sitefinity license pricing is tailored to your deployment scope and scale; we do not list a fixed license price on our Sitefinity Pricing and Licensing Information page. Request a personalized quote from our Sales team or a certified partner. We can align Sitefinity DX or DX+Enterprise, deployment model, and optional modules to your needs.",
+    "language": "en",
+    "label": "partly",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\demo\\s07-validate-run1.txt",
+    "note": "No fixed licence price exists; gives the model and the quote route."
+  },
+  {
+    "id": "vd-069",
+    "question": "How much does the Accelerate plan cost?",
+    "reply": "My reference material is quiet on what the Accelerate plan costs.",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck-2\\nonanswers-result.json",
+    "note": "Non-answer wording written by the round-6 verifier and fed to the rule; the site has the information."
+  },
+  {
+    "id": "vd-070",
+    "question": "Was kostet WhatsUp Gold?",
+    "reply": "WhatsUp Gold kostet ab 1.229 $ pro Jahr für 50 Geräte im Business-Paket.\n\nWeitere Pakete:\n\nEnterprise: ab 2.049 $ pro Jahr für 50 Geräte\nEnterprise Plus: ab 3.469 $ pro Jahr für 50 Geräte\n\nAlle Preise verstehen sich zuzüglich Steuern, die je nach Land variieren. Für ein unverbindliches Angebot besuchen Sie unsere Seite „Preise und Lizenzierung WhatsUp Gold“.",
+    "language": "de",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\whatsupgold\\chat-results.jsonl",
+    "note": ""
+  },
+  {
+    "id": "vd-071",
+    "question": "Are there any upcoming events?",
+    "reply": "You’ll find everything about our events on the Events page.",
+    "language": "en",
+    "label": "deflection",
+    "source": "written",
+    "note": "Only a pointer; no event named."
+  },
+  {
+    "id": "vd-072",
+    "question": "Does WhatsUp Gold support NetFlow?",
+    "reply": "Yes. WhatsUp Gold supports NetFlow for monitoring network bandwidth, traffic and application performance. We also support IPFIX, sFlow, J-Flow, NetStream, NBAR and CBQoS data collection.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\whatsupgold\\chat-results.jsonl",
+    "note": ""
+  },
+  {
+    "id": "vd-073",
+    "question": "Wie kann ich Teamleader kaufen?",
+    "reply": "Sie können Teamleader Focus direkt auf der Seite „Elige el paquete que más te convenga - Flexible y claro“ starten: Wählen Sie die gewünschten Nutzer und beginnen Sie mit einer kostenlosen 14-tägigen Testphase – ohne Kreditkarte.\n\nDort ist ein Preis von 24,75 € pro Nutzer/Monat im ersten Jahr angegeben, zzgl. MwSt. und inklusive Rabatten. Die ersten drei Monate sind kostenlos. Außerdem gibt es 25 % Rabatt auf die erste Rechnung, 17 % bei Jahreszahlung und 50 % ab dem sechsten Nutzer.",
+    "language": "de",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck-2\\chat-results.jsonl",
+    "note": ""
+  },
+  {
+    "id": "vd-074",
+    "question": "¿Cuál es su número de teléfono?",
+    "reply": "Puedes llamarnos y dejar un mensaje de voz en el +34 911 23 27 54. Te contactaremos con la información que necesitas.",
+    "language": "es",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\chat-results.jsonl",
+    "note": "Correct short answer: phone number (es)."
+  },
+  {
+    "id": "vd-075",
+    "question": "How do I contact sales?",
+    "reply": "Contact our sales team through our Contact Us page or by calling us toll-free at +1-800-477-6473.\n\nYou can also request a quote. We will send you a quote or estimate to sign; once it is signed and returned, we will activate your licenses and send an invoice with NET 30 payment terms.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\recheck\\chat-results.jsonl",
+    "note": "Correct short answer: phone number."
+  },
+  {
+    "id": "vd-076",
+    "question": "How do I contact sales?",
+    "reply": "Contact us through our Contact Us page. A representative will respond within one business day.",
+    "language": "en",
+    "label": "deflection",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\demo\\s07-validate-run1.txt",
+    "note": "Only \"use the Contact Us page\"; the response-time promise is not a way to reach sales."
+  },
+  {
+    "id": "vd-077",
+    "question": "What are your prices?",
+    "reply": "Pricing specifics aren't something I'm able to share from the material available to me.",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\h1\\nonanswers-result.json",
+    "note": "Non-answer wording written by the round-6 verifier and fed to the rule; the site has the information."
+  },
+  {
+    "id": "vd-078",
+    "question": "When is the next Teamleader webinar or event?",
+    "reply": "The next listed Teamleader event is Agency Life Off The Record in Munich, Germany, on 1 December 2026 at FITZROY. You can join the guest list via the “Agency Life Off The Record” page. The page mentions no upcoming Teamleader webinar date.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck-2\\h2-validate-run2.json",
+    "note": "Gives the event and date; the clause \"mentions no upcoming webinar date\" is about something else and does not make it a non-answer."
+  },
+  {
+    "id": "vd-079",
+    "question": "¿Ofrecen una prueba gratuita?",
+    "reply": "Puede solicitar una demostración personalizada con nuestro equipo desde la página «Solicitar demo».",
+    "language": "es",
+    "label": "substituted",
+    "source": "written",
+    "note": "Demo instead of trial (es)."
+  },
+  {
+    "id": "vd-080",
+    "question": "Do you ship to Canada?",
+    "reply": "No, we currently ship only within the United States.",
+    "language": "en",
+    "label": "answered",
+    "source": "written",
+    "note": "Correct negative answer."
+  },
+  {
+    "id": "vd-081",
+    "question": "¿Cómo puedo solicitar una cotización personalizada?",
+    "reply": "Puede solicitar una cotización personalizada completando el formulario de solicitud de cotización en nuestra página de precios o en la página de Servicios Profesionales. Adaptaremos la cotización a su entorno de monitoreo y sus necesidades de servicio específicas.\n\nPara renovaciones de soporte y mantenimiento, complete el formulario de la página Network Monitoring Support and Maintenance Renewal o contacte al equipo de renovaciones en progress-renewals@progress.com.",
+    "language": "es",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck-2\\pv-results.jsonl",
+    "note": ""
+  },
+  {
+    "id": "vd-082",
+    "question": "How much does the Basics plan cost if I pay monthly?",
+    "reply": "Pricing plans lists Basics at $9.99 per user/month when billed yearly. It does not state the monthly-billing price for Basics.",
+    "language": "en",
+    "label": "partly",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\h1\\chat-results.jsonl",
+    "note": "Gives the yearly-billing price and says the monthly-billing price is not stated."
+  },
+  {
+    "id": "vd-083",
+    "question": "What are your prices?",
+    "reply": "Our LoadMaster pricing includes:\n\nIndividual: from $2,205 per year\nStandard: $4,500\nEnterprise: $5,300\nEnterprise Plus: $6,200\n\nCloud Virtual LoadMasters start at $0.41/hour, including a support subscription.\n\nPerformance depends on allocated system resources. For a detailed configuration-specific price, visit our Get a Price Quote page and complete the quote form.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\demo\\pv-results.jsonl",
+    "note": "Correct short answer: prices."
+  },
+  {
+    "id": "vd-084",
+    "question": "Are there any upcoming Sitefinity webinars or events?",
+    "reply": "No upcoming Sitefinity webinar or event dates are listed. Visit our webinars page.",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\marketer.md",
+    "note": "Whole-site negative plus a pointer; near-exact (the review trims the end)."
+  },
+  {
+    "id": "vd-085",
+    "question": "What are your prices?",
+    "reply": "Our Pricing plans list:\n\nFree: up to 5 projects, maximum 5 users.\nBasics: $9.99 per user/month.\nA $24.99 plan, with pricing details available by contacting us.\nEnterprise: contact us for pricing.\n\nMonthly subscriptions can be paid by credit card; annual subscriptions can also be paid by bank transfer. Annual billing saves 29%.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\h1\\chat-results.jsonl",
+    "note": ""
+  },
+  {
+    "id": "vd-086",
+    "question": "Wat kost Teamleader Focus?",
+    "reply": "Teamleader Focus kost vanaf € 24,75 per gebruiker/maand, het eerste jaar, exclusief btw en inclusief korting. Dit is bij jaarlijkse betaling. Daarnaast kun je Boosters toevoegen, zoals: - Projectmanagement: € 35/maand - Planning: € 35/maand - Lead capture: € 20/maand - Boekhoudconnector: € 5/maand Boosters koop je per account. Je kunt Teamleader Focus 14 dagen gratis proberen, zonder kred",
+    "language": "nl",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\h2-validate-run1.json",
+    "note": ""
+  },
+  {
+    "id": "vd-087",
+    "question": "Wann ist das nächste Webinar?",
+    "reply": "Auf unserer Website sind keine kommenden Webinare angegeben.",
+    "language": "de",
+    "label": "may-not-answer",
+    "source": "written",
+    "note": "Whole-site negative (de)."
+  },
+  {
+    "id": "vd-088",
+    "question": "Proposez-vous un essai gratuit ?",
+    "reply": "Vous pouvez réserver une démo personnalisée de 15 minutes avec un consultant.",
+    "language": "fr",
+    "label": "substituted",
+    "source": "written",
+    "note": "Demo instead of trial (fr)."
+  },
+  {
+    "id": "vd-089",
+    "question": "When is the next webinar?",
+    "reply": "You can watch our on-demand webinars any time, including \"Scaling Content Operations\" and \"Headless CMS in Practice\".",
+    "language": "en",
+    "label": "substituted",
+    "source": "written",
+    "note": "Lists recordings instead of the next date, with no statement about upcoming ones."
+  },
+  {
+    "id": "vd-090",
+    "question": "How much does Teamleader cost?",
+    "reply": "Teamleader Focus pricing depends on your plan, number of users and any Boosters.\n\nThe pricing page shows Grow with annual billing, per user/month, excluding VAT and including discounts, but the extracted text does not show its price.\n\nIt also lists these Boosters per account: Project management: €35/month, Planning: €35/month, Lead capture: €20/month, Work orders: €20/month.",
+    "language": "en",
+    "label": "partly",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\rules-held-release.json",
+    "note": "Add-on prices given; says the main plan price is not shown. The source stores the reply cut after the Boosters list; list formatting flattened."
+  },
+  {
+    "id": "vd-091",
+    "question": "How do I cancel my plan?",
+    "reply": "For a Ghost(Pro) plan, the site owner can cancel auto-renewal in Ghost Admin:\n\n1. Go to **Ghost(Pro) → Billing**\n2. Click the red **Cancel account** link at the lower left\n\nYour site and account will be deleted at the end of the billing cycle. To take the site offline sooner, contact **support@ghost.org**. We do not offer refunds.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\pilot\\results-A-r2.json",
+    "note": ""
+  },
+  {
+    "id": "vd-092",
+    "question": "How much does the Pro plan cost?",
+    "reply": "Pricing for that plan isn't something I have to hand.",
+    "language": "en",
+    "label": "may-not-answer",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\ux-designer.md",
+    "note": "The reviewer wrote this wording to test the chat rule; the plan name in the question is inferred."
+  },
+  {
+    "id": "vd-093",
+    "question": "Comment puis-je vous contacter ?",
+    "reply": "Pour nous contacter au sujet de Teamleader Focus, remplissez le formulaire de contact.",
+    "language": "fr",
+    "label": "deflection",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\recheck\\chat-results.jsonl",
+    "note": "Only content is \"use the contact form/page\" with no channel detail (phone, email, hours, callback). (fr)"
+  },
+  {
+    "id": "vd-094",
+    "question": "Wat kost Teamleader Focus?",
+    "reply": "Op onze website staan geen prijzen vermeld.",
+    "language": "nl",
+    "label": "may-not-answer",
+    "source": "written",
+    "note": "Whole-site negative (nl); the site lists prices."
+  },
+  {
+    "id": "vd-095",
+    "question": "How much does Teamwork.com cost per user?",
+    "reply": "Our Pricing plans information shows these Teamwork.com per-user monthly prices:\n\nFree: $0 per user/month\n$9.99 per user/month\n$24.99 per user/month\n\nThe plan names are not shown alongside those prices in the available pricing details. Higher-tier plans include options to “Let’s talk” or “Contact us today,” so pricing is by quote.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-6\\verification\\h1\\chat-results.jsonl",
+    "note": "Gives the per-user prices; saying plan names are not shown is honest about a detail, not a non-answer."
+  },
+  {
+    "id": "vd-096",
+    "question": "Where can I buy your products?",
+    "reply": "You can buy our products through our online store. Other purchase options include: - Request a quote—we will send a quote/estimate to sign. Once returned, we activate your licenses and send an invoice with NET 30 payment terms. - Send a purchase order. You can also contact our Product Specialists or call us toll-free at +1-800-477-6473.",
+    "language": "en",
+    "label": "answered",
+    "source": "C:\\Users\\quint\\msp\\review-kit\\round-5\\verification\\recheck\\d3-telerik-validate-run1.txt",
+    "note": ""
+  }
+]

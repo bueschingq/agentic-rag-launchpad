@@ -6,7 +6,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!**/migrations/meta", "!package-lock.json"]
+    "includes": ["**", "!**/migrations/meta", "!package-lock.json", "!apps/console/public/brand", "!apps/sniffer/e2e/fixtures/pricing"]
   },
   "formatter": {
     "indentStyle": "space",

@@ -14,4 +14,4 @@ spike/out/
 .DS_Store
 
 # Console preview output (apps/console/scripts/preview.ts)
-preview/
+/preview/

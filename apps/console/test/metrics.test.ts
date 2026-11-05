@@ -9,6 +9,7 @@ import {
   lastDays,
   monthTotals,
   niceTicks,
+  olderChecksFirst,
   shiftDay,
   summarizeQuality,
   summarizeUsage,
@@ -157,7 +158,9 @@ describe("buildDashboard", () => {
       quality: [],
       syncs: [{ deploymentId: "d1", lastJobStatus: "ok", lastSyncedAt: new Date("2026-10-24T08:00:00Z") }],
     });
-    assert.deepEqual(dash.tenants[0]?.alerts, [{ tone: "warning", text: "No sync for 4 days" }]);
+    assert.deepEqual(dash.tenants[0]?.alerts, [
+      { tone: "warning", text: "No sync for 4 days", href: "/customers/t1/deployments/d1#content" },
+    ]);
   });
 });
 
@@ -213,5 +216,23 @@ describe("format", () => {
     assert.ok(!isMonth("2026-1"));
     assert.ok(!isMonth("2026-10'; drop table"));
     assert.ok(!isMonth(["2026-10"]));
+  });
+});
+
+describe("olderChecksFirst (round 5, 7g: Fleet's older-checks tile and filter)", () => {
+  it("lists only deployments signed off under older checks, the oldest sign-off first", () => {
+    const d = (id: string, olderChecks: boolean, signedOffAt?: string) => ({ id, olderChecks, ...(signedOffAt && { signedOffAt }) });
+    const listed = olderChecksFirst([
+      d("current", false, "2026-10-20T10:00:00Z"),
+      d("r4-telerik", true, "2026-10-30T05:07:00Z"),
+      d("r3-crayola", true, "2026-10-29T14:00:00Z"),
+      d("never-signed", false),
+      d("unreadable", true, "not a date"),
+    ]);
+    assert.deepEqual(
+      listed.map((x) => x.id),
+      ["unreadable", "r3-crayola", "r4-telerik"],
+    );
+    assert.deepEqual(olderChecksFirst([d("a", false)]), []);
   });
 });
