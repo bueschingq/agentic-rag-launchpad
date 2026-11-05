@@ -516,6 +516,8 @@ describe("the chat header", () => {
     await chat(page)
       .locator(".header img")
       .evaluate((img: HTMLImageElement) => img.decode().catch(() => undefined));
+    // The header fits itself when the logo's load event fires, which can come after decode.
+    await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
     return { page, context, errors };
   }
 
